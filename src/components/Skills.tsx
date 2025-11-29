@@ -12,12 +12,12 @@ import {
   SiMysql,
   SiSolidity,
   SiEthereum,
-  SiEthers,
   SiGithub,
   SiFigma,
   SiVisualstudiocode,
   SiDocker
 } from "react-icons/si";
+import { FaEthereum } from "react-icons/fa";
 import { IconType } from "react-icons";
 
 interface Skill {
@@ -39,7 +39,7 @@ const skills: Record<string, Skill[]> = {
     { name: "SQL", level: 70, icon: SiMysql, color: "#4479A1" },
     { name: "Solidity", level: 70, icon: SiSolidity, color: "#363636" },
     { name: "Ethereum", level: 75, icon: SiEthereum, color: "#3C3C3D" },
-    { name: "Ethers.js", level: 75, icon: SiEthers, color: "#2535A0" },
+    { name: "Ethers.js", level: 75, icon: FaEthereum, color: "#2535A0" },
     { name: "GitHub", level: 92, icon: SiGithub, color: "#181717" },
     { name: "Figma", level: 85, icon: SiFigma, color: "#F24E1E" },
     { name: "VS Code", level: 95, icon: SiVisualstudiocode, color: "#007ACC" },
@@ -62,7 +62,7 @@ const skills: Record<string, Skill[]> = {
   blockchain: [
     { name: "Solidity", level: 70, icon: SiSolidity, color: "#363636" },
     { name: "Ethereum", level: 75, icon: SiEthereum, color: "#3C3C3D" },
-    { name: "Ethers.js", level: 75, icon: SiEthers, color: "#2535A0" }
+    { name: "Ethers.js", level: 75, icon: FaEthereum, color: "#2535A0" }
   ],
   tools: [
     { name: "GitHub", level: 92, icon: SiGithub, color: "#181717" },
