@@ -1,51 +1,74 @@
 import { Card } from "@/components/ui/card";
-import { Heart, Sparkles } from "lucide-react";
+import { Heart } from "lucide-react";
 import { useState } from "react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiJavascript,
+  SiPython,
+  SiJava,
+  SiMysql,
+  SiSolidity,
+  SiEthereum,
+  SiEthers,
+  SiGithub,
+  SiFigma,
+  SiVisualstudiocode,
+  SiDocker
+} from "react-icons/si";
+import { IconType } from "react-icons";
 
-const skills = {
+interface Skill {
+  name: string;
+  level: number;
+  icon: IconType;
+  color: string;
+}
+
+const skills: Record<string, Skill[]> = {
   all: [
-    { name: "React", level: 80, category: "frontend" },
-    { name: "Next.js", level: 80, category: "frontend" },
-    { name: "TypeScript", level: 85, category: "frontend" },
-    { name: "Tailwind CSS", level: 92, category: "frontend" },
-    { name: "JavaScript", level: 94, category: "frontend" },
-    { name: "Python", level: 87, category: "languages" },
-    { name: "Java", level: 75, category: "languages" },
-    { name: "SQL", level: 70, category: "languages" },
-    { name: "Solidity", level: 70, category: "blockchain" },
-    { name: "Ethereum", level: 75, category: "blockchain" },
-    { name: "Ethers.js", level: 75, category: "blockchain" },
-    { name: "Smart Contracts", level: 84, category: "blockchain" },
-    { name: "GitHub", level: 92, category: "tools" },
-    { name: "Figma", level: 85, category: "tools" },
-    { name: "VS Code", level: 95, category: "tools" },
-    { name: "Docker", level: 78, category: "tools" }
+    { name: "React", level: 80, icon: SiReact, color: "#61DAFB" },
+    { name: "Next.js", level: 80, icon: SiNextdotjs, color: "#000000" },
+    { name: "TypeScript", level: 85, icon: SiTypescript, color: "#3178C6" },
+    { name: "Tailwind CSS", level: 92, icon: SiTailwindcss, color: "#06B6D4" },
+    { name: "JavaScript", level: 94, icon: SiJavascript, color: "#F7DF1E" },
+    { name: "Python", level: 87, icon: SiPython, color: "#3776AB" },
+    { name: "Java", level: 75, icon: SiJava, color: "#007396" },
+    { name: "SQL", level: 70, icon: SiMysql, color: "#4479A1" },
+    { name: "Solidity", level: 70, icon: SiSolidity, color: "#363636" },
+    { name: "Ethereum", level: 75, icon: SiEthereum, color: "#3C3C3D" },
+    { name: "Ethers.js", level: 75, icon: SiEthers, color: "#2535A0" },
+    { name: "GitHub", level: 92, icon: SiGithub, color: "#181717" },
+    { name: "Figma", level: 85, icon: SiFigma, color: "#F24E1E" },
+    { name: "VS Code", level: 95, icon: SiVisualstudiocode, color: "#007ACC" },
+    { name: "Docker", level: 78, icon: SiDocker, color: "#2496ED" }
   ],
   frontend: [
-    { name: "React", level: 80 },
-    { name: "Next.js", level: 80 },
-    { name: "TypeScript", level: 85 },
-    { name: "Tailwind CSS", level: 92 },
-    { name: "JavaScript", level: 94 }
+    { name: "React", level: 80, icon: SiReact, color: "#61DAFB" },
+    { name: "Next.js", level: 80, icon: SiNextdotjs, color: "#000000" },
+    { name: "TypeScript", level: 85, icon: SiTypescript, color: "#3178C6" },
+    { name: "Tailwind CSS", level: 92, icon: SiTailwindcss, color: "#06B6D4" },
+    { name: "JavaScript", level: 94, icon: SiJavascript, color: "#F7DF1E" }
   ],
   languages: [
-    { name: "Python", level: 87 },
-    { name: "JavaScript", level: 94 },
-    { name: "TypeScript", level: 85 },
-    { name: "Java", level: 75 },
-    { name: "SQL", level: 70 }
+    { name: "Python", level: 87, icon: SiPython, color: "#3776AB" },
+    { name: "JavaScript", level: 94, icon: SiJavascript, color: "#F7DF1E" },
+    { name: "TypeScript", level: 85, icon: SiTypescript, color: "#3178C6" },
+    { name: "Java", level: 75, icon: SiJava, color: "#007396" },
+    { name: "SQL", level: 70, icon: SiMysql, color: "#4479A1" }
   ],
   blockchain: [
-    { name: "Solidity", level: 70 },
-    { name: "Ethereum", level: 75 },
-    { name: "Ethers.js", level: 75 },
-    { name: "Smart Contracts", level: 84 }
+    { name: "Solidity", level: 70, icon: SiSolidity, color: "#363636" },
+    { name: "Ethereum", level: 75, icon: SiEthereum, color: "#3C3C3D" },
+    { name: "Ethers.js", level: 75, icon: SiEthers, color: "#2535A0" }
   ],
   tools: [
-    { name: "GitHub", level: 92 },
-    { name: "Figma", level: 85 },
-    { name: "VS Code", level: 95 },
-    { name: "Docker", level: 78 }
+    { name: "GitHub", level: 92, icon: SiGithub, color: "#181717" },
+    { name: "Figma", level: 85, icon: SiFigma, color: "#F24E1E" },
+    { name: "VS Code", level: 95, icon: SiVisualstudiocode, color: "#007ACC" },
+    { name: "Docker", level: 78, icon: SiDocker, color: "#2496ED" }
   ]
 };
 
@@ -90,29 +113,28 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
           {skills[activeTab].map((skill, index) => (
             <Card
               key={skill.name}
-              className="p-6 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in group"
+              className="p-6 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in group hover:scale-105"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <div className="flex justify-between items-center mb-3">
-                <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+              <div className="flex flex-col items-center justify-center text-center space-y-4">
+                <div
+                  className="w-16 h-16 flex items-center justify-center rounded-2xl transition-all duration-300 group-hover:scale-110"
+                  style={{
+                    backgroundColor: `${skill.color}15`,
+                  }}
+                >
+                  <skill.icon
+                    className="w-10 h-10 transition-all duration-300"
+                    style={{ color: skill.color }}
+                  />
+                </div>
+                <span className="font-bold text-base text-foreground group-hover:text-primary transition-colors">
                   {skill.name}
                 </span>
-                <span className="text-sm text-muted-foreground font-semibold bg-primary/10 px-3 py-1 rounded-full">
-                  {skill.level}%
-                </span>
-              </div>
-              <div className="h-3 bg-muted rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out group-hover:shadow-[0_0_10px_rgba(236,72,153,0.5)]"
-                  style={{
-                    width: `${skill.level}%`,
-                    animation: 'expand 1s ease-out'
-                  }}
-                />
               </div>
             </Card>
           ))}
@@ -142,14 +164,6 @@ const Skills = () => {
           </Card>
         </div>
       </div>
-
-      <style>{`
-        @keyframes expand {
-          from {
-            width: 0;
-          }
-        }
-      `}</style>
     </section>
   );
 };
