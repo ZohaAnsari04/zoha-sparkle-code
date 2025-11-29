@@ -72,23 +72,23 @@ const Projects = () => {
             A collection of my favorite creations 💖
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {projects.map((project, index) => (
-            <Card 
+            <Card
               key={index}
               className="group overflow-hidden bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden h-48">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
                   {project.name}
@@ -96,10 +96,10 @@ const Projects = () => {
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech, i) => (
-                    <span 
+                    <span
                       key={i}
                       className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
                     >
@@ -107,16 +107,16 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                
+
                 <div className="flex gap-3">
-                  <Button 
+                  <Button
                     size="sm"
                     className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-[0_4px_20px_rgba(236,72,153,0.2)] hover:shadow-[0_6px_30px_rgba(236,72,153,0.3)] transition-all"
                   >
                     <ExternalLink className="mr-2 h-4 w-4" />
                     Demo
                   </Button>
-                  <Button 
+                  <Button
                     size="sm"
                     variant="outline"
                     className="flex-1 rounded-full border-primary/50 hover:bg-primary/10"
@@ -126,10 +126,10 @@ const Projects = () => {
                   </Button>
                 </div>
               </div>
-              
-              <Heart 
-                className="absolute top-4 right-4 text-primary/30 group-hover:text-primary transition-colors animate-sparkle" 
-                fill="currentColor" 
+
+              <Heart
+                className="absolute top-4 right-4 text-primary/30 group-hover:text-primary transition-colors animate-sparkle"
+                fill="currentColor"
                 size={16}
               />
             </Card>
