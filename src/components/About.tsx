@@ -4,14 +4,8 @@ import { Heart, Sparkles, Download, Code2, Blocks, Brain, Wand2 } from "lucide-r
 
 const About = () => {
   const handleResumeDownload = () => {
-    // Create a link to the resume file in the public directory
-    const resumeUrl = "/resume/Zoha_Resume.pdf";
-    const link = document.createElement("a");
-    link.href = resumeUrl;
-    link.download = "Zoha_Resume.pdf"; // This will be the default filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const resumeUrl = "https://acrobat.adobe.com/id/urn:aaid:sc:AP:6c2781b0-99ca-429f-b709-585ce072a69f";
+    window.open(resumeUrl, "_blank");
   };
 
   return (
@@ -42,7 +36,6 @@ const About = () => {
                 When I'm not coding, you'll find me exploring the latest tech trends, contributing
                 to open-source projects, or mentoring aspiring developers. Let's build something
                 amazing together! 💖
-
               </p>
             </div>
           </Card>
