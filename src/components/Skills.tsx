@@ -1,7 +1,26 @@
 import { Card } from "@/components/ui/card";
 import { Heart, Sparkles } from "lucide-react";
+import { useState } from "react";
 
 const skills = {
+  all: [
+    { name: "React", level: 80, category: "frontend" },
+    { name: "Next.js", level: 80, category: "frontend" },
+    { name: "TypeScript", level: 85, category: "frontend" },
+    { name: "Tailwind CSS", level: 92, category: "frontend" },
+    { name: "JavaScript", level: 94, category: "frontend" },
+    { name: "Python", level: 87, category: "languages" },
+    { name: "Java", level: 75, category: "languages" },
+    { name: "SQL", level: 70, category: "languages" },
+    { name: "Solidity", level: 70, category: "blockchain" },
+    { name: "Ethereum", level: 75, category: "blockchain" },
+    { name: "Ethers.js", level: 75, category: "blockchain" },
+    { name: "Smart Contracts", level: 84, category: "blockchain" },
+    { name: "GitHub", level: 92, category: "tools" },
+    { name: "Figma", level: 85, category: "tools" },
+    { name: "VS Code", level: 95, category: "tools" },
+    { name: "Docker", level: 78, category: "tools" }
+  ],
   frontend: [
     { name: "React", level: 80 },
     { name: "Next.js", level: 80 },
@@ -9,18 +28,18 @@ const skills = {
     { name: "Tailwind CSS", level: 92 },
     { name: "JavaScript", level: 94 }
   ],
+  languages: [
+    { name: "Python", level: 87 },
+    { name: "JavaScript", level: 94 },
+    { name: "TypeScript", level: 85 },
+    { name: "Java", level: 75 },
+    { name: "SQL", level: 70 }
+  ],
   blockchain: [
     { name: "Solidity", level: 70 },
     { name: "Ethereum", level: 75 },
     { name: "Ethers.js", level: 75 },
     { name: "Smart Contracts", level: 84 }
-  ],
-  languages: [
-    { name: "Python", level: 87 },
-    { name: "JavaScript", level: 94 },
-    { name: "TypeScript", level: 88 },
-    { name: "Java", level: 75 },
-    { name: "SQL", level: 70 }
   ],
   tools: [
     { name: "GitHub", level: 92 },
@@ -31,12 +50,22 @@ const skills = {
 };
 
 const Skills = () => {
+  const [activeTab, setActiveTab] = useState<keyof typeof skills>("all");
+
+  const tabs = [
+    { key: "all" as const, label: "All Skills" },
+    { key: "frontend" as const, label: "Frontend" },
+    { key: "languages" as const, label: "Languages" },
+    { key: "blockchain" as const, label: "Blockchain" },
+    { key: "tools" as const, label: "Tools" }
+  ];
+
   return (
-    <section id="skills" className="py-20 relative overflow-hidden">
+    <section id="skills" className="py-20 bg-muted/30 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Skills</span> & Superpowers
+            <span className="gradient-text">Skills</span> & Technologies
             <Heart className="inline-block ml-2 text-primary animate-sparkle" fill="currentColor" />
           </h2>
           <p className="text-xl text-muted-foreground">
@@ -44,42 +73,46 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {Object.entries(skills).map(([category, skillList], index) => (
-            <Card
-              key={category}
-              className="p-8 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in">
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === tab.key
+                  ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                  : "bg-card border-2 border-border hover:border-primary/50 text-foreground hover:scale-105"
+                }`}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <Sparkles className="text-primary" />
-                <h3 className="text-2xl font-bold capitalize text-foreground">
-                  {category}
-                </h3>
-              </div>
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-              <div className="space-y-4">
-                {skillList.map((skill) => (
-                  <div key={skill.name} className="group">
-                    <div className="flex justify-between mb-2">
-                      <span className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm text-muted-foreground font-medium">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-2.5 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out group-hover:shadow-[0_0_10px_rgba(236,72,153,0.5)]"
-                        style={{
-                          width: `${skill.level}%`,
-                          animation: 'expand 1s ease-out'
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
+        {/* Skills Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {skills[activeTab].map((skill, index) => (
+            <Card
+              key={skill.name}
+              className="p-6 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in group"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              <div className="flex justify-between items-center mb-3">
+                <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+                  {skill.name}
+                </span>
+                <span className="text-sm text-muted-foreground font-semibold bg-primary/10 px-3 py-1 rounded-full">
+                  {skill.level}%
+                </span>
+              </div>
+              <div className="h-3 bg-muted rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out group-hover:shadow-[0_0_10px_rgba(236,72,153,0.5)]"
+                  style={{
+                    width: `${skill.level}%`,
+                    animation: 'expand 1s ease-out'
+                  }}
+                />
               </div>
             </Card>
           ))}
