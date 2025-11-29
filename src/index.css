@@ -112,7 +112,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-['Poppins',sans-serif];
+    @apply bg-background text-foreground font-['Playfair_Display',serif];
   }
 }
 

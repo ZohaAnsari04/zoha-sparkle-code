@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -64,7 +64,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        playfair: ['Playfair Display', 'serif'],
       },
       keyframes: {
         "accordion-down": {
@@ -105,5 +105,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+  plugins: [tailwindcssAnimate],
+} satisfies import("tailwindcss").Config;

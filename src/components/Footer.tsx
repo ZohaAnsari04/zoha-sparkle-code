@@ -58,7 +58,7 @@ const Footer = () => {
                 Open to collaborations and opportunities
               </p>
               <p className="text-sm text-primary font-medium">
-                zoha@zohaaiverse.com
+                zoha101204@gmail.com
               </p>
             </div>
           </div>
