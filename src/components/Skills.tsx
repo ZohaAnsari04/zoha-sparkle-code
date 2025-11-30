@@ -1,51 +1,51 @@
 import { Card } from "@/components/ui/card";
-import { Heart, Sparkles } from "lucide-react";
+import { Heart } from "lucide-react";
 import { useState } from "react";
 
 const skills = {
   all: [
-    { name: "React", level: 80 },
-    { name: "Next.js", level: 80 },
-    { name: "TypeScript", level: 85 },
-    { name: "Tailwind CSS", level: 92 },
-    { name: "JavaScript", level: 94 },
-    { name: "Python", level: 87 },
-    { name: "Java", level: 75 },
-    { name: "SQL", level: 70 },
-    { name: "Solidity", level: 70 },
-    { name: "Ethereum", level: 75 },
-    { name: "Ethers.js", level: 75 },
-    { name: "Smart Contracts", level: 84 },
-    { name: "GitHub", level: 92 },
-    { name: "Figma", level: 85 },
-    { name: "VS Code", level: 95 },
-    { name: "Docker", level: 78 }
+    { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+    { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" },
+    { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+    { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+    { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+    { name: "Solidity", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+    { name: "Ethereum", logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg" },
+    { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+    { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+    { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+    { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" }
   ],
   frontend: [
-    { name: "React", level: 80 },
-    { name: "Next.js", level: 80 },
-    { name: "TypeScript", level: 85 },
-    { name: "Tailwind CSS", level: 92 },
-    { name: "JavaScript", level: 94 }
+    { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+    { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" },
+    { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
   ],
   languages: [
-    { name: "Python", level: 87 },
-    { name: "JavaScript", level: 94 },
-    { name: "TypeScript", level: 85 },
-    { name: "Java", level: 75 },
-    { name: "SQL", level: 70 }
+    { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+    { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+    { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+    { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" }
   ],
   blockchain: [
-    { name: "Solidity", level: 70 },
-    { name: "Ethereum", level: 75 },
-    { name: "Ethers.js", level: 75 },
-    { name: "Smart Contracts", level: 84 }
+    { name: "Solidity", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+    { name: "Ethereum", logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg" },
+    { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" }
   ],
   tools: [
-    { name: "GitHub", level: 92 },
-    { name: "Figma", level: 85 },
-    { name: "VS Code", level: 95 },
-    { name: "Docker", level: 78 }
+    { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+    { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+    { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" }
   ]
 };
 
@@ -80,8 +80,8 @@ const Skills = () => {
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === tab.key
-                  ? "bg-primary text-primary-foreground shadow-lg scale-105"
-                  : "bg-card border-2 border-border hover:border-primary/50 text-foreground hover:scale-105"
+                ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                : "bg-card border-2 border-border hover:border-primary/50 text-foreground hover:scale-105"
                 }`}
             >
               {tab.label}
@@ -90,29 +90,24 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {skills[activeTab].map((skill, index) => (
             <Card
               key={skill.name}
               className="p-6 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in group"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <div className="flex justify-between items-center mb-3">
-                <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="w-16 h-16 flex items-center justify-center bg-muted rounded-lg p-3 group-hover:scale-110 transition-transform">
+                  <img
+                    src={skill.logo}
+                    alt={`${skill.name} logo`}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <span className="font-bold text-base text-foreground group-hover:text-primary transition-colors">
                   {skill.name}
                 </span>
-                <span className="text-sm text-muted-foreground font-semibold bg-primary/10 px-3 py-1 rounded-full">
-                  {skill.level}%
-                </span>
-              </div>
-              <div className="h-3 bg-muted rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out group-hover:shadow-[0_0_10px_rgba(236,72,153,0.5)]"
-                  style={{
-                    width: `${skill.level}%`,
-                    animation: 'expand 1s ease-out'
-                  }}
-                />
               </div>
             </Card>
           ))}
@@ -142,14 +137,6 @@ const Skills = () => {
           </Card>
         </div>
       </div>
-
-      <style>{`
-        @keyframes expand {
-          from {
-            width: 0;
-          }
-        }
-      `}</style>
     </section>
   );
 };
