@@ -37,16 +37,16 @@ All colors MUST be HSL.
     --ring: 320 85% 60%;
 
     --radius: 1rem;
-    
+
     /* Custom gradients */
     --gradient-primary: linear-gradient(135deg, hsl(320 85% 60%), hsl(280 70% 75%));
     --gradient-hero: linear-gradient(135deg, hsl(330 100% 98%), hsl(280 70% 85%), hsl(320 85% 70%));
     --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(330 100% 98%));
-    
+
     /* Shadows */
     --shadow-glow: 0 10px 40px hsl(320 85% 60% / 0.3);
     --shadow-soft: 0 4px 20px hsl(320 50% 70% / 0.15);
-    
+
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -112,7 +112,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-['Playfair_Display',serif];
+    @apply bg-background text-foreground font-['Playfair_Display', serif];
   }
 }
 
@@ -120,26 +120,29 @@ All colors MUST be HSL.
   .sparkle {
     animation: sparkle 2s infinite;
   }
-  
+
   .gradient-text {
     @apply bg-clip-text text-transparent;
     background-image: var(--gradient-primary);
   }
-  
+
   .glow-hover {
     transition: var(--transition-smooth);
   }
-  
+
   .glow-hover:hover {
     filter: drop-shadow(0 0 20px hsl(320 85% 60% / 0.5));
   }
 }
 
 @keyframes sparkle {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.5;
     transform: scale(1.1);
@@ -147,9 +150,12 @@ All colors MUST be HSL.
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
