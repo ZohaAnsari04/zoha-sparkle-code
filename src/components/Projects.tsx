@@ -10,11 +10,11 @@ import project6 from "@/assets/project6.jpg";
 
 const projects = [
   {
-    name: "Luxury Stays Booking App",
+    name: "SPLITSYNC- Smart Expense Tracker",
     image: project1,
-    description: "Elegant hotel booking platform with AI-powered recommendations and seamless user experience",
-    tech: ["React", "TypeScript", "AI Integration", "Tailwind CSS"],
-    demo: "#",
+    description: "A smart expense tracker that automatically splits costs, tracks balances, and keeps every rupee accountable. Perfect for friends, trips, and shared living",
+    tech: ["React", "TypeScript", "AI Integration", "Tailwind CSS", "Lucide React",],
+    demo: "https://splitsync-umber.vercel.app/",
     github: "#"
   },
   {
@@ -112,6 +112,8 @@ const Projects = () => {
                   <Button
                     size="sm"
                     className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-[0_4px_20px_rgba(236,72,153,0.2)] hover:shadow-[0_6px_30px_rgba(236,72,153,0.3)] transition-all"
+                    onClick={() => window.open(project.demo, '_blank')}
+                    disabled={project.demo === '#'}
                   >
                     <ExternalLink className="mr-2 h-4 w-4" />
                     Demo
@@ -120,6 +122,8 @@ const Projects = () => {
                     size="sm"
                     variant="outline"
                     className="flex-1 rounded-full border-primary/50 hover:bg-primary/10"
+                    onClick={() => window.open(project.github, '_blank')}
+                    disabled={project.github === '#'}
                   >
                     <Github className="mr-2 h-4 w-4" />
                     Code
