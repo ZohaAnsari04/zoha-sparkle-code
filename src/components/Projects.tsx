@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, ExternalLink, Github, Sparkles } from "lucide-react";
-import project1 from "@/assets/project1.jpg";
+import project1 from "@/assets/project1.png";
 import project2 from "@/assets/project2.jpg";
 import project3 from "@/assets/project3.jpg";
 import project4 from "@/assets/project4.jpg";
@@ -18,10 +18,10 @@ const projects = [
     github: "#"
   },
   {
-    name: "Real Estate Onchain DApp",
+    name: "An OSINT Based Real Time Scam and Phishing Website Detection",
     image: project2,
-    description: "Blockchain-powered real estate platform for transparent property transactions",
-    tech: ["Ethereum", "Solidity", "Ethers.js", "Web3"],
+    description: "An OSINT-powered detection system that monitors the open web in real time to expose phishing and scam sites instantly",
+    tech: ["React.js", "Tailwind CSS", "Python.js", "REST + WebSocket APIs", "Scrapy", "WHOIS", "Scikit-learn"],
     demo: "#",
     github: "#"
   },
