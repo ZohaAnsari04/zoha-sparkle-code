@@ -26,10 +26,10 @@ const projects = [
     github: "#"
   },
   {
-    name: "Community Platform for Coders",
+    name: "ClarityWorks",
     image: project3,
-    description: "Social platform connecting developers with chat, collaboration, and knowledge sharing",
-    tech: ["Next.js", "Firebase", "React", "Tailwind CSS"],
+    description: "Clarity Works is a freelance service platform delivering modern web, blockchain, and AI-driven solutions with a focus on performance, security, and scalability. Built for clients who want results, not just designs.",
+    tech: ["TypeScript ", "shadcn/ui", "React", "Tailwind CSS", "Zod "],
     demo: "#",
     github: "#"
   },
