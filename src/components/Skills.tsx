@@ -118,6 +118,10 @@ const Skills = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary animate-gradient bg-[length:200%_200%]"></div>
               </div>
 
+              {/* Glow Effects */}
+              <div className="absolute -top-8 -right-8 w-16 h-16 bg-primary/30 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-accent/30 rounded-full blur-2xl"></div>
+
               {/* Floating Particle */}
               <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-primary/40 rounded-full animate-pulse"></div>
 

@@ -233,9 +233,20 @@ const Achievements = () => {
                     {achievements.map((achievement, index) => (
                         <Card
                             key={index}
-                            className="group overflow-hidden bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in"
+                            className="group relative overflow-hidden bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in"
                             style={{ animationDelay: `${index * 0.1}s` }}
                         >
+                            {/* Animated Background */}
+                            <div className="absolute inset-0 opacity-10">
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary animate-gradient bg-[length:200%_200%]"></div>
+                            </div>
+
+                            {/* Glow Effects */}
+                            <div className="absolute -top-8 -right-8 w-16 h-16 bg-primary/30 rounded-full blur-2xl"></div>
+                            <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-accent/30 rounded-full blur-2xl"></div>
+
+                            {/* Floating Particle */}
+                            <div className="absolute top-2 right-2 w-1.5 h-1.5 bg-primary/40 rounded-full animate-pulse"></div>
                             {/* Certificate Image */}
                             {achievement.image && (
                                 <div
@@ -258,21 +269,21 @@ const Achievements = () => {
                                     </div>
 
                                     <div className="flex-1">
-                                        <h3 className="text-lg font-bold mb-1 text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                                        <h3 className="text-xl font-bold mb-1 text-foreground group-hover:text-primary transition-colors line-clamp-2">
                                             {achievement.title}
                                         </h3>
-                                        <p className="text-xs text-foreground/80">
+                                        <p className="text-sm text-foreground/80">
                                             {achievement.issuer}
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-2 mb-3 text-xs text-foreground/70">
-                                    <Calendar className="w-3 h-3" />
+                                <div className="flex items-center gap-2 mb-3 text-sm text-foreground/70">
+                                    <Calendar className="w-4 h-4" />
                                     <span>{achievement.date}</span>
                                 </div>
 
-                                <p className="text-xs text-foreground/80 mb-4 leading-relaxed line-clamp-3">
+                                <p className="text-sm text-foreground/80 mb-4 leading-relaxed line-clamp-3">
                                     {achievement.description}
                                 </p>
 
@@ -280,7 +291,7 @@ const Achievements = () => {
                                     {achievement.skills.slice(0, 3).map((skill, i) => (
                                         <span
                                             key={i}
-                                            className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
+                                            className="px-2 py-1 bg-primary/10 text-primary text-sm rounded-full border border-primary/20"
                                         >
                                             {skill}
                                         </span>
