@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, ExternalLink, Github, Sparkles } from "lucide-react";
+import { Heart, ExternalLink, Sparkles } from "lucide-react";
 import project1 from "@/assets/project1.png";
 import project2 from "@/assets/project2.jpg";
 import project3 from "@/assets/project3.jpg";
@@ -8,12 +8,25 @@ import project4 from "@/assets/project4.jpg";
 import project5 from "@/assets/project5.jpg";
 import project6 from "@/assets/project6.jpg";
 
+// Tech stack logo mapping
+const techLogos: { [key: string]: string } = {
+  "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  "Solidity": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg",
+  "Hardhat": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hardhat/hardhat-original.svg",
+  "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  "TensorFlow": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+  "Vite": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+};
+
 const projects = [
   {
     name: "SPLITSYNC- Smart Expense Tracker",
     image: project1,
     description: "A smart expense tracker that automatically splits costs, tracks balances, and keeps every rupee accountable. Perfect for friends, trips, and shared living",
-    tech: ["React", "TypeScript", "AI Integration", "Tailwind CSS", "Lucide React",],
+    tech: ["React", "TypeScript", "Tailwind CSS"],
     demo: "https://splitsync-umber.vercel.app/",
     github: "#"
   },
@@ -21,7 +34,7 @@ const projects = [
     name: "PhishEye",
     image: project2,
     description: "An OSINT-powered detection system that monitors the open web in real time to expose phishing and scam sites instantly",
-    tech: ["React.js", "Tailwind CSS", "Python.js", "REST + WebSocket APIs", "Scrapy", "WHOIS", "Scikit-learn"],
+    tech: ["React", "Tailwind CSS", "Python"],
     demo: "https://phisheye.vercel.app/",
     github: "#"
   },
@@ -29,7 +42,7 @@ const projects = [
     name: "ClarityWorks",
     image: project3,
     description: "Clarity Works is a freelance service platform delivering modern web, blockchain, and AI-driven solutions with a focus on performance, security, and scalability. Built for clients who want results, not just designs.",
-    tech: ["TypeScript ", "shadcn/ui", "React", "Tailwind CSS", "Zod "],
+    tech: ["TypeScript", "React", "Tailwind CSS"],
     demo: "#",
     github: "#"
   },
@@ -37,7 +50,7 @@ const projects = [
     name: "PawFund - Decentralized Rescue System",
     image: project4,
     description: "Built PawFund, a blockchain-based decentralized rescue system that ensures transparent, secure, and verifiable animal rescue, adoption, and donation processes.",
-    tech: ["OpenZeppelin ", "IPFS", "Hardhat", "Tailwind CSS", "React"],
+    tech: ["Solidity", "Hardhat", "React"],
     demo: undefined,
     github: undefined
   },
@@ -45,7 +58,7 @@ const projects = [
     name: "Decentralized Real Estate marketplace powered by Blockchain.",
     image: project5,
     description: "Built a decentralized real estate marketplace using blockchain, focused on transparent, tamper-proof property records and trustless peer-to-peer transactions via smart contracts.",
-    tech: ["React + Vite", "CSS3", "Ethers.js", "Hardhat", "Tailwind CSS", "React"],
+    tech: ["React", "Vite", "Hardhat"],
     demo: undefined,
     github: undefined
   },
@@ -53,7 +66,7 @@ const projects = [
     name: "AI Portfolio Analyzer",
     image: project6,
     description: "Smart analytics dashboard providing insights and recommendations for portfolios",
-    tech: ["Python", "TensorFlow", "React", "Chart.js"],
+    tech: ["Python", "TensorFlow", "React"],
     demo: "#",
     github: "#"
   }
@@ -77,9 +90,19 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group overflow-hidden bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in"
+              className="group relative overflow-hidden bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+              {/* Animated Background */}
+              <div className="absolute inset-0 opacity-15">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary animate-gradient bg-[length:200%_200%]"></div>
+              </div>
+
+              {/* Floating Particles */}
+              <div className="absolute top-2 right-4 w-2 h-2 bg-primary/50 rounded-full animate-pulse"></div>
+              <div className="absolute top-6 left-6 w-2.5 h-2.5 bg-accent/50 rounded-full animate-bounce"></div>
+              <div className="absolute bottom-8 right-8 w-2 h-2 bg-secondary/50 rounded-full animate-pulse delay-100"></div>
+
               <div className="relative overflow-hidden h-48">
                 <img
                   src={project.image}
@@ -89,7 +112,7 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              <div className="p-6">
+              <div className="p-6 relative z-10">
                 <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
                   {project.name}
                 </h3>
@@ -97,14 +120,20 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
+                {/* Tech Stack Icons */}
+                <div className="flex flex-wrap gap-3 mb-4">
                   {project.tech.map((tech, i) => (
-                    <span
+                    <div
                       key={i}
-                      className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
+                      className="w-10 h-10 p-2 bg-muted rounded-lg hover:bg-primary/10 transition-all hover:scale-110 group/tech"
+                      title={tech}
                     >
-                      {tech}
-                    </span>
+                      <img
+                        src={techLogos[tech]}
+                        alt={tech}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                   ))}
                 </div>
 
