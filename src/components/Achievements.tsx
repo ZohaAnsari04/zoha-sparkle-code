@@ -11,17 +11,85 @@ import cert5 from "@/assets/certificates/cert5.jpg";
 import cert6 from "@/assets/certificates/cert6.jpg";
 import cert7 from "@/assets/certificates/cert7.jpg";
 import cert8 from "@/assets/certificates/cert8.jpg";
+import cert9 from "@/assets/certificates/cert9.jpg";
+import cert10 from "@/assets/certificates/cert10.jpg";
+import cert11 from "@/assets/certificates/cert11.jpg";
+import cert12 from "@/assets/certificates/cert12.jpg";
+import cert13 from "@/assets/certificates/cert13.jpg";
+import cert14 from "@/assets/certificates/cert14.jpg";
+import cert15 from "@/assets/certificates/cert15.jpg";
+import cert16 from "@/assets/certificates/cert16.jpg";
 
 const achievements = [
     {
-        title: "Mendeley Training",
-        issuer: "Mendeley (Elsevier)",
-        date: "January 25, 2025",
-        credentialId: "MENDELEY-2025",
-        description: "Completed Mendeley training course with a certified Mendeley Advisor, demonstrating good reference management skills and effective use of Mendeley",
+        title: "Deloitte Cyber Job Simulation",
+        issuer: "Deloitte (via Forage)",
+        date: "November 14, 2025",
+        credentialId: "FxcuxqwGepTMRi67K",
+        description: "Completed practical tasks in Cyber security during November 2025, demonstrating hands-on experience in cybersecurity practices and methodologies",
         link: "#",
-        skills: ["Research", "Reference Management", "Academic Writing"],
-        image: cert6
+        skills: ["Cybersecurity", "Job Simulation", "Practical Skills"],
+        image: cert12
+    },
+    {
+        title: "ERR_404 6.0 Hackathon",
+        issuer: "M.H. Saboo Siddik College of Engineering",
+        date: "February 15-16, 2025",
+        credentialId: "ERR404-2025",
+        description: "Participated in 36 hours of International Hackathon organized by the Programmers' Club, Department of Computer Engineering on 15th & 16th February, 2025",
+        link: "#",
+        skills: ["Hackathon", "Problem Solving", "Team Collaboration"],
+        image: cert13
+    },
+    {
+        title: "Clash Of Codes 2.0 - Ace Track",
+        issuer: "Mumbai University",
+        date: "2025",
+        credentialId: "COC-ACE-2025",
+        description: "Participated in Clash Of Codes 2.0 Ace Track in recognition of outstanding performance, skill, and dedication in the field of programming and problem-solving",
+        link: "#",
+        skills: ["Competitive Programming", "Problem Solving", "Coding"],
+        image: cert14
+    },
+    {
+        title: "Clash Of Codes 2.0 - Rookie Track",
+        issuer: "Mumbai University",
+        date: "2025",
+        credentialId: "COC-ROOKIE-2025",
+        description: "Participated in Clash Of Codes 2.0 Rookie Track in recognition of outstanding performance, skill, and dedication in the field of programming and problem-solving",
+        link: "#",
+        skills: ["Competitive Programming", "Problem Solving", "Coding"],
+        image: cert15
+    },
+    {
+        title: "3-Day MERN Stack Bootcamp",
+        issuer: "M.H. Saboo Siddik College of Engineering (Programmers' Club)",
+        date: "2025",
+        credentialId: "MERN-BOOTCAMP-2025",
+        description: "Successfully completed the 3-Day MERN Stack Bootcamp, demonstrating professionalism, dedication, and excellence in full-stack development",
+        link: "#",
+        skills: ["MERN Stack", "MongoDB", "Express", "React", "Node.js"],
+        image: cert16
+    },
+    {
+        title: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
+        issuer: "Oracle University",
+        date: "October 26, 2025",
+        credentialId: "322738038OCI25GAIOCP",
+        description: "Oracle Certified Professional demonstrating expertise in Oracle Cloud Infrastructure and Generative AI technologies. Valid until October 26, 2027",
+        link: "#",
+        skills: ["Oracle Cloud", "Generative AI", "Cloud Infrastructure"],
+        image: cert9
+    },
+    {
+        title: "React.JS Developer",
+        issuer: "OneRoadmap",
+        date: "October 23, 2025",
+        credentialId: "CERT-BDEA561E",
+        description: "Successfully passed the One Roadmap Skill Certification Test in React.JS Development, demonstrating proficiency in React framework and modern JavaScript",
+        link: "https://oneroadmap.info/skillvalidate/roadId/CERT-BDEA561E",
+        skills: ["React", "JavaScript", "Frontend"],
+        image: cert11
     },
     {
         title: "AI Engineer",
@@ -32,6 +100,16 @@ const achievements = [
         link: "https://oneroadmap.info/skillvalidate/roadId/CERT-2517DC67",
         skills: ["AI", "Machine Learning", "Engineering"],
         image: cert1
+    },
+    {
+        title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+        issuer: "Oracle University",
+        date: "October 1, 2025",
+        credentialId: "322738038OCI25AICFA",
+        description: "Oracle Certified Foundations Associate demonstrating foundational knowledge in Oracle Cloud Infrastructure and AI. Valid until October 1, 2027",
+        link: "#",
+        skills: ["Oracle Cloud", "AI Foundations", "Cloud Computing"],
+        image: cert10
     },
     {
         title: "Introduction of Machine Learning",
@@ -82,6 +160,16 @@ const achievements = [
         link: "https://oneroadmap.info/skillvalidate/roadId/CERT-8D259A64",
         skills: ["DevOps", "CI/CD", "Cloud"],
         image: cert4
+    },
+    {
+        title: "Mendeley Training",
+        issuer: "Mendeley (Elsevier)",
+        date: "January 25, 2025",
+        credentialId: "MENDELEY-2025",
+        description: "Completed Mendeley training course with a certified Mendeley Advisor, demonstrating good reference management skills and effective use of Mendeley",
+        link: "#",
+        skills: ["Research", "Reference Management", "Academic Writing"],
+        image: cert6
     },
     {
         title: "Machine Learning Workshop",
@@ -135,29 +223,29 @@ const Achievements = () => {
                                     </div>
 
                                     <div className="flex-1">
-                                        <h3 className="text-xl font-bold mb-1 text-foreground group-hover:text-primary transition-colors">
+                                        <h3 className="text-lg font-bold mb-1 text-foreground group-hover:text-primary transition-colors line-clamp-2">
                                             {achievement.title}
                                         </h3>
-                                        <p className="text-sm text-muted-foreground">
+                                        <p className="text-xs text-muted-foreground">
                                             {achievement.issuer}
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-2 mb-3 text-sm text-muted-foreground">
-                                    <Calendar className="w-4 h-4" />
+                                <div className="flex items-center gap-2 mb-3 text-xs text-muted-foreground">
+                                    <Calendar className="w-3 h-3" />
                                     <span>{achievement.date}</span>
                                 </div>
 
-                                <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-3">
+                                <p className="text-xs text-muted-foreground mb-4 leading-relaxed line-clamp-3">
                                     {achievement.description}
                                 </p>
 
                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    {achievement.skills.map((skill, i) => (
+                                    {achievement.skills.slice(0, 3).map((skill, i) => (
                                         <span
                                             key={i}
-                                            className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
+                                            className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
                                         >
                                             {skill}
                                         </span>
@@ -168,10 +256,10 @@ const Achievements = () => {
                                     <Button
                                         size="sm"
                                         variant="outline"
-                                        className="w-full rounded-full border-primary/50 hover:bg-primary/10"
+                                        className="w-full rounded-full border-primary/50 hover:bg-primary/10 text-xs"
                                         onClick={() => window.open(achievement.link, '_blank')}
                                     >
-                                        <ExternalLink className="mr-2 h-4 w-4" />
+                                        <ExternalLink className="mr-2 h-3 w-3" />
                                         View Credential
                                     </Button>
                                 )}
