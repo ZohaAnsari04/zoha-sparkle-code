@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Home, User, FolderKanban, Lightbulb, Award, GraduationCap, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -81,6 +82,11 @@ const Header = () => {
                             <Download className="h-4 w-4" />
                             Resume
                         </Button>
+
+                        {/* Theme Toggle */}
+                        <div className="ml-2">
+                            <ThemeToggle />
+                        </div>
                     </nav>
 
                     {/* Mobile Menu Button */}
@@ -121,6 +127,12 @@ const Header = () => {
                                 <Download className="h-5 w-5" />
                                 Download Resume
                             </button>
+
+                            {/* Mobile Theme Toggle */}
+                            <div className="mx-4 mt-2 flex items-center justify-between px-4 py-3 bg-muted/50 rounded-xl">
+                                <span className="font-medium text-foreground">Theme</span>
+                                <ThemeToggle />
+                            </div>
                         </div>
                     </nav>
                 )}
