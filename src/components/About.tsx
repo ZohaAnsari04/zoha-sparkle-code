@@ -17,11 +17,6 @@ const About = () => {
             <Heart className="inline-block ml-2 text-primary animate-sparkle" fill="currentColor" />
           </h2>
           <p className="text-xl text-muted-foreground">Code with care and creativity!</p>
-        </div>
-
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mb-12">
-          <Card className="p-8 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in">
-            <div className="space-y-4">
               <h3 className="text-3xl font-bold text-foreground flex items-center gap-2">
                 <Sparkles className="text-primary" />
                 Who I am
@@ -109,8 +104,8 @@ const About = () => {
             Download Resume
           </Button>
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };
 
