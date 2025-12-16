@@ -9,11 +9,15 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Preloader from "@/components/Preloader";
 import SocialSidebar from "@/components/SocialSidebar";
+import ScrollProgress from "@/components/ScrollProgress";
+import BackToTop from "@/components/BackToTop";
 
 const Index = () => {
   return (
     <>
       <Preloader />
+      <ScrollProgress />
+      <BackToTop />
       <div className="min-h-screen">
         <Header />
         <SocialSidebar />

@@ -6,7 +6,7 @@ import project2 from "@/assets/project2.jpg";
 import project3 from "@/assets/project3.jpg";
 import project4 from "@/assets/project4.jpg";
 import project5 from "@/assets/project5.jpg";
-import project6 from "@/assets/project6.jpg";
+import project6 from "@/assets/project6.png";
 
 // Tech stack logo mapping
 const techLogos: { [key: string]: string } = {
@@ -57,9 +57,9 @@ const projects = [
     tech: ["React", "Vite", "Hardhat"],
   },
   {
-    name: "AI Portfolio Analyzer",
+    name: "Todo List",
     image: project6,
-    description: "Smart analytics dashboard providing insights and recommendations for portfolios",
+    description: "A to-do list helps you organize tasks you need to complete. It keeps you focused, productive, and on track throughout the day.",
     tech: ["Python", "TensorFlow", "React"],
   }
 ];
