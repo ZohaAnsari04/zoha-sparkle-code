@@ -22,7 +22,7 @@ const projects = [
     image: project2,
     description: "An OSINT-powered detection system that monitors the open web in real time to expose phishing and scam sites instantly",
     tech: ["React.js", "Tailwind CSS", "Python.js", "REST + WebSocket APIs", "Scrapy", "WHOIS", "Scikit-learn"],
-    demo: "#",
+    demo: "https://phisheye.vercel.app/",
     github: "#"
   },
   {
@@ -34,20 +34,18 @@ const projects = [
     github: "#"
   },
   {
-    name: "Nonprofit Charity Website",
+    name: "PawFund - Decentralized Rescue System",
     image: project4,
-    description: "Responsive charity website with donation management and volunteer coordination",
-    tech: ["React", "Node.js", "Payment Integration", "SEO"],
-    demo: "#",
-    github: "#"
+    description: "Built PawFund, a blockchain-based decentralized rescue system that ensures transparent, secure, and verifiable animal rescue, adoption, and donation processes.",
+    tech: ["OpenZeppelin ", "IPFS", "Hardhat", "Tailwind CSS", "React"],
+
   },
   {
-    name: "Dessert Shop Online Ordering",
+    name: "Decentralized Real Estate marketplace powered by Blockchain.",
     image: project5,
-    description: "Sweet and delightful online ordering system with cart management and checkout",
-    tech: ["React", "Commerce.js", "Stripe", "Animations"],
-    demo: "#",
-    github: "#"
+    description: "Built a decentralized real estate marketplace using blockchain, focused on transparent, tamper-proof property records and trustless peer-to-peer transactions via smart contracts.",
+    tech: ["React + Vite", "CSS3", "Ethers.js", "Hardhat", "Tailwind CSS", "React"],
+
   },
   {
     name: "AI Portfolio Analyzer",
