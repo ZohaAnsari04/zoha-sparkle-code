@@ -123,7 +123,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-8 bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-8 bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 animate-fade-in shadow-[0_0_30px_rgba(255,165,0,0.3)] hover:shadow-[0_0_40px_rgba(255,165,0,0.5)]">
               <h3 className="text-xl font-bold mb-4 text-center text-foreground">
                 Connect with me
                 <Heart className="inline-block ml-2 text-primary" fill="currentColor" size={20} />
