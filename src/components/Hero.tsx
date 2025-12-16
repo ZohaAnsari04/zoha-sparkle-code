@@ -93,7 +93,7 @@ const Hero = () => {
                         </Button>
                     </div>
 
-                    <div className="flex justify-center gap-8 text-sm text-muted-foreground">
+                    <div className="flex justify-center gap-8 text-sm text-muted-foreground mb-16">
                         <div className="flex items-center gap-2">
                             <span className="text-2xl">📍</span>
                             <span>Byculla-Mumbai</span>
@@ -106,10 +106,11 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce flex flex-col items-center gap-2">
                 <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
                     <div className="w-1.5 h-3 bg-primary rounded-full mt-2 animate-pulse" />
                 </div>
+                <span className="text-sm font-semibold text-primary">Scroll Down</span>
             </div>
         </section>
     );
