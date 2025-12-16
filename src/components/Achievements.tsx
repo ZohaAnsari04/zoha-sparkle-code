@@ -19,17 +19,20 @@ import cert13 from "@/assets/certificates/cert13.jpg";
 import cert14 from "@/assets/certificates/cert14.jpg";
 import cert15 from "@/assets/certificates/cert15.jpg";
 import cert16 from "@/assets/certificates/cert16.jpg";
+import cert17 from "@/assets/certificates/cert17.jpg";
+import cert18 from "@/assets/certificates/cert18.jpg";
 
 const achievements = [
+    // M.H. Saboo Siddik College Certificates (5 total)
     {
-        title: "Deloitte Cyber Job Simulation",
-        issuer: "Deloitte (via Forage)",
-        date: "November 14, 2025",
-        credentialId: "FxcuxqwGepTMRi67K",
-        description: "Completed practical tasks in Cyber security during November 2025, demonstrating hands-on experience in cybersecurity practices and methodologies",
+        title: "Path to Research Mastery Lecture Series",
+        issuer: "M.H. Saboo Siddik College of Engineering (CSI Chapter)",
+        date: "February 5, 2025",
+        credentialId: "PRM-2025",
+        description: "Successfully attended the Path to Research Mastery lecture series organized by Computer Engineering Department with CSI MHSSCE Chapter, held from December 21, 2024 to January 25, 2025",
         link: "#",
-        skills: ["Cybersecurity", "Job Simulation", "Practical Skills"],
-        image: cert12
+        skills: ["Research", "Academic Development", "Computer Science"],
+        image: cert17
     },
     {
         title: "ERR_404 6.0 Hackathon",
@@ -42,26 +45,6 @@ const achievements = [
         image: cert13
     },
     {
-        title: "Clash Of Codes 2.0 - Ace Track",
-        issuer: "Mumbai University",
-        date: "2025",
-        credentialId: "COC-ACE-2025",
-        description: "Participated in Clash Of Codes 2.0 Ace Track in recognition of outstanding performance, skill, and dedication in the field of programming and problem-solving",
-        link: "#",
-        skills: ["Competitive Programming", "Problem Solving", "Coding"],
-        image: cert14
-    },
-    {
-        title: "Clash Of Codes 2.0 - Rookie Track",
-        issuer: "Mumbai University",
-        date: "2025",
-        credentialId: "COC-ROOKIE-2025",
-        description: "Participated in Clash Of Codes 2.0 Rookie Track in recognition of outstanding performance, skill, and dedication in the field of programming and problem-solving",
-        link: "#",
-        skills: ["Competitive Programming", "Problem Solving", "Coding"],
-        image: cert15
-    },
-    {
         title: "3-Day MERN Stack Bootcamp",
         issuer: "M.H. Saboo Siddik College of Engineering (Programmers' Club)",
         date: "2025",
@@ -72,6 +55,38 @@ const achievements = [
         image: cert16
     },
     {
+        title: "Digital Poster Competition - IEEE MHSSCOE",
+        issuer: "IEEE MHSSCOE Student Branch",
+        date: "2025",
+        credentialId: "IEEE-POSTER-2025",
+        description: "Participated in Digital Poster Competition on World Environment Day under the theme 'Planet in Beta Mode: Can AI Save Earth?' organized by IEEE MHSSCOE Student Branch",
+        link: "#",
+        skills: ["Design", "AI & Environment", "Creative Thinking"],
+        image: cert18
+    },
+    {
+        title: "Machine Learning Workshop",
+        issuer: "Google Developer Student Clubs (GDSC MHSSCE)",
+        date: "January 20-21, 2024",
+        credentialId: "GDSC-ML-2024",
+        description: "Successfully completed the Machine Learning Workshop organized by Google Developer Student Club MHSSCE Chapter on January 20th and 21st, 2024",
+        link: "#",
+        skills: ["Machine Learning", "Google Cloud", "Workshops"],
+        image: cert7
+    },
+    // Deloitte
+    {
+        title: "Deloitte Cyber Job Simulation",
+        issuer: "Deloitte (via Forage)",
+        date: "November 14, 2025",
+        credentialId: "FxcuxqwGepTMRi67K",
+        description: "Completed practical tasks in Cyber security during November 2025, demonstrating hands-on experience in cybersecurity practices and methodologies",
+        link: "#",
+        skills: ["Cybersecurity", "Job Simulation", "Practical Skills"],
+        image: cert12
+    },
+    // Oracle Certificates (2 total)
+    {
         title: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
         issuer: "Oracle University",
         date: "October 26, 2025",
@@ -81,6 +96,17 @@ const achievements = [
         skills: ["Oracle Cloud", "Generative AI", "Cloud Infrastructure"],
         image: cert9
     },
+    {
+        title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+        issuer: "Oracle University",
+        date: "October 1, 2025",
+        credentialId: "322738038OCI25AICFA",
+        description: "Oracle Certified Foundations Associate demonstrating foundational knowledge in Oracle Cloud Infrastructure and AI. Valid until October 1, 2027",
+        link: "#",
+        skills: ["Oracle Cloud", "AI Foundations", "Cloud Computing"],
+        image: cert10
+    },
+    // OneRoadmap Certificates (5 total)
     {
         title: "React.JS Developer",
         issuer: "OneRoadmap",
@@ -100,36 +126,6 @@ const achievements = [
         link: "https://oneroadmap.info/skillvalidate/roadId/CERT-2517DC67",
         skills: ["AI", "Machine Learning", "Engineering"],
         image: cert1
-    },
-    {
-        title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
-        issuer: "Oracle University",
-        date: "October 1, 2025",
-        credentialId: "322738038OCI25AICFA",
-        description: "Oracle Certified Foundations Associate demonstrating foundational knowledge in Oracle Cloud Infrastructure and AI. Valid until October 1, 2027",
-        link: "#",
-        skills: ["Oracle Cloud", "AI Foundations", "Cloud Computing"],
-        image: cert10
-    },
-    {
-        title: "Introduction of Machine Learning",
-        issuer: "edQuest (edba-academy)",
-        date: "November 6, 2025",
-        credentialId: "EDQ-coding-IHHXJZVB",
-        description: "Successfully completed Introduction of Machine Learning, an online non-credit course covering ML fundamentals, algorithms, and practical applications",
-        link: "#",
-        skills: ["Machine Learning", "Python", "Data Science"],
-        image: cert3
-    },
-    {
-        title: "Design Systems 101",
-        issuer: "edQuest (edba-academy)",
-        date: "September 13, 2025",
-        credentialId: "EDQ-design-ZDYRCYCN",
-        description: "Successfully completed Design Systems 101, an online non-credit course covering design system fundamentals, component libraries, and design principles",
-        link: "#",
-        skills: ["Design Systems", "UI/UX", "Component Design"],
-        image: cert2
     },
     {
         title: "Full Stack Developer",
@@ -161,6 +157,7 @@ const achievements = [
         skills: ["DevOps", "CI/CD", "Cloud"],
         image: cert4
     },
+    // Mendeley
     {
         title: "Mendeley Training",
         issuer: "Mendeley (Elsevier)",
@@ -171,15 +168,47 @@ const achievements = [
         skills: ["Research", "Reference Management", "Academic Writing"],
         image: cert6
     },
+    // Terna College (Mumbai University) (2 total)
     {
-        title: "Machine Learning Workshop",
-        issuer: "Google Developer Student Clubs (GDSC MHSSCE)",
-        date: "January 20-21, 2024",
-        credentialId: "GDSC-ML-2024",
-        description: "Successfully completed the Machine Learning Workshop organized by Google Developer Student Club MHSSCE Chapter on January 20th and 21st, 2024",
+        title: "Clash Of Codes 2.0 - Ace Track",
+        issuer: "Mumbai University",
+        date: "2025",
+        credentialId: "COC-ACE-2025",
+        description: "Participated in Clash Of Codes 2.0 Ace Track in recognition of outstanding performance, skill, and dedication in the field of programming and problem-solving",
         link: "#",
-        skills: ["Machine Learning", "Google Cloud", "Workshops"],
-        image: cert7
+        skills: ["Competitive Programming", "Problem Solving", "Coding"],
+        image: cert14
+    },
+    {
+        title: "Clash Of Codes 2.0 - Rookie Track",
+        issuer: "Mumbai University",
+        date: "2025",
+        credentialId: "COC-ROOKIE-2025",
+        description: "Participated in Clash Of Codes 2.0 Rookie Track in recognition of outstanding performance, skill, and dedication in the field of programming and problem-solving",
+        link: "#",
+        skills: ["Competitive Programming", "Problem Solving", "Coding"],
+        image: cert15
+    },
+    // edQuest Certificates (2 total)
+    {
+        title: "Introduction of Machine Learning",
+        issuer: "edQuest (edba-academy)",
+        date: "November 6, 2025",
+        credentialId: "EDQ-coding-IHHXJZVB",
+        description: "Successfully completed Introduction of Machine Learning, an online non-credit course covering ML fundamentals, algorithms, and practical applications",
+        link: "#",
+        skills: ["Machine Learning", "Python", "Data Science"],
+        image: cert3
+    },
+    {
+        title: "Design Systems 101",
+        issuer: "edQuest (edba-academy)",
+        date: "September 13, 2025",
+        credentialId: "EDQ-design-ZDYRCYCN",
+        description: "Successfully completed Design Systems 101, an online non-credit course covering design system fundamentals, component libraries, and design principles",
+        link: "#",
+        skills: ["Design Systems", "UI/UX", "Component Design"],
+        image: cert2
     }
 ];
 
