@@ -29,23 +29,24 @@ const SocialSidebar = () => {
     ];
 
     return (
-        <div className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
-            <div className="flex flex-col gap-4 p-4 bg-card/80 backdrop-blur-md rounded-2xl border-2 border-border shadow-lg">
-                {socialLinks.map((social) => (
+        <div className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block animate-fade-in">
+            <div className="flex flex-col gap-4 p-4 bg-card/80 backdrop-blur-md rounded-2xl border-2 border-border shadow-lg hover:shadow-xl transition-all duration-300">
+                {socialLinks.map((social, index) => (
                     <a
                         key={social.name}
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`p-3 rounded-xl bg-muted hover:bg-primary/10 transition-all duration-300 hover:scale-110 group ${social.color}`}
+                        className={`p-3 rounded-xl bg-muted hover:bg-primary/10 transition-all duration-300 hover:scale-110 hover:rotate-6 group ${social.color} animate-fade-in`}
+                        style={{ animationDelay: `${index * 0.1}s` }}
                         title={social.name}
                     >
-                        <social.icon className="w-6 h-6 text-foreground group-hover:scale-110 transition-transform" />
+                        <social.icon className="w-6 h-6 text-foreground group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                     </a>
                 ))}
 
-                {/* Decorative line */}
-                <div className="h-16 w-0.5 bg-gradient-to-b from-primary via-accent to-secondary mx-auto"></div>
+                {/* Animated Decorative line */}
+                <div className="h-16 w-0.5 bg-gradient-to-b from-primary via-accent to-secondary mx-auto animate-pulse"></div>
             </div>
         </div>
     );

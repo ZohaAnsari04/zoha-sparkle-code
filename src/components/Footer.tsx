@@ -53,11 +53,11 @@ const Footer = () => {
             </div>
 
             <div className="text-center md:text-right">
-              <h4 className="font-semibold mb-3 text-foreground">Let's Connect</h4>
-              <p className="text-sm text-muted-foreground mb-2">
+              <h4 className="font-semibold text-lg mb-3 text-foreground">Let's Connect</h4>
+              <p className="text-base text-muted-foreground mb-2">
                 Open to collaborations and opportunities
               </p>
-              <p className="text-sm text-primary font-medium">
+              <p className="text-base text-primary font-medium">
                 zoha101204@gmail.com
               </p>
             </div>
