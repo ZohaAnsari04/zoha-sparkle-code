@@ -121,7 +121,7 @@ const Skills = () => {
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <span className="font-bold text-base text-foreground group-hover:text-primary transition-colors">
+                <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
                   {skill.name}
                 </span>
               </div>
@@ -130,8 +130,21 @@ const Skills = () => {
         </div>
 
         <div className="mt-12 max-w-4xl mx-auto">
-          <Card className="p-8 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-3xl border-2 border-primary/20 animate-fade-in">
-            <div className="text-center">
+          <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 animate-fade-in">
+            {/* Animated Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-gradient bg-[length:200%_200%]"></div>
+
+            {/* Floating Sparkles */}
+            <div className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+            <div className="absolute top-8 right-8 w-3 h-3 bg-accent rounded-full animate-bounce"></div>
+            <div className="absolute bottom-6 left-12 w-2 h-2 bg-secondary rounded-full animate-pulse delay-100"></div>
+            <div className="absolute bottom-12 right-6 w-2 h-2 bg-primary rounded-full animate-bounce delay-200"></div>
+
+            {/* Glow Effect */}
+            <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/20 rounded-full blur-3xl"></div>
+
+            <div className="text-center relative z-10">
               <h3 className="text-2xl font-bold mb-4 gradient-text">
                 Top Superpowers
               </h3>
@@ -142,7 +155,7 @@ const Skills = () => {
                 ].map((badge, i) => (
                   <div
                     key={i}
-                    className="px-6 py-3 bg-card border-2 border-primary/30 rounded-full font-semibold text-sm hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
+                    className="px-6 py-3 bg-card/80 backdrop-blur-sm border-2 border-primary/30 rounded-full font-semibold text-base hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
                   >
                     <Heart className="inline-block mr-2 h-4 w-4 text-primary" fill="currentColor" />
                     {badge}

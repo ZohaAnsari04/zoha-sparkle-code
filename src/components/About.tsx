@@ -22,17 +22,17 @@ const About = () => {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mb-12">
           <Card className="p-8 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
+              <h3 className="text-3xl font-bold text-foreground flex items-center gap-2">
                 <Sparkles className="text-primary" />
-                ABOUT ME
+                Who I am
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 I'm a passionate developer who believes in creating not just functional code,
                 but experiences that spark joy! With expertise in frontend development, blockchain
                 engineering, and AI/ML, I bring a unique blend of technical prowess and creative flair
                 to every project.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 When I'm not coding, you'll find me exploring the latest tech trends, contributing
                 to open-source projects, or mentoring aspiring developers. Let's build something
                 amazing together! 💖
@@ -48,7 +48,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-2">Frontend Development</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-base text-muted-foreground">
                     React, Next.js, TypeScript, Tailwind CSS - Creating beautiful, responsive interfaces
                   </p>
                 </div>
@@ -62,7 +62,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-2">Blockchain Engineering</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-base text-muted-foreground">
                     Solidity, Ethereum, Ethers.js - Building decentralized applications
                   </p>
                 </div>
@@ -76,7 +76,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-2">AI & Machine Learning</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-base text-muted-foreground">
                     Python, TensorFlow, AI Integration - Creating intelligent solutions
                   </p>
                 </div>
@@ -90,7 +90,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-2">Generative AI Prompt Design</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-base text-muted-foreground">
                     Image & Video Prompting, Cinematic Trailers, Hyper-Realistic Visuals – Crafting high-fidelity AI-generated media through structured, production-grade prompts
                   </p>
                 </div>

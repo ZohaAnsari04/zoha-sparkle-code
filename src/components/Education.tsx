@@ -55,7 +55,7 @@ const Education = () => {
                                         <p className="text-lg md:text-xl font-semibold text-foreground">
                                             M.H. Saboo Siddik College of Engineering
                                         </p>
-                                        <p className="text-base text-muted-foreground">
+                                        <p className="text-lg text-muted-foreground">
                                             University of Mumbai
                                         </p>
                                     </div>
@@ -68,7 +68,7 @@ const Education = () => {
                                         <span className="text-3xl md:text-4xl font-bold gradient-text">
                                             8.96
                                         </span>
-                                        <span className="text-lg text-muted-foreground font-semibold">
+                                        <span className="text-xl text-muted-foreground font-semibold">
                                             CGPA
                                         </span>
                                     </div>
@@ -86,7 +86,7 @@ const Education = () => {
                                         ].map((tag, i) => (
                                             <span
                                                 key={i}
-                                                className="px-4 py-2 bg-card border-2 border-primary/30 rounded-full text-sm font-semibold text-foreground hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
+                                                className="px-4 py-2 bg-card border-2 border-primary/30 rounded-full text-base font-semibold text-foreground hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
                                             >
                                                 {tag}
                                             </span>
@@ -102,7 +102,7 @@ const Education = () => {
                 <div className="max-w-4xl mx-auto mt-8">
                     <Card className="p-6 bg-card rounded-3xl border-2 border-border hover:border-primary/30 transition-all duration-300 animate-fade-in">
                         <div className="text-center">
-                            <p className="text-muted-foreground">
+                            <p className="text-lg text-muted-foreground">
                                 <span className="font-semibold text-foreground">Academic Focus:</span> Building expertise in emerging technologies including IoT ecosystems, cybersecurity frameworks, and blockchain development while maintaining strong fundamentals in computer science and software engineering.
                             </p>
                         </div>

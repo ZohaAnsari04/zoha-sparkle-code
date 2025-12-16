@@ -62,11 +62,11 @@ const Hero = () => {
                         </span>
                     </h1>
 
-                    <p className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
+                    <p className="text-3xl md:text-4xl font-semibold mb-6 text-foreground">
                         Frontend Developer Focused on Performance, UX & Clean Code
                     </p>
 
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+                    <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
                         Creating digital magic with code and creativity ✨
                         Transforming ideas into beautiful, functional experiences
                         that make the web a more delightful place! 💖
@@ -93,7 +93,7 @@ const Hero = () => {
                         </Button>
                     </div>
 
-                    <div className="flex justify-center gap-8 text-sm text-muted-foreground mb-16">
+                    <div className="flex justify-center gap-8 text-base text-muted-foreground mb-16">
                         <div className="flex items-center gap-2">
                             <span className="text-2xl">📍</span>
                             <span>Byculla-Mumbai</span>
