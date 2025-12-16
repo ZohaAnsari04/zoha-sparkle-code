@@ -9,17 +9,22 @@ const Hero = () => {
     const fullText = "Ansari Zoha Najmul Kalam";
 
     useEffect(() => {
-        let index = 0;
-        const timer = setInterval(() => {
-            if (index <= fullText.length) {
-                setDisplayedText(fullText.slice(0, index));
-                index++;
-            } else {
-                clearInterval(timer);
-            }
-        }, 90); // Speed of typing (90ms per character)
+        // Delay typing animation to start after preloader (2 seconds)
+        const startDelay = setTimeout(() => {
+            let index = 0;
+            const timer = setInterval(() => {
+                if (index <= fullText.length) {
+                    setDisplayedText(fullText.slice(0, index));
+                    index++;
+                } else {
+                    clearInterval(timer);
+                }
+            }, 90); // Speed of typing (90ms per character)
 
-        return () => clearInterval(timer);
+            return () => clearInterval(timer);
+        }, 2000); // Wait 2 seconds for preloader to finish
+
+        return () => clearTimeout(startDelay);
     }, []);
 
     const handleContact = () => {
@@ -44,13 +49,13 @@ const Hero = () => {
                         <img
                             src={avatarImage}
                             alt="Zoha Avatar"
-                            className="w-40 h-40 rounded-full border-4 border-primary shadow-[0_0_40px_rgba(236,72,153,0.3)] animate-float mx-auto"
+                            className="w-56 h-56 rounded-full border-4 border-primary shadow-[0_0_40px_rgba(236,72,153,0.3)] animate-float mx-auto"
                         />
-                        <Heart className="absolute -top-4 -right-4 text-primary w-8 h-8 animate-sparkle" fill="currentColor" />
-                        <Sparkles className="absolute -bottom-2 -left-2 text-accent w-6 h-6 animate-sparkle" />
+                        <Heart className="absolute -top-6 -right-6 text-primary w-10 h-10 animate-sparkle" fill="currentColor" />
+                        <Sparkles className="absolute -bottom-4 -left-4 text-accent w-8 h-8 animate-sparkle" />
                     </div>
 
-                    <h1 className="text-6xl md:text-7xl font-bold mb-6 min-h-[5rem]">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 min-h-[5rem] whitespace-nowrap">
                         <span className="gradient-text">
                             {displayedText}
                             <span className="animate-pulse">|</span>

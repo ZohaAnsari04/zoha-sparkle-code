@@ -27,7 +27,7 @@ const skills = {
     { name: "ChatGPT", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
     { name: "Photoshop", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
     { name: "Canva", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" },
-    { name: "CapCut", logo: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/capcut.svg" }
+    { name: "CapCut", logo: "https://cdn.simpleicons.org/capcut/000000" }
   ],
   frontend: [
     { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
@@ -61,7 +61,7 @@ const skills = {
     { name: "ChatGPT", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
     { name: "Photoshop", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
     { name: "Canva", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" },
-    { name: "CapCut", logo: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/capcut.svg" }
+    { name: "CapCut", logo: "https://cdn.simpleicons.org/capcut/000000" }
   ]
 };
 
