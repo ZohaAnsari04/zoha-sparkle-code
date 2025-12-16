@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Home, User, FolderKanban, Lightbulb, GraduationCap, Mail, Download } from "lucide-react";
+import { Menu, X, Home, User, FolderKanban, Lightbulb, Award, GraduationCap, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -20,6 +20,7 @@ const Header = () => {
         { name: "About Me", href: "#about", icon: User },
         { name: "Projects", href: "#projects", icon: FolderKanban },
         { name: "Skills", href: "#skills", icon: Lightbulb },
+        { name: "Achievements", href: "#achievements", icon: Award },
         { name: "Education", href: "#education", icon: GraduationCap },
         { name: "Contact", href: "#contact", icon: Mail },
     ];
@@ -45,8 +46,8 @@ const Header = () => {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border"
-                    : "bg-transparent"
+                ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border"
+                : "bg-transparent"
                 }`}
         >
             <div className="container mx-auto px-4">
