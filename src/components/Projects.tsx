@@ -93,7 +93,7 @@ const Projects = () => {
                 <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
                   {project.name}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                <p className="text-sm text-foreground/80 mb-4 leading-relaxed">
                   {project.description}
                 </p>
 

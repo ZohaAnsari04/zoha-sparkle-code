@@ -261,18 +261,18 @@ const Achievements = () => {
                                         <h3 className="text-lg font-bold mb-1 text-foreground group-hover:text-primary transition-colors line-clamp-2">
                                             {achievement.title}
                                         </h3>
-                                        <p className="text-xs text-muted-foreground">
+                                        <p className="text-xs text-foreground/80">
                                             {achievement.issuer}
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-2 mb-3 text-xs text-muted-foreground">
+                                <div className="flex items-center gap-2 mb-3 text-xs text-foreground/70">
                                     <Calendar className="w-3 h-3" />
                                     <span>{achievement.date}</span>
                                 </div>
 
-                                <p className="text-xs text-muted-foreground mb-4 leading-relaxed line-clamp-3">
+                                <p className="text-xs text-foreground/80 mb-4 leading-relaxed line-clamp-3">
                                     {achievement.description}
                                 </p>
 
