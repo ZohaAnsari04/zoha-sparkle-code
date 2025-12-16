@@ -2,8 +2,26 @@ import { Button } from "@/components/ui/button";
 import { Heart, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import avatarImage from "@/assets/avatar.jpg";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
+    const [displayedText, setDisplayedText] = useState("");
+    const fullText = "Ansari Zoha Najmul Kalam";
+
+    useEffect(() => {
+        let index = 0;
+        const timer = setInterval(() => {
+            if (index <= fullText.length) {
+                setDisplayedText(fullText.slice(0, index));
+                index++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 90); // Speed of typing (90ms per character)
+
+        return () => clearInterval(timer);
+    }, []);
+
     const handleContact = () => {
         const contactSection = document.getElementById('contact');
         contactSection?.scrollIntoView({ behavior: 'smooth' });
@@ -32,8 +50,11 @@ const Hero = () => {
                         <Sparkles className="absolute -bottom-2 -left-2 text-accent w-6 h-6 animate-sparkle" />
                     </div>
 
-                    <h1 className="text-6xl md:text-7xl font-bold mb-6">
-                        <span className="gradient-text">ZohaAIverse</span>
+                    <h1 className="text-6xl md:text-7xl font-bold mb-6 min-h-[5rem]">
+                        <span className="gradient-text">
+                            {displayedText}
+                            <span className="animate-pulse">|</span>
+                        </span>
                     </h1>
 
                     <p className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
