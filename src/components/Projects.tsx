@@ -38,14 +38,16 @@ const projects = [
     image: project4,
     description: "Built PawFund, a blockchain-based decentralized rescue system that ensures transparent, secure, and verifiable animal rescue, adoption, and donation processes.",
     tech: ["OpenZeppelin ", "IPFS", "Hardhat", "Tailwind CSS", "React"],
-
+    demo: undefined,
+    github: undefined
   },
   {
     name: "Decentralized Real Estate marketplace powered by Blockchain.",
     image: project5,
     description: "Built a decentralized real estate marketplace using blockchain, focused on transparent, tamper-proof property records and trustless peer-to-peer transactions via smart contracts.",
     tech: ["React + Vite", "CSS3", "Ethers.js", "Hardhat", "Tailwind CSS", "React"],
-
+    demo: undefined,
+    github: undefined
   },
   {
     name: "AI Portfolio Analyzer",
@@ -106,27 +108,17 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <div className="flex gap-3">
+                {project.demo && (
                   <Button
                     size="sm"
-                    className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-[0_4px_20px_rgba(236,72,153,0.2)] hover:shadow-[0_6px_30px_rgba(236,72,153,0.3)] transition-all"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-[0_4px_20px_rgba(236,72,153,0.2)] hover:shadow-[0_6px_30px_rgba(236,72,153,0.3)] transition-all"
                     onClick={() => window.open(project.demo, '_blank')}
                     disabled={project.demo === '#'}
                   >
                     <ExternalLink className="mr-2 h-4 w-4" />
                     Demo
                   </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="flex-1 rounded-full border-primary/50 hover:bg-primary/10"
-                    onClick={() => window.open(project.github, '_blank')}
-                    disabled={project.github === '#'}
-                  >
-                    <Github className="mr-2 h-4 w-4" />
-                    Code
-                  </Button>
-                </div>
+                )}
               </div>
 
               <Heart
