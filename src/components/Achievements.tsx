@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
-import { Award, Calendar, ExternalLink, Sparkles } from "lucide-react";
+import { Award, Calendar, ExternalLink, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 // Import certificate images
 import cert1 from "@/assets/certificates/cert1.jpg";
@@ -213,6 +214,8 @@ const achievements = [
 ];
 
 const Achievements = () => {
+    const [selectedCertificate, setSelectedCertificate] = useState<{ image: string; title: string } | null>(null);
+
     return (
         <section id="achievements" className="py-20 bg-background">
             <div className="container mx-auto px-4">
@@ -235,7 +238,10 @@ const Achievements = () => {
                         >
                             {/* Certificate Image */}
                             {achievement.image && (
-                                <div className="relative overflow-hidden h-48 bg-muted">
+                                <div
+                                    className="relative overflow-hidden h-48 bg-muted cursor-pointer"
+                                    onClick={() => setSelectedCertificate({ image: achievement.image, title: achievement.title })}
+                                >
                                     <img
                                         src={achievement.image}
                                         alt={`${achievement.title} Certificate`}
@@ -297,6 +303,30 @@ const Achievements = () => {
                     ))}
                 </div>
             </div>
+
+            {/* Certificate Modal */}
+            {selectedCertificate && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                    onClick={() => setSelectedCertificate(null)}
+                >
+                    <div className="relative max-w-5xl w-full max-h-[90vh] animate-fade-in">
+                        <button
+                            onClick={() => setSelectedCertificate(null)}
+                            className="absolute -top-12 right-0 p-2 bg-primary/20 hover:bg-primary/30 rounded-full transition-colors"
+                            aria-label="Close certificate view"
+                        >
+                            <X className="w-6 h-6 text-white" />
+                        </button>
+                        <img
+                            src={selectedCertificate.image}
+                            alt={`${selectedCertificate.title} Certificate - Full View`}
+                            className="w-full h-auto rounded-lg shadow-2xl"
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                    </div>
+                </div>
+            )}
         </section>
     );
 };
