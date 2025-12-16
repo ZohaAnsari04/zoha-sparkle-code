@@ -2,7 +2,7 @@ import { Heart, Sparkles } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     section?.scrollIntoView({ behavior: 'smooth' });
@@ -21,7 +21,7 @@ const Footer = () => {
                 Creating digital magic with code and creativity ✨
               </p>
             </div>
-            
+
             <div className="text-center">
               <h4 className="font-semibold mb-3 text-foreground">Quick Links</h4>
               <div className="space-y-2">
@@ -51,7 +51,7 @@ const Footer = () => {
                 </button>
               </div>
             </div>
-            
+
             <div className="text-center md:text-right">
               <h4 className="font-semibold mb-3 text-foreground">Let's Connect</h4>
               <p className="text-sm text-muted-foreground mb-2">
@@ -62,9 +62,9 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          
+
           <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-8" />
-          
+
           <div className="text-center space-y-2">
             <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
               © {currentYear} ZohaAIverse. All rights reserved.

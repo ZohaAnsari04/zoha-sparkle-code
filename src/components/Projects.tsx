@@ -18,7 +18,7 @@ const projects = [
     github: "#"
   },
   {
-    name: "An OSINT Based Real Time Scam and Phishing Website Detection",
+    name: "PhishEye",
     image: project2,
     description: "An OSINT-powered detection system that monitors the open web in real time to expose phishing and scam sites instantly",
     tech: ["React.js", "Tailwind CSS", "Python.js", "REST + WebSocket APIs", "Scrapy", "WHOIS", "Scikit-learn"],
