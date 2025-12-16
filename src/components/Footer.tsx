@@ -72,9 +72,7 @@ const Footer = () => {
             <p className="text-sm text-primary font-medium flex items-center justify-center gap-2">
               Made with{" "}
               <Heart className="inline-block animate-sparkle" fill="currentColor" size={16} />
-              {" "}and{" "}
-              <Sparkles className="inline-block animate-sparkle" size={16} />
-              {" "}by Zoha
+              {" "}by Ansari Zoha Najmul Kalam
             </p>
           </div>
         </div>
