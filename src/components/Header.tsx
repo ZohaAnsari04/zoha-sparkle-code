@@ -57,7 +57,7 @@ const Header = () => {
                         onClick={() => scrollToSection("#")}
                         className="text-2xl md:text-3xl font-bold gradient-text hover:scale-105 transition-transform cursor-pointer"
                     >
-                        ZohaAIverse
+                        Zoha Najmul Kalam
                     </button>
 
                     {/* Desktop Navigation */}
