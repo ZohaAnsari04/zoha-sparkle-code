@@ -8,6 +8,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Preloader from "@/components/Preloader";
+import SocialSidebar from "@/components/SocialSidebar";
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <Preloader />
       <div className="min-h-screen">
         <Header />
+        <SocialSidebar />
         <Hero />
         <About />
         <Projects />
