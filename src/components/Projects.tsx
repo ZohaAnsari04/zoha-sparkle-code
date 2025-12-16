@@ -43,32 +43,24 @@ const projects = [
     image: project3,
     description: "Clarity Works is a freelance service platform delivering modern web, blockchain, and AI-driven solutions with a focus on performance, security, and scalability. Built for clients who want results, not just designs.",
     tech: ["TypeScript", "React", "Tailwind CSS"],
-    demo: "#",
-    github: "#"
   },
   {
     name: "PawFund - Decentralized Rescue System",
     image: project4,
     description: "Built PawFund, a blockchain-based decentralized rescue system that ensures transparent, secure, and verifiable animal rescue, adoption, and donation processes.",
     tech: ["Solidity", "Hardhat", "React"],
-    demo: undefined,
-    github: undefined
   },
   {
     name: "Decentralized Real Estate marketplace powered by Blockchain.",
     image: project5,
     description: "Built a decentralized real estate marketplace using blockchain, focused on transparent, tamper-proof property records and trustless peer-to-peer transactions via smart contracts.",
     tech: ["React", "Vite", "Hardhat"],
-    demo: undefined,
-    github: undefined
   },
   {
     name: "AI Portfolio Analyzer",
     image: project6,
     description: "Smart analytics dashboard providing insights and recommendations for portfolios",
     tech: ["Python", "TensorFlow", "React"],
-    demo: "#",
-    github: "#"
   }
 ];
 
@@ -145,7 +137,7 @@ const Projects = () => {
                     disabled={project.demo === '#'}
                   >
                     <ExternalLink className="mr-2 h-4 w-4" />
-                    Demo
+                    Live Website
                   </Button>
                 )}
               </div>

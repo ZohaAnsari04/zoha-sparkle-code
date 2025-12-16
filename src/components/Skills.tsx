@@ -110,10 +110,18 @@ const Skills = () => {
           {skills[activeTab].map((skill, index) => (
             <Card
               key={skill.name}
-              className="p-6 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in group"
+              className="relative p-6 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in group overflow-hidden"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <div className="flex flex-col items-center gap-4 text-center">
+              {/* Animated Background */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary animate-gradient bg-[length:200%_200%]"></div>
+              </div>
+
+              {/* Floating Particle */}
+              <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-primary/40 rounded-full animate-pulse"></div>
+
+              <div className="flex flex-col items-center gap-4 text-center relative z-10">
                 <div className="w-16 h-16 flex items-center justify-center bg-muted rounded-lg p-3 group-hover:scale-110 transition-transform">
                   <img
                     src={skill.logo}
