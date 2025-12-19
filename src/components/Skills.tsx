@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Heart } from "lucide-react";
 import { useState } from "react";
+import hardhatLogo from "@/assets/hardhat-logo.png";
 
 const skills = {
   all: [
@@ -18,6 +19,7 @@ const skills = {
     { name: "Ethereum", logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg" },
     { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
     { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+    { name: "Hardhat", logo: hardhatLogo },
     { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
     { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
     { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
@@ -27,7 +29,7 @@ const skills = {
     { name: "ChatGPT", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
     { name: "Photoshop", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
     { name: "Canva", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" },
-    { name: "CapCut", logo: "https://cdn.simpleicons.org/capcut/000000" }
+    { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" }
   ],
   frontend: [
     { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
@@ -49,7 +51,8 @@ const skills = {
     { name: "Solidity", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
     { name: "Ethereum", logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg" },
     { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" }
+    { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+    { name: "Hardhat", logo: hardhatLogo }
   ],
   tools: [
     { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
@@ -61,7 +64,8 @@ const skills = {
     { name: "ChatGPT", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
     { name: "Photoshop", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
     { name: "Canva", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" },
-    { name: "CapCut", logo: "https://cdn.simpleicons.org/capcut/000000" }
+    { name: "CapCut", logo: "https://cdn.simpleicons.org/capcut/000000" },
+    { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" }
   ]
 };
 
@@ -73,7 +77,7 @@ const Skills = () => {
     { key: "frontend" as const, label: "Frontend" },
     { key: "languages" as const, label: "Languages" },
     { key: "blockchain" as const, label: "Blockchain" },
-    { key: "tools" as const, label: "Tools" }
+    { key: "tools" as const, label: "Tools & Productivity" }
   ];
 
   return (
