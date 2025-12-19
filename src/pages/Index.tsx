@@ -19,9 +19,9 @@ const Index = () => {
       <Preloader />
       <ScrollProgress />
       <BackToTop />
+      <Header />
       <LocomotiveScrollWrapper>
         <div className="min-h-screen">
-          <Header />
           <SocialSidebar />
           <Hero />
           <About />
