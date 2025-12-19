@@ -12,13 +12,38 @@ const Contact = () => {
     email: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! I'll get back to you soon! 💖", {
-      description: "Thank you for reaching out!"
-    });
-    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mdankpvr", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        toast.success("Message sent! I'll get back to you soon! 💖", {
+          description: "Thank you for reaching out!"
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Oops! Something went wrong", {
+          description: "Please try again or email me directly."
+        });
+      }
+    } catch (error) {
+      toast.error("Failed to send message", {
+        description: "Please check your connection and try again."
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialLinks = [
@@ -50,11 +75,13 @@ const Contact = () => {
                 </label>
                 <Input
                   type="text"
+                  name="name"
                   placeholder="Enter your lovely name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="rounded-2xl border-2 border-border focus:border-primary transition-colors"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -64,11 +91,13 @@ const Contact = () => {
                 </label>
                 <Input
                   type="email"
+                  name="email"
                   placeholder="your.email@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="rounded-2xl border-2 border-border focus:border-primary transition-colors"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -77,21 +106,24 @@ const Contact = () => {
                   Your Message
                 </label>
                 <Textarea
+                  name="message"
                   placeholder="Tell me about your project or just say hi! 👋"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="rounded-2xl border-2 border-border focus:border-primary transition-colors min-h-[150px] resize-none"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg font-semibold shadow-[0_10px_40px_rgba(236,72,153,0.3)] hover:shadow-[0_15px_50px_rgba(236,72,153,0.4)] transition-all duration-300 hover:scale-105 group"
+                disabled={isSubmitting}
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg font-semibold shadow-[0_10px_40px_rgba(236,72,153,0.3)] hover:shadow-[0_15px_50px_rgba(236,72,153,0.4)] transition-all duration-300 hover:scale-105 group disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Card>
