@@ -20,9 +20,9 @@ const Index = () => {
       <ScrollProgress />
       <BackToTop />
       <Header />
+      <SocialSidebar />
       <LocomotiveScrollWrapper>
         <div className="min-h-screen">
-          <SocialSidebar />
           <Hero />
           <About />
           <Projects />

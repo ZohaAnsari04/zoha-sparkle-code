@@ -4,6 +4,7 @@ import heroImage from "@/assets/hero-bg.jpg";
 import avatarImage from "@/assets/avatar.jpg";
 import { useState, useEffect } from "react";
 import BlurText from "@/components/BlurText";
+import GradientText from "@/components/GradientText";
 
 const Hero = () => {
     const [displayedText, setDisplayedText] = useState("");
@@ -44,7 +45,7 @@ const Hero = () => {
 
     return (
         <section
-            className="min-h-screen flex items-center justify-center relative overflow-hidden"
+            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 md:pt-24"
             style={{
                 backgroundImage: `url(${heroImage})`,
                 backgroundSize: 'cover',
@@ -83,9 +84,16 @@ const Hero = () => {
                     )}
 
                     <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
-                        Creating digital magic with code and creativity ✨
-                        Transforming ideas into beautiful, functional experiences
-                        that make the web a more delightful place! 💖
+                        <GradientText
+                            colors={["#ec4899", "#8b5cf6", "#ec4899", "#8b5cf6", "#ec4899"]}
+                            animationSpeed={5}
+                            showBorder={false}
+                            className="text-xl md:text-2xl font-medium"
+                        >
+                            Creating digital magic with code and creativity ✨
+                            Transforming ideas into beautiful, functional experiences
+                            that make the web a more delightful place! 💖
+                        </GradientText>
                     </p>
 
                     <div className="flex flex-wrap gap-4 justify-center items-center mb-8">
