@@ -11,19 +11,19 @@ const SocialSidebar = () => {
         {
             name: "LinkedIn",
             icon: Linkedin,
-            href: "https://www.linkedin.com/in/zoha-ansari-a8a5a7259/",
+            href: "https://www.linkedin.com/in/er-ansari-zoha-najmul-kalam-819610238/",
             color: "hover:text-[#0077B5]"
         },
         {
             name: "Email",
             icon: Mail,
-            href: "mailto:zohaansari2004@gmail.com",
+            href: "mailto:zoha101204@gmail.com",
             color: "hover:text-primary"
         },
         {
             name: "Instagram",
             icon: Instagram,
-            href: "https://www.instagram.com/zoha_ansari04/",
+            href: "https://www.instagram.com/btwitzoyu._?igsh=NnRnanM3eGtiOGQy",
             color: "hover:text-[#E4405F]"
         }
     ];
