@@ -10,6 +10,10 @@ const skills = {
     { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
     { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
     { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+    { name: "Vite", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" },
+    { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+    { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
     { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
     { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
     { name: "C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
@@ -20,6 +24,7 @@ const skills = {
     { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
     { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
     { name: "Hardhat", logo: hardhatLogo },
+    { name: "IPFS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ipfs/ipfs-original.svg" },
     { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
     { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
     { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
@@ -29,30 +34,33 @@ const skills = {
     { name: "ChatGPT", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
     { name: "Photoshop", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
     { name: "Canva", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" },
-    { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" }
+    { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
+    { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
   ],
   frontend: [
     { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
     { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
     { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
     { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-    { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
-  ],
-  languages: [
-    { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
     { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+    { name: "Vite", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" },
+    { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+    { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" }
+  ],
+  backend: [
+    { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+    { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
     { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
     { name: "C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
-    { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
-    { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" }
+    { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" }
   ],
   blockchain: [
     { name: "Solidity", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
     { name: "Ethereum", logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg" },
     { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
     { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
-    { name: "Hardhat", logo: hardhatLogo }
+    { name: "Hardhat", logo: hardhatLogo },
+    { name: "IPFS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ipfs/ipfs-original.svg" }
   ],
   tools: [
     { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
@@ -64,8 +72,8 @@ const skills = {
     { name: "ChatGPT", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
     { name: "Photoshop", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
     { name: "Canva", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" },
-    { name: "CapCut", logo: "https://cdn.simpleicons.org/capcut/000000" },
-    { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" }
+    { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
+    { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
   ]
 };
 
@@ -75,7 +83,7 @@ const Skills = () => {
   const tabs = [
     { key: "all" as const, label: "All Skills" },
     { key: "frontend" as const, label: "Frontend" },
-    { key: "languages" as const, label: "Languages" },
+    { key: "backend" as const, label: "Backend" },
     { key: "blockchain" as const, label: "Blockchain" },
     { key: "tools" as const, label: "Tools & Productivity" }
   ];
@@ -110,77 +118,66 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-3 max-w-6xl mx-auto">
           {skills[activeTab].map((skill, index) => (
-            <Card
+            <div
               key={skill.name}
-              className="relative p-6 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in group overflow-hidden"
-              style={{ animationDelay: `${index * 0.05}s` }}
+              className="relative px-4 py-2.5 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] animate-fade-in group flex items-center gap-3"
+              style={{ animationDelay: `${index * 0.02}s` }}
             >
-              {/* Animated Background */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary animate-gradient bg-[length:200%_200%]"></div>
+              {/* Icon */}
+              <div className="w-6 h-6 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={skill.logo}
+                  alt={`${skill.name} logo`}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform"
+                />
               </div>
 
-              {/* Glow Effects */}
-              <div className="absolute -top-8 -right-8 w-16 h-16 bg-primary/30 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-accent/30 rounded-full blur-2xl"></div>
-
-              {/* Floating Particle */}
-              <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-primary/40 rounded-full animate-pulse"></div>
-
-              <div className="flex flex-col items-center gap-4 text-center relative z-10">
-                <div className="w-16 h-16 flex items-center justify-center bg-muted rounded-lg p-3 group-hover:scale-110 transition-transform">
-                  <img
-                    src={skill.logo}
-                    alt={`${skill.name} logo`}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
-                  {skill.name}
-                </span>
-              </div>
-            </Card>
+              {/* Skill Name */}
+              <span className="font-medium text-sm text-foreground/90 group-hover:text-primary transition-colors whitespace-nowrap">
+                {skill.name}
+              </span>
+            </div>
           ))}
         </div>
+      </div>
 
-        <div className="mt-12 max-w-4xl mx-auto">
-          <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 animate-fade-in">
-            {/* Animated Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-gradient bg-[length:200%_200%]"></div>
+      <div className="mt-12 max-w-4xl mx-auto">
+        <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 animate-fade-in">
+          {/* Animated Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-gradient bg-[length:200%_200%]"></div>
 
-            {/* Floating Sparkles */}
-            <div className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-            <div className="absolute top-8 right-8 w-3 h-3 bg-accent rounded-full animate-bounce"></div>
-            <div className="absolute bottom-6 left-12 w-2 h-2 bg-secondary rounded-full animate-pulse delay-100"></div>
-            <div className="absolute bottom-12 right-6 w-2 h-2 bg-primary rounded-full animate-bounce delay-200"></div>
+          {/* Floating Sparkles */}
+          <div className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+          <div className="absolute top-8 right-8 w-3 h-3 bg-accent rounded-full animate-bounce"></div>
+          <div className="absolute bottom-6 left-12 w-2 h-2 bg-secondary rounded-full animate-pulse delay-100"></div>
+          <div className="absolute bottom-12 right-6 w-2 h-2 bg-primary rounded-full animate-bounce delay-200"></div>
 
-            {/* Glow Effect */}
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/20 rounded-full blur-3xl"></div>
+          {/* Glow Effect */}
+          <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/20 rounded-full blur-3xl"></div>
 
-            <div className="text-center relative z-10">
-              <h3 className="text-2xl font-bold mb-4 gradient-text">
-                Top Superpowers
-              </h3>
-              <div className="flex flex-wrap justify-center gap-3">
-                {[
-                  "React.js Developer", "Blockchain Developer", "AI/ML Project Developer",
-                  "UI/UX Engineer", "Problem Solver", "Fast Learner", "Open Source Contributor", "AI Image Prompt Design", "Cinematic AI Trailer Prompting"
-                ].map((badge, i) => (
-                  <div
-                    key={i}
-                    className="px-6 py-3 bg-card/80 backdrop-blur-sm border-2 border-primary/30 rounded-full font-semibold text-base hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
-                  >
-                    <Heart className="inline-block mr-2 h-4 w-4 text-primary" fill="currentColor" />
-                    {badge}
-                  </div>
-                ))}
-              </div>
+          <div className="text-center relative z-10">
+            <h3 className="text-2xl font-bold mb-4 gradient-text">
+              Top Superpowers
+            </h3>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                "React.js Developer", "Blockchain Developer", "AI/ML Project Developer",
+                "UI/UX Engineer", "Problem Solver", "Fast Learner", "Open Source Contributor", "AI Image Prompt Design", "Cinematic AI Trailer Prompting"
+              ].map((badge, i) => (
+                <div
+                  key={i}
+                  className="px-6 py-3 bg-card/80 backdrop-blur-sm border-2 border-primary/30 rounded-full font-semibold text-base hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
+                >
+                  <Heart className="inline-block mr-2 h-4 w-4 text-primary" fill="currentColor" />
+                  {badge}
+                </div>
+              ))}
             </div>
-          </Card>
-        </div>
+          </div>
+        </Card>
       </div>
     </section>
   );

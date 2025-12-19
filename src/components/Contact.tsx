@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Heart, Mail, MapPin, Github, Linkedin, Instagram, Youtube, Send, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import contactBg from "@/assets/contact-bg.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -61,14 +62,17 @@ const Contact = () => {
             Let's Create <span className="gradient-text">Magic</span> Together
             <Sparkles className="inline-block ml-2 text-accent animate-sparkle" />
           </h2>
-          <p className="text-xl text-muted-foreground">
-            I'd love to hear from you! Drop me a message 💌
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            I work best on projects that solve real problems not just look good on paper. If you have a product idea, a technical challenge, or need someone who can actually execute, reach out. Clear goals, clean code, real outcomes.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <Card className="p-8 bg-card rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border hover:border-primary/50 transition-all duration-300 animate-fade-in">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <Card
+            className="p-8 bg-card rounded-3xl shadow-[0_0_30px_rgba(236,72,153,0.3)] border-2 border-border hover:border-primary/50 transition-all duration-300 animate-fade-in hover:shadow-[0_0_40px_rgba(236,72,153,0.5)] bg-cover bg-center relative overflow-hidden"
+            style={{ backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(${contactBg})` }}
+          >
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div>
                 <label className="block text-sm font-semibold mb-2 text-foreground">
                   Your Name
@@ -79,7 +83,7 @@ const Contact = () => {
                   placeholder="Enter your lovely name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors"
+                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors bg-white/50 backdrop-blur-sm"
                   required
                   disabled={isSubmitting}
                 />
@@ -95,7 +99,7 @@ const Contact = () => {
                   placeholder="your.email@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors"
+                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors bg-white/50 backdrop-blur-sm"
                   required
                   disabled={isSubmitting}
                 />
@@ -110,7 +114,7 @@ const Contact = () => {
                   placeholder="Tell me about your project or just say hi! 👋"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors min-h-[150px] resize-none"
+                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors min-h-[150px] resize-none bg-white/50 backdrop-blur-sm"
                   required
                   disabled={isSubmitting}
                 />
@@ -155,7 +159,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-8 bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 animate-fade-in shadow-[0_0_30px_rgba(255,165,0,0.3)] hover:shadow-[0_0_40px_rgba(255,165,0,0.5)]">
+            <Card className="p-8 bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 animate-fade-in shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]">
               <h3 className="text-xl font-bold mb-4 text-center text-foreground">
                 Connect with me
                 <Heart className="inline-block ml-2 text-primary" fill="currentColor" size={20} />
