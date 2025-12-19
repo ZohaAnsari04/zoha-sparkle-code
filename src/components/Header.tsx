@@ -6,6 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("#");
 
     useEffect(() => {
         const handleScroll = () => {
@@ -14,6 +15,44 @@ const Header = () => {
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // Track active section with Intersection Observer
+    useEffect(() => {
+        const sections = document.querySelectorAll("section[id]");
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "-20% 0px -70% 0px", // Trigger when section is in the middle of viewport
+            threshold: 0,
+        };
+
+        const observerCallback = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.getAttribute("id");
+                    setActiveSection(sectionId ? `#${sectionId}` : "#");
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        sections.forEach((section) => observer.observe(section));
+
+        // Check if at top of page
+        const handleScrollTop = () => {
+            if (window.scrollY < 100) {
+                setActiveSection("#");
+            }
+        };
+
+        window.addEventListener("scroll", handleScrollTop);
+
+        return () => {
+            sections.forEach((section) => observer.unobserve(section));
+            window.removeEventListener("scroll", handleScrollTop);
+        };
     }, []);
 
     const navItems = [
@@ -63,16 +102,22 @@ const Header = () => {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center gap-1">
-                        {navItems.map((item) => (
-                            <button
-                                key={item.name}
-                                onClick={() => scrollToSection(item.href)}
-                                className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium rounded-full hover:bg-primary/10 flex items-center gap-2"
-                            >
-                                <item.icon className="h-4 w-4" />
-                                {item.name}
-                            </button>
-                        ))}
+                        {navItems.map((item) => {
+                            const isActive = activeSection === item.href;
+                            return (
+                                <button
+                                    key={item.name}
+                                    onClick={() => scrollToSection(item.href)}
+                                    className={`px-4 py-2 transition-all font-medium rounded-full flex items-center gap-2 ${isActive
+                                            ? "text-primary bg-primary/20 scale-105 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
+                                            : "text-foreground hover:text-primary hover:bg-primary/10"
+                                        }`}
+                                >
+                                    <item.icon className="h-4 w-4" />
+                                    {item.name}
+                                </button>
+                            );
+                        })}
 
                         {/* Resume Button */}
                         <Button
@@ -108,16 +153,22 @@ const Header = () => {
                 {isMobileMenuOpen && (
                     <nav className="md:hidden py-4 border-t border-border animate-fade-in">
                         <div className="flex flex-col gap-2">
-                            {navItems.map((item) => (
-                                <button
-                                    key={item.name}
-                                    onClick={() => scrollToSection(item.href)}
-                                    className="px-4 py-3 text-left text-foreground hover:text-primary hover:bg-primary/10 transition-colors font-medium rounded-xl flex items-center gap-3"
-                                >
-                                    <item.icon className="h-5 w-5" />
-                                    {item.name}
-                                </button>
-                            ))}
+                            {navItems.map((item) => {
+                                const isActive = activeSection === item.href;
+                                return (
+                                    <button
+                                        key={item.name}
+                                        onClick={() => scrollToSection(item.href)}
+                                        className={`px-4 py-3 text-left transition-all font-medium rounded-xl flex items-center gap-3 ${isActive
+                                                ? "text-primary bg-primary/20 shadow-[0_0_10px_rgba(236,72,153,0.2)]"
+                                                : "text-foreground hover:text-primary hover:bg-primary/10"
+                                            }`}
+                                    >
+                                        <item.icon className="h-5 w-5" />
+                                        {item.name}
+                                    </button>
+                                );
+                            })}
 
                             {/* Mobile Resume Button */}
                             <button
