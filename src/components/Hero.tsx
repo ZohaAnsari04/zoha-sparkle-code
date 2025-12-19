@@ -3,9 +3,11 @@ import { Heart, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import avatarImage from "@/assets/avatar.jpg";
 import { useState, useEffect } from "react";
+import BlurText from "@/components/BlurText";
 
 const Hero = () => {
     const [displayedText, setDisplayedText] = useState("");
+    const [showBlurText, setShowBlurText] = useState(false);
     const fullText = "Ansari Zoha Najmul Kalam";
 
     useEffect(() => {
@@ -24,7 +26,15 @@ const Hero = () => {
             return () => clearInterval(timer);
         }, 2000); // Wait 2 seconds for preloader to finish
 
-        return () => clearTimeout(startDelay);
+        // Show BlurText after preloader finishes
+        const blurTextDelay = setTimeout(() => {
+            setShowBlurText(true);
+        }, 2000); // Same delay as preloader
+
+        return () => {
+            clearTimeout(startDelay);
+            clearTimeout(blurTextDelay);
+        };
     }, []);
 
     const handleContact = () => {
@@ -62,9 +72,15 @@ const Hero = () => {
                         </span>
                     </h1>
 
-                    <p className="text-3xl md:text-4xl font-semibold mb-6 text-foreground">
-                        Frontend Developer Focused on Performance, UX & Clean Code
-                    </p>
+                    {showBlurText && (
+                        <BlurText
+                            text="Frontend Developer Focused on Performance, UX & Clean Code"
+                            delay={150}
+                            animateBy="words"
+                            direction="top"
+                            className="text-3xl md:text-4xl font-semibold mb-6 text-foreground"
+                        />
+                    )}
 
                     <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
                         Creating digital magic with code and creativity ✨
