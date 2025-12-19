@@ -11,6 +11,7 @@ import Preloader from "@/components/Preloader";
 import SocialSidebar from "@/components/SocialSidebar";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
+import LocomotiveScrollWrapper from "@/components/LocomotiveScrollWrapper";
 
 const Index = () => {
   return (
@@ -18,18 +19,20 @@ const Index = () => {
       <Preloader />
       <ScrollProgress />
       <BackToTop />
-      <div className="min-h-screen">
-        <Header />
-        <SocialSidebar />
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Achievements />
-        <Education />
-        <Contact />
-        <Footer />
-      </div>
+      <LocomotiveScrollWrapper>
+        <div className="min-h-screen">
+          <Header />
+          <SocialSidebar />
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Achievements />
+          <Education />
+          <Contact />
+          <Footer />
+        </div>
+      </LocomotiveScrollWrapper>
     </>
   );
 };
