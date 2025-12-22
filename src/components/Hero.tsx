@@ -45,7 +45,7 @@ const Hero = () => {
 
     return (
         <section
-            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 md:pt-24"
+            className="min-h-screen flex items-start justify-center relative overflow-hidden pt-28 md:pt-32"
             style={{
                 backgroundImage: `url(${heroImage})`,
                 backgroundSize: 'cover',
@@ -54,7 +54,7 @@ const Hero = () => {
         >
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90" />
 
-            <div className="container mx-auto px-4 py-20 relative z-10">
+            <div className="container mx-auto px-4 pt-0 pb-20 relative z-10">
                 <div className="max-w-4xl mx-auto text-center animate-fade-in">
                     <div className="mb-8 inline-block relative">
                         <img
