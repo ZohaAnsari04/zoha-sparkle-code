@@ -120,7 +120,7 @@ const Hero = () => {
                     <div className="flex justify-center gap-8 text-base text-muted-foreground mb-16">
                         <div className="flex items-center gap-2">
                             <span className="text-2xl">📍</span>
-                            <span>Byculla-Mumbai</span>
+                            <span>Mumbai - India</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <span className="text-2xl">💫</span>
