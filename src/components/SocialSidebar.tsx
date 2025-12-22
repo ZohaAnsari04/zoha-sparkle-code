@@ -6,25 +6,25 @@ const SocialSidebar = () => {
             name: "GitHub",
             icon: Github,
             href: "https://github.com/ZohaAnsari04",
-            color: "hover:text-[#333] dark:hover:text-white"
+            color: "text-black dark:text-white"
         },
         {
             name: "LinkedIn",
             icon: Linkedin,
             href: "https://www.linkedin.com/in/er-ansari-zoha-najmul-kalam-819610238/",
-            color: "hover:text-[#0077B5]"
+            color: "text-[#0077B5]"
         },
         {
             name: "Email",
             icon: Mail,
             href: "mailto:zoha101204@gmail.com",
-            color: "hover:text-primary"
+            color: "text-[#EA4335]"
         },
         {
             name: "Instagram",
             icon: Instagram,
             href: "https://www.instagram.com/btwitzoyu._?igsh=NnRnanM3eGtiOGQy",
-            color: "hover:text-[#E4405F]"
+            color: "text-[#E4405F]"
         }
     ];
 
@@ -37,11 +37,11 @@ const SocialSidebar = () => {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`p-3 rounded-xl bg-muted hover:bg-primary/10 transition-all duration-300 hover:scale-110 hover:rotate-6 group ${social.color} animate-fade-in`}
+                        className={`p-3 rounded-xl bg-muted hover:bg-primary/10 transition-all duration-300 hover:scale-110 hover:rotate-6 group animate-fade-in`}
                         style={{ animationDelay: `${index * 0.1}s` }}
                         title={social.name}
                     >
-                        <social.icon className="w-6 h-6 text-foreground group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
+                        <social.icon className={`w-6 h-6 ${social.color} group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`} />
                     </a>
                 ))}
 

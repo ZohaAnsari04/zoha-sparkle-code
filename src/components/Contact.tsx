@@ -48,10 +48,10 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/ZohaAnsari04", label: "GitHub", color: "hover:text-foreground" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/er-ansari-zoha-najmul-kalam-819610238/", label: "LinkedIn", color: "hover:text-[#0077b5]" },
-    { icon: Youtube, href: "https://www.youtube.com/@Indiasupergenius", label: "YouTube", color: "hover:text-[#ff0000]" },
-    { icon: Instagram, href: "https://www.instagram.com/btwitzoyu._?igsh=NnRnanM3eGtiOGQy", label: "Instagram", color: "hover:text-[#e4405f]" }
+    { icon: Github, href: "https://github.com/ZohaAnsari04", label: "GitHub", color: "text-black dark:text-white" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/er-ansari-zoha-najmul-kalam-819610238/", label: "LinkedIn", color: "text-[#0077b5]" },
+    { icon: Youtube, href: "https://www.youtube.com/@Indiasupergenius", label: "YouTube", color: "text-[#ff0000]" },
+    { icon: Instagram, href: "https://www.instagram.com/btwitzoyu._?igsh=NnRnanM3eGtiOGQy", label: "Instagram", color: "text-[#e4405f]" }
   ];
 
   return (
@@ -171,7 +171,7 @@ const Contact = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-14 h-14 rounded-full border-2 border-primary/30 flex items-center justify-center text-muted-foreground ${social.color} hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-[0_5px_20px_rgba(236,72,153,0.3)]`}
+                    className={`w-14 h-14 rounded-full border-2 border-primary/30 flex items-center justify-center ${social.color} hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-[0_5px_20px_rgba(236,72,153,0.3)]`}
                     aria-label={social.label}
                   >
                     <social.icon size={24} />
