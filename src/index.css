@@ -13,212 +13,212 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
-    --background: 330 100% 98%;
-    --foreground: 280 30% 20%;
+    :root {
+        --background: 330 100% 98%;
+        --foreground: 280 30% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 280 30% 20%;
+        --card: 0 0% 100%;
+        --card-foreground: 280 30% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 280 30% 20%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 280 30% 20%;
 
-    --primary: 320 85% 60%;
-    --primary-foreground: 0 0% 100%;
+        --primary: 320 85% 60%;
+        --primary-foreground: 0 0% 100%;
 
-    --secondary: 280 70% 75%;
-    --secondary-foreground: 280 30% 20%;
+        --secondary: 280 70% 75%;
+        --secondary-foreground: 280 30% 20%;
 
-    --muted: 330 60% 95%;
-    --muted-foreground: 280 20% 50%;
+        --muted: 330 60% 95%;
+        --muted-foreground: 280 20% 50%;
 
-    --accent: 260 80% 70%;
-    --accent-foreground: 0 0% 100%;
+        --accent: 260 80% 70%;
+        --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 100%;
 
-    --border: 330 40% 90%;
-    --input: 330 40% 90%;
-    --ring: 320 85% 60%;
+        --border: 330 40% 90%;
+        --input: 330 40% 90%;
+        --ring: 320 85% 60%;
 
-    --radius: 1rem;
+        --radius: 1rem;
 
-    /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(320 85% 60%), hsl(280 70% 75%));
-    --gradient-hero: linear-gradient(135deg, hsl(330 100% 98%), hsl(280 70% 85%), hsl(320 85% 70%));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(330 100% 98%));
+        /* Custom gradients */
+        --gradient-primary: linear-gradient(135deg, hsl(320 85% 60%), hsl(280 70% 75%));
+        --gradient-hero: linear-gradient(135deg, hsl(330 100% 98%), hsl(280 70% 85%), hsl(320 85% 70%));
+        --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(330 100% 98%));
 
-    /* Shadows */
-    --shadow-glow: 0 10px 40px hsl(320 85% 60% / 0.3);
-    --shadow-soft: 0 4px 20px hsl(320 50% 70% / 0.15);
+        /* Shadows */
+        --shadow-glow: 0 10px 40px hsl(320 85% 60% / 0.3);
+        --shadow-soft: 0 4px 20px hsl(320 50% 70% / 0.15);
 
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Animations */
+        --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 98%;
+        --sidebar-background: 0 0% 98%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+        --sidebar-foreground: 240 5.3% 26.1%;
 
-    --sidebar-primary: 240 5.9% 10%;
+        --sidebar-primary: 240 5.9% 10%;
 
-    --sidebar-primary-foreground: 0 0% 98%;
+        --sidebar-primary-foreground: 0 0% 98%;
 
-    --sidebar-accent: 240 4.8% 95.9%;
+        --sidebar-accent: 240 4.8% 95.9%;
 
-    --sidebar-accent-foreground: 240 5.9% 10%;
+        --sidebar-accent-foreground: 240 5.9% 10%;
 
-    --sidebar-border: 220 13% 91%;
+        --sidebar-border: 220 13% 91%;
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
 
-  .dark {
-    --background: 280 40% 10%;
-    --foreground: 330 100% 98%;
+    .dark {
+        --background: 280 40% 10%;
+        --foreground: 330 100% 98%;
 
-    --card: 280 35% 15%;
-    --card-foreground: 330 100% 98%;
+        --card: 280 35% 15%;
+        --card-foreground: 330 100% 98%;
 
-    --popover: 280 35% 15%;
-    --popover-foreground: 330 100% 98%;
+        --popover: 280 35% 15%;
+        --popover-foreground: 330 100% 98%;
 
-    --primary: 320 85% 60%;
-    --primary-foreground: 0 0% 100%;
+        --primary: 320 85% 60%;
+        --primary-foreground: 0 0% 100%;
 
-    --secondary: 280 50% 25%;
-    --secondary-foreground: 330 100% 98%;
+        --secondary: 280 50% 25%;
+        --secondary-foreground: 330 100% 98%;
 
-    --muted: 280 40% 20%;
-    --muted-foreground: 330 60% 70%;
+        --muted: 280 40% 20%;
+        --muted-foreground: 330 60% 70%;
 
-    --accent: 260 80% 70%;
-    --accent-foreground: 0 0% 100%;
+        --accent: 260 80% 70%;
+        --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 330 100% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 330 100% 98%;
 
-    --border: 280 40% 25%;
-    --input: 280 40% 25%;
-    --ring: 320 85% 60%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+        --border: 280 40% 25%;
+        --input: 280 40% 25%;
+        --ring: 320 85% 60%;
+        --sidebar-background: 240 5.9% 10%;
+        --sidebar-foreground: 240 4.8% 95.9%;
+        --sidebar-primary: 224.3 76.3% 48%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 240 3.7% 15.9%;
+        --sidebar-accent-foreground: 240 4.8% 95.9%;
+        --sidebar-border: 240 3.7% 15.9%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+    * {
+        @apply border-border;
+    }
 
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Josefin Sans', sans-serif;
-  }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Josefin Sans', sans-serif;
+    }
 }
 
 /* Locomotive Scroll Custom Styles */
 html.has-scroll-smooth {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 html.has-scroll-dragging {
-  user-select: none;
+    user-select: none;
 }
 
 .has-scroll-smooth body {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .has-scroll-init,
 .has-scroll-smooth {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .c-scrollbar {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 11px;
-  height: 100%;
-  transform-origin: center right;
-  transition: transform 0.3s, opacity 0.3s;
-  opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 11px;
+    height: 100%;
+    transform-origin: center right;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0;
 }
 
 .c-scrollbar:hover {
-  transform: scaleX(1.45);
+    transform: scaleX(1.45);
 }
 
 .c-scrollbar:hover,
 .has-scroll-scrolling .c-scrollbar,
 .has-scroll-dragging .c-scrollbar {
-  opacity: 1;
+    opacity: 1;
 }
 
 .c-scrollbar_thumb {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: hsl(320 85% 60%);
-  opacity: 0.5;
-  width: 7px;
-  border-radius: 10px;
-  margin: 2px;
-  cursor: grab;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: hsl(320 85% 60%);
+    opacity: 0.5;
+    width: 7px;
+    border-radius: 10px;
+    margin: 2px;
+    cursor: grab;
 }
 
 .has-scroll-dragging .c-scrollbar_thumb {
-  cursor: grabbing;
+    cursor: grabbing;
 }
 
 @layer utilities {
-  .sparkle {
-    animation: sparkle 2s infinite;
-  }
+    .sparkle {
+        animation: sparkle 2s infinite;
+    }
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
-  }
+    .gradient-text {
+        @apply bg-clip-text text-transparent;
+        background-image: var(--gradient-primary);
+    }
 
-  .glow-hover {
-    transition: var(--transition-smooth);
-  }
+    .glow-hover {
+        transition: var(--transition-smooth);
+    }
 
-  .glow-hover:hover {
-    filter: drop-shadow(0 0 20px hsl(320 85% 60% / 0.5));
-  }
+    .glow-hover:hover {
+        filter: drop-shadow(0 0 20px hsl(320 85% 60% / 0.5));
+    }
 }
 
 @keyframes sparkle {
 
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 
-  50% {
-    opacity: 0.5;
-    transform: scale(1.1);
-  }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
 }
 
 @keyframes float {
 
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
 
-  50% {
-    transform: translateY(-20px);
-  }
+    50% {
+        transform: translateY(-20px);
+    }
 }

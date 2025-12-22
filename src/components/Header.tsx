@@ -109,8 +109,8 @@ const Header = () => {
                                     key={item.name}
                                     onClick={() => scrollToSection(item.href)}
                                     className={`px-4 py-2 transition-all font-medium rounded-full flex items-center gap-2 ${isActive
-                                            ? "text-primary bg-primary/20 scale-105 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
-                                            : "text-foreground hover:text-primary hover:bg-primary/10"
+                                        ? "text-primary bg-primary/20 scale-105 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
+                                        : "text-foreground hover:text-primary hover:bg-primary/10"
                                         }`}
                                 >
                                     <item.icon className="h-4 w-4" />
@@ -160,8 +160,8 @@ const Header = () => {
                                         key={item.name}
                                         onClick={() => scrollToSection(item.href)}
                                         className={`px-4 py-3 text-left transition-all font-medium rounded-xl flex items-center gap-3 ${isActive
-                                                ? "text-primary bg-primary/20 shadow-[0_0_10px_rgba(236,72,153,0.2)]"
-                                                : "text-foreground hover:text-primary hover:bg-primary/10"
+                                            ? "text-primary bg-primary/20 shadow-[0_0_10px_rgba(236,72,153,0.2)]"
+                                            : "text-foreground hover:text-primary hover:bg-primary/10"
                                             }`}
                                     >
                                         <item.icon className="h-5 w-5" />
