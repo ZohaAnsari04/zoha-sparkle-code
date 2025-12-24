@@ -22,7 +22,7 @@ import cert15 from "@/assets/certificates/cert15.jpg";
 import cert16 from "@/assets/certificates/cert16.jpg";
 import cert17 from "@/assets/certificates/cert17.jpg";
 import cert18 from "@/assets/certificates/cert18.jpg";
-import cert19 from "@/assets/certificates/cert19.png";
+import cert19 from "@/assets/certificates/cert19_fixed.png";
 import cert20 from "@/assets/certificates/cert20.jpg";
 import cert21 from "@/assets/certificates/cert21.jpg";
 import cert22 from "@/assets/certificates/cert22_fixed.jpg";
