@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Heart } from "lucide-react";
 import { useState } from "react";
 import hardhatLogo from "@/assets/hardhat-logo.png";
+import { AnimatedCard, AnimatedIcons } from "@/components/ui/feature-block-animated-card";
 
 const skills = {
   all: [
@@ -126,11 +127,15 @@ const Skills = () => {
               style={{ animationDelay: `${index * 0.02}s` }}
             >
               {/* Icon */}
-              <div className="w-6 h-6 flex items-center justify-center flex-shrink-0">
-                <img
-                  src={skill.logo}
-                  alt={`${skill.name} logo`}
-                  className="w-full h-full object-contain group-hover:scale-110 transition-transform"
+              <div className="w-8 h-8 flex-shrink-0">
+                <AnimatedIcons
+                  id={`skill-${skill.name.replace(/[^a-zA-Z0-9]/g, '-')}-${index}`}
+                  icons={[{
+                    icon: <img src={skill.logo} alt={skill.name} className="w-full h-full object-contain p-1" />,
+                    size: "sm",
+                  }]}
+                  containerClassName="p-0 h-full w-full"
+                  showSparkles={false}
                 />
               </div>
 
@@ -143,8 +148,8 @@ const Skills = () => {
         </div>
       </div>
 
-      <div className="mt-12 max-w-4xl mx-auto">
-        <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 animate-fade-in">
+      <div className="mt-12 max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 animate-fade-in h-full">
           {/* Animated Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-gradient bg-[length:200%_200%]"></div>
 
@@ -178,6 +183,34 @@ const Skills = () => {
             </div>
           </div>
         </Card>
+
+        <AnimatedCard
+          title="Built with Modern Tech"
+          description="This portfolio is crafted with the latest technologies for performance and experience."
+          icons={[
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-full h-full object-contain" />,
+              size: "lg",
+            },
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" className="w-full h-full object-contain" />,
+              size: "md",
+            },
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="w-full h-full object-contain" />,
+              size: "lg",
+            },
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" className="w-full h-full object-contain" />,
+              size: "md",
+            },
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-full h-full object-contain" />,
+              size: "sm",
+            },
+          ]}
+          className="h-full"
+        />
       </div>
     </section>
   );

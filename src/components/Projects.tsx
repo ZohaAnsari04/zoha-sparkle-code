@@ -7,6 +7,7 @@ import project3 from "@/assets/project3.jpg";
 import project4 from "@/assets/project4.jpg";
 import project5 from "@/assets/project5.jpg";
 import project6 from "@/assets/project6.png";
+import { AnimatedIcons } from "@/components/ui/feature-block-animated-card";
 
 // Tech stack logo mapping
 const techLogos: { [key: string]: string } = {
@@ -113,20 +114,24 @@ const Projects = () => {
                 </p>
 
                 {/* Tech Stack Icons */}
-                <div className="flex flex-wrap gap-3 mb-4">
-                  {project.tech.map((tech, i) => (
-                    <div
-                      key={i}
-                      className="w-10 h-10 p-2 bg-muted rounded-lg hover:bg-primary/10 transition-all hover:scale-110 group/tech"
-                      title={tech}
-                    >
-                      <img
-                        src={techLogos[tech]}
-                        alt={tech}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  ))}
+                <div className="mb-4">
+                  <AnimatedIcons
+                    id={`project-${index}`}
+                    icons={project.tech.map((tech) => ({
+                      icon: (
+                        <img
+                          src={techLogos[tech]}
+                          alt={tech}
+                          className="w-full h-full object-contain"
+                        />
+                      ),
+                      size: "sm",
+                      className: "p-2 bg-muted hover:bg-primary/10 transition-all hover:scale-110"
+                    }))}
+                    containerClassName="p-0 h-auto justify-start overflow-visible"
+                    className="gap-3"
+                    showSparkles={false}
+                  />
                 </div>
 
                 {project.demo && (
