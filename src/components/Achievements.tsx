@@ -22,8 +22,12 @@ import cert15 from "@/assets/certificates/cert15.jpg";
 import cert16 from "@/assets/certificates/cert16.jpg";
 import cert17 from "@/assets/certificates/cert17.jpg";
 import cert18 from "@/assets/certificates/cert18.jpg";
+import cert19 from "@/assets/certificates/cert19.png";
+import cert20 from "@/assets/certificates/cert20.jpg";
+import cert21 from "@/assets/certificates/cert21.jpg";
 
 const achievements = [
+
     // M.H. Saboo Siddik College Certificates (5 total)
     {
         title: "Path to Research Mastery Lecture Series",
@@ -56,6 +60,16 @@ const achievements = [
         image: cert16
     },
     {
+        title: "Codefeast 4.0 2025",
+        issuer: "Programmer's Club, MHSSCE",
+        date: "August 15-17, 2025",
+        credentialId: "CODEFEAST-2025",
+        description: "Successfully showcased skills and active participation in Codefeast 4.0 2025, organized by Programmer's Club.",
+        link: "#",
+        skills: ["Coding", "Problem Solving", "Technical Skills"],
+        image: cert21
+    },
+    {
         title: "Digital Poster Competition - IEEE MHSSCOE",
         issuer: "IEEE MHSSCOE Student Branch",
         date: "2025",
@@ -64,6 +78,16 @@ const achievements = [
         link: "#",
         skills: ["Design", "AI & Environment", "Creative Thinking"],
         image: cert18
+    },
+    {
+        title: "Android Development Workshop using Flutter",
+        issuer: "GDSC MHSSCE Chapter",
+        date: "January 13-14, 2024",
+        credentialId: "GDSC-FLUTTER-2024",
+        description: "Completed Android development Workshop using Flutter organized by Google Developer Student Club MHSSCE Chapter on 13th & 14th January 2024.",
+        link: "#",
+        skills: ["Android Development", "Flutter", "Mobile App Development"],
+        image: cert20
     },
     {
         title: "Machine Learning Workshop",
@@ -210,6 +234,17 @@ const achievements = [
         link: "#",
         skills: ["Design Systems", "UI/UX", "Component Design"],
         image: cert2
+    },
+    // Hierroshield
+    {
+        title: "Hierro CTF: The CTF Hackathon",
+        issuer: "Hierroshield Pvt Ltd",
+        date: "November 30, 2025",
+        credentialId: "HIERRO-CTF-2025",
+        description: "Successfully participated in the Hierro CTF: The CTF HackAthon, held on 30th November 2025. Awarded in recognition of enthusiasm, skill, and active involvement in solving live cybersecurity CTF challenges.",
+        link: "#",
+        skills: ["Cybersecurity", "CTF", "Hackathon", "Problem Solving"],
+        image: cert19
     }
 ];
 
