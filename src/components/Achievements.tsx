@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Award, Calendar, ExternalLink, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Import certificate images
 import cert1 from "@/assets/certificates/cert1.jpg";
@@ -25,7 +25,7 @@ import cert18 from "@/assets/certificates/cert18.jpg";
 import cert19 from "@/assets/certificates/cert19.png";
 import cert20 from "@/assets/certificates/cert20.jpg";
 import cert21 from "@/assets/certificates/cert21.jpg";
-import cert22 from "@/assets/certificates/cert22.jpg";
+import cert22 from "@/assets/certificates/cert22_fixed.jpg";
 
 const achievements = [
 
@@ -263,6 +263,22 @@ const achievements = [
 const Achievements = () => {
     const [selectedCertificate, setSelectedCertificate] = useState<{ image: string; title: string } | null>(null);
 
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setSelectedCertificate(null);
+            }
+        };
+
+        if (selectedCertificate) {
+            window.addEventListener('keydown', handleKeyDown);
+        }
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [selectedCertificate]);
+
     return (
         <section id="achievements" className="py-20 bg-background">
             <div className="container mx-auto px-4">
@@ -309,7 +325,7 @@ const Achievements = () => {
                                 </div>
                             )}
 
-                            <div className="p-6">
+                            <div className="p-6 relative z-20">
                                 <div className="flex items-start gap-4 mb-4">
                                     <div className="p-3 bg-primary/10 rounded-2xl group-hover:bg-primary/20 transition-colors">
                                         <Award className="w-6 h-6 text-primary" />
@@ -351,6 +367,7 @@ const Achievements = () => {
                                         variant="outline"
                                         className="w-full rounded-full border-primary/50 hover:bg-primary/10 text-xs"
                                         onClick={(e) => {
+                                            e.preventDefault();
                                             e.stopPropagation();
                                             setSelectedCertificate({ image: achievement.image, title: achievement.title });
                                         }}
@@ -368,22 +385,25 @@ const Achievements = () => {
             {/* Certificate Modal */}
             {selectedCertificate && (
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
                     onClick={() => setSelectedCertificate(null)}
                 >
-                    <div className="relative max-w-5xl w-full flex justify-center items-center animate-fade-in">
-                        <button
-                            onClick={() => setSelectedCertificate(null)}
-                            className="absolute -top-12 right-0 p-2 bg-primary/20 hover:bg-primary/30 rounded-full transition-colors"
-                            aria-label="Close certificate view"
-                        >
-                            <X className="w-6 h-6 text-white" />
-                        </button>
+                    <button
+                        onClick={() => setSelectedCertificate(null)}
+                        className="absolute top-6 right-6 z-[110] p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors backdrop-blur-sm border border-white/10"
+                        aria-label="Close certificate view"
+                    >
+                        <X className="w-6 h-6" />
+                    </button>
+
+                    <div
+                        className="relative flex items-center justify-center max-w-[95vw] max-h-[90vh]"
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         <img
                             src={selectedCertificate.image}
                             alt={`${selectedCertificate.title} Certificate - Full View`}
-                            className="max-w-full max-h-[85vh] w-auto h-auto rounded-lg shadow-2xl object-contain"
-                            onClick={(e) => e.stopPropagation()}
+                            className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
                         />
                     </div>
                 </div>
