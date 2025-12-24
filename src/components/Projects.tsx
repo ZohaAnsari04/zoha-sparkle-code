@@ -7,6 +7,7 @@ import project3 from "@/assets/project3.jpg";
 import project4 from "@/assets/project4.jpg";
 import project5 from "@/assets/project5.jpg";
 import project6 from "@/assets/project6.png";
+import project7 from "@/assets/project7.png";
 import { AnimatedIcons } from "@/components/ui/feature-block-animated-card";
 
 // Tech stack logo mapping
@@ -62,6 +63,14 @@ const projects = [
     image: project6,
     description: "A to-do list helps you organize tasks you need to complete. It keeps you focused, productive, and on track throughout the day.",
     tech: ["Python", "TensorFlow", "React"],
+    demo: "https://taskiepie.vercel.app/",
+  },
+  {
+    name: "Simple Calculator",
+    image: project7,
+    description: "A clean and efficient calculator app for performing basic arithmetic operations with a user-friendly interface.",
+    tech: ["React", "JavaScript", "Tailwind CSS"],
+    demo: "https://corecalc.vercel.app/",
   }
 ];
 
