@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Heart } from "lucide-react";
 import { useState } from "react";
 import hardhatLogo from "@/assets/hardhat-logo.png";
+import ipfsLogo from "@/assets/ipfs-logo.png";
 import { AnimatedCard, AnimatedIcons } from "@/components/ui/feature-block-animated-card";
 
 const skills = {
@@ -25,7 +26,7 @@ const skills = {
     { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
     { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
     { name: "Hardhat", logo: hardhatLogo },
-    { name: "IPFS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ipfs/ipfs-original.svg" },
+    { name: "IPFS", logo: ipfsLogo },
     { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
     { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
     { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
@@ -61,7 +62,7 @@ const skills = {
     { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
     { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
     { name: "Hardhat", logo: hardhatLogo },
-    { name: "IPFS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ipfs/ipfs-original.svg" }
+    { name: "IPFS", logo: ipfsLogo }
   ],
   tools: [
     { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
@@ -123,16 +124,16 @@ const Skills = () => {
           {skills[activeTab].map((skill, index) => (
             <div
               key={skill.name}
-              className="relative px-4 py-2.5 bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] animate-fade-in group flex items-center gap-3"
+              className="relative px-4 py-2.5 bg-gradient-to-br from-white/90 to-primary/10 dark:from-slate-900/90 dark:to-primary/20 backdrop-blur-sm rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:to-primary/20 animate-fade-in group flex items-center gap-3"
               style={{ animationDelay: `${index * 0.02}s` }}
             >
               {/* Icon */}
-              <div className="w-8 h-8 flex-shrink-0">
+              <div className="w-12 h-12 flex-shrink-0">
                 <AnimatedIcons
                   id={`skill-${skill.name.replace(/[^a-zA-Z0-9]/g, '-')}-${index}`}
                   icons={[{
                     icon: <img src={skill.logo} alt={skill.name} className="w-full h-full object-contain p-1" />,
-                    size: "sm",
+                    size: "md",
                   }]}
                   containerClassName="p-0 h-full w-full"
                   showSparkles={false}
@@ -140,7 +141,7 @@ const Skills = () => {
               </div>
 
               {/* Skill Name */}
-              <span className="font-medium text-sm text-foreground/90 group-hover:text-primary transition-colors whitespace-nowrap">
+              <span className="font-medium text-lg text-foreground/90 group-hover:text-primary transition-colors whitespace-nowrap">
                 {skill.name}
               </span>
             </div>

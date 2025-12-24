@@ -106,10 +106,10 @@ const Projects = () => {
               </div>
 
               <div className="p-6 relative z-10">
-                <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
                   {project.name}
                 </h3>
-                <p className="text-sm text-foreground/80 mb-4 leading-relaxed">
+                <p className="text-base text-foreground/80 mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -125,7 +125,7 @@ const Projects = () => {
                           className="w-full h-full object-contain"
                         />
                       ),
-                      size: "sm",
+                      size: "md",
                       className: "p-2 bg-muted hover:bg-primary/10 transition-all hover:scale-110"
                     }))}
                     containerClassName="p-0 h-auto justify-start overflow-visible"
