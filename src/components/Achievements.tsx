@@ -25,6 +25,7 @@ import cert18 from "@/assets/certificates/cert18.jpg";
 import cert19 from "@/assets/certificates/cert19.png";
 import cert20 from "@/assets/certificates/cert20.jpg";
 import cert21 from "@/assets/certificates/cert21.jpg";
+import cert22 from "@/assets/certificates/cert22.jpg";
 
 const achievements = [
 
@@ -182,6 +183,17 @@ const achievements = [
         skills: ["DevOps", "CI/CD", "Cloud"],
         image: cert4
     },
+    // Microsoft Learn Student Ambassador
+    {
+        title: "Microsoft Build and Ambassador Challenge - Azure",
+        issuer: "Microsoft Learn Student Ambassador",
+        date: "2025",
+        credentialId: "MLSA-AZURE-2025",
+        description: "In recognition of your attendance and completion of the Microsoft Learn Student Ambassadors Virtual Event on Microsoft Build and Ambassador Challenge - Azure.",
+        link: cert22,
+        skills: ["Microsoft Azure", "Cloud Computing", "Student Ambassador"],
+        image: cert22
+    },
     // Mendeley
     {
         title: "Mendeley Training",
@@ -242,7 +254,7 @@ const achievements = [
         date: "November 30, 2025",
         credentialId: "HIERRO-CTF-2025",
         description: "Successfully participated in the Hierro CTF: The CTF HackAthon, held on 30th November 2025. Awarded in recognition of enthusiasm, skill, and active involvement in solving live cybersecurity CTF challenges.",
-        link: "#",
+        link: cert19,
         skills: ["Cybersecurity", "CTF", "Hackathon", "Problem Solving"],
         image: cert19
     }
