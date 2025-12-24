@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { DisplayCard } from "@/components/ui/display-cards";
 import { Award, Calendar, ExternalLink, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
@@ -294,9 +295,9 @@ const Achievements = () => {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
                     {achievements.map((achievement, index) => (
-                        <Card
+                        <DisplayCard
                             key={index}
-                            className="group relative overflow-hidden bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in"
+                            className="group relative overflow-hidden h-auto w-full flex-col justify-start gap-0 p-0 hover:bg-card/50 [&>*]:flex-col [&>*]:items-stretch [&>*]:gap-0"
                             style={{ animationDelay: `${index * 0.1}s` }}
                         >
                             {/* Animated Background */}
@@ -377,7 +378,7 @@ const Achievements = () => {
                                     </Button>
                                 )}
                             </div>
-                        </Card>
+                        </DisplayCard>
                     ))}
                 </div>
             </div>

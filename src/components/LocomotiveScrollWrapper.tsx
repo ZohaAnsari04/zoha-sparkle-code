@@ -4,9 +4,10 @@ import 'locomotive-scroll/dist/locomotive-scroll.css';
 
 interface LocomotiveScrollWrapperProps {
     children: React.ReactNode;
+    onMount?: (scroll: LocomotiveScroll) => void;
 }
 
-const LocomotiveScrollWrapper = ({ children }: LocomotiveScrollWrapperProps) => {
+const LocomotiveScrollWrapper = ({ children, onMount }: LocomotiveScrollWrapperProps) => {
     const scrollRef = useRef<HTMLDivElement>(null);
     const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null);
 
@@ -26,6 +27,10 @@ const LocomotiveScrollWrapper = ({ children }: LocomotiveScrollWrapperProps) => 
                 smooth: true
             }
         });
+
+        if (onMount) {
+            onMount(locomotiveScrollRef.current);
+        }
 
         // Update scroll on window resize
         const handleResize = () => {

@@ -1,23 +1,47 @@
 import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
+import LocomotiveScroll from "locomotive-scroll";
 
-const BackToTop = () => {
+interface BackToTopProps {
+    scrollInstance?: LocomotiveScroll | null;
+}
+
+const BackToTop = ({ scrollInstance }: BackToTopProps) => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
+        const handleWindowScroll = () => {
             setIsVisible(window.scrollY > 300);
         };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+        if (scrollInstance) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            scrollInstance.on('scroll', (args: any) => {
+                if (args.scroll && typeof args.scroll.y === 'number') {
+                    setIsVisible(args.scroll.y > 300);
+                }
+            });
+        } else {
+            window.addEventListener("scroll", handleWindowScroll);
+        }
+
+        return () => {
+            window.removeEventListener("scroll", handleWindowScroll);
+        };
+    }, [scrollInstance]);
 
     const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        if (scrollInstance) {
+            scrollInstance.scrollTo('#hero', {
+                duration: 1500,
+                disableLerp: false
+            });
+        } else {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
     };
 
     return (

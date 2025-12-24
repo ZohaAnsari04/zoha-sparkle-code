@@ -12,16 +12,20 @@ import SocialSidebar from "@/components/SocialSidebar";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
 import LocomotiveScrollWrapper from "@/components/LocomotiveScrollWrapper";
+import { useState } from "react";
+import LocomotiveScroll from "locomotive-scroll";
 
 const Index = () => {
+  const [scrollInstance, setScrollInstance] = useState<LocomotiveScroll | null>(null);
+
   return (
     <>
       <Preloader />
       <ScrollProgress />
-      <BackToTop />
+      <BackToTop scrollInstance={scrollInstance} />
       <Header />
       <SocialSidebar />
-      <LocomotiveScrollWrapper>
+      <LocomotiveScrollWrapper onMount={setScrollInstance}>
         <div className="min-h-screen">
           <Hero />
           <About />
