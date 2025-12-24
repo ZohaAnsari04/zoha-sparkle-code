@@ -4,7 +4,7 @@ import { Heart, Sparkles, Download, Code2, Blocks, Brain, Wand2 } from "lucide-r
 
 const About = () => {
   const handleResumeDownload = () => {
-    const resumeUrl = "https://acrobat.adobe.com/id/urn:aaid:sc:AP:0f53ebfc-b68a-43c3-9bda-c584cbda1589";
+    const resumeUrl = "https://acrobat.adobe.com/id/urn:aaid:sc:AP:733ef007-4497-4687-9eeb-359b1528ac64";
     window.open(resumeUrl, "_blank");
   };
 
