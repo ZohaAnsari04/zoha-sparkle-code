@@ -67,7 +67,7 @@ const Hero = () => {
                         <Sparkles className="absolute -bottom-4 -left-4 text-accent w-8 h-8 animate-sparkle" />
                     </div>
 
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 min-h-[5rem] whitespace-nowrap">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 min-h-[5rem] whitespace-nowrap">
                         <span className="gradient-text">
                             {displayedText}
                             <span className="animate-pulse">|</span>
@@ -80,16 +80,16 @@ const Hero = () => {
                             delay={150}
                             animateBy="words"
                             direction="top"
-                            className="text-3xl md:text-4xl font-semibold mb-6 text-foreground"
+                            className="text-2xl md:text-3xl font-semibold mb-6 text-foreground"
                         />
                     )}
 
-                    <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
+                    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
                         <GradientText
                             colors={["#ec4899", "#8b5cf6", "#ec4899", "#8b5cf6", "#ec4899"]}
                             animationSpeed={5}
                             showBorder={false}
-                            className="text-xl md:text-2xl font-medium"
+                            className="text-lg md:text-xl font-medium"
                         >
                             Creating digital magic with code and creativity ✨
                             Transforming ideas into beautiful, functional experiences
@@ -101,7 +101,7 @@ const Hero = () => {
                         <Button
                             size="lg"
                             onClick={handleContact}
-                            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg font-semibold shadow-[0_10px_40px_rgba(236,72,153,0.3)] hover:shadow-[0_15px_50px_rgba(236,72,153,0.4)] transition-all duration-300 hover:scale-105"
+                            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-base font-semibold shadow-[0_10px_40px_rgba(236,72,153,0.3)] hover:shadow-[0_15px_50px_rgba(236,72,153,0.4)] transition-all duration-300 hover:scale-105"
                         >
                             <Heart className="mr-2 h-5 w-5" fill="currentColor" />
                             Available for Collaborations
@@ -111,14 +111,14 @@ const Hero = () => {
                             size="lg"
                             variant="outline"
                             onClick={handleContact}
-                            className="rounded-full px-8 py-6 text-lg font-semibold border-2 border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-105"
+                            className="rounded-full px-8 py-6 text-base font-semibold border-2 border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-105"
                         >
                             <Sparkles className="mr-2 h-5 w-5" />
                             Let's Connect
                         </Button>
                     </div>
 
-                    <div className="flex justify-center gap-8 text-base text-muted-foreground mb-16">
+                    <div className="flex justify-center gap-8 text-sm text-muted-foreground mb-16">
                         <div className="flex items-center gap-2">
                             <span className="text-2xl">📍</span>
                             <span>Mumbai - India</span>
@@ -135,7 +135,7 @@ const Hero = () => {
                 <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
                     <div className="w-1.5 h-3 bg-primary rounded-full mt-2 animate-pulse" />
                 </div>
-                <span className="text-sm font-semibold text-primary">Scroll Down</span>
+                <span className="text-xs font-semibold text-primary">Scroll Down</span>
             </div>
         </section>
     );
