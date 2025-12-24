@@ -90,7 +90,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-muted/30 relative overflow-hidden">
+    <section id="skills" className="py-20 bg-gradient-to-br from-primary/10 via-background to-accent/10 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
