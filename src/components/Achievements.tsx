@@ -345,12 +345,15 @@ const Achievements = () => {
                                     ))}
                                 </div>
 
-                                {achievement.link !== "#" && (
+                                {achievement.image && (
                                     <Button
                                         size="sm"
                                         variant="outline"
                                         className="w-full rounded-full border-primary/50 hover:bg-primary/10 text-xs"
-                                        onClick={() => window.open(achievement.link, '_blank')}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setSelectedCertificate({ image: achievement.image, title: achievement.title });
+                                        }}
                                     >
                                         <ExternalLink className="mr-2 h-3 w-3" />
                                         View Credential
@@ -368,7 +371,7 @@ const Achievements = () => {
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
                     onClick={() => setSelectedCertificate(null)}
                 >
-                    <div className="relative max-w-5xl w-full max-h-[90vh] animate-fade-in">
+                    <div className="relative max-w-5xl w-full flex justify-center items-center animate-fade-in">
                         <button
                             onClick={() => setSelectedCertificate(null)}
                             className="absolute -top-12 right-0 p-2 bg-primary/20 hover:bg-primary/30 rounded-full transition-colors"
@@ -379,7 +382,7 @@ const Achievements = () => {
                         <img
                             src={selectedCertificate.image}
                             alt={`${selectedCertificate.title} Certificate - Full View`}
-                            className="w-full h-auto rounded-lg shadow-2xl"
+                            className="max-w-full max-h-[85vh] w-auto h-auto rounded-lg shadow-2xl object-contain"
                             onClick={(e) => e.stopPropagation()}
                         />
                     </div>
