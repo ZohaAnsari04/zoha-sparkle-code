@@ -99,12 +99,17 @@ export default {
           "0%": { transform: "translateX(-200px)" },
           "100%": { transform: "translateX(200px)" },
         },
+        "float-mini": {
+          "0%, 100%": { transform: "translateY(0) scale(1)" },
+          "50%": { transform: "translateY(-4px) scale(1.05)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         sparkle: "sparkle 2s infinite",
         float: "float 3s ease-in-out infinite",
+        "float-mini": "float-mini 2s ease-in-out infinite",
         "fade-in": "fade-in 0.5s ease-out",
         move: "move 5s linear infinite",
       },

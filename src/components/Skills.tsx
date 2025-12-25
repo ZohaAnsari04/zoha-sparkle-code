@@ -129,8 +129,8 @@ const Skills = () => {
             >
               {/* Icon */}
               <div className="w-12 h-12 flex-shrink-0">
-                <div className="w-full h-full rounded-full flex items-center justify-center bg-background/50 p-2 shadow-sm border border-white/10">
-                  <img src={skill.logo} alt={skill.name} className="w-full h-full object-contain" />
+                <div className="w-full h-full rounded-full flex items-center justify-center bg-[rgba(248,248,248,0.01)] shadow-[0px_0px_8px_0px_rgba(248,248,248,0.25)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)] md:animate-float-mini">
+                  <img src={skill.logo} alt={skill.name} className="w-full h-full object-contain p-2" />
                 </div>
               </div>
 
