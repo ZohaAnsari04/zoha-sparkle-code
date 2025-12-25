@@ -46,7 +46,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="min-h-fit md:min-h-screen flex items-start justify-center relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-20"
+            className="min-h-fit md:min-h-screen flex items-start justify-center relative overflow-hidden pt-20 pb-12 md:pt-32 md:pb-20"
             style={{
                 backgroundImage: `url(${heroImage})`,
                 backgroundSize: 'cover',
@@ -118,7 +118,7 @@ const Hero = () => {
                         </Button>
                     </div>
 
-                    <div className="flex justify-center gap-8 text-sm text-muted-foreground mb-16">
+                    <div className="flex justify-center gap-8 text-sm text-muted-foreground mb-8 md:mb-16">
                         <div className="flex items-center gap-2">
                             <span className="text-2xl">📍</span>
                             <span>Mumbai - India</span>

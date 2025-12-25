@@ -129,15 +129,9 @@ const Skills = () => {
             >
               {/* Icon */}
               <div className="w-12 h-12 flex-shrink-0">
-                <AnimatedIcons
-                  id={`skill-${skill.name.replace(/[^a-zA-Z0-9]/g, '-')}-${index}`}
-                  icons={[{
-                    icon: <img src={skill.logo} alt={skill.name} className="w-full h-full object-contain p-1" />,
-                    size: "md",
-                  }]}
-                  containerClassName="p-0 h-full w-full"
-                  showSparkles={false}
-                />
+                <div className="w-full h-full rounded-full flex items-center justify-center bg-background/50 p-2 shadow-sm border border-white/10">
+                  <img src={skill.logo} alt={skill.name} className="w-full h-full object-contain" />
+                </div>
               </div>
 
               {/* Skill Name */}
