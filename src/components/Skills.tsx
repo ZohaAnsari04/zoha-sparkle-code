@@ -91,9 +91,9 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-10 md:py-16 bg-gradient-to-br from-primary/10 via-background to-accent/10 relative overflow-hidden">
+    <section id="skills" className="py-12 bg-gradient-to-br from-primary/10 via-background to-accent/10 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
+        <div className="max-w-4xl mx-auto text-center mb-8 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">Skills</span> & Technologies
             <Heart className="inline-block ml-2 text-primary animate-sparkle" fill="currentColor" />
@@ -109,7 +109,7 @@ const Skills = () => {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === tab.key
+              className={`px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 ${activeTab === tab.key
                 ? "bg-primary text-primary-foreground shadow-lg scale-105"
                 : "bg-card border-2 border-border hover:border-primary/50 text-foreground hover:scale-105"
                 }`}
@@ -124,17 +124,18 @@ const Skills = () => {
           {skills[activeTab].map((skill, index) => (
             <div
               key={skill.name}
-              className="relative px-3 py-2 bg-gradient-to-br from-white/90 to-primary/10 dark:from-slate-900/90 dark:to-primary/20 backdrop-blur-sm rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:to-primary/20 group flex items-center gap-2"
+              className="relative px-3 py-2 bg-gradient-to-br from-white/90 to-primary/10 dark:from-slate-900/90 dark:to-primary/20 backdrop-blur-sm rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:to-primary/20 animate-fade-in group flex items-center gap-2"
+              style={{ animationDelay: `${index * 0.02}s` }}
             >
               {/* Icon */}
-              <div className="w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
+              <div className="w-8 h-8 flex-shrink-0">
                 <div className="w-full h-full rounded-full flex items-center justify-center bg-background/50 p-1.5 shadow-sm border border-white/10">
                   <img src={skill.logo} alt={skill.name} className="w-full h-full object-contain" />
                 </div>
               </div>
 
               {/* Skill Name */}
-              <span className="font-medium text-sm md:text-base text-foreground/90 group-hover:text-primary transition-colors whitespace-nowrap">
+              <span className="font-medium text-sm text-foreground/90 group-hover:text-primary transition-colors whitespace-nowrap">
                 {skill.name}
               </span>
             </div>
@@ -142,7 +143,7 @@ const Skills = () => {
         </div>
       </div>
 
-      <div className="mt-12 max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+      <div className="mt-8 max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
         <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 animate-fade-in h-full">
           {/* Animated Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-gradient bg-[length:200%_200%]"></div>
@@ -168,7 +169,7 @@ const Skills = () => {
               ].map((badge, i) => (
                 <div
                   key={i}
-                  className="px-6 py-3 bg-card/80 backdrop-blur-sm border-2 border-primary/30 rounded-full font-semibold text-base hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
+                  className="px-4 py-2 bg-card/80 backdrop-blur-sm border-2 border-primary/30 rounded-full font-semibold text-sm hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
                 >
                   <Heart className="inline-block mr-2 h-4 w-4 text-primary" fill="currentColor" />
                   {badge}
@@ -178,30 +179,33 @@ const Skills = () => {
           </div>
         </Card>
 
-        <Card className="p-8 rounded-3xl border-2 border-primary/30 h-full bg-card/50 backdrop-blur-sm">
-          <div className="flex flex-col h-full">
-            <h3 className="text-2xl font-bold mb-2 text-foreground">Built with Modern Tech</h3>
-            <p className="text-muted-foreground mb-6">This portfolio is crafted with the latest technologies for performance and experience.</p>
-
-            <div className="flex flex-wrap gap-4 justify-center items-center mt-auto">
-              <div className="w-16 h-16 p-2 bg-background/50 rounded-xl border border-border shadow-sm">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-full h-full object-contain" />
-              </div>
-              <div className="w-12 h-12 p-2 bg-background/50 rounded-xl border border-border shadow-sm">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" className="w-full h-full object-contain" />
-              </div>
-              <div className="w-16 h-16 p-2 bg-background/50 rounded-xl border border-border shadow-sm">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="w-full h-full object-contain" />
-              </div>
-              <div className="w-12 h-12 p-2 bg-background/50 rounded-xl border border-border shadow-sm">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" className="w-full h-full object-contain" />
-              </div>
-              <div className="w-10 h-10 p-2 bg-background/50 rounded-xl border border-border shadow-sm">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-full h-full object-contain" />
-              </div>
-            </div>
-          </div>
-        </Card>
+        <AnimatedCard
+          title="Built with Modern Tech"
+          description="This portfolio is crafted with the latest technologies for performance and experience."
+          icons={[
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-full h-full object-contain" />,
+              size: "lg",
+            },
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" className="w-full h-full object-contain" />,
+              size: "md",
+            },
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="w-full h-full object-contain" />,
+              size: "lg",
+            },
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" className="w-full h-full object-contain" />,
+              size: "md",
+            },
+            {
+              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-full h-full object-contain" />,
+              size: "sm",
+            },
+          ]}
+          className="h-full"
+        />
       </div>
     </section>
   );
