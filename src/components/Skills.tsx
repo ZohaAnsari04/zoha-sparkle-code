@@ -91,9 +91,9 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-12 bg-gradient-to-br from-primary/10 via-background to-accent/10 relative overflow-hidden">
+    <section id="skills" className="py-20 bg-gradient-to-br from-primary/10 via-background to-accent/10 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-8 animate-fade-in">
+        <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">Skills</span> & Technologies
             <Heart className="inline-block ml-2 text-primary animate-sparkle" fill="currentColor" />
@@ -109,7 +109,7 @@ const Skills = () => {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 ${activeTab === tab.key
+              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === tab.key
                 ? "bg-primary text-primary-foreground shadow-lg scale-105"
                 : "bg-card border-2 border-border hover:border-primary/50 text-foreground hover:scale-105"
                 }`}
@@ -124,18 +124,18 @@ const Skills = () => {
           {skills[activeTab].map((skill, index) => (
             <div
               key={skill.name}
-              className="relative px-3 py-2 bg-gradient-to-br from-white/90 to-primary/10 dark:from-slate-900/90 dark:to-primary/20 backdrop-blur-sm rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:to-primary/20 animate-fade-in group flex items-center gap-2"
+              className="relative px-4 py-2.5 bg-gradient-to-br from-white/90 to-primary/10 dark:from-slate-900/90 dark:to-primary/20 backdrop-blur-sm rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:to-primary/20 animate-fade-in group flex items-center gap-3"
               style={{ animationDelay: `${index * 0.02}s` }}
             >
               {/* Icon */}
-              <div className="w-8 h-8 flex-shrink-0">
-                <div className="w-full h-full rounded-full flex items-center justify-center bg-background/50 p-1.5 shadow-sm border border-white/10">
+              <div className="w-12 h-12 flex-shrink-0">
+                <div className="w-full h-full rounded-full flex items-center justify-center bg-background/50 p-2 shadow-sm border border-white/10">
                   <img src={skill.logo} alt={skill.name} className="w-full h-full object-contain" />
                 </div>
               </div>
 
               {/* Skill Name */}
-              <span className="font-medium text-sm text-foreground/90 group-hover:text-primary transition-colors whitespace-nowrap">
+              <span className="font-medium text-lg text-foreground/90 group-hover:text-primary transition-colors whitespace-nowrap">
                 {skill.name}
               </span>
             </div>
@@ -143,7 +143,7 @@ const Skills = () => {
         </div>
       </div>
 
-      <div className="mt-8 max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+      <div className="mt-12 max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
         <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 animate-fade-in h-full">
           {/* Animated Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-gradient bg-[length:200%_200%]"></div>
@@ -169,7 +169,7 @@ const Skills = () => {
               ].map((badge, i) => (
                 <div
                   key={i}
-                  className="px-4 py-2 bg-card/80 backdrop-blur-sm border-2 border-primary/30 rounded-full font-semibold text-sm hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
+                  className="px-6 py-3 bg-card/80 backdrop-blur-sm border-2 border-primary/30 rounded-full font-semibold text-base hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
                 >
                   <Heart className="inline-block mr-2 h-4 w-4 text-primary" fill="currentColor" />
                   {badge}
