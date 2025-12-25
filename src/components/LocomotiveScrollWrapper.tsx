@@ -21,10 +21,10 @@ const LocomotiveScrollWrapper = ({ children, onMount }: LocomotiveScrollWrapperP
             multiplier: 1,
             class: 'is-revealed',
             smartphone: {
-                smooth: false
+                smooth: true
             },
             tablet: {
-                smooth: false
+                smooth: true
             }
         });
 
