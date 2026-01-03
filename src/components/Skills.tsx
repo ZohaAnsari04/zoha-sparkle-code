@@ -166,7 +166,7 @@ const Skills = () => {
 
           <div className="text-center relative z-10">
             <h3 className="text-2xl font-bold mb-4 gradient-text">
-              Top Superpowers
+              Core Strengths
             </h3>
             <div className="flex flex-wrap justify-center gap-3">
               {[

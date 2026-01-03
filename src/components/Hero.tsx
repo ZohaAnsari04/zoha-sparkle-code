@@ -91,7 +91,7 @@ const Hero = () => {
                             showBorder={false}
                             className="text-lg md:text-xl font-medium"
                         >
-                            Creating digital magic with code and creativity ✨
+                            Frontend Engineer building performant, scalable web applications with React, Next.js, and TypeScript.
                             Transforming ideas into beautiful, functional experiences
                             that make the web a more delightful place! 💖
                         </GradientText>
