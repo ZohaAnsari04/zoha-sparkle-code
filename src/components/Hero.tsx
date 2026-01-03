@@ -104,7 +104,7 @@ const Hero = () => {
                             className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-base font-semibold shadow-[0_10px_40px_rgba(236,72,153,0.3)] hover:shadow-[0_15px_50px_rgba(236,72,153,0.4)] transition-all duration-300 hover:scale-105"
                         >
                             <Heart className="mr-2 h-5 w-5" fill="currentColor" />
-                            Available for Collaborations
+                            Open to Frontend Roles & Internships
                         </Button>
 
                         <Button

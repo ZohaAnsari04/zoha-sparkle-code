@@ -27,7 +27,7 @@ const projects = [
   {
     name: "SPLITSYNC- Smart Expense Tracker",
     image: project1,
-    description: "A smart expense tracker that automatically splits costs, tracks balances, and keeps every rupee accountable. Perfect for friends, trips, and shared living",
+    description: "SplitSync is a smart expense management web app designed for groups, trips, and shared living. It automates expense splitting, balance calculation, and settlement tracking, eliminating manual calculations and confusion.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     demo: "https://splitsync-umber.vercel.app/",
     github: "#"
@@ -35,7 +35,7 @@ const projects = [
   {
     name: "PhishEye",
     image: project2,
-    description: "An OSINT-powered detection system that monitors the open web in real time to expose phishing and scam sites instantly",
+    description: "PhishEye is a real-time phishing detection system that monitors open web sources to identify malicious domains and scam activity. The platform helps users and organizations quickly assess threats before interacting with suspicious links. sites instantly",
     tech: ["React", "Tailwind CSS", "Python"],
     demo: "https://phisheye.vercel.app/",
     github: "#"
@@ -43,7 +43,7 @@ const projects = [
   {
     name: "ClarityWorks",
     image: project3,
-    description: "Clarity Works is a freelance service platform delivering modern web, blockchain, and AI-driven solutions with a focus on performance, security, and scalability. Built for clients who want results, not just designs.",
+    description: "ClarityWorks is a freelance service platform delivering modern web, blockchain, and AI-driven solutions. Built for performance, scalability, and clean UX, it showcases how technical execution directly supports business outcomes..",
     tech: ["TypeScript", "React", "Tailwind CSS"],
   },
   {
