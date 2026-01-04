@@ -47,11 +47,6 @@ const Hero = () => {
         <section
             id="hero"
             className="min-h-screen flex items-start justify-center relative overflow-hidden pt-28 md:pt-32"
-            style={{
-                backgroundImage: `url(${heroImage})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-            }}
         >
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90" />
 

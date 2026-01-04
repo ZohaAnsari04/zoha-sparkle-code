@@ -124,7 +124,7 @@ const Skills = () => {
           {skills[activeTab].map((skill, index) => (
             <div
               key={skill.name}
-              className="relative px-4 py-2.5 bg-gradient-to-br from-white/90 to-primary/10 dark:from-slate-900/90 dark:to-primary/20 backdrop-blur-sm rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:to-primary/20 animate-fade-in group flex items-center gap-3"
+              className="relative px-4 py-2.5 bg-gradient-to-br from-card/90 to-primary/10 backdrop-blur-sm rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:to-primary/20 animate-fade-in group flex items-center gap-3"
               style={{ animationDelay: `${index * 0.02}s` }}
             >
               {/* Icon */}
