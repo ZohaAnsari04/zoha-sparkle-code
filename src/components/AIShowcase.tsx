@@ -1,7 +1,9 @@
-import { motion } from "framer-motion";
-import { Image, Video, Film, Youtube, Sparkles, Play, Aperture, Clapperboard } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Image, Video, Film, Youtube, Sparkles, Play, Aperture, Clapperboard, X } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Component as ImageAutoSlider } from "@/components/ui/image-auto-slider";
 
 const aiProjects = [
     {
@@ -10,6 +12,7 @@ const aiProjects = [
         icon: <Image className="w-8 h-8 text-purple-400" />,
         color: "from-purple-500 to-pink-500",
         delay: 0.1,
+        action: "open-slider"
     },
     {
         title: "Cinematic Trailers",
@@ -35,6 +38,14 @@ const aiProjects = [
 ];
 
 const AIShowcase = () => {
+    const [showImageSlider, setShowImageSlider] = useState(false);
+
+    const handleCardClick = (action?: string) => {
+        if (action === "open-slider") {
+            setShowImageSlider(true);
+        }
+    };
+
     return (
         <section className="py-24 relative overflow-hidden bg-black text-white">
             {/* Background Elements */}
@@ -69,6 +80,8 @@ const AIShowcase = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: project.delay }}
                             viewport={{ once: true }}
+                            onClick={() => handleCardClick(project.action)}
+                            className={project.action ? "cursor-pointer" : ""}
                         >
                             <Card className="h-full bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-gray-700 transition-all duration-300 overflow-hidden group">
                                 <div className="p-6 h-full flex flex-col">
@@ -134,6 +147,32 @@ const AIShowcase = () => {
                     </div>
                 </motion.div>
             </div>
+
+            {/* Image Slider Modal */}
+            <AnimatePresence>
+                {showImageSlider && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 bg-black flex flex-col"
+                    >
+                        <div className="absolute top-4 right-4 z-50">
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => setShowImageSlider(false)}
+                                className="text-white hover:bg-white/20 rounded-full w-12 h-12"
+                            >
+                                <X className="w-8 h-8" />
+                            </Button>
+                        </div>
+                        <div className="flex-grow overflow-hidden">
+                            <ImageAutoSlider />
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };
