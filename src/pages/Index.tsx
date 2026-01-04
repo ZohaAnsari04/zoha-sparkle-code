@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import AIShowcase from "@/components/AIShowcase";
 import Skills from "@/components/Skills";
 import Achievements from "@/components/Achievements";
 import Education from "@/components/Education";
@@ -36,6 +37,9 @@ const Index = () => {
           </SectionReveal>
           <SectionReveal>
             <Projects />
+          </SectionReveal>
+          <SectionReveal>
+            <AIShowcase />
           </SectionReveal>
           <SectionReveal>
             <Skills />
