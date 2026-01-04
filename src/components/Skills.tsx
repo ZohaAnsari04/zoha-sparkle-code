@@ -3,12 +3,12 @@ import { Heart } from "lucide-react";
 import { useState } from "react";
 import hardhatLogo from "@/assets/hardhat-logo.png";
 import ipfsLogo from "@/assets/ipfs-logo.png";
-import { AnimatedCard, AnimatedIcons } from "@/components/ui/feature-block-animated-card";
+import { AnimatedIcons } from "@/components/ui/feature-block-animated-card";
 
 const skills = {
   all: [
     { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", className: "dark:invert" },
     { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
     { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
     { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
@@ -21,13 +21,13 @@ const skills = {
     { name: "C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
     { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
     { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-    { name: "Solidity", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+    { name: "Solidity", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg", className: "dark:invert" },
     { name: "Ethereum", logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg" },
     { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+    { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg", className: "dark:invert" },
     { name: "Hardhat", logo: hardhatLogo },
     { name: "IPFS", logo: ipfsLogo },
-    { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", className: "dark:invert" },
     { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
     { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
     { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
@@ -41,7 +41,7 @@ const skills = {
   ],
   frontend: [
     { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", className: "dark:invert" },
     { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
     { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
     { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
@@ -57,15 +57,15 @@ const skills = {
     { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" }
   ],
   blockchain: [
-    { name: "Solidity", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+    { name: "Solidity", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg", className: "dark:invert" },
     { name: "Ethereum", logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg" },
     { name: "Ethers.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+    { name: "Smart Contracts", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg", className: "dark:invert" },
     { name: "Hardhat", logo: hardhatLogo },
     { name: "IPFS", logo: ipfsLogo }
   ],
   tools: [
-    { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", className: "dark:invert" },
     { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
     { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
     { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
@@ -132,7 +132,7 @@ const Skills = () => {
                 <AnimatedIcons
                   id={`skill-${skill.name.replace(/[^a-zA-Z0-9]/g, '-')}-${index}`}
                   icons={[{
-                    icon: <img src={skill.logo} alt={skill.name} className="w-full h-full object-contain p-1" />,
+                    icon: <img src={skill.logo} alt={skill.name} className={`w-full h-full object-contain p-1 ${(skill as any).className || ""}`} />,
                     size: "md",
                   }]}
                   containerClassName="p-0 h-full w-full"
@@ -149,8 +149,8 @@ const Skills = () => {
         </div>
       </div>
 
-      <div className="mt-12 max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-        <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 animate-fade-in h-full">
+      <div className="mt-12 max-w-4xl mx-auto">
+        <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 animate-fade-in">
           {/* Animated Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-gradient bg-[length:200%_200%]"></div>
 
@@ -184,34 +184,6 @@ const Skills = () => {
             </div>
           </div>
         </Card>
-
-        <AnimatedCard
-          title="Built with Modern Tech"
-          description="This portfolio is crafted with the latest technologies for performance and experience."
-          icons={[
-            {
-              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-full h-full object-contain" />,
-              size: "lg",
-            },
-            {
-              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" className="w-full h-full object-contain" />,
-              size: "md",
-            },
-            {
-              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="w-full h-full object-contain" />,
-              size: "lg",
-            },
-            {
-              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" className="w-full h-full object-contain" />,
-              size: "md",
-            },
-            {
-              icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-full h-full object-contain" />,
-              size: "sm",
-            },
-          ]}
-          className="h-full"
-        />
       </div>
     </section>
   );
