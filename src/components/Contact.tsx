@@ -70,8 +70,9 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <Card
             className="p-8 bg-card rounded-3xl shadow-[0_0_30px_rgba(236,72,153,0.3)] border-2 border-border hover:border-primary/50 transition-all duration-300 animate-fade-in hover:shadow-[0_0_40px_rgba(236,72,153,0.5)] bg-cover bg-center relative overflow-hidden"
-            style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${contactBg})` }}
+            style={{ backgroundImage: `url(${contactBg})` }}
           >
+            <div className="absolute inset-0 bg-white/75 dark:bg-black/75 transition-colors duration-300" />
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div>
                 <label className="block text-sm font-semibold mb-2 text-foreground">
@@ -83,7 +84,7 @@ const Contact = () => {
                   placeholder="Enter your lovely name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors bg-black/20 backdrop-blur-sm"
+                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors bg-white/50 dark:bg-black/20 backdrop-blur-sm"
                   required
                   disabled={isSubmitting}
                 />
@@ -99,7 +100,7 @@ const Contact = () => {
                   placeholder="your.email@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors bg-black/20 backdrop-blur-sm"
+                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors bg-white/50 dark:bg-black/20 backdrop-blur-sm"
                   required
                   disabled={isSubmitting}
                 />
@@ -114,7 +115,7 @@ const Contact = () => {
                   placeholder="Tell me about your project or just say hi! 👋"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors min-h-[150px] resize-none bg-black/20 backdrop-blur-sm"
+                  className="rounded-2xl border-2 border-border focus:border-primary transition-colors min-h-[150px] resize-none bg-white/50 dark:bg-black/20 backdrop-blur-sm"
                   required
                   disabled={isSubmitting}
                 />
