@@ -113,7 +113,7 @@ const AIShowcase = () => {
                                 </div>
                             </Card>
                         </DialogTrigger>
-                        <DialogContent className="max-w-5xl bg-black/90 border-purple-500/20 backdrop-blur-xl p-0 overflow-hidden">
+                        <DialogContent className="max-w-[95vw] bg-black/90 border-purple-500/20 backdrop-blur-xl p-0 overflow-hidden">
                             <DialogTitle className="sr-only">AI Art Gallery</DialogTitle>
                             <AIArtGallery />
                         </DialogContent>
