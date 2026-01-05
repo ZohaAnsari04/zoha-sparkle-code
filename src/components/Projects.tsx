@@ -76,7 +76,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 bg-muted/30">
+    <section id="projects" className="py-20 relative">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -92,7 +92,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group relative overflow-hidden bg-card rounded-3xl border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] animate-fade-in"
+              className="group relative overflow-hidden bg-gray-900/40 backdrop-blur-md rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(168,85,247,0.2)] animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Animated Background */}

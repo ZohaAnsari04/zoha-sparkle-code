@@ -14,6 +14,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
 import LocomotiveScrollWrapper from "@/components/LocomotiveScrollWrapper";
 import SectionReveal from "@/components/SectionReveal";
+import BackgroundBlobs from "@/components/BackgroundBlobs";
 import { useState } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 
@@ -23,6 +24,7 @@ const Index = () => {
   return (
     <>
       <Preloader />
+      <BackgroundBlobs />
       <ScrollProgress />
       <BackToTop scrollInstance={scrollInstance} />
       <Header />

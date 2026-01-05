@@ -3,7 +3,7 @@ import { GraduationCap, Award, BookOpen, Sparkles } from "lucide-react";
 
 const Education = () => {
     return (
-        <section id="education" className="py-20 bg-background relative overflow-hidden">
+        <section id="education" className="py-20 relative overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -17,7 +17,7 @@ const Education = () => {
                 </div>
 
                 <div className="max-w-4xl mx-auto">
-                    <Card className="p-8 md:p-12 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgba(236,72,153,0.2)] border-2 border-primary/30 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_15px_50px_rgba(236,72,153,0.3)] animate-fade-in relative overflow-hidden group">
+                    <Card className="p-8 md:p-12 bg-gray-900/40 backdrop-blur-md rounded-3xl shadow-[0_8px_30px_rgba(236,72,153,0.2)] border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_0_50px_rgba(168,85,247,0.2)] animate-fade-in relative overflow-hidden group">
                         {/* Glossy overlay effect */}
                         <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50 pointer-events-none"></div>
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
@@ -104,7 +104,7 @@ const Education = () => {
 
                 {/* Additional Info Card */}
                 <div className="max-w-4xl mx-auto mt-8">
-                    <Card className="p-6 bg-gradient-to-br from-card/80 via-card/60 to-card/80 backdrop-blur-lg rounded-3xl border-2 border-border hover:border-primary/30 transition-all duration-300 animate-fade-in relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(236,72,153,0.15)]">
+                    <Card className="p-6 bg-gray-900/40 backdrop-blur-md rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 animate-fade-in relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]">
                         {/* Glossy shine effect */}
                         <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
 

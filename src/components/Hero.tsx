@@ -48,7 +48,7 @@ const Hero = () => {
             id="hero"
             className="min-h-screen flex items-start justify-center relative overflow-hidden pt-28 md:pt-32"
         >
-            <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/80" />
 
             <div className="container mx-auto px-4 pt-0 pb-20 relative z-10">
                 <div className="max-w-4xl mx-auto text-center animate-fade-in">
