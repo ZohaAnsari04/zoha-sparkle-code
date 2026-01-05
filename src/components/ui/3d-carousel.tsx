@@ -8,6 +8,7 @@ import {
     useMotionValue,
     useTransform,
 } from "framer-motion"
+import { X } from "lucide-react"
 
 export const useIsomorphicLayoutEffect =
     typeof window !== "undefined" ? useLayoutEffect : useEffect
@@ -163,10 +164,28 @@ export function ThreeDPhotoCarousel({ images }: { images: string[] }) {
         controls.stop()
     }
 
-    const handleClose = () => {
+    const handleClose = (e?: React.MouseEvent | KeyboardEvent) => {
+        e?.stopPropagation();
         setActiveImg(null)
         setIsCarouselActive(true)
     }
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape" && activeImg) {
+                e.stopPropagation(); // Prevent Dialog from closing
+                handleClose(e);
+            }
+        }
+
+        if (activeImg) {
+            window.addEventListener("keydown", handleKeyDown, true); // Capture phase to prevent Dialog closing
+        }
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown, true);
+        }
+    }, [activeImg]);
 
     return (
         <motion.div layout className="relative w-full h-full">
@@ -178,11 +197,17 @@ export function ThreeDPhotoCarousel({ images }: { images: string[] }) {
                         exit={{ opacity: 0, scale: 0 }}
                         layoutId={`img-container-${activeImg}`}
                         layout="position"
-                        onClick={handleClose}
-                        className="fixed inset-0 bg-black/90 flex items-center justify-center z-[60] p-4"
+                        className="fixed inset-0 bg-black/95 flex items-center justify-center z-[60] p-4"
                         style={{ willChange: "opacity" }}
                         transition={transitionOverlay}
                     >
+                        <button
+                            onClick={handleClose}
+                            className="absolute top-4 right-4 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors z-50 backdrop-blur-sm border border-white/10"
+                        >
+                            <X className="w-6 h-6" />
+                            <span className="sr-only">Close Image</span>
+                        </button>
                         <motion.img
                             layoutId={`img-${activeImg}`}
                             src={activeImg}
