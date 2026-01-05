@@ -57,18 +57,12 @@ const aiImages = [
     aiArt26, aiArt27, aiArt28, aiArt29
 ];
 
-import { Carousel as Carousel3D } from "@/components/ui/carousel-3d";
+import { ThreeDPhotoCarousel } from "@/components/ui/3d-carousel";
 
 const AIArtGallery = () => {
-    const slides = aiImages.map((img) => ({
-        title: "",
-        button: "",
-        src: img
-    }));
-
     return (
         <div className="relative w-full h-[80vh] flex items-center justify-center bg-black overflow-hidden">
-            <Carousel3D slides={slides} />
+            <ThreeDPhotoCarousel images={aiImages} />
 
             <DialogClose className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-white/20 transition-colors border border-white/10">
                 <X className="h-6 w-6" />
