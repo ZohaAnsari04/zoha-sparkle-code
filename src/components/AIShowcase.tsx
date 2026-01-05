@@ -80,10 +80,11 @@ const AIShowcase = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: project.delay }}
                             viewport={{ once: true }}
-                            onClick={() => handleCardClick(project.action)}
-                            className={project.action ? "cursor-pointer" : ""}
                         >
-                            <Card className="h-full bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-gray-700 transition-all duration-300 overflow-hidden group">
+                            <Card
+                                onClick={() => handleCardClick(project.action)}
+                                className={`h-full bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-gray-700 transition-all duration-300 overflow-hidden group ${project.action ? "cursor-pointer" : ""}`}
+                            >
                                 <div className="p-6 h-full flex flex-col">
                                     <div className="mb-4 p-3 rounded-2xl bg-gray-800/50 w-fit group-hover:scale-110 transition-transform duration-300">
                                         {project.icon}

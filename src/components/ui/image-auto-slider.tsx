@@ -3,13 +3,18 @@ import img2 from "@/assets/ai-art/ai-art-2.jpg";
 import img3 from "@/assets/ai-art/ai-art-3.jpg";
 import img4 from "@/assets/ai-art/ai-art-4.jpg";
 import img5 from "@/assets/ai-art/ai-art-5.jpg";
+import img6 from "@/assets/ai-art/ai-art-6.jpg";
+import img7 from "@/assets/ai-art/ai-art-7.jpg";
+import img8 from "@/assets/ai-art/ai-art-8.jpg";
+import img9 from "@/assets/ai-art/ai-art-9.jpg";
+import img10 from "@/assets/ai-art/ai-art-10.jpg";
 
 export const Component = () => {
   // Images for the infinite scroll - using imported assets
-  const images = [img1, img2, img3, img4, img5];
+  const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
   // Duplicate images for seamless loop
-  const duplicatedImages = [...images, ...images, ...images, ...images]; // Increased duplication for smoother loop with fewer images
+  const duplicatedImages = [...images, ...images]; // Reduced duplication since we have more images now
 
   return (
     <>
