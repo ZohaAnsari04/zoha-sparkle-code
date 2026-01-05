@@ -281,7 +281,7 @@ const Achievements = () => {
     }, [selectedCertificate]);
 
     return (
-        <section id="achievements" className="py-20 relative overflow-hidden">
+        <section id="achievements" className="py-20 bg-background dark:bg-transparent relative overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -297,7 +297,7 @@ const Achievements = () => {
                     {achievements.map((achievement, index) => (
                         <DisplayCard
                             key={index}
-                            className="group relative overflow-hidden h-auto w-full flex-col justify-start gap-0 p-0 bg-gray-900/40 backdrop-blur-md border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_0_50px_rgba(168,85,247,0.2)] [&>*]:flex-col [&>*]:items-stretch [&>*]:gap-0"
+                            className="group relative overflow-hidden h-auto w-full flex-col justify-start gap-0 p-0 bg-card dark:bg-gray-900/40 dark:backdrop-blur-md border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] dark:hover:shadow-[0_0_50px_rgba(168,85,247,0.2)] hover:bg-card/50 dark:hover:bg-gray-900/50 [&>*]:flex-col [&>*]:items-stretch [&>*]:gap-0"
                             style={{ animationDelay: `${index * 0.1}s` }}
                         >
                             {/* Animated Background */}

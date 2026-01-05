@@ -30,23 +30,24 @@ const SocialSidebar = () => {
 
     return (
         <div className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block animate-fade-in">
-            <div className="flex flex-col gap-4 p-4 bg-card/80 backdrop-blur-md rounded-2xl border-2 border-border shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex flex-col gap-4 p-4 bg-card/80 dark:bg-gray-900/30 backdrop-blur-xl rounded-full border-2 border-border dark:border-white/10 shadow-lg dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-xl dark:hover:shadow-[0_8px_32px_rgba(236,72,153,0.2)] transition-all duration-300">
                 {socialLinks.map((social, index) => (
                     <a
                         key={social.name}
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`p-3 rounded-xl bg-muted hover:bg-primary/10 transition-all duration-300 hover:scale-110 hover:rotate-6 group animate-fade-in`}
+                        className={`p-3 rounded-full bg-muted dark:bg-white/5 border border-transparent dark:border-white/5 hover:bg-primary/10 dark:hover:bg-white/10 dark:hover:border-white/20 transition-all duration-300 hover:scale-110 hover:rotate-6 group animate-fade-in relative overflow-hidden`}
                         style={{ animationDelay: `${index * 0.1}s` }}
                         title={social.name}
                     >
-                        <social.icon className={`w-6 h-6 ${social.color} group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`} />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <social.icon className={`w-5 h-5 ${social.color} group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 relative z-10`} />
                     </a>
                 ))}
 
                 {/* Animated Decorative line */}
-                <div className="h-16 w-0.5 bg-gradient-to-b from-primary via-accent to-secondary mx-auto animate-pulse"></div>
+                <div className="h-16 w-0.5 bg-gradient-to-b from-primary via-accent to-secondary dark:from-transparent dark:via-purple-500 dark:to-transparent mx-auto opacity-50"></div>
             </div>
         </div>
     );

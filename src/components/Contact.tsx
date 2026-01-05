@@ -55,7 +55,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
+    <section id="contact" className="py-20 bg-muted/30 dark:bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -134,7 +134,7 @@ const Contact = () => {
           </Card>
 
           <div className="space-y-6">
-            <Card className="p-8 bg-gray-900/40 backdrop-blur-md rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-primary/30 dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
@@ -160,7 +160,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-8 bg-gray-900/40 backdrop-blur-md rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 animate-fade-in shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]">
+            <Card className="p-8 bg-card dark:bg-gray-900/40 dark:backdrop-blur-md rounded-3xl border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]">
               <h3 className="text-xl font-bold mb-4 text-center text-foreground">
                 Connect with me
                 <Heart className="inline-block ml-2 text-primary" fill="currentColor" size={20} />

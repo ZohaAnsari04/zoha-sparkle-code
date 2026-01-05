@@ -91,7 +91,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 relative overflow-hidden">
+    <section id="skills" className="py-20 bg-gradient-to-br from-primary/10 via-background to-accent/10 dark:from-transparent dark:via-transparent dark:to-transparent relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -110,8 +110,8 @@ const Skills = () => {
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === tab.key
-                ? "bg-purple-600 text-white shadow-[0_0_20px_rgba(168,85,247,0.4)] scale-105"
-                : "bg-gray-900/40 backdrop-blur-md border border-white/10 hover:border-purple-500/50 text-gray-300 hover:scale-105"
+                ? "bg-primary text-primary-foreground shadow-lg dark:bg-purple-600 dark:text-white dark:shadow-[0_0_20px_rgba(168,85,247,0.4)] scale-105"
+                : "bg-card border-2 border-border hover:border-primary/50 text-foreground dark:bg-gray-900/40 dark:backdrop-blur-md dark:border-white/10 dark:hover:border-purple-500/50 dark:text-gray-300 hover:scale-105"
                 }`}
             >
               {tab.label}
@@ -124,7 +124,7 @@ const Skills = () => {
           {skills[activeTab].map((skill, index) => (
             <div
               key={skill.name}
-              className="relative px-4 py-2.5 bg-gray-900/40 backdrop-blur-md rounded-lg border border-white/10 hover:border-purple-500/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] animate-fade-in group flex items-center gap-3"
+              className="relative px-4 py-2.5 bg-gradient-to-br from-card/90 to-primary/10 dark:bg-none dark:bg-gray-900/40 backdrop-blur-sm dark:backdrop-blur-md rounded-lg border border-primary/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] dark:hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] animate-fade-in group flex items-center gap-3"
               style={{ animationDelay: `${index * 0.02}s` }}
             >
               {/* Icon */}
@@ -150,7 +150,7 @@ const Skills = () => {
       </div>
 
       <div className="mt-12 max-w-4xl mx-auto">
-        <Card className="relative overflow-hidden p-8 rounded-3xl border border-white/10 bg-gray-900/40 backdrop-blur-md animate-fade-in">
+        <Card className="relative overflow-hidden p-8 rounded-3xl border-2 border-primary/30 dark:border-white/10 bg-card dark:bg-gray-900/40 dark:backdrop-blur-md animate-fade-in">
           {/* Animated Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-gradient bg-[length:200%_200%]"></div>
 

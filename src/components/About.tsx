@@ -9,7 +9,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden">
+    <section id="about" className="py-20 bg-background dark:bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -20,7 +20,7 @@ const About = () => {
         </div>
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mb-12">
-          <Card className="p-8 bg-gray-900/40 backdrop-blur-md rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_0_50px_rgba(168,85,247,0.2)] animate-fade-in relative overflow-hidden">
+          <Card className="p-8 bg-card dark:bg-gray-900/40 dark:backdrop-blur-md rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] dark:hover:shadow-[0_0_50px_rgba(168,85,247,0.2)] animate-fade-in relative overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
               <img
@@ -28,7 +28,7 @@ const About = () => {
                 alt="Profile Background"
                 className="w-full h-full object-cover opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/60"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/85 dark:from-black/80 dark:via-black/70 dark:to-black/60"></div>
             </div>
 
             {/* Content */}
@@ -52,7 +52,7 @@ const About = () => {
           </Card>
 
           <div className="space-y-6">
-            <Card className="p-6 bg-gray-900/40 backdrop-blur-md rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-6 bg-gradient-to-br from-primary/10 to-accent/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-primary/30 dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
                   <Code2 className="text-primary" />
@@ -66,7 +66,7 @@ const About = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-gray-900/40 backdrop-blur-md rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-6 bg-gradient-to-br from-secondary/20 to-primary/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-secondary/30 dark:border-white/10 hover:border-secondary/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
                   <Blocks className="text-secondary" />
@@ -80,7 +80,7 @@ const About = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-gray-900/40 backdrop-blur-md rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-6 bg-gradient-to-br from-accent/10 to-secondary/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-accent/30 dark:border-white/10 hover:border-accent/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
                   <Brain className="text-accent" />
@@ -94,7 +94,7 @@ const About = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-gray-900/40 backdrop-blur-md rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-purple-400/30 dark:border-white/10 hover:border-purple-400/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center">
                   <Wand2 className="text-purple-500" />
