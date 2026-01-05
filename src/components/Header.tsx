@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Home, User, FolderKanban, Lightbulb, Award, GraduationCap, Mail, Download } from "lucide-react";
+import { Menu, X, Home, User, FolderKanban, Lightbulb, Award, GraduationCap, Mail, Download, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -59,6 +59,7 @@ const Header = () => {
         { name: "Home", href: "#", icon: Home },
         { name: "About Me", href: "#about", icon: User },
         { name: "Projects", href: "#projects", icon: FolderKanban },
+        { name: "AI Studio", href: "#ai-showcase", icon: Sparkles },
         { name: "Skills", href: "#skills", icon: Lightbulb },
         { name: "Achievements", href: "#achievements", icon: Award },
         { name: "Education", href: "#education", icon: GraduationCap },
