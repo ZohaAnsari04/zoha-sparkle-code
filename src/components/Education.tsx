@@ -70,7 +70,7 @@ const Education = () => {
                                     <Award className="text-accent" size={28} />
                                     <div className="flex items-baseline gap-3">
                                         <span className="text-3xl md:text-4xl font-bold gradient-text">
-                                            8.96
+                                            8.36
                                         </span>
                                         <span className="text-xl text-muted-foreground font-semibold">
                                             CGPA

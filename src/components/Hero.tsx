@@ -62,7 +62,7 @@ const Hero = () => {
                         <Sparkles className="absolute -bottom-4 -left-4 text-accent w-8 h-8 animate-sparkle" />
                     </div>
 
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 min-h-[5rem] whitespace-nowrap">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 min-h-[3rem] md:min-h-[5rem] break-words">
                         <span className="gradient-text">
                             {displayedText}
                             <span className="animate-pulse">|</span>

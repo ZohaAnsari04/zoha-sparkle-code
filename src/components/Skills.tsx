@@ -141,7 +141,7 @@ const Skills = () => {
               </div>
 
               {/* Skill Name */}
-              <span className="font-medium text-lg text-foreground/90 group-hover:text-primary transition-colors whitespace-nowrap">
+              <span className="font-medium text-lg text-foreground/90 group-hover:text-primary transition-colors">
                 {skill.name}
               </span>
             </div>
