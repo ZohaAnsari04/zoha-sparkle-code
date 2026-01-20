@@ -12,39 +12,12 @@ const LocomotiveScrollWrapper = ({ children, onMount }: LocomotiveScrollWrapperP
     const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null);
 
     useEffect(() => {
-        if (!scrollRef.current) return;
-
-        // Initialize Locomotive Scroll
-        locomotiveScrollRef.current = new LocomotiveScroll({
-            el: scrollRef.current,
-            smooth: true,
-            multiplier: 1,
-            class: 'is-revealed',
-            smartphone: {
-                smooth: true
-            },
-            tablet: {
-                smooth: true
-            }
-        });
-
+        // Locomotive Scroll disabled to fix scroll lag/stuck issues
+        // Native browser scroll is now used
         if (onMount) {
-            onMount(locomotiveScrollRef.current);
+            // onMount(null); 
         }
-
-        // Update scroll on window resize
-        const handleResize = () => {
-            locomotiveScrollRef.current?.update();
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            locomotiveScrollRef.current?.destroy();
-        };
-    }, []);
+    }, [onMount]);
 
     return (
         <div ref={scrollRef} data-scroll-container>

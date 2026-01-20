@@ -111,58 +111,27 @@
 }
 
 /* Locomotive Scroll Custom Styles */
-html.has-scroll-smooth {
-    overflow: hidden;
+/* Locomotive Scroll Styles Removed for native performance */
+html {
+    scroll-behavior: smooth;
 }
 
-html.has-scroll-dragging {
-    user-select: none;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
 }
 
-.has-scroll-smooth body {
-    overflow: hidden;
+::-webkit-scrollbar-track {
+    background: hsl(var(--background));
 }
 
-.has-scroll-init,
-.has-scroll-smooth {
-    overflow: hidden;
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 5px;
 }
 
-.c-scrollbar {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 11px;
-    height: 100%;
-    transform-origin: center right;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 0;
-}
-
-.c-scrollbar:hover {
-    transform: scaleX(1.45);
-}
-
-.c-scrollbar:hover,
-.has-scroll-scrolling .c-scrollbar,
-.has-scroll-dragging .c-scrollbar {
-    opacity: 1;
-}
-
-.c-scrollbar_thumb {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: hsl(320 85% 60%);
-    opacity: 0.5;
-    width: 7px;
-    border-radius: 10px;
-    margin: 2px;
-    cursor: grab;
-}
-
-.has-scroll-dragging .c-scrollbar_thumb {
-    cursor: grabbing;
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
 }
 
 @layer utilities {

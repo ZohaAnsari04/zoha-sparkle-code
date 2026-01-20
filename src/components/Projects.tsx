@@ -8,6 +8,7 @@ import project4 from "@/assets/project4.jpg";
 import project5 from "@/assets/project5.jpg";
 import project6 from "@/assets/project6.png";
 import project7 from "@/assets/project7.png";
+import jobVerifyImg from "@/assets/jobverify.png";
 import { AnimatedIcons } from "@/components/ui/feature-block-animated-card";
 
 // Tech stack logo mapping
@@ -57,6 +58,13 @@ const projects = [
     image: project5,
     description: "Built a decentralized real estate marketplace using blockchain, focused on transparent, tamper-proof property records and trustless peer-to-peer transactions via smart contracts.",
     tech: ["React", "Vite", "Hardhat"],
+  },
+  {
+    name: "JobVerify",
+    image: jobVerifyImg,
+    description: "An intelligent platform that verifies job postings to protect job seekers from scams and fraudulent listings using AI-driven analysis.",
+    tech: ["React", "Python", "Tailwind CSS"],
+    demo: "https://jobverifyy.vercel.app/",
   },
   {
     name: "Todo List",
