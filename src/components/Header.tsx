@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Home, User, FolderKanban, Lightbulb, Award, GraduationCap, Mail, Download, Sparkles } from "lucide-react";
+import { Menu, X, Rocket, Fingerprint, Blocks, BrainCircuit, Zap, Trophy, ScrollText, Send, Download, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -56,14 +56,14 @@ const Header = () => {
     }, []);
 
     const navItems = [
-        { name: "Home", href: "#", icon: Home },
-        { name: "About Me", href: "#about", icon: User },
-        { name: "Projects", href: "#projects", icon: FolderKanban },
-        { name: "AI Studio", href: "#ai-showcase", icon: Sparkles },
-        { name: "Skills", href: "#skills", icon: Lightbulb },
-        { name: "Achievements", href: "#achievements", icon: Award },
-        { name: "Education", href: "#education", icon: GraduationCap },
-        { name: "Contact", href: "#contact", icon: Mail },
+        { name: "Home", href: "#", icon: Rocket, color: "text-orange-500" },
+        { name: "About Me", href: "#about", icon: Fingerprint, color: "text-emerald-400" },
+        { name: "Projects", href: "#projects", icon: Blocks, color: "text-indigo-400" },
+        { name: "AI Studio", href: "#ai-showcase", icon: BrainCircuit, color: "text-fuchsia-400" },
+        { name: "Skills", href: "#skills", icon: Zap, color: "text-yellow-400" },
+        { name: "Achievements", href: "#achievements", icon: Trophy, color: "text-amber-400" },
+        { name: "Education", href: "#education", icon: ScrollText, color: "text-cyan-400" },
+        { name: "Contact", href: "#contact", icon: Send, color: "text-rose-400" },
     ];
 
     const scrollToSection = (href: string) => {
@@ -109,12 +109,12 @@ const Header = () => {
                                 <button
                                     key={item.name}
                                     onClick={() => scrollToSection(item.href)}
-                                    className={`px-4 py-2 transition-all font-medium rounded-full flex items-center gap-2 ${isActive
+                                    className={`px-4 py-2 transition-all font-medium rounded-full flex items-center gap-2 group ${isActive
                                         ? "text-primary bg-primary/20 scale-105 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
                                         : "text-foreground hover:text-primary hover:bg-primary/10"
                                         }`}
                                 >
-                                    <item.icon className="h-4 w-4" />
+                                    <item.icon className={`h-4 w-4 ${isActive ? "" : item.color} group-hover:scale-110 transition-transform`} />
                                     {item.name}
                                 </button>
                             );
@@ -160,12 +160,12 @@ const Header = () => {
                                     <button
                                         key={item.name}
                                         onClick={() => scrollToSection(item.href)}
-                                        className={`px-4 py-3 text-left transition-all font-medium rounded-xl flex items-center gap-3 ${isActive
+                                        className={`px-4 py-3 text-left transition-all font-medium rounded-xl flex items-center gap-3 group ${isActive
                                             ? "text-primary bg-primary/20 shadow-[0_0_10px_rgba(236,72,153,0.2)]"
                                             : "text-foreground hover:text-primary hover:bg-primary/10"
                                             }`}
                                     >
-                                        <item.icon className="h-5 w-5" />
+                                        <item.icon className={`h-5 w-5 ${isActive ? "" : item.color} group-hover:scale-110 transition-transform`} />
                                         {item.name}
                                     </button>
                                 );

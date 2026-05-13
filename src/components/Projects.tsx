@@ -75,7 +75,7 @@ const projects = [
     image: jobVerifyImg,
     description: "An intelligent platform that verifies job postings to protect job seekers from scams and fraudulent listings using AI-driven analysis.",
     tech: ["React", "Python", "Tailwind CSS"],
-    demo: "https://jobverifyy.vercel.app/",
+    demo: "https://job-shield-zoha.vercel.app/",
   },
   {
     name: "Todo List",
