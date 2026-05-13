@@ -9,6 +9,7 @@ import project5 from "@/assets/project5.jpg";
 import project6 from "@/assets/project6.png";
 import project7 from "@/assets/project7.png";
 import jobVerifyImg from "@/assets/jobverify.png";
+import foreseeImg from "@/assets/foresee.png";
 import { AnimatedIcons } from "@/components/ui/feature-block-animated-card";
 
 // Tech stack logo mapping
@@ -22,9 +23,19 @@ const techLogos: { [key: string]: string } = {
   "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
   "TensorFlow": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
   "Vite": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+  "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  "Vercel": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
 };
 
 const projects = [
+  {
+    name: "FORESEE",
+    image: foreseeImg,
+    description: "Developed an AI-powered healthcare platform for malaria diagnosis and outbreak forecasting using Machine Learning and Deep Learning techniques. The system analyzes medical data, provides prediction results, and supports healthcare decision-making through an interactive web interface",
+    tech: ["React", "Node.js", "Python", "MongoDB", "Tailwind CSS"],
+    demo: "https://foreseehealth.vercel.app/",
+  },
   {
     name: "SPLITSYNC- Smart Expense Tracker",
     image: project1,
