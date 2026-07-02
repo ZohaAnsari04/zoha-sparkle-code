@@ -79,7 +79,7 @@ const Header = () => {
     };
 
     const handleResumeDownload = () => {
-        const resumeUrl = "https://acrobat.adobe.com/id/urn:aaid:sc:AP:940707e8-4d8b-46d8-86ec-ff00931fe6d2";
+        const resumeUrl = "https://acrobat.adobe.com/id/urn:aaid:sc:AP:f2729e96-d920-4596-8b46-5faa7733867f";
         window.open(resumeUrl, "_blank");
         setIsMobileMenuOpen(false);
     };

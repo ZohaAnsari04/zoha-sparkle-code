@@ -28,7 +28,7 @@ const SocialSidebar = () => {
         {
             name: "Instagram",
             icon: Instagram,
-            href: "https://www.instagram.com/btwitzoyu._?igsh=NnRnanM3eGtiOGQy",
+            href: "https://www.instagram.com/quietlyzoha?igsh=NnRnanM3eGtiOGQy",
             color: "text-[#E4405F]",
             hex: "#E4405F"
         }

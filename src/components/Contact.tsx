@@ -51,7 +51,7 @@ const Contact = () => {
     { icon: Github, href: "https://github.com/ZohaAnsari04", label: "GitHub", color: "text-black dark:text-white" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/er-ansari-zoha-najmul-kalam-819610238/", label: "LinkedIn", color: "text-[#0077b5]" },
     { icon: Youtube, href: "https://www.youtube.com/@Indiasupergenius", label: "YouTube", color: "text-[#ff0000]" },
-    { icon: Instagram, href: "https://www.instagram.com/btwitzoyu._?igsh=NnRnanM3eGtiOGQy", label: "Instagram", color: "text-[#e4405f]" }
+    { icon: Instagram, href: "https://www.instagram.com/quietlyzoha?igsh=NnRnanM3eGtiOGQy", label: "Instagram", color: "text-[#e4405f]" }
   ];
 
   return (
