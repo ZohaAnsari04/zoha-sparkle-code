@@ -12,7 +12,7 @@ const Hero = () => {
     const fullText = "Ansari Zoha Najmul Kalam";
 
     useEffect(() => {
-        // Delay typing animation to start after preloader (2 seconds)
+        // Delay typing animation to start after preloader (3 seconds)
         const startDelay = setTimeout(() => {
             let index = 0;
             const timer = setInterval(() => {
@@ -25,12 +25,12 @@ const Hero = () => {
             }, 90); // Speed of typing (90ms per character)
 
             return () => clearInterval(timer);
-        }, 2000); // Wait 2 seconds for preloader to finish
+        }, 3000); // Wait 3 seconds for preloader to finish
 
         // Show BlurText after preloader finishes
         const blurTextDelay = setTimeout(() => {
             setShowBlurText(true);
-        }, 2000); // Same delay as preloader
+        }, 3000); // Same delay as preloader
 
         return () => {
             clearTimeout(startDelay);

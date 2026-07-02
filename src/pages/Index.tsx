@@ -1,10 +1,10 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Journey from "@/components/Journey";
 import Projects from "@/components/Projects";
 import AIShowcase from "@/components/AIShowcase";
 import Skills from "@/components/Skills";
 import Achievements from "@/components/Achievements";
-import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -38,6 +38,9 @@ const Index = () => {
             <About />
           </SectionReveal>
           <SectionReveal>
+            <Journey />
+          </SectionReveal>
+          <SectionReveal>
             <Projects />
           </SectionReveal>
           <SectionReveal>
@@ -48,9 +51,6 @@ const Index = () => {
           </SectionReveal>
           <SectionReveal>
             <Achievements />
-          </SectionReveal>
-          <SectionReveal>
-            <Education />
           </SectionReveal>
           <SectionReveal>
             <Contact />

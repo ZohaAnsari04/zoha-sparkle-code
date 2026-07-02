@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Rocket, Fingerprint, Blocks, BrainCircuit, Zap, Trophy, ScrollText, Send, Download, Sparkles } from "lucide-react";
+import { Menu, X, Rocket, Fingerprint, Blocks, BrainCircuit, Zap, Trophy, ScrollText, Send, Download, Sparkles, Milestone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -58,11 +58,11 @@ const Header = () => {
     const navItems = [
         { name: "Home", href: "#", icon: Rocket, color: "text-orange-500" },
         { name: "About Me", href: "#about", icon: Fingerprint, color: "text-emerald-400" },
+        { name: "Journey", href: "#journey", icon: Milestone, color: "text-cyan-400" },
         { name: "Projects", href: "#projects", icon: Blocks, color: "text-indigo-400" },
         { name: "AI Studio", href: "#ai-showcase", icon: BrainCircuit, color: "text-fuchsia-400" },
         { name: "Skills", href: "#skills", icon: Zap, color: "text-yellow-400" },
         { name: "Achievements", href: "#achievements", icon: Trophy, color: "text-amber-400" },
-        { name: "Education", href: "#education", icon: ScrollText, color: "text-cyan-400" },
         { name: "Contact", href: "#contact", icon: Send, color: "text-rose-400" },
     ];
 
