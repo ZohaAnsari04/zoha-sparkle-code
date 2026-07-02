@@ -38,10 +38,10 @@ const About = () => {
                 Who I am
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm a passionate developer who believes in creating not just functional code,
-                but experiences that spark joy! With expertise in frontend development, blockchain
-                engineering, and AI/ML, I bring a unique blend of technical prowess and creative flair
-                to every project.
+                I'm Zoha, a Computer Engineer and M.E. student specializing in AI, Frontend Development, Blockchain, and Generative AI. I enjoy building intelligent, scalable, and user-centric applications that solve real-world challenges.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                From AI-powered web platforms and blockchain applications to production-grade prompt engineering for image and video generation, I focus on turning innovative ideas into impactful digital experiences.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 When I'm not coding, you'll find me exploring the latest tech trends, contributing
