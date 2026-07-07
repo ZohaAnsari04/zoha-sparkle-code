@@ -104,38 +104,36 @@ const Journey = () => {
             Career Path & Education
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 font-playfair tracking-wide flex items-center gap-2">
-            My <span className="gradient-text">Journey</span>
+            Career <span className="gradient-text">Timeline</span>
             <Sparkles className="text-accent animate-sparkle" size={32} />
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-            A comprehensive overview of my professional experience and academic background.
+            A look at the milestones, experiences, and achievements that define my professional growth.
           </p>
 
           {/* Custom Styled Pill Tab Selector */}
           <div className="mt-10 p-1.5 bg-muted/40 dark:bg-gray-900/60 rounded-full border border-border dark:border-white/10 flex items-center w-80 relative">
             <button
               onClick={() => setActiveTab("experience")}
-              className={`flex-1 py-3 text-sm font-semibold rounded-full flex items-center justify-center gap-2 z-10 transition-colors duration-300 ${
-                activeTab === "experience"
-                  ? "text-black dark:text-black font-bold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className={`flex-1 py-3 text-sm font-semibold rounded-full flex items-center justify-center gap-2 z-10 transition-colors duration-300 ${activeTab === "experience"
+                ? "text-black dark:text-black font-bold"
+                : "text-muted-foreground hover:text-foreground"
+                }`}
             >
               <Briefcase size={16} />
               Experience
             </button>
             <button
               onClick={() => setActiveTab("education")}
-              className={`flex-1 py-3 text-sm font-semibold rounded-full flex items-center justify-center gap-2 z-10 transition-colors duration-300 ${
-                activeTab === "education"
-                  ? "text-black dark:text-black font-bold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className={`flex-1 py-3 text-sm font-semibold rounded-full flex items-center justify-center gap-2 z-10 transition-colors duration-300 ${activeTab === "education"
+                ? "text-black dark:text-black font-bold"
+                : "text-muted-foreground hover:text-foreground"
+                }`}
             >
               <GraduationCap size={16} />
               Education
             </button>
-            
+
             {/* Animated Active Pill Indicator */}
             <motion.div
               className="absolute top-1.5 bottom-1.5 left-1.5 bg-white rounded-full shadow-md pointer-events-none"
