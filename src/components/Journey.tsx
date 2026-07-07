@@ -12,6 +12,9 @@ const techLogos: { [key: string]: string } = {
   "Solidity": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg",
   "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
   "TensorFlow": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+  "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
 };
 
 const Journey = () => {
@@ -28,42 +31,41 @@ const Journey = () => {
         "Managing financial transactions and ensuring accurate processing of healthcare claims.",
         "Collaborating with cross-functional teams to streamline revenue cycle management processes."
       ],
-      skills: ["Healthcare Operations", "Billing", "Accounts Receivable"],
+      skills: [],
     },
     {
-      role: "Lead Web Developer",
-      company: "EVJoints",
+      role: "Front-end Developer Intern",
+      company: "Sunarj Technologies",
       location: "Mumbai, India",
-      duration: "Nov 2025 – Mar 2026",
+      duration: "Jun 2022 – Nov 2022",
       points: [
-        "Spearheading the development of a comprehensive internal admin panel to streamline operational workflows.",
-        "Collaborating on the complete UI/UX and functional redesign of the official website to enhance user engagement.",
-        "Ensuring code quality through active participation in reviews and maintaining detailed project documentation."
+        "Worked on developing and maintaining responsive web applications using HTML, CSS, JavaScript, and modern frontend technologies.",
+        "Collaborated with the development team to create user-friendly interfaces, improve website performance."
       ],
-      skills: ["React", "Node.js", "Express.js", "MongoDB", "TypeScript"],
+      skills: ["HTML", "CSS", "JavaScript"],
     }
   ];
 
   const educationData = [
     {
-      degree: "Master of Engineering (M.E.)",
-      field: "Computer Science & Engineering",
-      specialization: "Artificial Intelligence & Machine Learning",
-      institution: "University of Mumbai",
-      duration: "2025 – Present",
+      degree: "Masters of Technology",
+      field: "Computer Engineering",
+      specialization: "Vidyavihar",
+      institution: "K.J. Somaiya School of Engineering",
+      duration: "June 2026 – May 2028",
       points: [
-        "Currently pursuing advanced coursework and research in deep neural networks, machine learning algorithms, and prompt engineering models.",
-        "Implementing high-performance model integrations with modern web environments to build production-grade AI solutions."
+        "Pursuing advanced coursework and research in computer systems, advanced algorithms, and software architectures.",
+        "Collaborating on high-performance computing projects and modern engineering solutions."
       ],
-      skills: ["Deep Learning", "TensorFlow", "Advanced Algorithms", "AI Research"],
+      skills: ["Advanced Algorithms", "Software Engineering", "Computer Systems"],
     },
     {
-      degree: "Bachelor of Engineering (B.E.)",
-      field: "Computer Science and Engineering",
-      specialization: "Internet of Things, Cyber Security & Blockchain Technology",
+      degree: "Bachelor of Engineering",
+      field: "CSE IoT & Cyber Security including Blockchain Technology",
+      specialization: "Byculla",
       institution: "M.H. Saboo Siddik College of Engineering",
-      duration: "2021 – 2025",
-      grade: "8.36 CGPA",
+      duration: "Sept 2023 – June 2026",
+      grade: "8.80 CGPA",
       points: [
         "Acquired deep fundamentals in computer systems, cryptographic protocols, blockchain engineering, and network security.",
         "Built transparent decentralized applications and smart contract ecosystems as part of engineering projects."
@@ -181,17 +183,19 @@ const Journey = () => {
                                 <li key={pIdx}>{pt}</li>
                               ))}
                             </ul>
-                            <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
-                              {item.skills.map((skill, sIdx) => (
-                                <span
-                                  key={sIdx}
-                                  className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
-                                >
-                                  {getLogoIcon(skill)}
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
+                            {item.skills && item.skills.length > 0 && (
+                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
+                                {item.skills.map((skill, sIdx) => (
+                                  <span
+                                    key={sIdx}
+                                    className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
+                                  >
+                                    {getLogoIcon(skill)}
+                                    {skill}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </Card>
                         ) : (
                           <div className="flex md:justify-end items-center gap-2 text-zinc-300 font-semibold bg-zinc-900/60 border border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit md:ml-auto mb-4 md:mb-0">
@@ -224,17 +228,19 @@ const Journey = () => {
                                 <li key={pIdx}>{pt}</li>
                               ))}
                             </ul>
-                            <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
-                              {item.skills.map((skill, sIdx) => (
-                                <span
-                                  key={sIdx}
-                                  className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
-                                >
-                                  {getLogoIcon(skill)}
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
+                            {item.skills && item.skills.length > 0 && (
+                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
+                                {item.skills.map((skill, sIdx) => (
+                                  <span
+                                    key={sIdx}
+                                    className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
+                                  >
+                                    {getLogoIcon(skill)}
+                                    {skill}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </Card>
                         )}
                       </div>
@@ -281,17 +287,19 @@ const Journey = () => {
                                 <li key={pIdx}>{pt}</li>
                               ))}
                             </ul>
-                            <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
-                              {item.skills.map((skill, sIdx) => (
-                                <span
-                                  key={sIdx}
-                                  className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
-                                >
-                                  {getLogoIcon(skill)}
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
+                            {item.skills && item.skills.length > 0 && (
+                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
+                                {item.skills.map((skill, sIdx) => (
+                                  <span
+                                    key={sIdx}
+                                    className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
+                                  >
+                                    {getLogoIcon(skill)}
+                                    {skill}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </Card>
                         ) : (
                           <div className="flex md:justify-end items-center gap-2 text-zinc-300 font-semibold bg-zinc-900/60 border border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit md:ml-auto mb-4 md:mb-0">
@@ -332,17 +340,19 @@ const Journey = () => {
                                 <li key={pIdx}>{pt}</li>
                               ))}
                             </ul>
-                            <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
-                              {item.skills.map((skill, sIdx) => (
-                                <span
-                                  key={sIdx}
-                                  className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
-                                >
-                                  {getLogoIcon(skill)}
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
+                            {item.skills && item.skills.length > 0 && (
+                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
+                                {item.skills.map((skill, sIdx) => (
+                                  <span
+                                    key={sIdx}
+                                    className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
+                                  >
+                                    {getLogoIcon(skill)}
+                                    {skill}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </Card>
                         )}
                       </div>
