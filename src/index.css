@@ -102,6 +102,7 @@
 @layer base {
     * {
         @apply border-border;
+        transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, fill 0.25s ease, stroke 0.25s ease;
     }
 
     body {

@@ -89,7 +89,7 @@ const Journey = () => {
   };
 
   return (
-    <section id="journey" className="py-20 bg-background dark:bg-transparent relative overflow-hidden">
+    <section id="journey" className="py-20 bg-[#ffdbe4] dark:bg-transparent relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
@@ -103,11 +103,11 @@ const Journey = () => {
           <span className="px-4 py-1.5 rounded-full border border-border dark:border-white/10 bg-card/50 dark:bg-gray-900/40 text-xs font-semibold tracking-wider text-muted-foreground uppercase mb-4 backdrop-blur-sm">
             Career Path & Education
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 font-playfair tracking-wide flex items-center gap-2">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 font-playfair tracking-wide flex items-center gap-2 text-black dark:text-foreground">
             Career <span className="gradient-text">Timeline</span>
             <Sparkles className="text-accent animate-sparkle" size={32} />
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+          <p className="text-lg md:text-xl text-black/80 dark:text-muted-foreground max-w-2xl">
             A look at the milestones, experiences, and achievements that define my professional growth.
           </p>
 
@@ -116,8 +116,8 @@ const Journey = () => {
             <button
               onClick={() => setActiveTab("experience")}
               className={`flex-1 py-3 text-sm font-semibold rounded-full flex items-center justify-center gap-2 z-10 transition-colors duration-300 ${activeTab === "experience"
-                ? "text-black dark:text-black font-bold"
-                : "text-muted-foreground hover:text-foreground"
+                ? "text-black font-bold"
+                : "text-black/60 dark:text-muted-foreground hover:text-black dark:hover:text-foreground"
                 }`}
             >
               <Briefcase size={16} />
@@ -126,8 +126,8 @@ const Journey = () => {
             <button
               onClick={() => setActiveTab("education")}
               className={`flex-1 py-3 text-sm font-semibold rounded-full flex items-center justify-center gap-2 z-10 transition-colors duration-300 ${activeTab === "education"
-                ? "text-black dark:text-black font-bold"
-                : "text-muted-foreground hover:text-foreground"
+                ? "text-black font-bold"
+                : "text-black/60 dark:text-muted-foreground hover:text-black dark:hover:text-foreground"
                 }`}
             >
               <GraduationCap size={16} />
@@ -157,36 +157,36 @@ const Journey = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="relative border-l border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-zinc-800 pl-6 md:pl-0"
+                className="relative border-l border-pink-600 dark:border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-pink-600 dark:md:before:bg-zinc-800 pl-6 md:pl-0"
               >
                 {experienceData.map((item, idx) => {
                   const isLeft = idx % 2 === 0;
                   return (
                     <div key={idx} className="relative flex flex-col md:grid md:grid-cols-9 md:gap-8 items-center mb-12">
                       {/* Timeline Dot */}
-                      <div className="absolute left-[-30px] md:left-1/2 md:-translate-x-1/2 top-4 w-2.5 h-2.5 rounded-full bg-white z-20 ring-4 ring-background"></div>
+                      <div className="absolute left-[-30px] md:left-1/2 md:-translate-x-1/2 top-4 w-2.5 h-2.5 rounded-full bg-black dark:bg-white z-20 ring-4 ring-[#ffdbe4] dark:ring-zinc-950"></div>
 
                       {/* Left Column: Card or Date */}
                       <div className={`w-full md:col-span-4 ${isLeft ? "order-2 md:order-none md:text-right" : "order-1 md:order-none"}`}>
                         {isLeft ? (
-                          <Card className="p-6 bg-[#09090b]/70 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-800/80 hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
-                            <h3 className="text-2xl font-bold text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
+                          <Card className="p-6 bg-white/80 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
+                            <h3 className="text-2xl font-bold text-black dark:text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
                               {item.role}
                             </h3>
-                            <p className="text-sm font-semibold text-muted-foreground/80 mb-4">
-                              <span className="text-zinc-200">{item.company}</span> • <span className="text-zinc-400">📍 {item.location}</span>
+                            <p className="text-sm font-semibold text-zinc-600 dark:text-muted-foreground/80 mb-4">
+                              <span className="text-zinc-800 dark:text-zinc-200">{item.company}</span> • <span className="text-zinc-600 dark:text-zinc-400">📍 {item.location}</span>
                             </p>
-                            <ul className="list-disc pl-5 space-y-2 text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-600">
+                            <ul className="list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-400 dark:marker:text-zinc-600">
                               {item.points.map((pt, pIdx) => (
                                 <li key={pIdx}>{pt}</li>
                               ))}
                             </ul>
                             {item.skills && item.skills.length > 0 && (
-                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
+                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
                                 {item.skills.map((skill, sIdx) => (
                                   <span
                                     key={sIdx}
-                                    className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
+                                    className="px-3.5 py-1.5 bg-zinc-100/80 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 rounded-full text-xs font-medium text-zinc-800 dark:text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
                                   >
                                     {getLogoIcon(skill)}
                                     {skill}
@@ -196,8 +196,8 @@ const Journey = () => {
                             )}
                           </Card>
                         ) : (
-                          <div className="flex md:justify-end items-center gap-2 text-zinc-300 font-semibold bg-zinc-900/60 border border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit md:ml-auto mb-4 md:mb-0">
-                            <Calendar size={14} className="text-zinc-400" />
+                          <div className="flex md:justify-end items-center gap-2 text-zinc-800 dark:text-zinc-300 font-semibold bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit md:ml-auto mb-4 md:mb-0">
+                            <Calendar size={14} className="text-zinc-600 dark:text-zinc-400" />
                             {item.duration}
                           </div>
                         )}
@@ -209,29 +209,29 @@ const Journey = () => {
                       {/* Right Column: Date or Card */}
                       <div className={`w-full md:col-span-4 ${isLeft ? "order-1 md:order-none" : "order-2 md:order-none"}`}>
                         {isLeft ? (
-                          <div className="flex md:justify-start items-center gap-2 text-zinc-300 font-semibold bg-zinc-900/60 border border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit mb-4 md:mb-0">
-                            <Calendar size={14} className="text-zinc-400" />
+                          <div className="flex md:justify-start items-center gap-2 text-zinc-800 dark:text-zinc-300 font-semibold bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit mb-4 md:mb-0">
+                            <Calendar size={14} className="text-zinc-600 dark:text-zinc-400" />
                             {item.duration}
                           </div>
                         ) : (
-                          <Card className="p-6 bg-[#09090b]/70 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-800/80 hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
-                            <h3 className="text-2xl font-bold text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
+                          <Card className="p-6 bg-white/80 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
+                            <h3 className="text-2xl font-bold text-black dark:text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
                               {item.role}
                             </h3>
-                            <p className="text-sm font-semibold text-muted-foreground/80 mb-4">
-                              <span className="text-zinc-200">{item.company}</span> • <span className="text-zinc-400">📍 {item.location}</span>
+                            <p className="text-sm font-semibold text-zinc-600 dark:text-muted-foreground/80 mb-4">
+                              <span className="text-zinc-800 dark:text-zinc-200">{item.company}</span> • <span className="text-zinc-600 dark:text-zinc-400">📍 {item.location}</span>
                             </p>
-                            <ul className="list-disc pl-5 space-y-2 text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-600">
+                            <ul className="list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-400 dark:marker:text-zinc-600">
                               {item.points.map((pt, pIdx) => (
                                 <li key={pIdx}>{pt}</li>
                               ))}
                             </ul>
                             {item.skills && item.skills.length > 0 && (
-                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
+                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
                                 {item.skills.map((skill, sIdx) => (
                                   <span
                                     key={sIdx}
-                                    className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
+                                    className="px-3.5 py-1.5 bg-zinc-100/80 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 rounded-full text-xs font-medium text-zinc-800 dark:text-zinc-400 flex items-center gap-2 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/40 transition-colors cursor-default"
                                   >
                                     {getLogoIcon(skill)}
                                     {skill}
@@ -253,44 +253,44 @@ const Journey = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="relative border-l border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-zinc-800 pl-6 md:pl-0"
+                className="relative border-l border-pink-600 dark:border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-pink-600 dark:md:before:bg-zinc-800 pl-6 md:pl-0"
               >
                 {educationData.map((item, idx) => {
                   const isLeft = idx % 2 === 0;
                   return (
                     <div key={idx} className="relative flex flex-col md:grid md:grid-cols-9 md:gap-8 items-center mb-12">
                       {/* Timeline Dot */}
-                      <div className="absolute left-[-30px] md:left-1/2 md:-translate-x-1/2 top-4 w-2.5 h-2.5 rounded-full bg-white z-20 ring-4 ring-background"></div>
+                      <div className="absolute left-[-30px] md:left-1/2 md:-translate-x-1/2 top-4 w-2.5 h-2.5 rounded-full bg-black dark:bg-white z-20 ring-4 ring-[#ffdbe4] dark:ring-zinc-950"></div>
 
                       {/* Left Column: Card or Date */}
                       <div className={`w-full md:col-span-4 ${isLeft ? "order-2 md:order-none md:text-right" : "order-1 md:order-none"}`}>
                         {isLeft ? (
-                          <Card className="p-6 bg-[#09090b]/70 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-800/80 hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
-                            <h3 className="text-2xl font-bold text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
+                          <Card className="p-6 bg-white/80 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
+                            <h3 className="text-2xl font-bold text-black dark:text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
                               {item.degree}
                             </h3>
                             <p className="text-base font-semibold text-primary/80 mb-1">
                               {item.field}
                             </p>
-                            <p className="text-xs text-muted-foreground/80 mb-3">
-                              <span className="text-zinc-200">{item.institution}</span> • <span className="text-zinc-400">{item.specialization}</span>
+                            <p className="text-xs text-zinc-600 dark:text-muted-foreground/80 mb-3">
+                              <span className="text-zinc-800 dark:text-zinc-200">{item.institution}</span> • <span className="text-zinc-600 dark:text-zinc-400">{item.specialization}</span>
                             </p>
                             {item.grade && (
                               <p className="text-sm font-bold text-primary mb-4">
                                 {item.grade}
                               </p>
                             )}
-                            <ul className="list-disc pl-5 space-y-2 text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-600">
+                            <ul className="list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-400 dark:marker:text-zinc-600">
                               {item.points.map((pt, pIdx) => (
                                 <li key={pIdx}>{pt}</li>
                               ))}
                             </ul>
                             {item.skills && item.skills.length > 0 && (
-                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
+                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
                                 {item.skills.map((skill, sIdx) => (
                                   <span
                                     key={sIdx}
-                                    className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
+                                    className="px-3.5 py-1.5 bg-zinc-100/80 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 rounded-full text-xs font-medium text-zinc-800 dark:text-zinc-400 flex items-center gap-2 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/40 transition-colors cursor-default"
                                   >
                                     {getLogoIcon(skill)}
                                     {skill}
@@ -300,8 +300,8 @@ const Journey = () => {
                             )}
                           </Card>
                         ) : (
-                          <div className="flex md:justify-end items-center gap-2 text-zinc-300 font-semibold bg-zinc-900/60 border border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit md:ml-auto mb-4 md:mb-0">
-                            <Calendar size={14} className="text-zinc-400" />
+                          <div className="flex md:justify-end items-center gap-2 text-zinc-800 dark:text-zinc-300 font-semibold bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit md:ml-auto mb-4 md:mb-0">
+                            <Calendar size={14} className="text-zinc-600 dark:text-zinc-400" />
                             {item.duration}
                           </div>
                         )}
@@ -313,37 +313,37 @@ const Journey = () => {
                       {/* Right Column: Date or Card */}
                       <div className={`w-full md:col-span-4 ${isLeft ? "order-1 md:order-none" : "order-2 md:order-none"}`}>
                         {isLeft ? (
-                          <div className="flex md:justify-start items-center gap-2 text-zinc-300 font-semibold bg-zinc-900/60 border border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit mb-4 md:mb-0">
-                            <Calendar size={14} className="text-zinc-400" />
+                          <div className="flex md:justify-start items-center gap-2 text-zinc-800 dark:text-zinc-300 font-semibold bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit mb-4 md:mb-0">
+                            <Calendar size={14} className="text-zinc-600 dark:text-zinc-400" />
                             {item.duration}
                           </div>
                         ) : (
-                          <Card className="p-6 bg-[#09090b]/70 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-800/80 hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
-                            <h3 className="text-2xl font-bold text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
+                          <Card className="p-6 bg-white/80 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
+                            <h3 className="text-2xl font-bold text-black dark:text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
                               {item.degree}
                             </h3>
                             <p className="text-base font-semibold text-primary/80 mb-1">
                               {item.field}
                             </p>
-                            <p className="text-xs text-muted-foreground/80 mb-3">
-                              <span className="text-zinc-200">{item.institution}</span> • <span className="text-zinc-400">{item.specialization}</span>
+                            <p className="text-xs text-zinc-600 dark:text-muted-foreground/80 mb-3">
+                              <span className="text-zinc-800 dark:text-zinc-200">{item.institution}</span> • <span className="text-zinc-600 dark:text-zinc-400">{item.specialization}</span>
                             </p>
                             {item.grade && (
                               <p className="text-sm font-bold text-primary mb-4">
                                 {item.grade}
                               </p>
                             )}
-                            <ul className="list-disc pl-5 space-y-2 text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-600">
+                            <ul className="list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-400 dark:marker:text-zinc-600">
                               {item.points.map((pt, pIdx) => (
                                 <li key={pIdx}>{pt}</li>
                               ))}
                             </ul>
                             {item.skills && item.skills.length > 0 && (
-                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/60 justify-start">
+                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
                                 {item.skills.map((skill, sIdx) => (
                                   <span
                                     key={sIdx}
-                                    className="px-3.5 py-1.5 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-xs font-medium text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
+                                    className="px-3.5 py-1.5 bg-zinc-100/80 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 rounded-full text-xs font-medium text-zinc-800 dark:text-zinc-400 flex items-center gap-2 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/40 transition-colors cursor-default"
                                   >
                                     {getLogoIcon(skill)}
                                     {skill}

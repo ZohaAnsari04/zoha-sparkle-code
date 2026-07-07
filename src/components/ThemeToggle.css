@@ -1,14 +1,15 @@
-/* From Uiverse.io by EddyBel */
-/* The switch - the box around the slider */
+/* Optimized Switch toggle */
 .switch {
     font-size: 17px;
     position: relative;
     display: inline-block;
     width: 2em;
     height: 3.5em;
-    transform-style: preserve-3d;
-    perspective: 500px;
-    animation: toggle__animation 3s infinite;
+    transition: transform 0.3s ease;
+}
+
+.switch:hover {
+    transform: translateY(-2px);
 }
 
 .switch::before {
@@ -18,7 +19,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    filter: blur(20px);
+    filter: blur(10px);
     z-index: -1;
     border-radius: 50px;
     background-color: #d8ff99;
@@ -28,6 +29,12 @@
         radial-gradient(at 86% 87%, hsla(204, 69%, 68%, 1) 0px, transparent 50%),
         radial-gradient(at 99% 41%, hsla(171, 72%, 77%, 1) 0px, transparent 50%),
         radial-gradient(at 55% 24%, hsla(138, 60%, 62%, 1) 0px, transparent 50%);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.switch:hover::before {
+    opacity: 0.9;
 }
 
 /* Hide default HTML checkbox */
@@ -46,8 +53,9 @@
     right: 0;
     bottom: 0;
     background-color: #fdfefedc;
-    transition: .4s;
+    transition: background-color 0.3s ease;
     border-radius: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .slider:before {
@@ -57,10 +65,9 @@
     width: 1.4em;
     left: 0.3em;
     top: 0.3em;
-    transition: .4s;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -10px 10px 0px inset,
-        rgba(0, 0, 0, 0.09) 0px -1px 15px -8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px -5px 10px 0px inset;
     background-color: #ff99fd;
     background-image: radial-gradient(at 81% 39%, hsla(327, 79%, 79%, 1) 0px, transparent 50%),
         radial-gradient(at 11% 72%, hsla(264, 64%, 79%, 1) 0px, transparent 50%),
@@ -73,16 +80,4 @@
 
 .input__check:checked+.slider:before {
     transform: translateY(1.5em);
-}
-
-@keyframes toggle__animation {
-
-    0%,
-    100% {
-        transform: translateY(-10px) rotateX(15deg) rotateY(-20deg);
-    }
-
-    50% {
-        transform: translateY(0px) rotateX(15deg) rotateY(-20deg);
-    }
 }
