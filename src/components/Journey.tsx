@@ -71,6 +71,19 @@ const Journey = () => {
         "Built transparent decentralized applications and smart contract ecosystems as part of engineering projects."
       ],
       skills: ["IoT Ecosystems", "Cryptography & Cyber Security", "Solidity", "Computer Science"],
+    },
+    {
+      degree: "Diploma of Education",
+      field: "Information Technology",
+      specialization: "Mumbai, India",
+      institution: "Vidyalankar Polytechnic",
+      duration: "Aug 2020 – Jun 2023",
+      points: [
+        "Built a strong foundation in information technology fundamentals and programming.",
+        "Developed practical skills in software development, web technologies, and database management.",
+        "Completed various projects in web development and software engineering."
+      ],
+      skills: ["Information Technology", "Programming", "Web Technologies", "Software Development"],
     }
   ];
 

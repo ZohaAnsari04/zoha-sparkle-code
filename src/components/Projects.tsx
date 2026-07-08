@@ -120,9 +120,9 @@ const Projects = () => {
               </div>
 
               {/* Floating Particles */}
-              <div className="absolute top-2 right-4 w-2 h-2 bg-primary/50 rounded-full animate-pulse"></div>
-              <div className="absolute top-6 left-6 w-2.5 h-2.5 bg-accent/50 rounded-full animate-bounce"></div>
-              <div className="absolute bottom-8 right-8 w-2 h-2 bg-secondary/50 rounded-full animate-pulse delay-100"></div>
+              <div className="absolute top-2 right-4 w-2 h-2 bg-primary/50 rounded-full hidden md:block md:animate-pulse"></div>
+              <div className="absolute top-6 left-6 w-2.5 h-2.5 bg-accent/50 rounded-full hidden md:block md:animate-bounce"></div>
+              <div className="absolute bottom-8 right-8 w-2 h-2 bg-secondary/50 rounded-full hidden md:block md:animate-pulse delay-100"></div>
 
               <div className="relative overflow-hidden h-48">
                 <img

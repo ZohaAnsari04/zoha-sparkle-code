@@ -56,13 +56,15 @@ export function AnimatedIcons({
     className,
     containerClassName,
     id,
-    showSparkles = true
+    showSparkles = true,
+    autoplay = false
 }: {
     icons: AnimatedCardProps["icons"],
     className?: string,
     containerClassName?: string,
     id: string,
-    showSparkles?: boolean
+    showSparkles?: boolean,
+    autoplay?: boolean
 }) {
     const scale = [1, 1.1, 1]
     const transform = ["translateY(0px)", "translateY(-4px)", "translateY(0px)"]
@@ -74,13 +76,18 @@ export function AnimatedIcons({
     ])
 
     useEffect(() => {
-        if (sequence.length === 0) return;
+        if (!autoplay || sequence.length === 0) return;
+        
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        animate(sequence as any, {
+        const controls = animate(sequence as any, {
             repeat: Infinity,
             repeatDelay: 1,
-        })
-    }, [icons, id])
+        });
+
+        return () => {
+            controls.stop();
+        };
+    }, [icons, id, autoplay])
 
     return (
         <div className={cn("p-8 overflow-hidden h-full relative flex items-center justify-center", containerClassName)}>
@@ -105,13 +112,16 @@ export function AnimatedIcons({
 
 const Container = React.forwardRef<
     HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement>
+    any
 >(({ className, ...props }, ref) => (
-    <div
+    <motion.div
         ref={ref}
+        whileHover={{ y: -4, scale: 1.08 }}
+        transition={{ type: "spring", stiffness: 400, damping: 20 }}
         className={cn(
             `rounded-full flex items-center justify-center bg-[rgba(248,248,248,0.01)]
-      shadow-[0px_0px_8px_0px_rgba(248,248,248,0.25)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]`,
+      shadow-[0px_0px_8px_0px_rgba(248,248,248,0.25)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]
+      transition-shadow duration-300 hover:shadow-primary/20`,
             className
         )}
         {...props}

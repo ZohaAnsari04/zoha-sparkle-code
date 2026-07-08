@@ -102,6 +102,9 @@
 @layer base {
     * {
         @apply border-border;
+    }
+
+    body, header, footer, section, .card, button, input, select, textarea, a, h1, h2, h3, h4, h5, h6, span {
         transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, fill 0.25s ease, stroke 0.25s ease;
     }
 
@@ -198,8 +201,10 @@ html {
     }
 }
 
-.animate-blob {
-    animation: blob 7s infinite;
+@media (min-width: 768px) {
+    .animate-blob {
+        animation: blob 12s infinite;
+    }
 }
 
 .animation-delay-2000 {

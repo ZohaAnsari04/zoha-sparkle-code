@@ -149,10 +149,10 @@ const Skills = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-gradient bg-[length:200%_200%]"></div>
 
           {/* Floating Sparkles */}
-          <div className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-          <div className="absolute top-8 right-8 w-3 h-3 bg-accent rounded-full animate-bounce"></div>
-          <div className="absolute bottom-6 left-12 w-2 h-2 bg-secondary rounded-full animate-pulse delay-100"></div>
-          <div className="absolute bottom-12 right-6 w-2 h-2 bg-primary rounded-full animate-bounce delay-200"></div>
+          <div className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full hidden md:block md:animate-pulse"></div>
+          <div className="absolute top-8 right-8 w-3 h-3 bg-accent rounded-full hidden md:block md:animate-bounce"></div>
+          <div className="absolute bottom-6 left-12 w-2 h-2 bg-secondary rounded-full hidden md:block md:animate-pulse delay-100"></div>
+          <div className="absolute bottom-12 right-6 w-2 h-2 bg-primary rounded-full hidden md:block md:animate-bounce delay-200"></div>
 
           {/* Glow Effect */}
           <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
