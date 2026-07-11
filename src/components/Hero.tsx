@@ -46,11 +46,11 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="min-h-screen flex items-start justify-center relative overflow-hidden pt-28 md:pt-32"
+            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-24"
         >
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 dark:from-transparent dark:via-black/50 dark:to-black/80" />
 
-            <div className="container mx-auto px-4 pt-0 pb-20 relative z-10">
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="max-w-4xl mx-auto text-center animate-fade-in">
                     <div className="mb-8 inline-block relative">
                         <img
@@ -62,7 +62,7 @@ const Hero = () => {
                         <Sparkles className="absolute -bottom-4 -left-4 text-accent w-8 h-8 animate-sparkle" />
                     </div>
 
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 min-h-[3rem] md:min-h-[5rem] break-words">
+                    <h1 className="text-[6.2vw] sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 min-h-[3rem] md:min-h-[5rem] whitespace-nowrap">
                         <span className="gradient-text">
                             {displayedText}
                             <span className="animate-pulse">|</span>
@@ -75,7 +75,7 @@ const Hero = () => {
                             delay={150}
                             animateBy="words"
                             direction="top"
-                            className="text-2xl md:text-3xl font-semibold mb-6 text-foreground"
+                            className="text-[3.4vw] sm:text-[2.8vw] md:text-2xl lg:text-3xl font-semibold mb-6 text-foreground whitespace-nowrap"
                         />
                     )}
 
@@ -86,9 +86,7 @@ const Hero = () => {
                             showBorder={false}
                             className="text-lg md:text-xl font-medium"
                         >
-                            Frontend Engineer building performant, scalable web applications with React, Next.js, and TypeScript.
-                            Transforming ideas into beautiful, functional experiences
-                            that make the web a more delightful place! 💖
+                            Frontend Engineer crafting fast, scalable, and pixel-perfect web experiences with React, Next.js, and TypeScript. Passionate about building products that users enjoy and businesses rely on!💖
                         </GradientText>
                     </p>
 
@@ -128,8 +126,8 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div 
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 opacity-80 hover:opacity-100 transition-opacity duration-300 cursor-pointer z-20"
+            <div
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 opacity-80 hover:opacity-100 transition-opacity duration-300 cursor-pointer z-20"
                 onClick={() => {
                     const aboutSection = document.getElementById('about');
                     aboutSection?.scrollIntoView({ behavior: 'smooth' });

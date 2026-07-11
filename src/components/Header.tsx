@@ -215,31 +215,31 @@ const Header = () => {
                 : "bg-background/80 backdrop-blur-sm"
                 }`}
         >
-            <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-16 md:h-20">
+            <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+                <div className="flex items-center justify-between h-16 lg:h-20">
                     {/* Logo */}
                     <button
                         onClick={() => scrollToSection("#")}
-                        className="text-2xl md:text-3xl font-bold gradient-text hover:scale-105 transition-transform cursor-pointer"
+                        className="text-xl lg:text-2xl xl:text-3xl font-bold gradient-text hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
                     >
                         ZohaAIverse
                     </button>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center gap-1">
+                    <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
                         {navItems.map((item) => {
                             const isActive = activeSection === item.href;
                             return (
                                 <button
                                     key={item.name}
                                     onClick={() => scrollToSection(item.href)}
-                                    className={`px-4 py-2 transition-all font-medium rounded-full flex items-center gap-2 group ${isActive
+                                    className={`px-2.5 py-1.5 xl:px-4 xl:py-2 text-xs xl:text-sm whitespace-nowrap transition-all font-medium rounded-full flex items-center gap-1.5 group ${isActive
                                         ? "text-primary bg-primary/20 scale-105 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
                                         : "text-foreground hover:text-primary hover:bg-primary/10"
                                         }`}
                                 >
-                                    <item.icon className={`h-4 w-4 ${isActive ? "" : item.color} group-hover:scale-110 transition-transform`} />
-                                    {item.name}
+                                    <item.icon className={`h-3.5 w-3.5 xl:h-4 xl:w-4 ${isActive ? "" : item.color} group-hover:scale-110 transition-transform`} />
+                                    <span>{item.name}</span>
                                 </button>
                             );
                         })}
@@ -247,14 +247,14 @@ const Header = () => {
                         {/* Resume Button */}
                         <Button
                             onClick={handleResumeDownload}
-                            className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6 py-2 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                            className="ml-1 xl:ml-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-1.5 xl:px-6 xl:py-2 text-xs xl:text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-1.5 whitespace-nowrap"
                         >
-                            <Download className="h-4 w-4" />
-                            Resume
+                            <Download className="h-3.5 w-3.5 xl:h-4 xl:w-4" />
+                            <span>Resume</span>
                         </Button>
 
                         {/* Theme Toggle */}
-                        <div className="ml-2">
+                        <div className="ml-1 xl:ml-2">
                             <ThemeToggle />
                         </div>
                     </nav>
@@ -263,7 +263,7 @@ const Header = () => {
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="md:hidden"
+                        className="lg:hidden"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? (
@@ -276,7 +276,7 @@ const Header = () => {
 
                 {/* Mobile Navigation */}
                 {isMobileMenuOpen && (
-                    <nav className="md:hidden py-4 border-t border-border animate-fade-in">
+                    <nav className="lg:hidden py-4 border-t border-border animate-fade-in">
                         <div className="flex flex-col gap-2">
                             {navItems.map((item) => {
                                 const isActive = activeSection === item.href;
