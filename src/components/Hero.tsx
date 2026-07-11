@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Sparkles } from "lucide-react";
+import { Heart, Sparkles, MapPin, Globe, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import avatarImage from "@/assets/avatar.jpg";
 import { useState, useEffect } from "react";
@@ -96,41 +96,49 @@ const Hero = () => {
                         <Button
                             size="lg"
                             onClick={handleContact}
-                            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-base font-semibold shadow-[0_10px_40px_rgba(236,72,153,0.3)] hover:shadow-[0_15px_50px_rgba(236,72,153,0.4)] transition-all duration-300 hover:scale-105"
+                            className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white rounded-full px-8 py-6 text-base font-semibold shadow-[0_4px_20px_rgba(139,92,246,0.3)] hover:shadow-[0_8px_30px_rgba(236,72,153,0.5)] transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
                         >
-                            <Heart className="mr-2 h-5 w-5" fill="currentColor" />
-                            Open to Frontend Roles & Internships
+                            <Sparkles className="h-5 w-5 animate-pulse" />
+                            <span>Let's Connect</span>
+                            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
                         </Button>
 
-                        <Button
-                            size="lg"
-                            variant="outline"
+                        <button
                             onClick={handleContact}
-                            className="rounded-full px-8 py-6 text-base font-semibold border-2 border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-105"
+                            className="relative flex items-center gap-3 rounded-full border border-violet-500/20 bg-violet-500/5 hover:bg-violet-500/10 backdrop-blur-md px-8 py-[18px] text-base font-semibold text-foreground/90 transition-all duration-300 hover:border-violet-500/40 hover:scale-105 shadow-[0_4px_30px_rgba(0,0,0,0.1)] group"
                         >
-                            <Sparkles className="mr-2 h-5 w-5" />
-                            Let's Connect
-                        </Button>
+                            <span className="relative flex h-2.5 w-2.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                            </span>
+                            <span>Open to Frontend Roles & Internships</span>
+                        </button>
                     </div>
 
-                    <div className="flex justify-center gap-8 text-sm text-muted-foreground mb-16">
-                        <div className="flex items-center gap-2">
-                            <span className="text-2xl">📍</span>
-                            <span>Mumbai - India</span>
+                    <div className="flex flex-wrap justify-center gap-4 text-sm font-medium mb-16">
+                        <div className="flex items-center gap-2 border border-violet-500/10 bg-violet-500/5 backdrop-blur-md rounded-full px-5 py-2.5 text-foreground/80 shadow-sm transition-all duration-300 hover:border-violet-500/25 hover:text-foreground">
+                            <MapPin className="text-violet-400 w-4 h-4 animate-jump-pulse" />
+                            <span>Mumbai, India</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <span className="text-2xl">💫</span>
+                        <div className="flex items-center gap-2 border border-sky-500/10 bg-sky-500/5 backdrop-blur-md rounded-full px-5 py-2.5 text-foreground/80 shadow-sm transition-all duration-300 hover:border-sky-500/25 hover:text-foreground">
+                            <Globe className="text-sky-400 w-4 h-4 animate-spin-slow" />
                             <span>Open to Remote Work</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce flex flex-col items-center gap-2">
-                <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-                    <div className="w-1.5 h-3 bg-primary rounded-full mt-2 animate-pulse" />
+            <div 
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 opacity-80 hover:opacity-100 transition-opacity duration-300 cursor-pointer z-20"
+                onClick={() => {
+                    const aboutSection = document.getElementById('about');
+                    aboutSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+            >
+                <div className="w-[22px] h-[36px] border-2 border-primary/40 rounded-full flex justify-center pt-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full animate-scroll-dot" />
                 </div>
-                <span className="text-xs font-semibold text-primary">Scroll Down</span>
+                <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-primary/80 font-bold">Scroll Down</span>
             </div>
         </section>
     );
