@@ -441,7 +441,7 @@ export const StaggeredMenu = ({
                     <Button
                         onClick={handleResumeDownload}
                         size="sm"
-                        className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 sm:px-6 py-1.5 text-xs sm:text-sm font-semibold shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-1.5 whitespace-nowrap"
+                        className="bg-black/40 hover:bg-black/60 dark:bg-zinc-900/40 dark:hover:bg-zinc-900/60 backdrop-blur-md text-foreground border border-primary/30 hover:border-primary/60 shadow-[0_0_15px_rgba(239,68,68,0.1)] hover:shadow-[0_0_25px_rgba(239,68,68,0.25)] rounded-full px-4 sm:px-6 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-1.5 whitespace-nowrap"
                     >
                         <Download className="h-3.5 w-3.5" />
                         <span>Resume</span>

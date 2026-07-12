@@ -140,7 +140,7 @@ export default function SkillsMarquee() {
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-2 select-none">
 
       {/* Ticker Rows */}
-      <div className="w-full max-w-5xl flex flex-col gap-1.5">
+      <div className="w-full flex flex-col gap-1.5">
         <Marquee pauseOnHover className="[--duration:25s]">
           {firstRow.map((review) => (
             <ReviewCard key={review.name} {...review} />

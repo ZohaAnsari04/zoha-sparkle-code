@@ -117,7 +117,7 @@ const About = () => {
           <Button
             size="lg"
             onClick={handleResumeDownload}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg font-semibold shadow-[0_10px_40px_rgba(239,68,68,0.25)] hover:shadow-[0_15px_50px_rgba(239,68,68,0.35)] transition-all duration-300 hover:scale-105 group"
+            className="bg-black/40 hover:bg-black/60 dark:bg-zinc-900/40 dark:hover:bg-zinc-900/60 backdrop-blur-md text-foreground border border-primary/30 hover:border-primary/60 shadow-[0_0_20px_rgba(239,68,68,0.15)] hover:shadow-[0_0_30px_rgba(239,68,68,0.35)] rounded-full px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 group"
           >
             <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
             Download Resume

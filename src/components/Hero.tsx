@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Sparkles, MapPin, Globe, ArrowRight } from "lucide-react";
+import { Heart, Sparkles, MapPin, Globe, ArrowRight, Send } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import avatarImage from "@/assets/avatar.png";
 import { useState, useEffect } from "react";
@@ -139,9 +139,9 @@ const Hero = () => {
                             <Button
                                 size="lg"
                                 onClick={handleContact}
-                                className="bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white rounded-full px-8 py-6 text-base font-semibold shadow-[0_4px_20px_rgba(185,28,28,0.25)] hover:shadow-[0_8px_30px_rgba(239,68,68,0.4)] transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+                                className="bg-black/40 hover:bg-black/60 dark:bg-zinc-900/40 dark:hover:bg-zinc-900/60 backdrop-blur-md text-foreground border border-primary/30 hover:border-primary/60 shadow-[0_0_20px_rgba(239,68,68,0.15)] hover:shadow-[0_0_30px_rgba(239,68,68,0.35)] rounded-full px-8 py-6 text-base font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
                             >
-                                <Sparkles className="h-5 w-5 animate-pulse" />
+                                <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                                 <span>Let's Connect</span>
                                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
                             </Button>
