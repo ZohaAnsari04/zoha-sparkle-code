@@ -61,6 +61,7 @@ const Journey = () => {
       specialization: "Vidyavihar",
       institution: "K.J. Somaiya School of Engineering",
       duration: "June 2026 – May 2028",
+      skills: ["Advanced Algorithms", "Software Engineering", "Computer Systems"],
     },
     {
       degree: "Bachelor of Engineering",
@@ -69,6 +70,7 @@ const Journey = () => {
       institution: "M.H. Saboo Siddik College of Engineering",
       duration: "Sept 2023 – June 2026",
       grade: "8.80 CGPA",
+      skills: ["IoT Ecosystems", "Cryptography & Cyber Security", "Solidity", "Computer Science"],
     },
     {
       degree: "Diploma of Education",
@@ -76,6 +78,7 @@ const Journey = () => {
       specialization: "Mumbai, India",
       institution: "Vidyalankar Polytechnic",
       duration: "Aug 2020 – Jun 2023",
+      skills: ["Information Technology", "Programming", "Web Technologies", "Software Development"],
     }
   ];
 
