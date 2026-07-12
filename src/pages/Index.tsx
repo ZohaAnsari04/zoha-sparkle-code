@@ -3,7 +3,7 @@ import About from "@/components/About";
 import Journey from "@/components/Journey";
 import Projects from "@/components/Projects";
 import AIShowcase from "@/components/AIShowcase";
-import Skills from "@/components/Skills";
+
 import Achievements from "@/components/Achievements";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -54,9 +54,7 @@ const Index = () => {
           <SectionReveal>
             <AIShowcase />
           </SectionReveal>
-          <SectionReveal>
-            <Skills />
-          </SectionReveal>
+
           <SectionReveal>
             <Achievements />
           </SectionReveal>

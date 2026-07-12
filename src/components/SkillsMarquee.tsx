@@ -123,12 +123,12 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative flex flex-row items-center gap-2 cursor-pointer overflow-hidden rounded-full border px-4 py-2 text-left",
+        "relative flex flex-row items-center gap-3.5 cursor-pointer overflow-hidden rounded-full border px-6 py-3.5 text-left",
         "border-zinc-200 dark:border-white/5 bg-zinc-100/50 dark:bg-white/[0.02] hover:bg-zinc-200 dark:hover:bg-white/[0.06] transition-colors"
       )}
     >
-      <img className="rounded-full bg-white/10 p-0.5" width="20" height="20" alt={name} src={img} />
-      <figcaption className="text-xs font-semibold text-foreground whitespace-nowrap">
+      <img className="rounded-full bg-white/10 p-0.5" width="32" height="32" alt={name} src={img} />
+      <figcaption className="text-base font-semibold text-foreground whitespace-nowrap">
         {name}
       </figcaption>
     </figure>

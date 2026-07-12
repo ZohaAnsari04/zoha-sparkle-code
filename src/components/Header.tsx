@@ -7,7 +7,6 @@ const Header = () => {
         { label: "Journey", link: "#journey" },
         { label: "Projects", link: "#projects" },
         { label: "AI Studio", link: "#ai-showcase" },
-        { label: "Skills", link: "#skills" },
         { label: "Achievements", link: "#achievements" },
         { label: "Contact", link: "#contact" }
     ];

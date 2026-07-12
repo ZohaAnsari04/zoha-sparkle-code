@@ -90,6 +90,30 @@ const Hero = () => {
                                 alt="Zoha Avatar"
                                 className="w-full h-full object-cover [mask-image:radial-gradient(ellipse_90%_90%_at_50%_35%,#000_50%,transparent_100%)] transition-transform duration-500 group-hover:scale-105"
                             />
+                            {/* Top Left Availability Badge */}
+                            <div className="absolute top-4 left-4 bg-zinc-950/75 backdrop-blur-md border border-white/10 rounded-xl p-2.5 flex flex-col gap-1.5 select-none shadow-[0_8px_32px_rgba(0,0,0,0.5)] z-20 text-left transition-all duration-300 group-hover:scale-[1.02]">
+                                <div className="flex items-center gap-2">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                                    </span>
+                                    <span className="text-[10px] sm:text-[11px] font-semibold tracking-wide text-zinc-300">Available for</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                    </span>
+                                    <span className="text-[10px] sm:text-[11px] font-bold tracking-wide text-white">Opportunities</span>
+                                </div>
+                            </div>
+
+                            {/* Overlay Quote Badge */}
+                            <div className="absolute bottom-4 left-4 right-4 bg-zinc-950/75 backdrop-blur-md border border-white/10 rounded-xl p-3 text-center select-none shadow-[0_8px_32px_rgba(0,0,0,0.5)] z-20 transition-all duration-300 group-hover:scale-[1.02]">
+                                <p className="text-xs sm:text-[13px] italic text-zinc-100/90 leading-relaxed font-serif">
+                                    "Code is not just what I do, it's how I bring ideas to life"
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -99,7 +123,7 @@ const Hero = () => {
                             <>
                                 <SplitText
                                     text="Ansari Zoha"
-                                    className="gradient-text text-[6.2vw] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center lg:text-left inline-block"
+                                    className="gradient-text text-[6.2vw] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center lg:text-left w-full block"
                                     delay={40}
                                     duration={0.8}
                                     ease="power3.out"
@@ -109,7 +133,7 @@ const Hero = () => {
 
                                 <SplitText
                                     text="Frontend Developer Focused on Performance, UX & Clean Code"
-                                    className="text-[3.4vw] sm:text-[2.8vw] md:text-2xl lg:text-3xl font-semibold text-foreground whitespace-normal text-center lg:text-left inline-block"
+                                    className="text-[3.4vw] sm:text-[2.8vw] md:text-2xl lg:text-3xl font-semibold text-foreground whitespace-normal text-center lg:text-left w-full block"
                                     delay={30}
                                     duration={0.7}
                                     ease="power2.out"
@@ -119,7 +143,7 @@ const Hero = () => {
 
                                 <SplitText
                                     text="Frontend Engineer crafting fast, scalable, and pixel-perfect web experiences with React, Next.js, and TypeScript. Passionate about building products that users enjoy and businesses rely on!💖"
-                                    className="text-lg md:text-xl text-muted-foreground font-medium text-center lg:text-left leading-relaxed inline-block"
+                                    className="text-lg md:text-xl text-muted-foreground font-medium text-center lg:text-left leading-relaxed w-full block"
                                     delay={15}
                                     duration={0.8}
                                     ease="power3.out"
