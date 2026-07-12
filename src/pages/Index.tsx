@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import About from "@/components/About";
+
 import Journey from "@/components/Journey";
 import Projects from "@/components/Projects";
 import AIShowcase from "@/components/AIShowcase";
@@ -42,9 +42,7 @@ const Index = () => {
           <SectionReveal>
             <Hero />
           </SectionReveal>
-          <SectionReveal>
-            <About />
-          </SectionReveal>
+
           <SectionReveal>
             <Journey />
           </SectionReveal>

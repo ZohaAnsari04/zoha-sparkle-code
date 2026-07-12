@@ -3,7 +3,6 @@ import StaggeredMenu from "./StaggeredMenu";
 const Header = () => {
     const menuItems = [
         { label: "Home", link: "#" },
-        { label: "About Me", link: "#about" },
         { label: "Journey", link: "#journey" },
         { label: "Projects", link: "#projects" },
         { label: "AI Studio", link: "#ai-showcase" },
