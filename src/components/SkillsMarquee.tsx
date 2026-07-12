@@ -116,31 +116,21 @@ const secondRow = skillReviews.slice(skillReviews.length / 2);
 const ReviewCard = ({
   img,
   name,
-  username,
-  body,
 }: {
   img: string;
   name: string;
-  username: string;
-  body: string;
 }) => {
   return (
     <figure
       className={cn(
-        "relative w-56 cursor-pointer overflow-hidden rounded-xl border p-3 flex flex-col justify-between text-left",
+        "relative flex flex-row items-center gap-2 cursor-pointer overflow-hidden rounded-full border px-4 py-2 text-left",
         "border-zinc-200 dark:border-white/5 bg-zinc-100/50 dark:bg-white/[0.02] hover:bg-zinc-200 dark:hover:bg-white/[0.06] transition-colors"
       )}
     >
-      <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full bg-white/10 p-0.5" width="24" height="24" alt="" src={img} />
-        <div className="flex flex-col">
-          <figcaption className="text-xs font-semibold text-foreground">
-            {name}
-          </figcaption>
-          <p className="text-[10px] font-medium text-muted-foreground">{username}</p>
-        </div>
-      </div>
-      <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground/90">{body}</p>
+      <img className="rounded-full bg-white/10 p-0.5" width="20" height="20" alt={name} src={img} />
+      <figcaption className="text-xs font-semibold text-foreground whitespace-nowrap">
+        {name}
+      </figcaption>
     </figure>
   );
 };
@@ -148,11 +138,6 @@ const ReviewCard = ({
 export default function SkillsMarquee() {
   return (
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-2 select-none">
-      {/* Title */}
-      <div className="mb-2 flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] font-bold text-primary/80">
-        <Sparkles className="h-3 w-3 animate-sparkle" />
-        <span>Skills Ticker</span>
-      </div>
 
       {/* Ticker Rows */}
       <div className="w-full max-w-5xl flex flex-col gap-1.5">
