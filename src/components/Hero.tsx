@@ -5,6 +5,7 @@ import avatarImage from "@/assets/avatar.png";
 import { useState, useEffect } from "react";
 import SplitText from "@/components/SplitText";
 import Lightfall from "@/components/Lightfall";
+import SkillsMarquee from "@/components/SkillsMarquee";
 
 const Hero = () => {
     const [displayedText, setDisplayedText] = useState("");
@@ -46,7 +47,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-24"
+            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-36"
         >
             {/* WebGL Lightfall Backdrop */}
             <div className="absolute inset-0 z-0 opacity-40">
@@ -171,17 +172,8 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div
-                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 opacity-80 hover:opacity-100 transition-opacity duration-300 cursor-pointer z-20"
-                onClick={() => {
-                    const aboutSection = document.getElementById('about');
-                    aboutSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
-            >
-                <div className="w-[22px] h-[36px] border-2 border-primary/40 rounded-full flex justify-center pt-2">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full animate-scroll-dot" />
-                </div>
-                <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-primary/80 font-bold">Scroll Down</span>
+            <div className="absolute bottom-4 left-0 right-0 w-full z-20">
+                <SkillsMarquee />
             </div>
         </section>
     );
