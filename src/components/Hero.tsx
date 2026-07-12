@@ -31,7 +31,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-36"
+            className="min-h-screen flex flex-col justify-between relative overflow-hidden pt-24 pb-12"
         >
             {/* WebGL Lightfall Backdrop */}
             <div className="absolute inset-0 z-0 opacity-40">
@@ -56,7 +56,7 @@ const Hero = () => {
 
             <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/50 to-background/95 dark:from-transparent dark:via-black/30 dark:to-black/90 z-0 pointer-events-none" />
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-4 relative z-10 flex-grow flex items-center justify-center py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-6xl mx-auto">
                     {/* Left Column: Picture and grid background */}
                     <div className="lg:col-span-5 flex justify-center relative animate-fade-in order-1 py-10 w-full overflow-visible">
@@ -180,7 +180,8 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="absolute bottom-4 left-0 right-0 w-full z-20">
+            {/* Skills Marquee in flow below container */}
+            <div className="w-full mt-8 md:mt-12 z-20 relative">
                 <SkillsMarquee />
             </div>
         </section>
