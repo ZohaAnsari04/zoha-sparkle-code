@@ -59,7 +59,7 @@ const Preloader = () => {
         else setStatusIndex(4);
     }, [progress]);
 
-    const brandName = "ZohaAIverse";
+    const brandName = "BuiltByZoha";
     const letters = Array.from(brandName);
 
     return (

@@ -101,7 +101,7 @@ const Header = () => {
                         onClick={() => scrollToSection("#")}
                         className="text-xl lg:text-2xl xl:text-3xl font-bold gradient-text hover:scale-105 transition-transform cursor-pointer whitespace-nowrap z-10"
                     >
-                        ZohaAIverse
+                        BuiltByZoha
                     </button>
 
                     {/* Desktop Navigation Links */}

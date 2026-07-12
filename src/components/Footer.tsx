@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div className="text-center md:text-left">
               <h3 className="text-2xl font-bold gradient-text mb-2">
-                ZohaAIverse
+                BuiltByZoha
               </h3>
               <p className="text-sm text-muted-foreground">
                 Creating digital magic with code and creativity ✨
@@ -67,7 +67,7 @@ const Footer = () => {
 
           <div className="text-center space-y-2">
             <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
-              © {currentYear} ZohaAIverse. All rights reserved.
+              © {currentYear} BuiltByZoha. All rights reserved.
             </p>
             <p className="text-sm text-primary font-medium flex items-center justify-center gap-2">
               Made with{" "}
