@@ -61,11 +61,6 @@ const Journey = () => {
       specialization: "Vidyavihar",
       institution: "K.J. Somaiya School of Engineering",
       duration: "June 2026 – May 2028",
-      points: [
-        "Pursuing advanced coursework and research in computer systems, advanced algorithms, and software architectures.",
-        "Collaborating on high-performance computing projects and modern engineering solutions."
-      ],
-      skills: ["Advanced Algorithms", "Software Engineering", "Computer Systems"],
     },
     {
       degree: "Bachelor of Engineering",
@@ -74,11 +69,6 @@ const Journey = () => {
       institution: "M.H. Saboo Siddik College of Engineering",
       duration: "Sept 2023 – June 2026",
       grade: "8.80 CGPA",
-      points: [
-        "Acquired deep fundamentals in computer systems, cryptographic protocols, blockchain engineering, and network security.",
-        "Built transparent decentralized applications and smart contract ecosystems as part of engineering projects."
-      ],
-      skills: ["IoT Ecosystems", "Cryptography & Cyber Security", "Solidity", "Computer Science"],
     },
     {
       degree: "Diploma of Education",
@@ -86,12 +76,6 @@ const Journey = () => {
       specialization: "Mumbai, India",
       institution: "Vidyalankar Polytechnic",
       duration: "Aug 2020 – Jun 2023",
-      points: [
-        "Built a strong foundation in information technology fundamentals and programming.",
-        "Developed practical skills in software development, web technologies, and database management.",
-        "Completed various projects in web development and software engineering."
-      ],
-      skills: ["Information Technology", "Programming", "Web Technologies", "Software Development"],
     }
   ];
 
@@ -301,11 +285,7 @@ const Journey = () => {
                                 {item.grade}
                               </p>
                             )}
-                            <ul className="list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-400 dark:marker:text-zinc-600">
-                              {item.points.map((pt, pIdx) => (
-                                <li key={pIdx}>{pt}</li>
-                              ))}
-                            </ul>
+
                             {item.skills && item.skills.length > 0 && (
                               <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
                                 {item.skills.map((skill, sIdx) => (
@@ -354,11 +334,7 @@ const Journey = () => {
                                 {item.grade}
                               </p>
                             )}
-                            <ul className="list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-400 dark:marker:text-zinc-600">
-                              {item.points.map((pt, pIdx) => (
-                                <li key={pIdx}>{pt}</li>
-                              ))}
-                            </ul>
+
                             {item.skills && item.skills.length > 0 && (
                               <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
                                 {item.skills.map((skill, sIdx) => (
