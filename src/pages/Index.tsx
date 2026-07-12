@@ -15,7 +15,7 @@ import BackToTop from "@/components/BackToTop";
 import LocomotiveScrollWrapper from "@/components/LocomotiveScrollWrapper";
 import SectionReveal from "@/components/SectionReveal";
 import BackgroundBlobs from "@/components/BackgroundBlobs";
-import SplashCursor from "@/components/SplashCursor";
+import CustomCursor from "@/components/CustomCursor";
 import { useState } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 
@@ -24,7 +24,7 @@ const Index = () => {
 
   return (
     <>
-      <SplashCursor />
+      <CustomCursor />
       <Preloader />
       <BackgroundBlobs />
       <ScrollProgress />

@@ -273,3 +273,11 @@ html {
 .animate-jump-pulse {
     animation: jump-pulse 2s infinite ease-in-out;
 }
+
+/* Hide default cursor on desktop when CustomCursor is active */
+@media (pointer: fine) {
+    .custom-cursor-active,
+    .custom-cursor-active * {
+        cursor: none !important;
+    }
+}

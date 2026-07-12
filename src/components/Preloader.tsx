@@ -31,6 +31,25 @@ const Preloader = () => {
         return () => clearInterval(interval);
     }, []);
 
+    // Control body scroll lock and scroll-to-top position
+    useEffect(() => {
+        if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual';
+        }
+
+        if (isLoading) {
+            document.body.style.overflow = "hidden";
+            window.scrollTo(0, 0);
+        } else {
+            document.body.style.overflow = "";
+            window.scrollTo(0, 0);
+        }
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isLoading]);
+
     // Update status message based on progress
     useEffect(() => {
         if (progress < 25) setStatusIndex(0);
