@@ -215,49 +215,59 @@ const Header = () => {
                 : "bg-background/80 backdrop-blur-sm"
                 }`}
         >
-            <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+            <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 relative">
                 <div className="flex items-center justify-between h-16 lg:h-20">
                     {/* Logo */}
                     <button
                         onClick={() => scrollToSection("#")}
-                        className="text-xl lg:text-2xl xl:text-3xl font-bold gradient-text hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
+                        className="text-xl lg:text-2xl xl:text-3xl font-bold gradient-text hover:scale-105 transition-transform cursor-pointer whitespace-nowrap z-10"
                     >
                         ZohaAIverse
                     </button>
 
-                    {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-                        {navItems.map((item) => {
-                            const isActive = activeSection === item.href;
-                            return (
-                                <button
-                                    key={item.name}
-                                    onClick={() => scrollToSection(item.href)}
-                                    className={`px-2.5 py-1.5 xl:px-4 xl:py-2 text-xs xl:text-sm whitespace-nowrap transition-all font-medium rounded-full flex items-center gap-1.5 group ${isActive
-                                        ? "text-primary bg-primary/20 scale-105 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
-                                        : "text-foreground hover:text-primary hover:bg-primary/10"
-                                        }`}
-                                >
-                                    <item.icon className={`h-3.5 w-3.5 xl:h-4 xl:w-4 ${isActive ? "" : item.color} group-hover:scale-110 transition-transform`} />
-                                    <span>{item.name}</span>
-                                </button>
-                            );
-                        })}
+                    {/* Desktop Navigation Container on the right */}
+                    <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+                        {/* Desktop Navigation Links */}
+                        <nav className={`flex items-center gap-0.5 xl:gap-1.5 transition-all duration-500 ease-in-out z-10 ${
+                            isScrolled
+                                ? "absolute left-1/2 -translate-x-1/2 bg-background/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-border shadow-[0_4px_20px_rgba(0,0,0,0.1)] scale-95"
+                                : ""
+                        }`}>
+                            {navItems.map((item) => {
+                                const isActive = activeSection === item.href;
+                                return (
+                                    <button
+                                        key={item.name}
+                                        onClick={() => scrollToSection(item.href)}
+                                        className={`px-2.5 py-1.5 xl:px-4 xl:py-2 text-xs xl:text-sm whitespace-nowrap transition-all font-medium rounded-full flex items-center gap-1.5 group ${isActive
+                                            ? "text-primary bg-primary/20 scale-105 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
+                                            : "text-foreground hover:text-primary hover:bg-primary/10"
+                                            }`}
+                                    >
+                                        <item.icon className={`h-3.5 w-3.5 xl:h-4 xl:w-4 ${isActive ? "" : item.color} group-hover:scale-110 transition-transform`} />
+                                        <span>{item.name}</span>
+                                    </button>
+                                );
+                            })}
+                        </nav>
 
-                        {/* Resume Button */}
-                        <Button
-                            onClick={handleResumeDownload}
-                            className="ml-1 xl:ml-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-1.5 xl:px-6 xl:py-2 text-xs xl:text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-1.5 whitespace-nowrap"
-                        >
-                            <Download className="h-3.5 w-3.5 xl:h-4 xl:w-4" />
-                            <span>Resume</span>
-                        </Button>
+                        {/* Resume & Theme */}
+                        <div className="flex items-center gap-1 xl:gap-2 z-10 ml-2 xl:ml-4">
+                            {/* Resume Button */}
+                            <Button
+                                onClick={handleResumeDownload}
+                                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-1.5 xl:px-6 xl:py-2 text-xs xl:text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-1.5 whitespace-nowrap"
+                            >
+                                <Download className="h-3.5 w-3.5 xl:h-4 xl:w-4" />
+                                <span>Resume</span>
+                            </Button>
 
-                        {/* Theme Toggle */}
-                        <div className="ml-1 xl:ml-2">
-                            <ThemeToggle />
+                            {/* Theme Toggle */}
+                            <div className="ml-1 xl:ml-2">
+                                <ThemeToggle />
+                            </div>
                         </div>
-                    </nav>
+                    </div>
 
                     {/* Mobile Menu Button */}
                     <Button
