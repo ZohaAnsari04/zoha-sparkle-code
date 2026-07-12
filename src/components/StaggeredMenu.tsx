@@ -2,7 +2,6 @@ import React, { useCallback, useLayoutEffect, useRef, useState, useEffect } from
 import { gsap } from "gsap";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ThemeToggle from "@/components/ThemeToggle";
 import "./StaggeredMenu.css";
 
 export interface StaggeredMenuItem {
@@ -448,8 +447,7 @@ export const StaggeredMenu = ({
                         <span>Resume</span>
                     </Button>
 
-                    {/* Theme Toggle */}
-                    <ThemeToggle />
+
 
                     {/* Menu Toggle Button */}
                     <button
