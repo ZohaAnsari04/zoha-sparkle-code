@@ -97,7 +97,7 @@ const Hero = () => {
                         {showBlurText ? (
                             <>
                                 <SplitText
-                                    text="Ansari Zoha Najmul Kalam"
+                                    text="Ansari Zoha"
                                     className="gradient-text text-[6.2vw] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center lg:text-left inline-block"
                                     delay={40}
                                     duration={0.8}
