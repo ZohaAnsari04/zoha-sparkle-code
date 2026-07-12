@@ -111,7 +111,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group relative overflow-hidden bg-card dark:bg-gray-900/40 dark:backdrop-blur-md rounded-3xl border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-500 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] dark:hover:shadow-[0_0_50px_rgba(168,85,247,0.2)] animate-fade-in"
+              className="group relative overflow-hidden bg-card dark:bg-gray-900/40 dark:backdrop-blur-md rounded-3xl border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-red-500/50 transition-all duration-500 hover:shadow-[0_10px_40px_rgba(239,68,68,0.15)] dark:hover:shadow-[0_0_50px_rgba(239,68,68,0.25)] animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Animated Background */}
@@ -165,7 +165,7 @@ const Projects = () => {
                 {project.demo && (
                   <Button
                     size="sm"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-[0_4px_20px_rgba(236,72,153,0.2)] hover:shadow-[0_6px_30px_rgba(236,72,153,0.3)] transition-all"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-[0_4px_20px_rgba(239,68,68,0.15)] hover:shadow-[0_6px_30px_rgba(239,68,68,0.25)] transition-all"
                     onClick={() => window.open(project.demo, '_blank')}
                     disabled={project.demo === '#'}
                   >

@@ -20,7 +20,7 @@ const About = () => {
         </div>
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mb-12">
-          <Card className="p-8 bg-card dark:bg-gray-900/40 dark:backdrop-blur-md rounded-3xl shadow-[0_4px_20px_rgba(236,72,153,0.15)] border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(236,72,153,0.2)] dark:hover:shadow-[0_0_50px_rgba(168,85,247,0.2)] animate-fade-in relative overflow-hidden">
+          <Card className="p-8 bg-card dark:bg-gray-900/40 dark:backdrop-blur-md rounded-3xl shadow-[0_4px_20px_rgba(239,68,68,0.12)] border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-red-500/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(239,68,68,0.15)] dark:hover:shadow-[0_0_50px_rgba(239,68,68,0.25)] animate-fade-in relative overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
               <img
@@ -52,7 +52,7 @@ const About = () => {
           </Card>
 
           <div className="space-y-6">
-            <Card className="p-6 bg-gradient-to-br from-primary/10 to-accent/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-primary/30 dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-6 bg-gradient-to-br from-primary/10 to-accent/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-primary/30 dark:border-white/10 hover:border-primary/50 dark:hover:border-red-500/50 transition-all duration-300 animate-fade-in">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
                   <Code2 className="text-primary" />
@@ -66,7 +66,7 @@ const About = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-gradient-to-br from-secondary/20 to-primary/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-secondary/30 dark:border-white/10 hover:border-secondary/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-6 bg-gradient-to-br from-secondary/20 to-primary/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-secondary/30 dark:border-white/10 hover:border-secondary/50 dark:hover:border-red-500/50 transition-all duration-300 animate-fade-in">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
                   <Blocks className="text-secondary" />
@@ -80,7 +80,7 @@ const About = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-gradient-to-br from-accent/10 to-secondary/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-accent/30 dark:border-white/10 hover:border-accent/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-6 bg-gradient-to-br from-accent/10 to-secondary/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-accent/30 dark:border-white/10 hover:border-accent/50 dark:hover:border-red-500/50 transition-all duration-300 animate-fade-in">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
                   <Brain className="text-accent" />
@@ -94,10 +94,10 @@ const About = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-purple-400/30 dark:border-white/10 hover:border-purple-400/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-6 bg-gradient-to-br from-red-500/10 to-red-900/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-red-500/20 dark:border-white/10 hover:border-red-500/40 dark:hover:border-red-500/50 transition-all duration-300 animate-fade-in">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center">
-                  <Wand2 className="text-purple-500" />
+                <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
+                  <Wand2 className="text-red-500" />
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-2">Generative AI Prompt Design</h4>
@@ -114,7 +114,7 @@ const About = () => {
           <Button
             size="lg"
             onClick={handleResumeDownload}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg font-semibold shadow-[0_10px_40px_rgba(236,72,153,0.3)] hover:shadow-[0_15px_50px_rgba(236,72,153,0.4)] transition-all duration-300 hover:scale-105 group"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg font-semibold shadow-[0_10px_40px_rgba(239,68,68,0.25)] hover:shadow-[0_15px_50px_rgba(239,68,68,0.35)] transition-all duration-300 hover:scale-105 group"
           >
             <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
             Download Resume

@@ -3,8 +3,7 @@ import { Heart, Sparkles, MapPin, Globe, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import avatarImage from "@/assets/avatar.jpg";
 import { useState, useEffect } from "react";
-import BlurText from "@/components/BlurText";
-import GradientText from "@/components/GradientText";
+import SplitText from "@/components/SplitText";
 
 const Hero = () => {
     const [displayedText, setDisplayedText] = useState("");
@@ -51,76 +50,102 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 dark:from-transparent dark:via-black/50 dark:to-black/80" />
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="max-w-4xl mx-auto text-center animate-fade-in">
-                    <div className="mb-8 inline-block relative">
-                        <img
-                            src={avatarImage}
-                            alt="Zoha Avatar"
-                            className="w-56 h-56 rounded-full border-4 border-primary shadow-[0_0_40px_rgba(236,72,153,0.3)] animate-float mx-auto"
-                        />
-                        <Heart className="absolute -top-6 -right-6 text-primary w-10 h-10 animate-sparkle" fill="currentColor" />
-                        <Sparkles className="absolute -bottom-4 -left-4 text-accent w-8 h-8 animate-sparkle" />
-                    </div>
-
-                    <h1 className="text-[6.2vw] sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 min-h-[3rem] md:min-h-[5rem] whitespace-nowrap">
-                        <span className="gradient-text">
-                            {displayedText}
-                            <span className="animate-pulse">|</span>
-                        </span>
-                    </h1>
-
-                    {showBlurText && (
-                        <BlurText
-                            text="Frontend Developer Focused on Performance, UX & Clean Code"
-                            delay={150}
-                            animateBy="words"
-                            direction="top"
-                            className="text-[3.4vw] sm:text-[2.8vw] md:text-2xl lg:text-3xl font-semibold mb-6 text-foreground whitespace-nowrap"
-                        />
-                    )}
-
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
-                        <GradientText
-                            colors={["#ec4899", "#8b5cf6", "#ec4899", "#8b5cf6", "#ec4899"]}
-                            animationSpeed={5}
-                            showBorder={false}
-                            className="text-lg md:text-xl font-medium"
-                        >
-                            Frontend Engineer crafting fast, scalable, and pixel-perfect web experiences with React, Next.js, and TypeScript. Passionate about building products that users enjoy and businesses rely on!💖
-                        </GradientText>
-                    </p>
-
-                    <div className="flex flex-wrap gap-4 justify-center items-center mb-8">
-                        <Button
-                            size="lg"
-                            onClick={handleContact}
-                            className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white rounded-full px-8 py-6 text-base font-semibold shadow-[0_4px_20px_rgba(139,92,246,0.3)] hover:shadow-[0_8px_30px_rgba(236,72,153,0.5)] transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
-                        >
-                            <Sparkles className="h-5 w-5 animate-pulse" />
-                            <span>Let's Connect</span>
-                            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
-                        </Button>
-
-                        <button
-                            onClick={handleContact}
-                            className="relative flex items-center gap-3 rounded-full border border-violet-500/20 bg-violet-500/5 hover:bg-violet-500/10 backdrop-blur-md px-8 py-[18px] text-base font-semibold text-foreground/90 transition-all duration-300 hover:border-violet-500/40 hover:scale-105 shadow-[0_4px_30px_rgba(0,0,0,0.1)] group"
-                        >
-                            <span className="relative flex h-2.5 w-2.5">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                            </span>
-                            <span>Open to Frontend Roles & Internships</span>
-                        </button>
-                    </div>
-
-                    <div className="flex flex-wrap justify-center gap-4 text-sm font-medium mb-16">
-                        <div className="flex items-center gap-2 border border-violet-500/10 bg-violet-500/5 backdrop-blur-md rounded-full px-5 py-2.5 text-foreground/80 shadow-sm transition-all duration-300 hover:border-violet-500/25 hover:text-foreground">
-                            <MapPin className="text-violet-400 w-4 h-4 animate-jump-pulse" />
-                            <span>Mumbai, India</span>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-6xl mx-auto">
+                    {/* Left Column: Picture and grid background */}
+                    <div className="lg:col-span-5 flex justify-center relative animate-fade-in order-1 py-10 w-full overflow-visible">
+                        {/* Rounded squares grid background behind picture */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] grid grid-cols-6 gap-3.5 opacity-35 pointer-events-none z-0">
+                            {Array.from({ length: 36 }).map((_, i) => (
+                                <div key={i} className="border border-white/10 dark:border-white/10 rounded-xl aspect-square bg-gradient-to-br from-white/[0.02] to-transparent shadow-[inset_0_0_12px_rgba(255,255,255,0.01)]" />
+                            ))}
                         </div>
-                        <div className="flex items-center gap-2 border border-sky-500/10 bg-sky-500/5 backdrop-blur-md rounded-full px-5 py-2.5 text-foreground/80 shadow-sm transition-all duration-300 hover:border-sky-500/25 hover:text-foreground">
-                            <Globe className="text-sky-400 w-4 h-4 animate-spin-slow" />
-                            <span>Open to Remote Work</span>
+
+                        {/* Image wrapper */}
+                        <div className="relative z-10 w-64 h-[380px] sm:w-72 sm:h-[420px] md:w-80 md:h-[460px] lg:w-[340px] lg:h-[480px] rounded-3xl border-2 border-white shadow-[0_0_30px_rgba(255,255,255,0.65),0_0_60px_rgba(239,68,68,0.3)] overflow-hidden group">
+                            <img
+                                src={avatarImage}
+                                alt="Zoha Avatar"
+                                className="w-full h-full object-cover [mask-image:linear-gradient(to_bottom,white_82%,transparent_100%)] transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <Heart className="absolute -top-1 -left-1 text-primary w-10 h-10 animate-sparkle drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]" fill="currentColor" />
+                            <Sparkles className="absolute -bottom-1 -right-1 text-accent w-8 h-8 animate-sparkle drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                        </div>
+                    </div>
+
+                    {/* Right Column: Text content */}
+                    <div className="lg:col-span-7 text-center lg:text-left space-y-6 flex flex-col items-center lg:items-start order-2 w-full">
+                        {showBlurText ? (
+                            <>
+                                <SplitText
+                                    text="Ansari Zoha Najmul Kalam"
+                                    className="gradient-text text-[6.2vw] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center lg:text-left inline-block"
+                                    delay={40}
+                                    duration={0.8}
+                                    ease="power3.out"
+                                    splitType="chars"
+                                    tag="h1"
+                                />
+
+                                <SplitText
+                                    text="Frontend Developer Focused on Performance, UX & Clean Code"
+                                    className="text-[3.4vw] sm:text-[2.8vw] md:text-2xl lg:text-3xl font-semibold text-foreground whitespace-normal text-center lg:text-left inline-block"
+                                    delay={30}
+                                    duration={0.7}
+                                    ease="power2.out"
+                                    splitType="words"
+                                    tag="h2"
+                                />
+
+                                <SplitText
+                                    text="Frontend Engineer crafting fast, scalable, and pixel-perfect web experiences with React, Next.js, and TypeScript. Passionate about building products that users enjoy and businesses rely on!💖"
+                                    className="text-lg md:text-xl text-muted-foreground font-medium text-center lg:text-left leading-relaxed inline-block"
+                                    delay={15}
+                                    duration={0.8}
+                                    ease="power3.out"
+                                    splitType="words"
+                                    tag="p"
+                                />
+                            </>
+                        ) : (
+                            <div className="opacity-0 space-y-6 flex flex-col items-center lg:items-start">
+                                <h1 className="text-[6.2vw] sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text">Ansari Zoha Najmul Kalam</h1>
+                                <h2 className="text-[3.4vw] sm:text-[2.8vw] md:text-2xl lg:text-3xl font-semibold text-foreground">Frontend Developer Focused on Performance, UX & Clean Code</h2>
+                                <p className="text-lg md:text-xl text-muted-foreground font-medium">Frontend Engineer crafting fast, scalable, and pixel-perfect web experiences with React, Next.js, and TypeScript. Passionate about building products that users enjoy and businesses rely on!💖</p>
+                            </div>
+                        )}
+
+                        <div className="flex flex-wrap gap-4 justify-center lg:justify-start items-center">
+                            <Button
+                                size="lg"
+                                onClick={handleContact}
+                                className="bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white rounded-full px-8 py-6 text-base font-semibold shadow-[0_4px_20px_rgba(185,28,28,0.25)] hover:shadow-[0_8px_30px_rgba(239,68,68,0.4)] transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+                            >
+                                <Sparkles className="h-5 w-5 animate-pulse" />
+                                <span>Let's Connect</span>
+                                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                            </Button>
+
+                            <button
+                                onClick={handleContact}
+                                className="relative flex items-center gap-3 rounded-full border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 backdrop-blur-md px-8 py-[18px] text-base font-semibold text-foreground/90 transition-all duration-300 hover:border-red-500/40 hover:scale-105 shadow-[0_4px_30px_rgba(0,0,0,0.1)] group"
+                            >
+                                <span className="relative flex h-2.5 w-2.5">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                </span>
+                                <span>Open to Frontend Roles</span>
+                            </button>
+                        </div>
+
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-sm font-medium">
+                            <div className="flex items-center gap-2 border border-red-500/10 bg-red-500/5 backdrop-blur-md rounded-full px-5 py-2.5 text-foreground/80 shadow-sm transition-all duration-300 hover:border-red-500/25 hover:text-foreground">
+                                <MapPin className="text-red-400 w-4 h-4 animate-jump-pulse" />
+                                <span>Mumbai, India</span>
+                            </div>
+                            <div className="flex items-center gap-2 border border-red-500/10 bg-red-500/5 backdrop-blur-md rounded-full px-5 py-2.5 text-foreground/80 shadow-sm transition-all duration-300 hover:border-red-500/25 hover:text-foreground">
+                                <Globe className="text-red-400 w-4 h-4 animate-spin-slow" />
+                                <span>Open to Remote Work</span>
+                            </div>
                         </div>
                     </div>
                 </div>

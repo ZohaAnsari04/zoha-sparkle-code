@@ -104,7 +104,7 @@ const CustomCursor = () => {
 
       {/* Inner Precision Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none z-[100000] bg-gradient-to-r from-primary to-accent shadow-[0_0_8px_rgba(236,72,153,0.6)]"
+        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none z-[100000] bg-gradient-to-r from-primary to-accent shadow-[0_0_8px_rgba(239,68,68,0.6)]"
         style={{
           x: mouseX,
           y: mouseY,
@@ -115,7 +115,7 @@ const CustomCursor = () => {
           scale: isHovered ? 1.3 : 1,
           boxShadow: isHovered 
             ? '0 0 15px hsl(var(--primary))' 
-            : '0 0 8px rgba(236,72,153,0.6)',
+            : '0 0 8px rgba(239,68,68,0.6)',
         }}
         transition={{
           scale: { type: 'spring', stiffness: 300, damping: 15 },

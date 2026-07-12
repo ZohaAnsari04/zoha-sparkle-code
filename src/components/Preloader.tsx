@@ -161,7 +161,7 @@ const Preloader = () => {
                                         ease: "easeInOut",
                                     }}
                                 >
-                                    <BrainCircuit className="w-10 h-10 text-primary drop-shadow-[0_0_12px_rgba(236,72,153,0.4)]" />
+                                    <BrainCircuit className="w-10 h-10 text-primary drop-shadow-[0_0_12px_rgba(239,68,68,0.4)]" />
                                 </motion.div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@ const Preloader = () => {
                         <div className="w-56 mx-auto relative">
                             <div className="h-[2px] w-full bg-muted/40 rounded-full relative overflow-hidden">
                                 <motion.div
-                                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-accent shadow-[0_0_8px_rgba(236,72,153,0.8)]"
+                                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-accent shadow-[0_0_8px_rgba(239,68,68,0.8)]"
                                     style={{ width: `${progress}%` }}
                                 />
                             </div>

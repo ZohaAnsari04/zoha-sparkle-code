@@ -56,14 +56,14 @@ const Header = () => {
     }, []);
 
     const navItems = [
-        { name: "Home", href: "#", icon: Home, color: "text-orange-500" },
-        { name: "About Me", href: "#about", icon: User, color: "text-emerald-400" },
-        { name: "Journey", href: "#journey", icon: Briefcase, color: "text-cyan-400" },
-        { name: "Projects", href: "#projects", icon: FolderGit2, color: "text-indigo-400" },
-        { name: "AI Studio", href: "#ai-showcase", icon: Brain, color: "text-fuchsia-400" },
-        { name: "Skills", href: "#skills", icon: Blocks, color: "text-yellow-400" },
-        { name: "Achievements", href: "#achievements", icon: Award, color: "text-amber-400" },
-        { name: "Contact", href: "#contact", icon: Mail, color: "text-rose-400" },
+        { name: "Home", href: "#", icon: Home, color: "text-muted-foreground group-hover:text-primary transition-colors" },
+        { name: "About Me", href: "#about", icon: User, color: "text-muted-foreground group-hover:text-primary transition-colors" },
+        { name: "Journey", href: "#journey", icon: Briefcase, color: "text-muted-foreground group-hover:text-primary transition-colors" },
+        { name: "Projects", href: "#projects", icon: FolderGit2, color: "text-muted-foreground group-hover:text-primary transition-colors" },
+        { name: "AI Studio", href: "#ai-showcase", icon: Brain, color: "text-muted-foreground group-hover:text-primary transition-colors" },
+        { name: "Skills", href: "#skills", icon: Blocks, color: "text-muted-foreground group-hover:text-primary transition-colors" },
+        { name: "Achievements", href: "#achievements", icon: Award, color: "text-muted-foreground group-hover:text-primary transition-colors" },
+        { name: "Contact", href: "#contact", icon: Mail, color: "text-muted-foreground group-hover:text-primary transition-colors" },
     ];
 
     const scrollToSection = (href: string) => {
@@ -107,7 +107,7 @@ const Header = () => {
                     {/* Desktop Navigation Links */}
                     <nav className={`hidden lg:flex items-center gap-0.5 xl:gap-1.5 transition-all duration-500 ease-in-out z-10 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ${
                         isScrolled
-                            ? "bg-background/80 dark:bg-background/90 backdrop-blur-md px-5 py-1.5 rounded-full border border-primary/30 dark:border-primary/20 shadow-[0_12px_40px_rgba(236,72,153,0.12)] scale-95"
+                            ? "bg-background/80 dark:bg-background/90 backdrop-blur-md px-5 py-1.5 rounded-full border border-primary/30 dark:border-primary/20 shadow-[0_12px_40px_rgba(239,68,68,0.12)] scale-95"
                             : ""
                     }`}>
                         {navItems.map((item) => {
@@ -117,7 +117,7 @@ const Header = () => {
                                     key={item.name}
                                     onClick={() => scrollToSection(item.href)}
                                     className={`px-2.5 py-1.5 xl:px-4 xl:py-2 text-xs xl:text-sm whitespace-nowrap transition-all font-medium rounded-full flex items-center gap-1.5 group ${isActive
-                                        ? "text-primary bg-primary/20 scale-105 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
+                                        ? "text-primary bg-primary/20 scale-105 shadow-[0_0_15px_rgba(239,68,68,0.3)]"
                                         : "text-foreground hover:text-primary hover:bg-primary/10"
                                         }`}
                                 >
@@ -171,7 +171,7 @@ const Header = () => {
                                         key={item.name}
                                         onClick={() => scrollToSection(item.href)}
                                         className={`px-4 py-3 text-left transition-all font-medium rounded-xl flex items-center gap-3 group ${isActive
-                                            ? "text-primary bg-primary/20 shadow-[0_0_10px_rgba(236,72,153,0.2)]"
+                                            ? "text-primary bg-primary/20 shadow-[0_0_10px_rgba(239,68,68,0.2)]"
                                             : "text-foreground hover:text-primary hover:bg-primary/10"
                                             }`}
                                     >

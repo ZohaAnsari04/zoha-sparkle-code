@@ -104,8 +104,8 @@ const Skills = () => {
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === tab.key
-                ? "bg-primary text-primary-foreground shadow-lg dark:bg-purple-600 dark:text-white dark:shadow-[0_0_20px_rgba(168,85,247,0.4)] scale-105"
-                : "bg-card border-2 border-border hover:border-primary/50 text-foreground dark:bg-gray-900/40 dark:backdrop-blur-md dark:border-white/10 dark:hover:border-purple-500/50 dark:text-gray-300 hover:scale-105"
+                ? "bg-primary text-primary-foreground shadow-lg dark:bg-red-600 dark:text-white dark:shadow-[0_0_20px_rgba(239,68,68,0.3)] scale-105"
+                : "bg-card border-2 border-border hover:border-primary/50 text-foreground dark:bg-gray-900/40 dark:backdrop-blur-md dark:border-white/10 dark:hover:border-red-500/50 dark:text-gray-300 hover:scale-105"
                 }`}
             >
               {tab.label}
@@ -115,10 +115,10 @@ const Skills = () => {
 
         {/* Skills Grid */}
         <div className="flex flex-wrap justify-center gap-3 max-w-6xl mx-auto">
-          {skills[activeTab].map((skill, index) => (
+          {skills[activeTab].map((skill: { name: string; logo: string; className?: string }, index) => (
             <div
               key={skill.name}
-              className="relative px-4 py-2.5 bg-gradient-to-br from-card/90 to-primary/10 dark:bg-none dark:bg-gray-900/40 backdrop-blur-sm dark:backdrop-blur-md rounded-lg border border-primary/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.2)] dark:hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] animate-fade-in group flex items-center gap-3"
+              className="relative px-4 py-2.5 bg-gradient-to-br from-card/90 to-primary/10 dark:bg-none dark:bg-gray-900/40 backdrop-blur-sm dark:backdrop-blur-md rounded-lg border border-primary/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-red-500/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] dark:hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] animate-fade-in group flex items-center gap-3"
               style={{ animationDelay: `${index * 0.02}s` }}
             >
               {/* Icon */}
@@ -126,7 +126,7 @@ const Skills = () => {
                 <AnimatedIcons
                   id={`skill-${skill.name.replace(/[^a-zA-Z0-9]/g, '-')}-${index}`}
                   icons={[{
-                    icon: <img src={skill.logo} alt={skill.name} className={`w-full h-full object-contain p-1 ${(skill as any).className || ""}`} />,
+                    icon: <img src={skill.logo} alt={skill.name} className={`w-full h-full object-contain p-1 ${skill.className || ""}`} />,
                     size: "md",
                   }]}
                   containerClassName="p-0 h-full w-full"
@@ -169,7 +169,7 @@ const Skills = () => {
               ].map((badge, i) => (
                 <div
                   key={i}
-                  className="px-6 py-3 bg-card/80 backdrop-blur-sm border-2 border-primary/30 rounded-full font-semibold text-base hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(236,72,153,0.1)]"
+                  className="px-6 py-3 bg-card/80 backdrop-blur-sm border-2 border-primary/30 rounded-full font-semibold text-base hover:bg-primary/10 hover:border-primary/50 transition-all cursor-default hover:scale-105 shadow-[0_2px_10px_rgba(239,68,68,0.1)]"
                 >
                   <Heart className="inline-block mr-2 h-4 w-4 text-primary" fill="currentColor" />
                   {badge}

@@ -79,7 +79,7 @@ const AIShowcase = () => {
             <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
                     <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-                        AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Creative Studio</span>
+                        AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Creative Studio</span>
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                         Redefining creativity with Artificial Intelligence. From stunning visuals to cinematic storytelling, I bring imagination to life through prompt engineering.
@@ -93,31 +93,30 @@ const AIShowcase = () => {
                             <Card
                                 className="group relative overflow-hidden bg-card dark:bg-white/5 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer h-full"
                                 style={{
-                                    background: `radial-gradient(circle at top left, rgba(168, 85, 247, 0.15), transparent 40%),
-                                                radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.15), transparent 40%),
+                                    background: `radial-gradient(circle at top left, rgba(239, 68, 68, 0.15), transparent 40%),
+                                                radial-gradient(circle at bottom right, rgba(185, 28, 28, 0.15), transparent 40%),
                                                 rgba(255, 255, 255, 0.05)`
                                 }}
-                            >
-                                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                                <div className="mb-4 p-3 bg-purple-500/20 rounded-lg w-fit group-hover:bg-purple-500/30 transition-colors">
-                                    <Image className="w-6 h-6 text-purple-400" />
+                             >
+                                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                                <div className="mb-4 p-3 bg-red-500/20 rounded-lg w-fit group-hover:bg-red-500/30 transition-colors">
+                                    <Image className="w-6 h-6 text-red-400" />
                                 </div>
-                                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-purple-400 transition-colors">AI Image Art</h3>
+                                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-red-400 transition-colors">AI Image Art</h3>
                                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                                     Crafting hyper-realistic and abstract visuals using advanced prompt engineering on Midjourney & Stable Diffusion.
                                 </p>
-                                <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 font-medium group-hover:bg-purple-500/20 group-hover:text-purple-300 group-hover:border-purple-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(168,85,247,0.1)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                                <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 font-medium group-hover:bg-red-500/20 group-hover:text-red-300 group-hover:border-red-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(239,68,68,0.1)] group-hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]">
                                     View Gallery <ExternalLink className="ml-2 w-4 h-4" />
                                 </div>
                             </Card>
                         </DialogTrigger>
-                        <DialogContent className="max-w-[95vw] bg-black/90 border-purple-500/20 backdrop-blur-xl p-0 overflow-hidden">
+                        <DialogContent className="max-w-[95vw] bg-black/90 border-red-500/20 backdrop-blur-xl p-0 overflow-hidden">
                             <DialogTitle className="sr-only">AI Art Gallery</DialogTitle>
                             <AIArtGallery />
                         </DialogContent>
                     </Dialog>
 
-                    {/* Cinematic Trailers Card */}
                     {/* Cinematic Trailers Card */}
                     <a
                         href="https://drive.google.com/drive/folders/10soQVRW2IkmwkCHID2yyjE9eIzqKoo9V?usp=drive_link"
@@ -128,20 +127,20 @@ const AIShowcase = () => {
                         <Card
                             className="group relative overflow-hidden bg-card dark:bg-white/5 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full cursor-pointer"
                             style={{
-                                background: `radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 40%),
-                                            radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.15), transparent 40%),
+                                background: `radial-gradient(circle at top left, rgba(239, 68, 68, 0.15), transparent 40%),
+                                            radial-gradient(circle at bottom right, rgba(185, 28, 28, 0.15), transparent 40%),
                                             rgba(255, 255, 255, 0.05)`
                             }}
                         >
-                            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                            <div className="mb-4 p-3 bg-blue-500/20 rounded-lg w-fit group-hover:bg-blue-500/30 transition-colors">
-                                <Film className="w-6 h-6 text-blue-400" />
+                            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                            <div className="mb-4 p-3 bg-red-500/20 rounded-lg w-fit group-hover:bg-red-500/30 transition-colors">
+                                <Film className="w-6 h-6 text-red-400" />
                             </div>
-                            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">Cinematic Trailers</h3>
+                            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-red-400 transition-colors">Cinematic Trailers</h3>
                             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                                 Directing and producing Hollywood-style movie trailers entirely generated by AI video models.
                             </p>
-                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium group-hover:bg-blue-500/20 group-hover:text-blue-300 group-hover:border-blue-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 font-medium group-hover:bg-red-500/20 group-hover:text-red-300 group-hover:border-red-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(239,68,68,0.1)] group-hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]">
                                 Watch Trailers <ExternalLink className="ml-2 w-4 h-4" />
                             </div>
                         </Card>
@@ -158,11 +157,11 @@ const AIShowcase = () => {
                             className="group relative overflow-hidden bg-card dark:bg-white/5 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full cursor-pointer"
                             style={{
                                 background: `radial-gradient(circle at top left, rgba(239, 68, 68, 0.15), transparent 40%),
-                                            radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.15), transparent 40%),
+                                            radial-gradient(circle at bottom right, rgba(185, 28, 28, 0.15), transparent 40%),
                                             rgba(255, 255, 255, 0.05)`
                             }}
                         >
-                            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                             <div className="mb-4 p-3 bg-red-500/20 rounded-lg w-fit group-hover:bg-red-500/30 transition-colors">
                                 <Youtube className="w-6 h-6 text-red-400" />
                             </div>
@@ -186,20 +185,20 @@ const AIShowcase = () => {
                         <Card
                             className="group relative overflow-hidden bg-card dark:bg-white/5 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full cursor-pointer"
                             style={{
-                                background: `radial-gradient(circle at top left, rgba(34, 197, 94, 0.15), transparent 40%),
-                                            radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.15), transparent 40%),
+                                background: `radial-gradient(circle at top left, rgba(239, 68, 68, 0.15), transparent 40%),
+                                            radial-gradient(circle at bottom right, rgba(185, 28, 28, 0.15), transparent 40%),
                                             rgba(255, 255, 255, 0.05)`
                             }}
                         >
-                            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                            <div className="mb-4 p-3 bg-green-500/20 rounded-lg w-fit group-hover:bg-green-500/30 transition-colors">
-                                <Video className="w-6 h-6 text-green-400" />
+                            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                            <div className="mb-4 p-3 bg-red-500/20 rounded-lg w-fit group-hover:bg-red-500/30 transition-colors">
+                                <Video className="w-6 h-6 text-red-400" />
                             </div>
-                            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-green-400 transition-colors">Generative Video</h3>
+                            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-red-400 transition-colors">Generative Video</h3>
                             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                                 Transforming text prompts into fluid, dynamic video sequences for storytelling and marketing.
                             </p>
-                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 font-medium group-hover:bg-green-500/20 group-hover:text-green-300 group-hover:border-green-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(34,197,94,0.1)] group-hover:shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 font-medium group-hover:bg-red-500/20 group-hover:text-red-300 group-hover:border-red-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(239,68,68,0.1)] group-hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]">
                                 Watch Videos <ExternalLink className="ml-2 w-4 h-4" />
                             </div>
                         </Card>

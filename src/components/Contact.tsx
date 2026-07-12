@@ -69,7 +69,7 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <Card
-            className="p-8 bg-card rounded-3xl shadow-[0_0_30px_rgba(236,72,153,0.3)] border-2 border-border hover:border-primary/50 transition-all duration-300 animate-fade-in hover:shadow-[0_0_40px_rgba(236,72,153,0.5)] bg-cover bg-center relative overflow-hidden"
+            className="p-8 bg-card rounded-3xl shadow-[0_0_30px_rgba(239,68,68,0.2)] border-2 border-border hover:border-primary/50 transition-all duration-300 animate-fade-in hover:shadow-[0_0_40px_rgba(239,68,68,0.35)] bg-cover bg-center relative overflow-hidden"
             style={{ backgroundImage: `url(${contactBg})` }}
           >
             <div className="absolute inset-0 bg-white/75 dark:bg-black/75 transition-colors duration-300" />
@@ -125,7 +125,7 @@ const Contact = () => {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg font-semibold shadow-[0_10px_40px_rgba(236,72,153,0.3)] hover:shadow-[0_15px_50px_rgba(236,72,153,0.4)] transition-all duration-300 hover:scale-105 group disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg font-semibold shadow-[0_10px_40px_rgba(239,68,68,0.25)] hover:shadow-[0_15px_50px_rgba(239,68,68,0.35)] transition-all duration-300 hover:scale-105 group disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 {isSubmitting ? "Sending..." : "Send Message"}
@@ -134,7 +134,7 @@ const Contact = () => {
           </Card>
 
           <div className="space-y-6">
-            <Card className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-primary/30 dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in">
+            <Card className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 dark:from-transparent dark:to-transparent dark:bg-gray-900/40 backdrop-blur-md rounded-3xl border-2 border-primary/30 dark:border-white/10 hover:border-primary/50 dark:hover:border-red-500/50 transition-all duration-300 animate-fade-in">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
@@ -160,7 +160,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-8 bg-card dark:bg-gray-900/40 dark:backdrop-blur-md rounded-3xl border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-purple-500/50 transition-all duration-300 animate-fade-in shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]">
+            <Card className="p-8 bg-card dark:bg-gray-900/40 dark:backdrop-blur-md rounded-3xl border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-red-500/50 transition-all duration-300 animate-fade-in shadow-[0_0_30px_rgba(239,68,68,0.2)] hover:shadow-[0_0_40px_rgba(239,68,68,0.35)]">
               <h3 className="text-xl font-bold mb-4 text-center text-foreground">
                 Connect with me
                 <Heart className="inline-block ml-2 text-primary" fill="currentColor" size={20} />
@@ -172,7 +172,7 @@ const Contact = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-14 h-14 rounded-full border-2 border-primary/30 flex items-center justify-center ${social.color} hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-[0_5px_20px_rgba(236,72,153,0.3)]`}
+                    className={`w-14 h-14 rounded-full border-2 border-primary/30 flex items-center justify-center ${social.color} hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-[0_5px_20px_rgba(239,68,68,0.3)]`}
                     aria-label={social.label}
                   >
                     <social.icon size={24} />

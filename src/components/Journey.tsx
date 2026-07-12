@@ -170,7 +170,7 @@ const Journey = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="relative border-l border-pink-600 dark:border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-pink-600 dark:md:before:bg-zinc-800 pl-6 md:pl-0"
+                className="relative border-l border-red-600 dark:border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-red-600 dark:md:before:bg-zinc-800 pl-6 md:pl-0"
               >
                 {experienceData.map((item, idx) => {
                   const isLeft = idx % 2 === 0;
@@ -266,7 +266,7 @@ const Journey = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="relative border-l border-pink-600 dark:border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-pink-600 dark:md:before:bg-zinc-800 pl-6 md:pl-0"
+                className="relative border-l border-red-600 dark:border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-red-600 dark:md:before:bg-zinc-800 pl-6 md:pl-0"
               >
                 {educationData.map((item, idx) => {
                   const isLeft = idx % 2 === 0;
