@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { GraduationCap, Award, BookOpen, Sparkles, Briefcase, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,6 +19,14 @@ const techLogos: { [key: string]: string } = {
 
 const Journey = () => {
   const [activeTab, setActiveTab] = useState<"experience" | "education">("experience");
+
+  useEffect(() => {
+    // Notify custom scroll engine to recalculate container height
+    const timer = setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 350);
+    return () => clearTimeout(timer);
+  }, [activeTab]);
 
   const experienceData = [
     {
@@ -162,7 +170,7 @@ const Journey = () => {
 
         {/* Tab Content Display */}
         <div className="max-w-6xl mx-auto min-h-[400px]">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout">
             {activeTab === "experience" ? (
               <motion.div
                 key="experience"
