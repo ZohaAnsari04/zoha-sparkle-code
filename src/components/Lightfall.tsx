@@ -101,8 +101,8 @@ vec2 sceneC(vec2 frag, vec2 r) {
   float z = 0.0;
   float d = 1e3;
   vec4 O = vec4(0.0);
-  for (int k = 0; k < 39; k++) {
-    if (d <= 1e-4) break;
+  for (int k = 0; k < 15; k++) {
+    if (d <= 1e-3) break;
     O = z * normalize(vec4(P, uZoom, 0.0)) - vec4(0.0, 4.0, 1.0, 0.0) / 4.5;
     d = 1.0 - sqrt(length(O * O));
     z += d;
@@ -242,8 +242,13 @@ const Lightfall = ({
         const container = containerRef.current;
         if (!container) return;
 
+        // Cap DPR to 1.15 on desktop and 0.75 on mobile to optimize shader pixels and performance
+        const targetDpr = dpr ?? (typeof window !== "undefined" 
+            ? (window.innerWidth < 768 ? 0.75 : Math.min(window.devicePixelRatio || 1, 1.15))
+            : 1);
+
         const renderer = new Renderer({
-            dpr: dpr ?? (typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1),
+            dpr: targetDpr,
             alpha: true,
             antialias: true
         });
@@ -306,6 +311,14 @@ const Lightfall = ({
         const ro = new ResizeObserver(resize);
         ro.observe(container);
 
+        // IntersectionObserver to pause loop when shader is out of view
+        let isVisible = true;
+        const io = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            isVisible = entry.isIntersecting;
+        }, { threshold: 0.01 });
+        io.observe(container);
+
         const onPointerMove = (e: PointerEvent) => {
             const rect = canvas.getBoundingClientRect();
             const scale = renderer.dpr || 1;
@@ -322,6 +335,8 @@ const Lightfall = ({
 
         const loop = (t: number) => {
             rafRef.current = requestAnimationFrame(loop);
+            if (!isVisible) return; // Skip rendering when out of viewport
+
             uniforms.iTime.value = t * 0.001;
             if (mouseDampening > 0) {
                 if (!lastTimeRef.current) lastTimeRef.current = t;
@@ -351,6 +366,7 @@ const Lightfall = ({
             if (rafRef.current) cancelAnimationFrame(rafRef.current);
             if (mouseInteraction) canvas.removeEventListener("pointermove", onPointerMove);
             ro.disconnect();
+            io.disconnect();
             if (canvas.parentElement === container) {
                 container.removeChild(canvas);
             }

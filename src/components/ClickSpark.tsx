@@ -29,6 +29,7 @@ const ClickSpark = ({
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const sparksRef = useRef<Spark[]>([]);
     const startTimeRef = useRef<number | null>(null);
+    const animationIdRef = useRef<number>(0);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -46,6 +47,7 @@ const ClickSpark = ({
 
         return () => {
             window.removeEventListener("resize", resizeCanvas);
+            cancelAnimationFrame(animationIdRef.current);
         };
     }, []);
 
@@ -65,61 +67,65 @@ const ClickSpark = ({
         [easing]
     );
 
+    // Memoize drawing parameters to prevent recreating draw loop functions unnecessarily
+    const drawParams = useRef({ sparkColor, sparkSize, sparkRadius, duration, easing, extraScale });
     useEffect(() => {
+        drawParams.current = { sparkColor, sparkSize, sparkRadius, duration, easing, extraScale };
+    }, [sparkColor, sparkSize, sparkRadius, duration, easing, extraScale]);
+
+    const draw = useCallback((timestamp: number) => {
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        let animationId: number;
+        if (!startTimeRef.current) {
+            startTimeRef.current = timestamp;
+        }
 
-        const draw = (timestamp: number) => {
-            if (!startTimeRef.current) {
-                startTimeRef.current = timestamp;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const params = drawParams.current;
+
+        sparksRef.current = sparksRef.current.filter(spark => {
+            const elapsed = timestamp - spark.startTime;
+            if (elapsed >= params.duration) {
+                return false;
             }
+
+            const progress = elapsed / params.duration;
+            const eased = easeFunc(progress);
+
+            const distance = eased * params.sparkRadius * params.extraScale;
+            const lineLength = params.sparkSize * (1 - eased);
+
+            const x1 = spark.x + distance * Math.cos(spark.angle);
+            const y1 = spark.y + distance * Math.sin(spark.angle);
+            const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
+            const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
+
+            let resolvedColor = params.sparkColor;
+            if (params.sparkColor.startsWith("var(")) {
+                const varName = params.sparkColor.slice(4, -1);
+                resolvedColor = getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || "#fff";
+            }
+            ctx.strokeStyle = resolvedColor;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+
+            return true;
+        });
+
+        if (sparksRef.current.length > 0) {
+            animationIdRef.current = requestAnimationFrame(draw);
+        } else {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            sparksRef.current = sparksRef.current.filter(spark => {
-                const elapsed = timestamp - spark.startTime;
-                if (elapsed >= duration) {
-                    return false;
-                }
-
-                const progress = elapsed / duration;
-                const eased = easeFunc(progress);
-
-                const distance = eased * sparkRadius * extraScale;
-                const lineLength = sparkSize * (1 - eased);
-
-                const x1 = spark.x + distance * Math.cos(spark.angle);
-                const y1 = spark.y + distance * Math.sin(spark.angle);
-                const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
-                const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
-
-                let resolvedColor = sparkColor;
-                if (sparkColor.startsWith("var(")) {
-                    const varName = sparkColor.slice(4, -1);
-                    resolvedColor = getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || "#fff";
-                }
-                ctx.strokeStyle = resolvedColor;
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(x1, y1);
-                ctx.lineTo(x2, y2);
-                ctx.stroke();
-
-                return true;
-            });
-
-            animationId = requestAnimationFrame(draw);
-        };
-
-        animationId = requestAnimationFrame(draw);
-
-        return () => {
-            cancelAnimationFrame(animationId);
-        };
-    }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
+            startTimeRef.current = null;
+        }
+    }, [easeFunc]);
 
     useEffect(() => {
         const handleClick = (e: MouseEvent) => {
@@ -137,14 +143,21 @@ const ClickSpark = ({
                 startTime: now
             }));
 
+            const wasEmpty = sparksRef.current.length === 0;
             sparksRef.current.push(...newSparks);
+
+            if (wasEmpty) {
+                cancelAnimationFrame(animationIdRef.current);
+                startTimeRef.current = now;
+                animationIdRef.current = requestAnimationFrame(draw);
+            }
         };
 
         window.addEventListener("click", handleClick);
         return () => {
             window.removeEventListener("click", handleClick);
         };
-    }, [sparkCount]);
+    }, [sparkCount, draw]);
 
     return (
         <canvas

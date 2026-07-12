@@ -7,34 +7,18 @@ import SplitText from "@/components/SplitText";
 import Lightfall from "@/components/Lightfall";
 import SkillsMarquee from "@/components/SkillsMarquee";
 
+const LIGHTFALL_COLORS = ["#ef4444", "#991b1b", "#ff3333"];
+
 const Hero = () => {
-    const [displayedText, setDisplayedText] = useState("");
     const [showBlurText, setShowBlurText] = useState(false);
-    const fullText = "Ansari Zoha Najmul Kalam";
 
     useEffect(() => {
-        // Delay typing animation to start after preloader (3 seconds)
-        const startDelay = setTimeout(() => {
-            let index = 0;
-            const timer = setInterval(() => {
-                if (index <= fullText.length) {
-                    setDisplayedText(fullText.slice(0, index));
-                    index++;
-                } else {
-                    clearInterval(timer);
-                }
-            }, 90); // Speed of typing (90ms per character)
-
-            return () => clearInterval(timer);
-        }, 3000); // Wait 3 seconds for preloader to finish
-
-        // Show BlurText after preloader finishes
+        // Show BlurText after preloader finishes (3 seconds)
         const blurTextDelay = setTimeout(() => {
             setShowBlurText(true);
-        }, 3000); // Same delay as preloader
+        }, 3000);
 
         return () => {
-            clearTimeout(startDelay);
             clearTimeout(blurTextDelay);
         };
     }, []);
@@ -52,7 +36,7 @@ const Hero = () => {
             {/* WebGL Lightfall Backdrop */}
             <div className="absolute inset-0 z-0 opacity-40">
                 <Lightfall
-                    colors={["#ef4444", "#991b1b", "#ff3333"]}
+                    colors={LIGHTFALL_COLORS}
                     backgroundColor="#070708"
                     speed={0.5}
                     streakCount={2}
