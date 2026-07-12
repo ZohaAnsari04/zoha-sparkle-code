@@ -15,7 +15,7 @@ import BackToTop from "@/components/BackToTop";
 import LocomotiveScrollWrapper from "@/components/LocomotiveScrollWrapper";
 import SectionReveal from "@/components/SectionReveal";
 import BackgroundBlobs from "@/components/BackgroundBlobs";
-import CustomCursor from "@/components/CustomCursor";
+import ClickSpark from "@/components/ClickSpark";
 import { useState } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 
@@ -24,7 +24,13 @@ const Index = () => {
 
   return (
     <>
-      <CustomCursor />
+      <ClickSpark
+        sparkColor="var(--spark-color)"
+        sparkSize={10}
+        sparkRadius={20}
+        sparkCount={8}
+        duration={450}
+      />
       <Preloader />
       <BackgroundBlobs />
       <ScrollProgress />

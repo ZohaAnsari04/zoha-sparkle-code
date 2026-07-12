@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Sparkles, MapPin, Globe, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
-import avatarImage from "@/assets/avatar.jpg";
+import avatarImage from "@/assets/avatar.png";
 import { useState, useEffect } from "react";
 import SplitText from "@/components/SplitText";
+import Lightfall from "@/components/Lightfall";
 
 const Hero = () => {
     const [displayedText, setDisplayedText] = useState("");
@@ -47,7 +48,28 @@ const Hero = () => {
             id="hero"
             className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-24"
         >
-            <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 dark:from-transparent dark:via-black/50 dark:to-black/80" />
+            {/* WebGL Lightfall Backdrop */}
+            <div className="absolute inset-0 z-0 opacity-40">
+                <Lightfall
+                    colors={["#ef4444", "#991b1b", "#ff3333"]}
+                    backgroundColor="#070708"
+                    speed={0.5}
+                    streakCount={2}
+                    streakWidth={1}
+                    streakLength={0.7}
+                    glow={0.7}
+                    density={0.6}
+                    twinkle={1}
+                    zoom={3}
+                    backgroundGlow={0.5}
+                    opacity={1}
+                    mouseInteraction={false}
+                    mouseStrength={0.5}
+                    mouseRadius={1}
+                />
+            </div>
+
+            <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/50 to-background/95 dark:from-transparent dark:via-black/30 dark:to-black/90 z-0 pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-6xl mx-auto">
@@ -61,14 +83,12 @@ const Hero = () => {
                         </div>
 
                         {/* Image wrapper */}
-                        <div className="relative z-10 w-64 h-[380px] sm:w-72 sm:h-[420px] md:w-80 md:h-[460px] lg:w-[340px] lg:h-[480px] rounded-3xl border-2 border-white shadow-[0_0_30px_rgba(255,255,255,0.65),0_0_60px_rgba(239,68,68,0.3)] overflow-hidden group">
+                        <div className="relative z-10 w-64 h-[380px] sm:w-72 sm:h-[420px] md:w-80 md:h-[460px] lg:w-[340px] lg:h-[480px] rounded-3xl overflow-hidden group">
                             <img
                                 src={avatarImage}
                                 alt="Zoha Avatar"
-                                className="w-full h-full object-cover [mask-image:linear-gradient(to_bottom,white_82%,transparent_100%)] transition-transform duration-500 group-hover:scale-105"
+                                className="w-full h-full object-cover [mask-image:radial-gradient(ellipse_90%_90%_at_50%_35%,#000_50%,transparent_100%)] transition-transform duration-500 group-hover:scale-105"
                             />
-                            <Heart className="absolute -top-1 -left-1 text-primary w-10 h-10 animate-sparkle drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]" fill="currentColor" />
-                            <Sparkles className="absolute -bottom-1 -right-1 text-accent w-8 h-8 animate-sparkle drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
                         </div>
                     </div>
 
