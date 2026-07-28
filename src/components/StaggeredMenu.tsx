@@ -1,7 +1,8 @@
 import React, { useCallback, useLayoutEffect, useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
-import { Download } from "lucide-react";
+import { Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 import "./StaggeredMenu.css";
 
 export interface StaggeredMenuItem {
@@ -64,6 +65,22 @@ export const StaggeredMenu = ({
     const textWrapRef = useRef<HTMLSpanElement | null>(null);
     const [textLines, setTextLines] = useState<string[]>(["Menu", "Close"]);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [showTooltip, setShowTooltip] = useState(false);
+
+    const dismissTooltip = useCallback(() => {
+        setShowTooltip(false);
+        localStorage.setItem("menu_explored", "true");
+    }, []);
+
+    useEffect(() => {
+        const explored = localStorage.getItem("menu_explored");
+        if (!explored) {
+            const timer = setTimeout(() => {
+                setShowTooltip(true);
+            }, 3500);
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
     const openTlRef = useRef<gsap.core.Timeline | null>(null);
     const closeTweenRef = useRef<gsap.core.Tween | null>(null);
@@ -350,6 +367,7 @@ export const StaggeredMenu = ({
         if (target) {
             onMenuOpen?.();
             playOpen();
+            dismissTooltip();
         } else {
             onMenuClose?.();
             playClose();
@@ -357,7 +375,7 @@ export const StaggeredMenu = ({
         animateIcon(target);
         animateColor(target);
         animateText(target);
-    }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
+    }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose, dismissTooltip]);
 
     const closeMenu = useCallback(() => {
         if (openRef.current) {
@@ -449,30 +467,70 @@ export const StaggeredMenu = ({
 
 
 
-                    {/* Menu Toggle Button */}
-                    <button
-                        ref={toggleBtnRef}
-                        className="sm-toggle"
-                        aria-label={open ? "Close menu" : "Open menu"}
-                        aria-expanded={open}
-                        aria-controls="staggered-menu-panel"
-                        onClick={toggleMenu}
-                        type="button"
-                    >
-                        <span ref={textWrapRef} className="sm-toggle-textWrap" aria-hidden="true">
-                            <span ref={textInnerRef} className="sm-toggle-textInner">
-                                {textLines.map((l, i) => (
-                                    <span className="sm-toggle-line" key={i}>
-                                        {l}
-                                    </span>
-                                ))}
+                    {/* Menu Toggle Button Container */}
+                    <div className="relative inline-block">
+                        <AnimatePresence>
+                            {showTooltip && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 15, scale: 0.9 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    className="absolute right-0 top-full mt-3.5 z-[100] sm-menu-tooltip shadow-[0_10px_25px_-5px_rgba(239,68,68,0.15),0_8px_16px_-6px_rgba(0,0,0,0.5)]"
+                                >
+                                    {/* Tooltip Content */}
+                                    <div className="relative bg-zinc-950/95 dark:bg-zinc-950/95 border border-primary/30 backdrop-blur-md rounded-xl px-4 py-2.5 pr-8 flex items-center gap-2 max-w-[280px] sm:max-w-xs cursor-default">
+                                        {/* Speech Bubble Arrow */}
+                                        <div className="absolute top-0 right-5 -translate-y-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[6px] border-b-primary/30" />
+                                        <div className="absolute top-[1px] right-5 -translate-y-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[6px] border-b-zinc-950/95" />
+
+                                        {/* Sparkle icon */}
+                                        <span className="text-xs animate-bounce select-none">✨</span>
+                                        <p className="text-[11px] sm:text-xs font-semibold text-foreground tracking-wide whitespace-nowrap leading-relaxed select-none">
+                                            Click Menu to explore options!
+                                        </p>
+                                        
+                                        {/* Close Button */}
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                dismissTooltip();
+                                            }}
+                                            className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 hover:bg-white/10 dark:hover:bg-white/10 rounded-full transition-colors text-muted-foreground hover:text-foreground cursor-pointer"
+                                            aria-label="Dismiss tooltip"
+                                        >
+                                            <X className="h-3 w-3" />
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        {/* Menu Toggle Button */}
+                        <button
+                            ref={toggleBtnRef}
+                            className="sm-toggle"
+                            aria-label={open ? "Close menu" : "Open menu"}
+                            aria-expanded={open}
+                            aria-controls="staggered-menu-panel"
+                            onClick={toggleMenu}
+                            type="button"
+                        >
+                            <span ref={textWrapRef} className="sm-toggle-textWrap" aria-hidden="true">
+                                <span ref={textInnerRef} className="sm-toggle-textInner">
+                                    {textLines.map((l, i) => (
+                                        <span className="sm-toggle-line" key={i}>
+                                            {l}
+                                        </span>
+                                    ))}
+                                </span>
                             </span>
-                        </span>
-                        <span ref={iconRef} className="sm-icon" aria-hidden="true">
-                            <span ref={plusHRef} className="sm-icon-line" />
-                            <span ref={plusVRef} className="sm-icon-line sm-icon-line-v" />
-                        </span>
-                    </button>
+                            <span ref={iconRef} className="sm-icon" aria-hidden="true">
+                                <span ref={plusHRef} className="sm-icon-line" />
+                                <span ref={plusVRef} className="sm-icon-line sm-icon-line-v" />
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </header>
 
