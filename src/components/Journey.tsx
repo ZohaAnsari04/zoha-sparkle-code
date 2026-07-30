@@ -1,19 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
+import { motion, useScroll, useSpring, useMotionValue, useTransform } from "framer-motion";
 import {
   GraduationCap,
   Briefcase,
-  Sparkles,
   Calendar,
-  MapPin,
   Compass,
-  Award,
-  Zap,
-  Rocket,
-  ArrowRight,
-  Flame,
-  CheckCircle2,
-  TrendingUp
+  Rocket
 } from "lucide-react";
 
 // Interactive Canvas Particle Component
@@ -190,7 +182,6 @@ const Journey = () => {
       title: "Diploma in Information Technology",
       subtitle: "Vidyalankar Polytechnic • Mumbai",
       date: "Aug 2020 – Jun 2023",
-      skills: ["Programming", "Web Dev", "IT Systems"],
       badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/30"
     },
     {
@@ -200,8 +191,6 @@ const Journey = () => {
       title: "Front-end Developer Intern",
       subtitle: "Sunarj Technologies • Mumbai",
       date: "Jun 2022 – Nov 2022",
-      description: "Crafted responsive web user interfaces and optimized front-end client components for enhanced performance.",
-      skills: ["HTML", "CSS", "JavaScript", "UI/UX"],
       badgeColor: "bg-[#ff2d55]/10 text-[#ff2d55] border-[#ff2d55]/30"
     },
     {
@@ -211,7 +200,6 @@ const Journey = () => {
       title: "B.E. in CSE (IoT & Cyber Security)",
       subtitle: "M.H. Saboo Siddik College of Engineering",
       date: "Sept 2023 – Jun 2026",
-      skills: ["Cyber Security", "Solidity", "IoT", "Blockchain"],
       badgeColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30"
     },
     {
@@ -221,8 +209,6 @@ const Journey = () => {
       title: "AR Associate",
       subtitle: "Macksofy Technologies • Remote",
       date: "Mar 2026 – Present",
-      description: "Managing revenue cycle operations, healthcare claims processing, and financial transactions for US client Samar Health.",
-      skills: ["Healthcare Tech", "Revenue Ops", "Financial Systems"],
       badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
     },
     {
@@ -232,7 +218,6 @@ const Journey = () => {
       title: "Masters of Technology (M.Tech)",
       subtitle: "K.J. Somaiya School of Engineering",
       date: "Jun 2026 – May 2028",
-      skills: ["Advanced Algorithms", "Computer Systems", "Software Design"],
       badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/30"
     },
     {
@@ -242,18 +227,8 @@ const Journey = () => {
       title: "Business Development Intern",
       subtitle: "GAOTek Inc. • New York, US (Remote)",
       date: "Jul 2026 – Present",
-      description: "Driving international business development, strategic B2B tech outreach, and market research for global solutions.",
-      skills: ["Tech Outreach", "Market Research", "B2B Strategy"],
       badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/30"
     }
-  ];
-
-  // Floating Badges between Islands
-  const floatingBadges = [
-    { text: "GATE Qualified", icon: Award, color: "text-amber-400 border-amber-500/30 bg-amber-500/10" },
-    { text: "8.80 CGPA Academic Honors", icon: Sparkles, color: "text-cyan-400 border-cyan-500/30 bg-cyan-500/10" },
-    { text: "Frontend & Web3 Developer", icon: Rocket, color: "text-[#ff2d55] border-[#ff2d55]/30 bg-[#ff2d55]/10" },
-    { text: "International Hackathon Participant", icon: Flame, color: "text-purple-400 border-purple-500/30 bg-purple-500/10" }
   ];
 
   return (
@@ -366,27 +341,6 @@ const Journey = () => {
 
               return (
                 <div key={idx} className="relative">
-                  {/* Floating Badge Between Islands */}
-                  {idx > 0 && floatingBadges[idx - 1] && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
-                      className="hidden md:flex justify-center -translate-y-10 my-4 z-20"
-                    >
-                      <span
-                        className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold backdrop-blur-xl border shadow-lg ${floatingBadges[idx - 1].color}`}
-                      >
-                        {(() => {
-                          const BadgeIcon = floatingBadges[idx - 1].icon;
-                          return <BadgeIcon className="w-3.5 h-3.5" />;
-                        })()}
-                        {floatingBadges[idx - 1].text}
-                      </span>
-                    </motion.div>
-                  )}
-
                   {/* Main Milestone Island Card */}
                   <motion.div
                     initial={{
@@ -438,26 +392,9 @@ const Journey = () => {
                           <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-playfair group-hover:text-[#ff2d55] transition-colors leading-snug">
                             {ch.title}
                           </h3>
-                          <p className="text-xs font-medium text-white/50 mt-1 mb-3">
+                          <p className="text-xs font-medium text-white/50 mt-1">
                             {ch.subtitle}
                           </p>
-
-                          {/* Short Description (< 2 lines) */}
-                          <p className="text-sm text-white/70 leading-relaxed font-sans font-light mb-5">
-                            {ch.description}
-                          </p>
-
-                          {/* Tech / Skill Pills */}
-                          <div className="flex flex-wrap gap-2 pt-3 border-t border-white/10">
-                            {ch.skills.map((sk, sIdx) => (
-                              <span
-                                key={sIdx}
-                                className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-xs font-semibold text-white/80 hover:text-white hover:border-[#ff2d55]/50 transition-colors"
-                              >
-                                {sk}
-                              </span>
-                            ))}
-                          </div>
                         </div>
                       </TiltIslandCard>
                     </div>
@@ -466,27 +403,6 @@ const Journey = () => {
               );
             })}
           </div>
-
-          {/* FINAL HIGHLIGHTED MILESTONE NODE */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="mt-28 text-center relative z-20"
-          >
-            <div className="inline-relative flex flex-col items-center">
-              {/* Outer Pulsing Glowing Ring */}
-              <div className="relative p-1 rounded-full bg-gradient-to-r from-[#ff2d55] via-[#ff6b81] to-[#c2185b] animate-pulse shadow-[0_0_60px_rgba(255,45,85,0.4)]">
-                <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#09090c] border-2 border-white/20 flex flex-col items-center justify-center p-4 backdrop-blur-2xl text-center shadow-inner group">
-                  <Rocket className="w-8 h-8 text-[#ff2d55] animate-bounce mb-1" />
-                  <span className="text-xs sm:text-sm font-bold text-white tracking-tight leading-tight font-playfair">
-                    The Best Is Yet To Come
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
