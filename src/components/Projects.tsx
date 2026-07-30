@@ -1,189 +1,417 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Heart, ExternalLink, Sparkles } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  ExternalLink,
+  Sparkles,
+  Lock,
+  ArrowUpRight,
+  TrendingUp,
+  Activity,
+  ShieldCheck,
+  Zap,
+  Globe,
+  Layers,
+  Cpu
+} from "lucide-react";
+
 import project1 from "@/assets/project1.png";
 import project2 from "@/assets/project2.jpg";
-import project3 from "@/assets/project3.jpg";
-import project4 from "@/assets/project4.jpg";
-import project5 from "@/assets/project5.jpg";
 import project6 from "@/assets/project6.png";
 import project7 from "@/assets/project7.png";
 import jobVerifyImg from "@/assets/jobverify.png";
 import foreseeImg from "@/assets/foresee.png";
-import { AnimatedIcons } from "@/components/ui/feature-block-animated-card";
 
-// Tech stack logo mapping
-const techLogos: { [key: string]: string } = {
-  "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-  "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-  "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-  "Solidity": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg",
-  "Hardhat": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hardhat/hardhat-original.svg",
-  "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  "TensorFlow": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
-  "Vite": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
-  "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-  "Vercel": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
+// 3D Card Tilt Component with Cursor Spotlight
+const TiltProjectCard = ({
+  children,
+  className = ""
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 25 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 25 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["6deg", "-6deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-6deg", "6deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    setMousePos({ x: mouseX, y: mouseY });
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateY,
+        rotateX,
+        transformStyle: "preserve-3d"
+      }}
+      className={`relative group overflow-hidden bg-[#09090c]/75 backdrop-blur-2xl border border-white/10 rounded-[30px] shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(255,45,85,0.05)] hover:border-[#ff2d55]/40 hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_50px_rgba(255,45,85,0.2)] transition-all duration-500 ${className}`}
+    >
+      {/* Mouse Follow Ambient Spotlight Overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 45, 85, 0.12), transparent 70%)`
+        }}
+      />
+
+      {/* Floating Glass Edge Reflection */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent z-20" />
+
+      {/* Internal Content Container */}
+      <div className="relative z-20 h-full flex flex-col justify-between p-6 sm:p-8">
+        {children}
+      </div>
+    </motion.div>
+  );
 };
 
-const projects = [
-  {
-    name: "FORESEE",
-    image: foreseeImg,
-    description: "Developed an AI-powered healthcare platform for malaria diagnosis and outbreak forecasting using Machine Learning and Deep Learning techniques. The system analyzes medical data, provides prediction results, and supports healthcare decision-making through an interactive web interface",
-    tech: ["React", "Node.js", "Python", "MongoDB", "Tailwind CSS"],
-    demo: "https://foreseehealth.vercel.app/",
-  },
-  {
-    name: "SPLITSYNC- Smart Expense Tracker",
-    image: project1,
-    description: "SplitSync is a smart expense management web app designed for groups, trips, and shared living. It automates expense splitting, balance calculation, and settlement tracking, eliminating manual calculations and confusion.",
-    tech: ["React", "TypeScript", "Tailwind CSS"],
-    demo: "https://splitsync-umber.vercel.app/",
-    github: "#"
-  },
-  {
-    name: "PhishEye",
-    image: project2,
-    description: "PhishEye is a real-time phishing detection system that monitors open web sources to identify malicious domains and scam activity. The platform helps users and organizations quickly assess threats before interacting with suspicious links. sites instantly",
-    tech: ["React", "Tailwind CSS", "Python"],
-    demo: "https://phisheye.vercel.app/",
-    github: "#"
-  },
-  {
-    name: "ClarityWorks",
-    image: project3,
-    description: "ClarityWorks is a freelance service platform delivering modern web, blockchain, and AI-driven solutions. Built for performance, scalability, and clean UX, it showcases how technical execution directly supports business outcomes..",
-    tech: ["TypeScript", "React", "Tailwind CSS"],
-  },
-  {
-    name: "PawFund - Decentralized Rescue System",
-    image: project4,
-    description: "Built PawFund, a blockchain-based decentralized rescue system that ensures transparent, secure, and verifiable animal rescue, adoption, and donation processes.",
-    tech: ["Solidity", "Hardhat", "React"],
-  },
-  {
-    name: "Decentralized Real Estate marketplace powered by Blockchain.",
-    image: project5,
-    description: "Built a decentralized real estate marketplace using blockchain, focused on transparent, tamper-proof property records and trustless peer-to-peer transactions via smart contracts.",
-    tech: ["React", "Vite", "Hardhat"],
-  },
-  {
-    name: "JobVerify",
-    image: jobVerifyImg,
-    description: "An intelligent platform that verifies job postings to protect job seekers from scams and fraudulent listings using AI-driven analysis.",
-    tech: ["React", "Python", "Tailwind CSS"],
-    demo: "https://job-shield-zoha.vercel.app/",
-  },
-  {
-    name: "Todo List",
-    image: project6,
-    description: "A to-do list helps you organize tasks you need to complete. It keeps you focused, productive, and on track throughout the day.",
-    tech: ["Python", "TensorFlow", "React"],
-    demo: "https://taskiepie.vercel.app/",
-  },
-  {
-    name: "Simple Calculator",
-    image: project7,
-    description: "A clean and efficient calculator app for performing basic arithmetic operations with a user-friendly interface.",
-    tech: ["React", "JavaScript", "Tailwind CSS"],
-    demo: "https://corecalc.vercel.app/",
-  }
-];
-
-const Projects = () => {
+// macOS Browser Window Mockup Wrapper
+const MacOsBrowserMockup = ({
+  src,
+  alt,
+  urlDomain,
+  className = ""
+}: {
+  src: string;
+  alt: string;
+  urlDomain?: string;
+  className?: string;
+}) => {
   return (
-    <section id="projects" className="py-20 relative bg-muted/30 dark:bg-transparent overflow-hidden">
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
-
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            My <span className="gradient-text">Projects</span>
-            <Sparkles className="inline-block ml-2 text-accent animate-sparkle" />
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            A collection of my favorite creations 💖
-          </p>
+    <div className={`rounded-2xl border border-white/10 bg-[#121216] overflow-hidden shadow-2xl ${className}`}>
+      {/* macOS Header Bar */}
+      <div className="px-4 py-3 bg-[#18181e]/90 backdrop-blur-md border-b border-white/10 flex items-center justify-between gap-4">
+        {/* macOS Traffic Lights */}
+        <div className="flex items-center gap-2">
+          <span className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e]/40 inline-block" />
+          <span className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123]/40 inline-block" />
+          <span className="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29]/40 inline-block" />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
-            <Card
-              key={index}
-              className="group relative overflow-hidden bg-card dark:bg-gray-900/40 dark:backdrop-blur-md rounded-3xl border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-red-500/50 transition-all duration-500 hover:shadow-[0_10px_40px_rgba(239,68,68,0.15)] dark:hover:shadow-[0_0_50px_rgba(239,68,68,0.25)] animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Animated Background */}
-              <div className="absolute inset-0 opacity-15">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary animate-gradient bg-[length:200%_200%]"></div>
-              </div>
+        {/* Address Bar */}
+        {urlDomain && (
+          <div className="flex-1 max-w-xs mx-auto flex items-center justify-center gap-2 px-3 py-1 rounded-lg bg-white/[0.04] border border-white/5 text-xs text-white/50 font-mono select-none truncate">
+            <Lock className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+            <span className="truncate">{urlDomain}</span>
+          </div>
+        )}
 
-              {/* Floating Particles */}
-              <div className="absolute top-2 right-4 w-2 h-2 bg-primary/50 rounded-full hidden md:block md:animate-pulse"></div>
-              <div className="absolute top-6 left-6 w-2.5 h-2.5 bg-accent/50 rounded-full hidden md:block md:animate-bounce"></div>
-              <div className="absolute bottom-8 right-8 w-2 h-2 bg-secondary/50 rounded-full hidden md:block md:animate-pulse delay-100"></div>
+        <div className="w-12 hidden sm:block" />
+      </div>
 
-              <div className="relative overflow-hidden h-48">
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
+      {/* Browser Canvas Container */}
+      <div className="relative overflow-hidden bg-black/40 group-hover:bg-black/20 transition-colors">
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#09090c] via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity" />
+      </div>
+    </div>
+  );
+};
 
-              <div className="p-6 relative z-10">
-                <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
-                  {project.name}
-                </h3>
-                <p className="text-base text-foreground/80 mb-4 leading-relaxed">
-                  {project.description}
-                </p>
+// Animated Glass Tech Pill Component
+const TechPill = ({ name }: { name: string }) => {
+  return (
+    <motion.span
+      whileHover={{ scale: 1.08 }}
+      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-white/80 hover:text-white hover:border-[#ff2d55]/50 hover:bg-[#ff2d55]/10 hover:shadow-[0_0_15px_rgba(255,45,85,0.25)] transition-all duration-300 backdrop-blur-md"
+    >
+      <span className="w-1.5 h-1.5 rounded-full bg-[#ff2d55]" />
+      {name}
+    </motion.span>
+  );
+};
 
-                {/* Tech Stack Icons */}
-                <div className="mb-4">
-                  <AnimatedIcons
-                    id={`project-${index}`}
-                    icons={project.tech.map((tech) => ({
-                      icon: (
-                        <img
-                          src={techLogos[tech]}
-                          alt={tech}
-                          className="w-full h-full object-contain"
-                        />
-                      ),
-                      size: "md",
-                      className: "p-2 bg-muted hover:bg-primary/10 transition-all hover:scale-110"
-                    }))}
-                    containerClassName="p-0 h-auto justify-start overflow-visible"
-                    className="gap-3"
-                    showSparkles={false}
-                  />
+const Projects = () => {
+  const featuredProject = {
+    title: "FORESEE",
+    subtitle: "AI Healthcare & Outbreak Forecasting Platform",
+    image: foreseeImg,
+    description: "AI-powered healthcare platform for real-time disease diagnosis, epidemic forecasting, and clinical decision support.",
+    domain: "foreseehealth.vercel.app",
+    metrics: [
+      { label: "Diagnosis Accuracy", value: "94.8%", icon: Activity },
+      { label: "Outbreak Analytics", value: "Real-time AI", icon: TrendingUp },
+      { label: "Healthcare Data", value: "28 Metrics", icon: Cpu }
+    ],
+    tech: ["React", "Node.js", "Python", "MongoDB", "Tailwind CSS"],
+    demo: "https://foreseehealth.vercel.app/"
+  };
+
+  const bentoProjects = [
+    {
+      title: "SplitSync",
+      description: "Automated expense management and group balance settlement platform.",
+      image: project1,
+      domain: "splitsync-umber.vercel.app",
+      tech: ["React", "TypeScript", "Tailwind CSS"],
+      demo: "https://splitsync-umber.vercel.app/",
+      colSpan: "lg:col-span-7"
+    },
+    {
+      title: "PhishEye",
+      description: "Real-time phishing detection system monitoring scam web sources.",
+      image: project2,
+      domain: "phisheye.vercel.app",
+      tech: ["React", "Tailwind CSS", "Python"],
+      demo: "https://phisheye.vercel.app/",
+      colSpan: "lg:col-span-5"
+    },
+    {
+      title: "JobVerify",
+      description: "Intelligent AI platform analyzing listings to protect job seekers from scam offers.",
+      image: jobVerifyImg,
+      domain: "job-shield-zoha.vercel.app",
+      tech: ["React", "Python", "Tailwind CSS"],
+      demo: "https://job-shield-zoha.vercel.app/",
+      colSpan: "lg:col-span-5"
+    },
+    {
+      title: "TaskiePie",
+      description: "Minimalist task productivity application engineered for fast daily workflow tracking.",
+      image: project6,
+      domain: "taskiepie.vercel.app",
+      tech: ["React", "TypeScript", "Tailwind CSS"],
+      demo: "https://taskiepie.vercel.app/",
+      colSpan: "lg:col-span-7"
+    },
+    {
+      title: "CoreCalc",
+      description: "Precision arithmetic calculator app featuring real-time expression parsing.",
+      image: project7,
+      domain: "corecalc.vercel.app",
+      tech: ["React", "JavaScript", "Tailwind CSS"],
+      demo: "https://corecalc.vercel.app/",
+      colSpan: "lg:col-span-12"
+    }
+  ];
+
+  return (
+    <section
+      id="projects"
+      className="relative bg-[#050505] text-white py-24 sm:py-32 lg:py-36 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
+    >
+      {/* Ambient Radial Lighting & Crimson Glow Orbs */}
+      <div className="absolute top-1/3 -left-48 w-96 h-96 bg-gradient-to-br from-[#ff2d55]/15 via-[#800020]/10 to-transparent rounded-full blur-[140px] pointer-events-none animate-pulse-glow-red" />
+      <div className="absolute bottom-1/4 -right-48 w-[500px] h-[500px] bg-gradient-to-tr from-[#ff4b6e]/15 via-[#4a0010]/10 to-transparent rounded-full blur-[160px] pointer-events-none animate-pulse-glow-red" />
+
+      {/* Animated Grid & Noise Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,45,85,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,45,85,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-noise-pattern pointer-events-none z-0 opacity-40" />
+
+      <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* SECTION HEADER */}
+        <div className="max-w-4xl mx-auto text-center mb-16 sm:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_20px_rgba(255,45,85,0.15)]"
+          >
+            <Sparkles className="w-4 h-4 text-[#ff2d55] animate-pulse" />
+            <span className="text-xs uppercase tracking-widest font-semibold text-white/80">
+              Selected Showcase
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-playfair"
+          >
+            Selected <span className="animate-gradient-text-red">Work</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-sans font-light"
+          >
+            Real-world products built with modern technologies to solve meaningful problems.
+          </motion.p>
+        </div>
+
+        {/* 1. FEATURED HIGHLIGHT PROJECT (FULL WIDTH HERO CARD) */}
+        <motion.div
+          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.3 }}
+          className="mb-12 lg:mb-16"
+        >
+          <TiltProjectCard className="w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Featured Left Side: Content & Metrics */}
+              <div className="lg:col-span-5 space-y-6">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff2d55]/10 border border-[#ff2d55]/30 text-xs font-semibold text-[#ff2d55] shadow-[0_0_15px_rgba(255,45,85,0.2)]">
+                    <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+                    Featured Project
+                  </span>
                 </div>
 
-                {project.demo && (
-                  <Button
-                    size="sm"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-[0_4px_20px_rgba(239,68,68,0.15)] hover:shadow-[0_6px_30px_rgba(239,68,68,0.25)] transition-all"
-                    onClick={() => window.open(project.demo, '_blank')}
-                    disabled={project.demo === '#'}
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Live Website
-                  </Button>
-                )}
+                <div className="space-y-2">
+                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight font-playfair">
+                    {featuredProject.title}
+                  </h3>
+                  <p className="text-sm font-medium text-[#ff2d55]">
+                    {featuredProject.subtitle}
+                  </p>
+                </div>
+
+                <p className="text-base text-white/80 leading-relaxed font-sans font-light">
+                  {featuredProject.description}
+                </p>
+
+                {/* Metrics Row */}
+                <div className="grid grid-cols-3 gap-3 pt-2">
+                  {featuredProject.metrics.map((m, idx) => {
+                    const Icon = m.icon;
+                    return (
+                      <div
+                        key={idx}
+                        className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1 backdrop-blur-md"
+                      >
+                        <div className="flex items-center gap-1.5 text-xs text-white/50">
+                          <Icon className="w-3.5 h-3.5 text-[#ff2d55]" />
+                          <span className="truncate">{m.label}</span>
+                        </div>
+                        <p className="text-sm sm:text-base font-bold text-white tracking-tight truncate">
+                          {m.value}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Tech Stack Pills */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {featuredProject.tech.map((t, idx) => (
+                    <TechPill key={idx} name={t} />
+                  ))}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex items-center gap-4 pt-4">
+                  {featuredProject.demo && (
+                    <a
+                      href={featuredProject.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-[#ff2d55] via-[#ff4b6e] to-[#c2185b] text-white font-semibold text-sm shadow-[0_10px_30px_rgba(255,45,85,0.35)] hover:shadow-[0_15px_45px_rgba(255,45,85,0.55)] hover:-translate-y-0.5 transition-all duration-300 group/btn"
+                    >
+                      <span>Live Demo</span>
+                      <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                    </a>
+                  )}
+                </div>
               </div>
 
-              <Heart
-                className="absolute top-4 right-4 text-primary/30 group-hover:text-primary transition-colors animate-sparkle"
-                fill="currentColor"
-                size={16}
-              />
-            </Card>
+              {/* Featured Right Side: macOS Mockup */}
+              <div className="lg:col-span-7">
+                <MacOsBrowserMockup
+                  src={featuredProject.image}
+                  alt={featuredProject.title}
+                  urlDomain={featuredProject.domain}
+                  className="h-[320px] sm:h-[420px] lg:h-[460px]"
+                />
+              </div>
+            </div>
+          </TiltProjectCard>
+        </motion.div>
+
+        {/* 2. RESPONSIVE BENTO GRID FOR REMAINING PROJECTS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+          {bentoProjects.map((project, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: (idx % 3) * 0.15 }}
+              className={`${project.colSpan}`}
+            >
+              <TiltProjectCard className="h-full">
+                <div className="space-y-6 flex flex-col justify-between h-full">
+                  {/* Browser Mockup Image */}
+                  <MacOsBrowserMockup
+                    src={project.image}
+                    alt={project.title}
+                    urlDomain={project.domain}
+                    className="h-[220px] sm:h-[260px]"
+                  />
+
+                  {/* Card Bottom Details */}
+                  <div className="space-y-4 pt-2">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h4 className="text-2xl font-bold text-white tracking-tight font-playfair group-hover:text-[#ff2d55] transition-colors">
+                          {project.title}
+                        </h4>
+                        <p className="text-sm text-white/70 mt-1 leading-relaxed line-clamp-2">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      {/* Action Links Icons */}
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        {project.demo && project.demo !== "#" && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2.5 rounded-xl bg-[#ff2d55]/10 border border-[#ff2d55]/20 hover:bg-[#ff2d55] text-[#ff2d55] hover:text-white transition-all duration-300"
+                            title="Live Preview"
+                          >
+                            <ArrowUpRight className="w-4 h-4" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Tech Pills */}
+                    <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
+                      {project.tech.map((t, tIdx) => (
+                        <TechPill key={tIdx} name={t} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </TiltProjectCard>
+            </motion.div>
           ))}
         </div>
       </div>

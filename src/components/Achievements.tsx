@@ -1,11 +1,24 @@
-import { Card } from "@/components/ui/card";
-import { DisplayCard } from "@/components/ui/display-cards";
-import { Award, Calendar, ExternalLink, Sparkles, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
-import GridBackdrop from "@/components/GridBackdrop";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import {
+  Award,
+  Trophy,
+  GraduationCap,
+  Flame,
+  ShieldCheck,
+  BookOpen,
+  Sparkles,
+  Calendar,
+  ExternalLink,
+  X,
+  Cpu,
+  Star,
+  Layers,
+  CheckCircle2,
+  Bookmark
+} from "lucide-react";
 
-// Import certificate images
+// Certificate Image Imports
 import cert1 from "@/assets/certificates/cert1.jpg";
 import cert2 from "@/assets/certificates/cert2.jpg";
 import cert3 from "@/assets/certificates/cert3.jpg";
@@ -29,392 +42,549 @@ import cert20 from "@/assets/certificates/cert20.jpg";
 import cert21 from "@/assets/certificates/cert21.jpg";
 import cert22 from "@/assets/certificates/cert22_fixed.jpg";
 
-const achievements = [
+// Interactive Particle Background Canvas Component
+const ParticleBackground = () => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-    // M.H. Saboo Siddik College Certificates (5 total)
-    {
-        title: "Path to Research Mastery Lecture Series",
-        issuer: "M.H. Saboo Siddik College of Engineering (CSI Chapter)",
-        date: "February 5, 2025",
-        credentialId: "PRM-2025",
-        description: "Successfully attended the Path to Research Mastery lecture series organized by Computer Engineering Department with CSI MHSSCE Chapter, held from December 21, 2024 to January 25, 2025",
-        link: "#",
-        skills: ["Research", "Academic Development", "Computer Science"],
-        image: cert17
-    },
-    {
-        title: "ERR_404 6.0 Hackathon",
-        issuer: "M.H. Saboo Siddik College of Engineering",
-        date: "February 15-16, 2025",
-        credentialId: "ERR404-2025",
-        description: "Participated in 36 hours of International Hackathon organized by the Programmers' Club, Department of Computer Engineering on 15th & 16th February, 2025",
-        link: "#",
-        skills: ["Hackathon", "Problem Solving", "Team Collaboration"],
-        image: cert13
-    },
-    {
-        title: "3-Day MERN Stack Bootcamp",
-        issuer: "M.H. Saboo Siddik College of Engineering (Programmers' Club)",
-        date: "2025",
-        credentialId: "MERN-BOOTCAMP-2025",
-        description: "Successfully completed the 3-Day MERN Stack Bootcamp, demonstrating professionalism, dedication, and excellence in full-stack development",
-        link: "#",
-        skills: ["MERN Stack", "MongoDB", "Express", "React", "Node.js"],
-        image: cert16
-    },
-    {
-        title: "Codefeast 4.0 2025",
-        issuer: "Programmer's Club, MHSSCE",
-        date: "August 15-17, 2025",
-        credentialId: "CODEFEAST-2025",
-        description: "Successfully showcased skills and active participation in Codefeast 4.0 2025, organized by Programmer's Club.",
-        link: "#",
-        skills: ["Coding", "Problem Solving", "Technical Skills"],
-        image: cert21
-    },
-    {
-        title: "Digital Poster Competition - IEEE MHSSCOE",
-        issuer: "IEEE MHSSCOE Student Branch",
-        date: "2025",
-        credentialId: "IEEE-POSTER-2025",
-        description: "Participated in Digital Poster Competition on World Environment Day under the theme 'Planet in Beta Mode: Can AI Save Earth?' organized by IEEE MHSSCOE Student Branch",
-        link: "#",
-        skills: ["Design", "AI & Environment", "Creative Thinking"],
-        image: cert18
-    },
-    {
-        title: "Android Development Workshop using Flutter",
-        issuer: "GDSC MHSSCE Chapter",
-        date: "January 13-14, 2024",
-        credentialId: "GDSC-FLUTTER-2024",
-        description: "Completed Android development Workshop using Flutter organized by Google Developer Student Club MHSSCE Chapter on 13th & 14th January 2024.",
-        link: "#",
-        skills: ["Android Development", "Flutter", "Mobile App Development"],
-        image: cert20
-    },
-    {
-        title: "Machine Learning Workshop",
-        issuer: "Google Developer Student Clubs (GDSC MHSSCE)",
-        date: "January 20-21, 2024",
-        credentialId: "GDSC-ML-2024",
-        description: "Successfully completed the Machine Learning Workshop organized by Google Developer Student Club MHSSCE Chapter on January 20th and 21st, 2024",
-        link: "#",
-        skills: ["Machine Learning", "Google Cloud", "Workshops"],
-        image: cert7
-    },
-    // Deloitte
-    {
-        title: "Deloitte Cyber Job Simulation",
-        issuer: "Deloitte (via Forage)",
-        date: "November 14, 2025",
-        credentialId: "FxcuxqwGepTMRi67K",
-        description: "Completed practical tasks in Cyber security during November 2025, demonstrating hands-on experience in cybersecurity practices and methodologies",
-        link: "#",
-        skills: ["Cybersecurity", "Job Simulation", "Practical Skills"],
-        image: cert12
-    },
-    // Oracle Certificates (2 total)
-    {
-        title: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
-        issuer: "Oracle University",
-        date: "October 26, 2025",
-        credentialId: "322738038OCI25GAIOCP",
-        description: "Oracle Certified Professional demonstrating expertise in Oracle Cloud Infrastructure and Generative AI technologies. Valid until October 26, 2027",
-        link: "#",
-        skills: ["Oracle Cloud", "Generative AI", "Cloud Infrastructure"],
-        image: cert9
-    },
-    {
-        title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
-        issuer: "Oracle University",
-        date: "October 1, 2025",
-        credentialId: "322738038OCI25AICFA",
-        description: "Oracle Certified Foundations Associate demonstrating foundational knowledge in Oracle Cloud Infrastructure and AI. Valid until October 1, 2027",
-        link: "#",
-        skills: ["Oracle Cloud", "AI Foundations", "Cloud Computing"],
-        image: cert10
-    },
-    // OneRoadmap Certificates (5 total)
-    {
-        title: "React.JS Developer",
-        issuer: "OneRoadmap",
-        date: "October 23, 2025",
-        credentialId: "CERT-BDEA561E",
-        description: "Successfully passed the One Roadmap Skill Certification Test in React.JS Development, demonstrating proficiency in React framework and modern JavaScript",
-        link: "https://oneroadmap.info/skillvalidate/roadId/CERT-BDEA561E",
-        skills: ["React", "JavaScript", "Frontend"],
-        image: cert11
-    },
-    {
-        title: "AI Engineer",
-        issuer: "OneRoadmap",
-        date: "October 23, 2025",
-        credentialId: "CERT-2517DC67",
-        description: "Successfully passed the One Roadmap Skill Certification Test in AI Engineer, demonstrating expertise in artificial intelligence and machine learning concepts",
-        link: "https://oneroadmap.info/skillvalidate/roadId/CERT-2517DC67",
-        skills: ["AI", "Machine Learning", "Engineering"],
-        image: cert1
-    },
-    {
-        title: "Full Stack Developer",
-        issuer: "OneRoadmap",
-        date: "August 2, 2025",
-        credentialId: "CERT-1458B7F5",
-        description: "Successfully passed the One Roadmap Skill Certification Test in Full Stack Development, demonstrating proficiency in both frontend and backend technologies",
-        link: "https://oneroadmap.info/skillvalidate/roadId/CERT-1458B7F5",
-        skills: ["Full Stack", "Frontend", "Backend"],
-        image: cert8
-    },
-    {
-        title: "Frontend Development",
-        issuer: "OneRoadmap",
-        date: "August 1, 2025",
-        credentialId: "CERT-5AFB4443",
-        description: "Successfully passed the One Roadmap Skill Certification Test in Frontend Development, demonstrating expertise in modern frontend technologies and frameworks",
-        link: "https://oneroadmap.info/skillvalidate/roadId/CERT-5AFB4443",
-        skills: ["Frontend", "React", "JavaScript"],
-        image: cert5
-    },
-    {
-        title: "DevOps Engineer",
-        issuer: "OneRoadmap",
-        date: "July 29, 2025",
-        credentialId: "CERT-8D259A64",
-        description: "Successfully passed the One Roadmap Skill Certification Test in DevOps Engineering, demonstrating expertise in CI/CD, automation, and infrastructure management",
-        link: "https://oneroadmap.info/skillvalidate/roadId/CERT-8D259A64",
-        skills: ["DevOps", "CI/CD", "Cloud"],
-        image: cert4
-    },
-    // Microsoft Learn Student Ambassador
-    {
-        title: "Microsoft Build and Ambassador Challenge - Azure",
-        issuer: "Microsoft Learn Student Ambassador",
-        date: "2025",
-        credentialId: "MLSA-AZURE-2025",
-        description: "In recognition of your attendance and completion of the Microsoft Learn Student Ambassadors Virtual Event on Microsoft Build and Ambassador Challenge - Azure.",
-        link: cert22,
-        skills: ["Microsoft Azure", "Cloud Computing", "Student Ambassador"],
-        image: cert22
-    },
-    // Mendeley
-    {
-        title: "Mendeley Training",
-        issuer: "Mendeley (Elsevier)",
-        date: "January 25, 2025",
-        credentialId: "MENDELEY-2025",
-        description: "Completed Mendeley training course with a certified Mendeley Advisor, demonstrating good reference management skills and effective use of Mendeley",
-        link: "#",
-        skills: ["Research", "Reference Management", "Academic Writing"],
-        image: cert6
-    },
-    // Terna College (Mumbai University) (2 total)
-    {
-        title: "Clash Of Codes 2.0 - Ace Track",
-        issuer: "Mumbai University",
-        date: "2025",
-        credentialId: "COC-ACE-2025",
-        description: "Participated in Clash Of Codes 2.0 Ace Track in recognition of outstanding performance, skill, and dedication in the field of programming and problem-solving",
-        link: "#",
-        skills: ["Competitive Programming", "Problem Solving", "Coding"],
-        image: cert14
-    },
-    {
-        title: "Clash Of Codes 2.0 - Rookie Track",
-        issuer: "Mumbai University",
-        date: "2025",
-        credentialId: "COC-ROOKIE-2025",
-        description: "Participated in Clash Of Codes 2.0 Rookie Track in recognition of outstanding performance, skill, and dedication in the field of programming and problem-solving",
-        link: "#",
-        skills: ["Competitive Programming", "Problem Solving", "Coding"],
-        image: cert15
-    },
-    // edQuest Certificates (2 total)
-    {
-        title: "Introduction of Machine Learning",
-        issuer: "edQuest (edba-academy)",
-        date: "November 6, 2025",
-        credentialId: "EDQ-coding-IHHXJZVB",
-        description: "Successfully completed Introduction of Machine Learning, an online non-credit course covering ML fundamentals, algorithms, and practical applications",
-        link: "#",
-        skills: ["Machine Learning", "Python", "Data Science"],
-        image: cert3
-    },
-    {
-        title: "Design Systems 101",
-        issuer: "edQuest (edba-academy)",
-        date: "September 13, 2025",
-        credentialId: "EDQ-design-ZDYRCYCN",
-        description: "Successfully completed Design Systems 101, an online non-credit course covering design system fundamentals, component libraries, and design principles",
-        link: "#",
-        skills: ["Design Systems", "UI/UX", "Component Design"],
-        image: cert2
-    },
-    // Hierroshield
-    {
-        title: "Hierro CTF: The CTF Hackathon",
-        issuer: "Hierroshield Pvt Ltd",
-        date: "November 30, 2025",
-        credentialId: "HIERRO-CTF-2025",
-        description: "Successfully participated in the Hierro CTF: The CTF HackAthon, held on 30th November 2025. Awarded in recognition of enthusiasm, skill, and active involvement in solving live cybersecurity CTF challenges.",
-        link: cert19,
-        skills: ["Cybersecurity", "CTF", "Hackathon", "Problem Solving"],
-        image: cert19
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
+    let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
+
+    const handleResize = () => {
+      if (!canvas || !canvas.parentElement) return;
+      width = canvas.width = canvas.parentElement.clientWidth;
+      height = canvas.height = canvas.parentElement.clientHeight;
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    const particleCount = 40;
+    const particles: Array<{
+      x: number;
+      y: number;
+      radius: number;
+      vx: number;
+      vy: number;
+      alpha: number;
+      pulse: number;
+      pulseSpeed: number;
+    }> = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.6 + 0.5,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        alpha: Math.random() * 0.5 + 0.2,
+        pulse: Math.random() * Math.PI,
+        pulseSpeed: 0.02 + Math.random() * 0.03
+      });
     }
-];
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.pulse += p.pulseSpeed;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        const currentAlpha = p.alpha + Math.sin(p.pulse) * 0.2;
+        const clampedAlpha = Math.max(0.1, Math.min(0.8, currentAlpha));
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 45, 85, ${clampedAlpha})`;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "rgba(255, 45, 85, 0.7)";
+        ctx.fill();
+      });
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 pointer-events-none z-0 w-full h-full opacity-50"
+    />
+  );
+};
+
+// Animated Counting Number Stat Box Component
+const AnimatedCounter = ({
+  value,
+  label,
+  suffix = ""
+}: {
+  value: string;
+  label: string;
+  suffix?: string;
+}) => {
+  const [displayValue, setDisplayValue] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const numericValue = parseFloat(value);
+  const isFloat = value.includes(".");
+  const isNaNVal = isNaN(numericValue);
+
+  useEffect(() => {
+    if (!isInView || isNaNVal) return;
+    let start = 0;
+    const duration = 1800;
+    const steps = 50;
+    const increment = numericValue / steps;
+    const stepTime = duration / steps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= numericValue) {
+        setDisplayValue(numericValue);
+        clearInterval(timer);
+      } else {
+        setDisplayValue(start);
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [isInView, numericValue, isNaNVal]);
+
+  return (
+    <div
+      ref={ref}
+      className="text-center p-4 sm:p-6 rounded-3xl bg-[#09090c]/70 border border-white/10 backdrop-blur-2xl shadow-xl hover:border-[#ff2d55]/40 hover:shadow-[0_0_30px_rgba(255,45,85,0.2)] transition-all duration-500 group relative overflow-hidden"
+    >
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <p className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-playfair group-hover:text-[#ff2d55] transition-colors">
+        {isNaNVal
+          ? value
+          : isFloat
+          ? displayValue.toFixed(2)
+          : Math.floor(displayValue)}
+        {suffix}
+      </p>
+      <p className="text-xs sm:text-sm font-semibold text-white/60 mt-1.5 uppercase tracking-wider font-sans">
+        {label}
+      </p>
+    </div>
+  );
+};
 
 const Achievements = () => {
-    const [selectedCertificate, setSelectedCertificate] = useState<{ image: string; title: string } | null>(null);
+  const [selectedCert, setSelectedCert] = useState<{
+    image: string;
+    title: string;
+    issuer?: string;
+  } | null>(null);
 
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') {
-                setSelectedCertificate(null);
-            }
-        };
+  // Mouse spotlight tracking
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-        if (selectedCertificate) {
-            window.addEventListener('keydown', handleKeyDown);
-        }
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+  };
 
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [selectedCertificate]);
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedCert(null);
+    };
+    if (selectedCert) window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedCert]);
 
-    return (
-        <section id="achievements" className="py-20 bg-background dark:bg-transparent relative overflow-hidden">
-            {/* Grid Pattern Background */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+  // Timeline Milestones Data
+  const milestones = [
+    {
+      category: "Hackathon",
+      title: "ERR_404 6.0 International Hackathon",
+      issuer: "MHSSCE Programmers' Club",
+      date: "Feb 15–16, 2025",
+      description: "Participated in 36 hours of intense international hackathon building real-world solutions.",
+      icon: Flame,
+      image: cert13,
+      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/30"
+    },
+    {
+      category: "Research",
+      title: "Path to Research Mastery Lecture Series",
+      issuer: "MHSSCE Computer Dept & CSI Chapter",
+      date: "Feb 5, 2025",
+      description: "Completed month-long research mastery series covering academic literature & data methods.",
+      icon: BookOpen,
+      image: cert17,
+      badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/30"
+    },
+    {
+      category: "Competition",
+      title: "Hierro CTF Cybersecurity Hackathon",
+      issuer: "Hierroshield Pvt Ltd",
+      date: "Nov 30, 2025",
+      description: "Recognized for active involvement & speed in solving live cybersecurity CTF challenges.",
+      icon: ShieldCheck,
+      image: cert19,
+      badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+    },
+    {
+      category: "Certification",
+      title: "Oracle Certified Generative AI Professional",
+      issuer: "Oracle University",
+      date: "Oct 26, 2025",
+      description: "Earned Oracle Certified Professional credentials in OCI Generative AI & Cloud Architecture.",
+      icon: Award,
+      image: cert9,
+      badgeColor: "bg-[#ff2d55]/10 text-[#ff2d55] border-[#ff2d55]/30"
+    },
+    {
+      category: "Leadership",
+      title: "Microsoft Azure Student Ambassador Challenge",
+      issuer: "Microsoft Learn Student Ambassadors",
+      date: "2025",
+      description: "Completed Microsoft Build Azure virtual challenges for student ambassador excellence.",
+      icon: Sparkles,
+      image: cert22,
+      badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/30"
+    },
+    {
+      category: "Competition",
+      title: "Clash Of Codes 2.0 — Ace Track",
+      issuer: "Mumbai University",
+      date: "2025",
+      description: "Awarded for top performance and problem-solving speed in competitive programming.",
+      icon: Trophy,
+      image: cert14,
+      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/30"
+    },
+    {
+      category: "Certification",
+      title: "Deloitte Cybersecurity Virtual Experience",
+      issuer: "Deloitte (via Forage)",
+      date: "Nov 14, 2025",
+      description: "Executed practical cybersecurity tasks analyzing enterprise risk & system defenses.",
+      icon: ShieldCheck,
+      image: cert12,
+      badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+    },
+    {
+      category: "Academic",
+      title: "Bachelor of Engineering (CSE IoT & Cyber Security)",
+      issuer: "MHSSCOE • Mumbai University",
+      date: "Sept 2023 – June 2026",
+      description: "Graduated with 8.80 CGPA specializing in IoT, Cryptography, Blockchain & Cyber Security.",
+      icon: GraduationCap,
+      badgeColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30"
+    },
+    {
+      category: "Certification",
+      title: "OneRoadmap Certified AI & Full Stack Engineer",
+      issuer: "OneRoadmap",
+      date: "Oct 23, 2025",
+      description: "Certified in Artificial Intelligence engineering & Full Stack Web Architecture.",
+      icon: Cpu,
+      image: cert1,
+      badgeColor: "bg-[#ff2d55]/10 text-[#ff2d55] border-[#ff2d55]/30"
+    },
+    {
+      category: "Hackathon",
+      title: "3-Day MERN Stack Intensive Bootcamp",
+      issuer: "MHSSCE Programmers' Club",
+      date: "2025",
+      description: "Built full-stack React & Node.js web applications under time constraints.",
+      icon: Flame,
+      image: cert16,
+      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/30"
+    },
+    {
+      category: "Open Source",
+      title: "IEEE World Environment Day AI Poster Challenge",
+      issuer: "IEEE Student Branch",
+      date: "2025",
+      description: "Designed digital poster under theme 'Planet in Beta: Can AI Save Earth?'",
+      icon: Star,
+      image: cert18,
+      badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30"
+    }
+  ];
 
-            <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                        My <span className="gradient-text">Achievements</span>
-                        <Sparkles className="inline-block ml-2 text-accent animate-sparkle" />
-                    </h2>
-                    <p className="text-xl text-muted-foreground">
-                        Certifications and accomplishments that showcase my expertise 🏆
-                    </p>
-                </div>
+  const statCounters = [
+    { label: "Projects Built", value: "15", suffix: "+" },
+    { label: "Certifications", value: "8", suffix: "+" },
+    { label: "Hackathons", value: "3", suffix: "+" },
+    { label: "Academic CGPA", value: "8.80", suffix: "" },
+    { label: "GATE Exam", value: "Qualified", suffix: "" }
+  ];
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-                    {achievements.map((achievement, index) => (
-                        <DisplayCard
-                            key={index}
-                            className="group relative overflow-hidden h-auto w-full flex-col justify-start gap-0 p-0 bg-card dark:bg-gray-900/40 dark:backdrop-blur-md border-2 border-border dark:border-white/10 hover:border-primary/50 dark:hover:border-red-500/50 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(239,68,68,0.15)] dark:hover:shadow-[0_0_50px_rgba(239,68,68,0.25)] hover:bg-card/50 dark:hover:bg-gray-900/50 [&>*]:flex-col [&>*]:items-stretch [&>*]:gap-0"
-                            style={{ animationDelay: `${index * 0.1}s` }}
-                        >
-                            {/* Animated Background */}
-                            <div className="absolute inset-0 opacity-10">
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary animate-gradient bg-[length:200%_200%]"></div>
-                            </div>
+  return (
+    <section
+      id="achievements"
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      className="relative bg-[#050505] text-white py-24 sm:py-32 lg:py-36 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
+    >
+      {/* Background Ambient Lighting & Floating Particles */}
+      <ParticleBackground />
 
-                            {/* Glow Effects */}
-                            <div className="absolute -top-8 -right-8 w-16 h-16 bg-primary/30 rounded-full blur-2xl"></div>
-                            <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-accent/30 rounded-full blur-2xl"></div>
+      {/* Mouse Follow Ambient Radial Light */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 opacity-60"
+        style={{
+          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 45, 85, 0.12), transparent 75%)`
+        }}
+      />
 
-                            {/* Floating Particle */}
-                            <div className="absolute top-2 right-2 w-1.5 h-1.5 bg-primary/40 rounded-full hidden md:block md:animate-pulse"></div>
-                            {/* Certificate Image */}
-                            {achievement.image && (
-                                <div
-                                    className="relative overflow-hidden h-48 bg-muted cursor-pointer"
-                                    onClick={() => setSelectedCertificate({ image: achievement.image, title: achievement.title })}
-                                >
-                                    <img
-                                        src={achievement.image}
-                                        alt={`${achievement.title} Certificate`}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
-                                </div>
-                            )}
+      {/* Ambient Crimson & Wine Radial Orbs */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-gradient-to-br from-[#ff2d55]/15 via-[#800020]/10 to-transparent rounded-full blur-[140px] pointer-events-none animate-pulse-glow-red" />
+      <div className="absolute bottom-1/4 -right-48 w-[500px] h-[500px] bg-gradient-to-tr from-[#ff4b6e]/15 via-[#4a0010]/10 to-transparent rounded-full blur-[160px] pointer-events-none animate-pulse-glow-red" />
 
-                            <div className="p-6 relative z-20">
-                                <div className="flex items-start gap-4 mb-4">
-                                    <div className="p-3 bg-primary/10 rounded-2xl group-hover:bg-primary/20 transition-colors">
-                                        <Award className="w-6 h-6 text-primary" />
-                                    </div>
+      {/* Subtle Animated Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,45,85,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,45,85,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-noise-pattern pointer-events-none z-0 opacity-40" />
 
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-bold mb-1 text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                                            {achievement.title}
-                                        </h3>
-                                        <p className="text-sm text-foreground/80">
-                                            {achievement.issuer}
-                                        </p>
-                                    </div>
-                                </div>
+      <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* SECTION HEADER */}
+        <div className="max-w-4xl mx-auto text-center mb-16 sm:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_20px_rgba(255,45,85,0.15)]"
+          >
+            <Sparkles className="w-4 h-4 text-[#ff2d55] animate-pulse" />
+            <span className="text-xs uppercase tracking-widest font-semibold text-white/80">
+              Credibility & Honors
+            </span>
+          </motion.div>
 
-                                <div className="flex items-center gap-2 mb-3 text-sm text-foreground/70">
-                                    <Calendar className="w-4 h-4" />
-                                    <span>{achievement.date}</span>
-                                </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-playfair"
+          >
+            Milestones That Shaped My{" "}
+            <span className="animate-gradient-text-red">Journey</span>
+          </motion.h2>
 
-                                <p className="text-sm text-foreground/80 mb-4 leading-relaxed line-clamp-3">
-                                    {achievement.description}
-                                </p>
+          <motion.p
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed font-sans font-light"
+          >
+            Every achievement represents a challenge accepted, a skill mastered,
+            and a step toward becoming a better engineer.
+          </motion.p>
+        </div>
 
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {achievement.skills.slice(0, 3).map((skill, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-2 py-1 bg-primary/10 text-primary text-sm rounded-full border border-primary/20"
-                                        >
-                                            {skill}
-                                        </span>
-                                    ))}
-                                </div>
+        {/* SPECIAL FEATURE: FLOATING ACHIEVEMENT COUNTER ROW */}
+        <motion.div
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.3 }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-20 max-w-5xl mx-auto"
+        >
+          {statCounters.map((stat, idx) => (
+            <AnimatedCounter
+              key={idx}
+              value={stat.value}
+              label={stat.label}
+              suffix={stat.suffix}
+            />
+          ))}
+        </motion.div>
 
-                                {achievement.image && (
-                                    <Button
-                                        size="sm"
-                                        variant="outline"
-                                        className="w-full rounded-full border-primary/50 hover:bg-primary/10 text-xs"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                            setSelectedCertificate({ image: achievement.image, title: achievement.title });
-                                        }}
-                                    >
-                                        <ExternalLink className="mr-2 h-3 w-3" />
-                                        View Credential
-                                    </Button>
-                                )}
-                            </div>
-                        </DisplayCard>
-                    ))}
-                </div>
-            </div>
+        {/* CINEMATIC VERTICAL TIMELINE CONTAINER */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Glowing Animated Red Timeline Vertical Center Line */}
+          <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#ff2d55] via-[#ff4b6e] to-[#800020] shadow-[0_0_15px_#ff2d55] z-0" />
 
-            {/* Certificate Modal */}
-            {selectedCertificate && (
-                <div
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
-                    onClick={() => setSelectedCertificate(null)}
+          <div className="space-y-12 sm:space-y-16 relative z-10">
+            {milestones.map((item, idx) => {
+              const isEven = idx % 2 === 0;
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{
+                    opacity: 0,
+                    x: isEven ? -40 : 40,
+                    filter: "blur(10px)"
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                    filter: "blur(0px)"
+                  }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  className={`relative flex flex-col md:flex-row items-center ${
+                    isEven ? "md:flex-row-reverse" : ""
+                  }`}
                 >
-                    <button
-                        onClick={() => setSelectedCertificate(null)}
-                        className="absolute top-6 right-6 z-[110] p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors backdrop-blur-sm border border-white/10"
-                        aria-label="Close certificate view"
-                    >
-                        <X className="w-6 h-6" />
-                    </button>
+                  {/* Glowing Milestone Node on Center Line */}
+                  <div className="absolute left-4 md:left-1/2 top-8 -translate-x-1/2 z-20 flex items-center justify-center">
+                    <span className="w-5 h-5 rounded-full bg-[#050505] border-2 border-[#ff2d55] shadow-[0_0_15px_#ff2d55] flex items-center justify-center group">
+                      <span className="w-2 h-2 rounded-full bg-[#ff2d55] animate-ping" />
+                    </span>
+                  </div>
 
-                    <div
-                        className="relative flex items-center justify-center max-w-[95vw] max-h-[90vh]"
-                        onClick={(e) => e.stopPropagation()}
+                  {/* Left / Right Card Content Container */}
+                  <div className="w-full md:w-[45%] pl-12 md:pl-0">
+                    <motion.div
+                      whileHover={{ y: -5, scale: 1.01 }}
+                      className="relative bg-[#09090c]/75 backdrop-blur-2xl border border-white/10 rounded-[28px] p-6 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:border-[#ff2d55]/40 hover:shadow-[0_0_40px_rgba(255,45,85,0.25)] transition-all duration-500 group overflow-hidden"
                     >
-                        <img
-                            src={selectedCertificate.image}
-                            alt={`${selectedCertificate.title} Certificate - Full View`}
-                            className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
-                        />
-                    </div>
-                </div>
-            )}
-        </section>
-    );
+                      {/* Floating Glass Reflection Top Edge */}
+                      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+                      {/* Header Badge & Date */}
+                      <div className="flex items-center justify-between gap-3 mb-4">
+                        <span
+                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${item.badgeColor}`}
+                        >
+                          <Icon className="w-3.5 h-3.5" />
+                          {item.category}
+                        </span>
+                        <div className="flex items-center gap-1.5 text-xs text-white/50 font-medium">
+                          <Calendar className="w-3.5 h-3.5 text-[#ff2d55]" />
+                          <span>{item.date}</span>
+                        </div>
+                      </div>
+
+                      {/* Title & Issuer */}
+                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-playfair group-hover:text-[#ff2d55] transition-colors leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs font-semibold text-white/50 mt-1 mb-3">
+                        {item.issuer}
+                      </p>
+
+                      {/* One-Line Minimal Description */}
+                      <p className="text-sm text-white/70 leading-relaxed font-sans font-light mb-5">
+                        {item.description}
+                      </p>
+
+                      {/* Thumbnail Preview & Action Button */}
+                      {item.image && (
+                        <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-4">
+                          <div
+                            onClick={() =>
+                              setSelectedCert({
+                                image: item.image!,
+                                title: item.title,
+                                issuer: item.issuer
+                              })
+                            }
+                            className="relative w-20 h-12 rounded-xl overflow-hidden border border-white/10 cursor-pointer group/img flex-shrink-0"
+                          >
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-300"
+                            />
+                            <div className="absolute inset-0 bg-black/30 group-hover/img:bg-black/10 transition-colors" />
+                          </div>
+
+                          <button
+                            onClick={() =>
+                              setSelectedCert({
+                                image: item.image!,
+                                title: item.title,
+                                issuer: item.issuer
+                              })
+                            }
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80 hover:text-[#ff2d55] transition-colors group/btn"
+                          >
+                            <span>View Credential</span>
+                            <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                          </button>
+                        </div>
+                      )}
+                    </motion.div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* FULL CERTIFICATE PREVIEW MODAL */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
+            onClick={() => setSelectedCert(null)}
+          >
+            <button
+              onClick={() => setSelectedCert(null)}
+              className="absolute top-6 right-6 z-[110] p-3 bg-white/10 hover:bg-[#ff2d55] text-white rounded-full transition-colors backdrop-blur-sm border border-white/10 shadow-lg"
+              aria-label="Close modal"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative flex flex-col items-center max-w-[95vw] max-h-[90vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedCert.image}
+                alt={selectedCert.title}
+                className="max-w-full max-h-[80vh] w-auto h-auto object-contain rounded-2xl border border-white/10 shadow-2xl"
+              />
+              <div className="mt-4 text-center">
+                <h4 className="text-lg font-bold text-white font-playfair">
+                  {selectedCert.title}
+                </h4>
+                <p className="text-xs text-white/60 mt-0.5">
+                  {selectedCert.issuer}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
 };
 
 export default Achievements;
