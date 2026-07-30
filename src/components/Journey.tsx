@@ -236,7 +236,7 @@ const Journey = () => {
       id="journey"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative bg-[#050505] text-white py-24 sm:py-32 lg:py-36 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
+      className="relative bg-[#050505] text-white py-12 sm:py-16 lg:py-20 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
     >
       {/* Background Ambient Lighting & Effects */}
       <ParticleBackground />
@@ -259,7 +259,7 @@ const Journey = () => {
 
       <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* SECTION HEADER */}
-        <div className="max-w-4xl mx-auto text-center mb-20 sm:mb-28">
+        <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
