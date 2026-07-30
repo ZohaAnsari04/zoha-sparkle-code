@@ -1,21 +1,20 @@
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   Award,
-  Trophy,
-  GraduationCap,
-  Flame,
-  ShieldCheck,
   BookOpen,
   Sparkles,
   Calendar,
   ExternalLink,
   X,
   Cpu,
-  Star,
-  Layers,
+  Flame,
+  ShieldCheck,
   CheckCircle2,
-  Bookmark
+  Bookmark,
+  Filter,
+  Library,
+  BookMarked
 } from "lucide-react";
 
 // Certificate Image Imports
@@ -42,7 +41,7 @@ import cert20 from "@/assets/certificates/cert20.jpg";
 import cert21 from "@/assets/certificates/cert21.jpg";
 import cert22 from "@/assets/certificates/cert22_fixed.jpg";
 
-// Interactive Particle Background Canvas Component
+// Canvas Floating Dust Particles Component
 const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -80,9 +79,9 @@ const ParticleBackground = () => {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.6 + 0.5,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
+        radius: Math.random() * 1.5 + 0.5,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
         alpha: Math.random() * 0.5 + 0.2,
         pulse: Math.random() * Math.PI,
         pulseSpeed: 0.02 + Math.random() * 0.03
@@ -132,76 +131,91 @@ const ParticleBackground = () => {
   );
 };
 
-// Animated Counting Number Stat Box Component
-const AnimatedCounter = ({
-  value,
-  label,
-  suffix = ""
+// Bookshelf Book Spine Component
+interface BookData {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  year: string;
+  credentialId?: string;
+  category: string;
+  icon: any;
+  image: string;
+  skills: string[];
+  spineGradient: string;
+  ribbonColor: string;
+  goldAccent: string;
+}
+
+const BookSpine = ({
+  book,
+  onClick
 }: {
-  value: string;
-  label: string;
-  suffix?: string;
+  book: BookData;
+  onClick: () => void;
 }) => {
-  const [displayValue, setDisplayValue] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  const numericValue = parseFloat(value);
-  const isFloat = value.includes(".");
-  const isNaNVal = isNaN(numericValue);
-
-  useEffect(() => {
-    if (!isInView || isNaNVal) return;
-    let start = 0;
-    const duration = 1800;
-    const steps = 50;
-    const increment = numericValue / steps;
-    const stepTime = duration / steps;
-
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= numericValue) {
-        setDisplayValue(numericValue);
-        clearInterval(timer);
-      } else {
-        setDisplayValue(start);
-      }
-    }, stepTime);
-
-    return () => clearInterval(timer);
-  }, [isInView, numericValue, isNaNVal]);
+  const Icon = book.icon;
 
   return (
-    <div
-      ref={ref}
-      className="text-center p-4 sm:p-6 rounded-3xl bg-[#09090c]/70 border border-white/10 backdrop-blur-2xl shadow-xl hover:border-[#ff2d55]/40 hover:shadow-[0_0_30px_rgba(255,45,85,0.2)] transition-all duration-500 group relative overflow-hidden"
+    <motion.div
+      onClick={onClick}
+      whileHover={{
+        y: -18,
+        scale: 1.05,
+        rotateY: -12,
+        transition: { type: "spring", stiffness: 300, damping: 20 }
+      }}
+      className="relative group cursor-pointer flex-shrink-0 select-none perspective-1000"
     >
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      <p className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-playfair group-hover:text-[#ff2d55] transition-colors">
-        {isNaNVal
-          ? value
-          : isFloat
-          ? displayValue.toFixed(2)
-          : Math.floor(displayValue)}
-        {suffix}
-      </p>
-      <p className="text-xs sm:text-sm font-semibold text-white/60 mt-1.5 uppercase tracking-wider font-sans">
-        {label}
-      </p>
-    </div>
+      {/* Soft Red Ambient Glow Behind Spine */}
+      <div className="absolute -inset-2 bg-[#ff2d55]/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+      {/* Hardcover Book Spine Container */}
+      <div
+        className={`w-14 sm:w-16 md:w-20 h-64 sm:h-72 md:h-80 rounded-r-lg rounded-l-sm bg-gradient-to-b ${book.spineGradient} border-t-2 border-b-2 border-r ${book.goldAccent} shadow-[5px_15px_35px_rgba(0,0,0,0.8),inset_-2px_0_6px_rgba(255,255,255,0.15)] flex flex-col justify-between items-center py-4 px-1.5 relative overflow-hidden transition-all duration-300`}
+      >
+        {/* Spine Light Reflection Sweep Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-black/40 pointer-events-none" />
+
+        {/* Top Gold Embossed Icon */}
+        <div className="relative z-10 p-2 rounded-full bg-black/40 border border-amber-400/40 shadow-inner group-hover:scale-110 transition-transform">
+          <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
+        </div>
+
+        {/* Vertical Book Spine Title (Rotated Text) */}
+        <div className="relative z-10 flex-1 flex items-center justify-center my-4 overflow-hidden">
+          <p className="text-xs sm:text-sm font-bold text-white/90 tracking-wider uppercase font-playfair [writing-mode:vertical-rl] rotate-180 truncate max-h-[180px] drop-shadow-md group-hover:text-white transition-colors">
+            {book.title}
+          </p>
+        </div>
+
+        {/* Bookmark Ribbon Tip Sticking Out Bottom */}
+        <div
+          className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-6 ${book.ribbonColor} shadow-md clip-ribbon z-20 transition-transform group-hover:translate-y-1`}
+        />
+
+        {/* Bottom Year & Issuer Badge */}
+        <div className="relative z-10 text-center">
+          <span className="text-[10px] sm:text-xs font-mono font-bold text-amber-300/90 block">
+            {book.year}
+          </span>
+        </div>
+      </div>
+
+      {/* Book Shadow Cast On Walnut Shelf */}
+      <div className="w-full h-3 bg-black/80 blur-sm rounded-full mt-1 group-hover:scale-95 transition-transform" />
+    </motion.div>
   );
 };
 
 const Achievements = () => {
-  const [selectedCert, setSelectedCert] = useState<{
-    image: string;
-    title: string;
-    issuer?: string;
-  } | null>(null);
+  const [selectedBook, setSelectedBook] = useState<BookData | null>(null);
+  const [activeFilter, setActiveFilter] = useState("All");
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   // Mouse spotlight tracking
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const sectionRef = useRef<HTMLElement | null>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!sectionRef.current) return;
@@ -214,125 +228,154 @@ const Achievements = () => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSelectedCert(null);
+      if (e.key === "Escape") setSelectedBook(null);
     };
-    if (selectedCert) window.addEventListener("keydown", handleKeyDown);
+    if (selectedBook) window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedCert]);
+  }, [selectedBook]);
 
-  // Timeline Milestones Data
-  const milestones = [
+  // Curated Hardcover Library Collection Data
+  const libraryCollection: BookData[] = [
     {
-      category: "Hackathon",
-      title: "ERR_404 6.0 International Hackathon",
-      issuer: "MHSSCE Programmers' Club",
-      date: "Feb 15–16, 2025",
-      description: "Participated in 36 hours of intense international hackathon building real-world solutions.",
-      icon: Flame,
-      image: cert13,
-      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/30"
-    },
-    {
-      category: "Research",
-      title: "Path to Research Mastery Lecture Series",
-      issuer: "MHSSCE Computer Dept & CSI Chapter",
-      date: "Feb 5, 2025",
-      description: "Completed month-long research mastery series covering academic literature & data methods.",
-      icon: BookOpen,
-      image: cert17,
-      badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/30"
-    },
-    {
-      category: "Competition",
-      title: "Hierro CTF Cybersecurity Hackathon",
-      issuer: "Hierroshield Pvt Ltd",
-      date: "Nov 30, 2025",
-      description: "Recognized for active involvement & speed in solving live cybersecurity CTF challenges.",
-      icon: ShieldCheck,
-      image: cert19,
-      badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
-    },
-    {
-      category: "Certification",
+      id: "oracle-genai",
       title: "Oracle Certified Generative AI Professional",
       issuer: "Oracle University",
       date: "Oct 26, 2025",
-      description: "Earned Oracle Certified Professional credentials in OCI Generative AI & Cloud Architecture.",
-      icon: Award,
+      year: "2025",
+      credentialId: "322738038OCI25GAIOCP",
+      category: "AI",
+      icon: Cpu,
       image: cert9,
-      badgeColor: "bg-[#ff2d55]/10 text-[#ff2d55] border-[#ff2d55]/30"
+      skills: ["Oracle Cloud", "Generative AI", "LLM Architecture", "OCI"],
+      spineGradient: "from-purple-950 via-purple-900 to-indigo-950",
+      ribbonColor: "bg-purple-500",
+      goldAccent: "border-amber-400/50"
     },
     {
-      category: "Leadership",
-      title: "Microsoft Azure Student Ambassador Challenge",
+      id: "azure-mlsa",
+      title: "Microsoft Azure Ambassador Challenge",
       issuer: "Microsoft Learn Student Ambassadors",
       date: "2025",
-      description: "Completed Microsoft Build Azure virtual challenges for student ambassador excellence.",
+      year: "2025",
+      credentialId: "MLSA-AZURE-2025",
+      category: "Cloud",
       icon: Sparkles,
       image: cert22,
-      badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/30"
+      skills: ["Microsoft Azure", "Cloud Computing", "Architecture"],
+      spineGradient: "from-blue-950 via-blue-900 to-sky-950",
+      ribbonColor: "bg-sky-400",
+      goldAccent: "border-sky-400/50"
     },
     {
-      category: "Competition",
-      title: "Clash Of Codes 2.0 — Ace Track",
-      issuer: "Mumbai University",
-      date: "2025",
-      description: "Awarded for top performance and problem-solving speed in competitive programming.",
-      icon: Trophy,
-      image: cert14,
-      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/30"
+      id: "hierro-ctf",
+      title: "Hierro CTF Cybersecurity Hackathon",
+      issuer: "Hierroshield Pvt Ltd",
+      date: "Nov 30, 2025",
+      year: "2025",
+      credentialId: "HIERRO-CTF-2025",
+      category: "Cyber Security",
+      icon: ShieldCheck,
+      image: cert19,
+      skills: ["Cybersecurity", "CTF", "Ethical Hacking", "Defense"],
+      spineGradient: "from-emerald-950 via-emerald-900 to-teal-950",
+      ribbonColor: "bg-emerald-500",
+      goldAccent: "border-emerald-400/50"
     },
     {
-      category: "Certification",
-      title: "Deloitte Cybersecurity Virtual Experience",
+      id: "deloitte-cyber",
+      title: "Deloitte Cybersecurity Experience",
       issuer: "Deloitte (via Forage)",
       date: "Nov 14, 2025",
-      description: "Executed practical cybersecurity tasks analyzing enterprise risk & system defenses.",
+      year: "2025",
+      credentialId: "FxcuxqwGepTMRi67K",
+      category: "Cyber Security",
       icon: ShieldCheck,
       image: cert12,
-      badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+      skills: ["Cybersecurity", "Enterprise Risk", "Security Audit"],
+      spineGradient: "from-green-950 via-emerald-900 to-teal-950",
+      ribbonColor: "bg-emerald-400",
+      goldAccent: "border-emerald-500/50"
     },
     {
-      category: "Hackathon",
+      id: "research-mastery",
+      title: "Path to Research Mastery",
+      issuer: "MHSSCE Computer Dept & CSI Chapter",
+      date: "Feb 5, 2025",
+      year: "2025",
+      credentialId: "PRM-2025",
+      category: "Research",
+      icon: BookOpen,
+      image: cert17,
+      skills: ["Academic Research", "Data Methodology", "Computer Science"],
+      spineGradient: "from-cyan-950 via-teal-900 to-blue-950",
+      ribbonColor: "bg-cyan-400",
+      goldAccent: "border-cyan-400/50"
+    },
+    {
+      id: "err-hackathon",
+      title: "ERR_404 6.0 International Hackathon",
+      issuer: "MHSSCE Programmers' Club",
+      date: "Feb 15–16, 2025",
+      year: "2025",
+      credentialId: "ERR404-2025",
+      category: "Hackathons",
+      icon: Flame,
+      image: cert13,
+      skills: ["Hackathon", "Problem Solving", "Rapid Prototyping"],
+      spineGradient: "from-amber-950 via-amber-900 to-yellow-950",
+      ribbonColor: "bg-amber-400",
+      goldAccent: "border-amber-400/50"
+    },
+    {
+      id: "mern-bootcamp",
       title: "3-Day MERN Stack Intensive Bootcamp",
       issuer: "MHSSCE Programmers' Club",
       date: "2025",
-      description: "Built full-stack React & Node.js web applications under time constraints.",
+      year: "2025",
+      credentialId: "MERN-BOOTCAMP-2025",
+      category: "Frontend",
       icon: Flame,
       image: cert16,
-      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/30"
+      skills: ["React", "MongoDB", "Express", "Node.js"],
+      spineGradient: "from-red-950 via-[#ff2d55]/80 to-rose-950",
+      ribbonColor: "bg-[#ff2d55]",
+      goldAccent: "border-[#ff2d55]/50"
     },
     {
-      category: "Open Source",
-      title: "IEEE World Environment Day AI Poster Challenge",
-      issuer: "IEEE Student Branch",
+      id: "clash-codes",
+      title: "Clash Of Codes 2.0 — Ace Track",
+      issuer: "Mumbai University",
       date: "2025",
-      description: "Designed digital poster under theme 'Planet in Beta: Can AI Save Earth?'",
-      icon: Star,
-      image: cert18,
-      badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30"
+      year: "2025",
+      credentialId: "COC-ACE-2025",
+      category: "Hackathons",
+      icon: Trophy,
+      image: cert14,
+      skills: ["Competitive Programming", "Algorithms", "Optimization"],
+      spineGradient: "from-orange-950 via-amber-900 to-yellow-950",
+      ribbonColor: "bg-amber-500",
+      goldAccent: "border-amber-400/50"
     }
   ];
 
-  const statCounters = [
-    { label: "Projects Built", value: "15", suffix: "+" },
-    { label: "Certifications", value: "8", suffix: "+" },
-    { label: "Hackathons", value: "3", suffix: "+" },
-    { label: "Academic CGPA", value: "8.80", suffix: "" },
-    { label: "GATE Exam", value: "Qualified", suffix: "" }
-  ];
+  const filterChips = ["All", "Frontend", "AI", "Cloud", "Cyber Security", "Research", "Hackathons"];
+
+  const filteredBooks = libraryCollection.filter((b) => {
+    if (activeFilter === "All") return true;
+    return b.category === activeFilter;
+  });
 
   return (
     <section
       id="achievements"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative bg-[#050505] text-white py-24 sm:py-32 lg:py-36 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
+      className="relative bg-[#050505] text-white py-12 sm:py-16 lg:py-20 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
     >
-      {/* Background Ambient Lighting & Floating Particles */}
+      {/* Background Dust Particles */}
       <ParticleBackground />
 
-      {/* Mouse Follow Ambient Radial Light */}
+      {/* Mouse Follow Ambient Spotlight */}
       <div
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 opacity-60"
         style={{
@@ -340,17 +383,17 @@ const Achievements = () => {
         }}
       />
 
-      {/* Ambient Crimson & Wine Radial Orbs */}
+      {/* Crimson Ambient Radial Orbs */}
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-gradient-to-br from-[#ff2d55]/15 via-[#800020]/10 to-transparent rounded-full blur-[140px] pointer-events-none animate-pulse-glow-red" />
       <div className="absolute bottom-1/4 -right-48 w-[500px] h-[500px] bg-gradient-to-tr from-[#ff4b6e]/15 via-[#4a0010]/10 to-transparent rounded-full blur-[160px] pointer-events-none animate-pulse-glow-red" />
 
-      {/* Subtle Animated Grid Overlay */}
+      {/* Grid Pattern & Noise Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,45,85,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,45,85,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
       <div className="absolute inset-0 bg-noise-pattern pointer-events-none z-0 opacity-40" />
 
       <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* SECTION HEADER */}
-        <div className="max-w-4xl mx-auto text-center mb-16 sm:mb-20">
+        <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -358,9 +401,9 @@ const Achievements = () => {
             transition={{ duration: 0.8 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_20px_rgba(255,45,85,0.15)]"
           >
-            <Sparkles className="w-4 h-4 text-[#ff2d55] animate-pulse" />
+            <Library className="w-4 h-4 text-[#ff2d55] animate-pulse" />
             <span className="text-xs uppercase tracking-widest font-semibold text-white/80">
-              Credibility & Honors
+              Interactive Library
             </span>
           </motion.div>
 
@@ -371,8 +414,7 @@ const Achievements = () => {
             transition={{ duration: 0.9, delay: 0.1 }}
             className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-playfair"
           >
-            Milestones That Shaped My{" "}
-            <span className="animate-gradient-text-red">Journey</span>
+            Knowledge <span className="animate-gradient-text-red">Library</span>
           </motion.h2>
 
           <motion.p
@@ -380,185 +422,165 @@ const Achievements = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed font-sans font-light"
+            className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-sans font-light"
           >
-            Every achievement represents a challenge accepted, a skill mastered,
-            and a step toward becoming a better engineer.
+            Every certificate represents another chapter in my journey as a software engineer.
           </motion.p>
         </div>
 
-        {/* SPECIAL FEATURE: FLOATING ACHIEVEMENT COUNTER ROW */}
+        {/* ELEGANT CATEGORY CHIPS */}
         <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9, delay: 0.3 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-20 max-w-5xl mx-auto"
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="flex flex-wrap items-center justify-center gap-2.5 mb-14 max-w-3xl mx-auto"
         >
-          {statCounters.map((stat, idx) => (
-            <AnimatedCounter
-              key={idx}
-              value={stat.value}
-              label={stat.label}
-              suffix={stat.suffix}
-            />
-          ))}
+          {filterChips.map((chip) => {
+            const isActive = activeFilter === chip;
+            return (
+              <button
+                key={chip}
+                onClick={() => setActiveFilter(chip)}
+                className={`relative px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 backdrop-blur-md border ${
+                  isActive
+                    ? "text-white border-[#ff2d55] bg-[#ff2d55]/20 shadow-[0_0_20px_rgba(255,45,85,0.3)]"
+                    : "text-white/70 border-white/10 bg-white/[0.03] hover:text-white hover:border-white/30 hover:bg-white/[0.06]"
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="activeLibraryFilterGlow"
+                    className="absolute inset-0 rounded-full bg-[#ff2d55]/10 border border-[#ff2d55]/50 pointer-events-none"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {chip === "All" && <Filter className="w-3 h-3 text-[#ff2d55]" />}
+                  {chip}
+                </span>
+              </button>
+            );
+          })}
         </motion.div>
 
-        {/* CINEMATIC VERTICAL TIMELINE CONTAINER */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Glowing Animated Red Timeline Vertical Center Line */}
-          <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#ff2d55] via-[#ff4b6e] to-[#800020] shadow-[0_0_15px_#ff2d55] z-0" />
-
-          <div className="space-y-12 sm:space-y-16 relative z-10">
-            {milestones.map((item, idx) => {
-              const isEven = idx % 2 === 0;
-              const Icon = item.icon;
-
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{
-                    opacity: 0,
-                    x: isEven ? -40 : 40,
-                    filter: "blur(10px)"
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    x: 0,
-                    filter: "blur(0px)"
-                  }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
-                  className={`relative flex flex-col md:flex-row items-center ${
-                    isEven ? "md:flex-row-reverse" : ""
-                  }`}
-                >
-                  {/* Glowing Milestone Node on Center Line */}
-                  <div className="absolute left-4 md:left-1/2 top-8 -translate-x-1/2 z-20 flex items-center justify-center">
-                    <span className="w-5 h-5 rounded-full bg-[#050505] border-2 border-[#ff2d55] shadow-[0_0_15px_#ff2d55] flex items-center justify-center group">
-                      <span className="w-2 h-2 rounded-full bg-[#ff2d55] animate-ping" />
-                    </span>
-                  </div>
-
-                  {/* Left / Right Card Content Container */}
-                  <div className="w-full md:w-[45%] pl-12 md:pl-0">
-                    <motion.div
-                      whileHover={{ y: -5, scale: 1.01 }}
-                      className="relative bg-[#09090c]/75 backdrop-blur-2xl border border-white/10 rounded-[28px] p-6 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:border-[#ff2d55]/40 hover:shadow-[0_0_40px_rgba(255,45,85,0.25)] transition-all duration-500 group overflow-hidden"
-                    >
-                      {/* Floating Glass Reflection Top Edge */}
-                      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-                      {/* Header Badge & Date */}
-                      <div className="flex items-center justify-between gap-3 mb-4">
-                        <span
-                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${item.badgeColor}`}
-                        >
-                          <Icon className="w-3.5 h-3.5" />
-                          {item.category}
-                        </span>
-                        <div className="flex items-center gap-1.5 text-xs text-white/50 font-medium">
-                          <Calendar className="w-3.5 h-3.5 text-[#ff2d55]" />
-                          <span>{item.date}</span>
-                        </div>
-                      </div>
-
-                      {/* Title & Issuer */}
-                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-playfair group-hover:text-[#ff2d55] transition-colors leading-snug">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs font-semibold text-white/50 mt-1 mb-3">
-                        {item.issuer}
-                      </p>
-
-                      {/* One-Line Minimal Description */}
-                      <p className="text-sm text-white/70 leading-relaxed font-sans font-light mb-5">
-                        {item.description}
-                      </p>
-
-                      {/* Thumbnail Preview & Action Button */}
-                      {item.image && (
-                        <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-4">
-                          <div
-                            onClick={() =>
-                              setSelectedCert({
-                                image: item.image!,
-                                title: item.title,
-                                issuer: item.issuer
-                              })
-                            }
-                            className="relative w-20 h-12 rounded-xl overflow-hidden border border-white/10 cursor-pointer group/img flex-shrink-0"
-                          >
-                            <img
-                              src={item.image}
-                              alt={item.title}
-                              className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-300"
-                            />
-                            <div className="absolute inset-0 bg-black/30 group-hover/img:bg-black/10 transition-colors" />
-                          </div>
-
-                          <button
-                            onClick={() =>
-                              setSelectedCert({
-                                image: item.image!,
-                                title: item.title,
-                                issuer: item.issuer
-                              })
-                            }
-                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80 hover:text-[#ff2d55] transition-colors group/btn"
-                          >
-                            <span>View Credential</span>
-                            <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                          </button>
-                        </div>
-                      )}
-                    </motion.div>
-                  </div>
-                </motion.div>
-              );
-            })}
+        {/* LUXURY FLOATING WALNUT BOOKSHELF CONTAINER */}
+        <div className="relative max-w-5xl mx-auto pt-10 pb-8 px-4 sm:px-8">
+          {/* Standing Books Row */}
+          <div className="flex items-end justify-center gap-3 sm:gap-4 md:gap-6 min-h-[340px] sm:min-h-[380px] overflow-x-auto pb-4 pt-8 px-4 scrollbar-none">
+            <AnimatePresence mode="popLayout">
+              {filteredBooks.map((book) => (
+                <BookSpine
+                  key={book.id}
+                  book={book}
+                  onClick={() => setSelectedBook(book)}
+                />
+              ))}
+            </AnimatePresence>
           </div>
+
+          {/* Dark Walnut Wood Shelf Platform */}
+          <div className="relative w-full h-7 bg-gradient-to-r from-[#181214] via-[#2a1a1e] to-[#181214] border-t-2 border-b border-[#ff2d55]/40 rounded-sm shadow-[0_25px_50px_rgba(0,0,0,0.95)] z-20 flex items-center justify-between px-6">
+            <div className="w-3 h-3 rounded-full bg-amber-400/40 border border-amber-300/30" />
+            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-amber-400/30 to-transparent mx-4" />
+            <div className="w-3 h-3 rounded-full bg-amber-400/40 border border-amber-300/30" />
+          </div>
+
+          {/* Red Volumetric Glow Underneath Walnut Shelf */}
+          <div className="w-full h-8 bg-[#ff2d55]/15 blur-2xl rounded-full -mt-2 pointer-events-none" />
         </div>
       </div>
 
-      {/* FULL CERTIFICATE PREVIEW MODAL */}
+      {/* REALISTIC 3D OPENED HARDCOVER BOOK MODAL */}
       <AnimatePresence>
-        {selectedCert && (
+        {selectedBook && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
-            onClick={() => setSelectedCert(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-2xl p-4 sm:p-6"
+            onClick={() => setSelectedBook(null)}
           >
+            {/* Modal Close Button */}
             <button
-              onClick={() => setSelectedCert(null)}
-              className="absolute top-6 right-6 z-[110] p-3 bg-white/10 hover:bg-[#ff2d55] text-white rounded-full transition-colors backdrop-blur-sm border border-white/10 shadow-lg"
-              aria-label="Close modal"
+              onClick={() => setSelectedBook(null)}
+              className="absolute top-6 right-6 z-[110] p-3 bg-white/10 hover:bg-[#ff2d55] text-white rounded-full transition-colors backdrop-blur-md border border-white/10 shadow-2xl"
+              aria-label="Close book"
             >
               <X className="w-6 h-6" />
             </button>
 
+            {/* 3D Opened Hardcover Book Container */}
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative flex flex-col items-center max-w-[95vw] max-h-[90vh]"
+              initial={{ scale: 0.85, opacity: 0, rotateY: 20 }}
+              animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+              exit={{ scale: 0.85, opacity: 0, rotateY: -20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 28 }}
+              className="relative max-w-5xl w-full bg-[#0d0d12] border-2 border-amber-400/30 rounded-[28px] shadow-[0_30px_100px_rgba(0,0,0,0.98),0_0_50px_rgba(255,45,85,0.25)] backdrop-blur-3xl overflow-hidden p-6 sm:p-10"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={selectedCert.image}
-                alt={selectedCert.title}
-                className="max-w-full max-h-[80vh] w-auto h-auto object-contain rounded-2xl border border-white/10 shadow-2xl"
-              />
-              <div className="mt-4 text-center">
-                <h4 className="text-lg font-bold text-white font-playfair">
-                  {selectedCert.title}
-                </h4>
-                <p className="text-xs text-white/60 mt-0.5">
-                  {selectedCert.issuer}
-                </p>
+              {/* Bookmark Ribbon Design Overlay */}
+              <div className="absolute top-0 right-12 w-6 h-28 bg-[#ff2d55] shadow-xl z-30 clip-ribbon pointer-events-none" />
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                {/* Left Page (Metadata & Information) */}
+                <div className="lg:col-span-5 space-y-6">
+                  <div className="space-y-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff2d55]/10 border border-[#ff2d55]/30 text-xs font-bold text-[#ff2d55]">
+                      <BookMarked className="w-3.5 h-3.5" />
+                      Chapter • {selectedBook.category}
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight font-playfair leading-snug">
+                      {selectedBook.title}
+                    </h3>
+                    <p className="text-sm font-semibold text-white/60">
+                      Issued by <span className="text-white">{selectedBook.issuer}</span>
+                    </p>
+                  </div>
+
+                  {/* Metadata Info Stack */}
+                  <div className="space-y-3 pt-3 border-t border-white/10">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-white/50">Issue Date</span>
+                      <span className="font-semibold text-white">{selectedBook.date}</span>
+                    </div>
+
+                    {selectedBook.credentialId && (
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-white/50">Credential ID</span>
+                        <span className="font-mono text-xs font-semibold text-white/90 bg-white/[0.04] px-2 py-0.5 rounded border border-white/10 truncate max-w-[180px]">
+                          {selectedBook.credentialId}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Skills Badges */}
+                  <div className="space-y-2 pt-2">
+                    <p className="text-xs uppercase tracking-wider font-semibold text-white/50">
+                      Skills & Competencies
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedBook.skills.map((sk, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-white/90"
+                        >
+                          {sk}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Page (High-Res Certificate Document Preview) */}
+                <div className="lg:col-span-7 relative rounded-2xl overflow-hidden border border-amber-400/20 bg-black/60 shadow-2xl p-2">
+                  <img
+                    src={selectedBook.image}
+                    alt={selectedBook.title}
+                    className="w-full max-h-[60vh] object-contain rounded-xl"
+                  />
+                </div>
               </div>
             </motion.div>
           </motion.div>

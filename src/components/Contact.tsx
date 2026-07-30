@@ -364,7 +364,7 @@ const Contact = () => {
       id="contact"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative bg-[#050505] text-white py-24 sm:py-32 lg:py-36 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
+      className="relative bg-[#050505] text-white py-12 sm:py-16 lg:py-20 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
     >
       {/* Background Ambient Lighting & Effects */}
       <ParticleBackground />
