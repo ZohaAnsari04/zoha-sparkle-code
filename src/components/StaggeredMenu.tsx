@@ -423,7 +423,7 @@ export const StaggeredMenu = ({
     };
 
     const handleResumeDownload = () => {
-        const resumeUrl = "https://acrobat.adobe.com/id/urn:aaid:sc:AP:f2729e96-d920-4596-8b46-5faa7733867f";
+        const resumeUrl = "https://acrobat.adobe.com/id/urn:aaid:sc:AP:799e46e2-07de-4152-aee3-ceb88160f19e";
         window.open(resumeUrl, "_blank");
         closeMenu();
     };

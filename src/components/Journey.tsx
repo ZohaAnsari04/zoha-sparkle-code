@@ -30,6 +30,17 @@ const Journey = () => {
 
   const experienceData = [
     {
+      role: "Business Development Intern",
+      company: "GAOTek Inc.",
+      location: "New York, United States · Remote",
+      duration: "Jul 2026 – Present",
+      points: [
+        "Executing business development initiatives, strategic outreach, and market research for global enterprise tech solutions.",
+        "Collaborating remotely with cross-functional international teams to analyze market trends and build client partnerships."
+      ],
+      skills: [],
+    },
+    {
       role: "AR Associate",
       company: "Macksofy Technologies Pvt Ltd",
       location: "Remote",
