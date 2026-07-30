@@ -288,3 +288,31 @@ html {
         cursor: none !important;
     }
 }
+
+/* Luxury Contact Redesign Animations */
+@keyframes gradient-shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-text-red {
+    background: linear-gradient(135deg, #ff2d55 0%, #ff6b81 35%, #ff4b6e 65%, #c2185b 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shimmer 4s ease infinite;
+}
+
+@keyframes pulse-glow-red {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.08); }
+}
+
+.animate-pulse-glow-red {
+    animation: pulse-glow-red 6s ease-in-out infinite;
+}
+
+.bg-noise-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
