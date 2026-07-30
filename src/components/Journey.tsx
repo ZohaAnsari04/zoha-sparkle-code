@@ -1,376 +1,492 @@
-import { useState, useEffect } from "react";
-import { Card } from "@/components/ui/card";
-import { GraduationCap, Award, BookOpen, Sparkles, Briefcase, Calendar } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
+import {
+  GraduationCap,
+  Briefcase,
+  Sparkles,
+  Calendar,
+  MapPin,
+  Compass,
+  Award,
+  Zap,
+  Rocket,
+  ArrowRight,
+  Flame,
+  CheckCircle2,
+  TrendingUp
+} from "lucide-react";
 
-const techLogos: { [key: string]: string } = {
-  "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-  "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-  "Express.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-  "Solidity": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg",
-  "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-  "TensorFlow": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
-  "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-  "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-  "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-};
-
-const Journey = () => {
-  const [activeTab, setActiveTab] = useState<"experience" | "education">("experience");
+// Interactive Canvas Particle Component
+const ParticleBackground = () => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    // Notify custom scroll engine to recalculate container height
-    const timer = setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
-    }, 350);
-    return () => clearTimeout(timer);
-  }, [activeTab]);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-  const experienceData = [
-    {
-      role: "Business Development Intern",
-      company: "GAOTek Inc.",
-      location: "New York, United States · Remote",
-      duration: "Jul 2026 – Present",
-      points: [
-        "Executing business development initiatives, strategic outreach, and market research for global enterprise tech solutions.",
-        "Collaborating remotely with cross-functional international teams to analyze market trends and build client partnerships."
-      ],
-      skills: [],
-    },
-    {
-      role: "AR Associate",
-      company: "Macksofy Technologies Pvt Ltd",
-      location: "Remote",
-      duration: "Mar 2026 – Present",
-      points: [
-        "Working on billing and accounts receivable operations for Samar Health, a US-based healthcare client based in Texas.",
-        "Managing financial transactions and ensuring accurate processing of healthcare claims.",
-        "Collaborating with cross-functional teams to streamline revenue cycle management processes."
-      ],
-      skills: [],
-    },
-    {
-      role: "Front-end Developer Intern",
-      company: "Sunarj Technologies",
-      location: "Mumbai, India",
-      duration: "Jun 2022 – Nov 2022",
-      points: [
-        "Worked on developing and maintaining responsive web applications using HTML, CSS, JavaScript, and modern frontend technologies.",
-        "Collaborated with the development team to create user-friendly interfaces, improve website performance."
-      ],
-      skills: ["HTML", "CSS", "JavaScript"],
-    }
-  ];
+    let animationFrameId: number;
+    let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
+    let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
-  const educationData = [
-    {
-      degree: "Masters of Technology",
-      field: "Computer Engineering",
-      specialization: "Vidyavihar",
-      institution: "K.J. Somaiya School of Engineering",
-      duration: "June 2026 – May 2028",
-      skills: ["Advanced Algorithms", "Software Engineering", "Computer Systems"],
-    },
-    {
-      degree: "Bachelor of Engineering",
-      field: "CSE IoT & Cyber Security including Blockchain Technology",
-      specialization: "Byculla",
-      institution: "M.H. Saboo Siddik College of Engineering",
-      duration: "Sept 2023 – June 2026",
-      grade: "8.80 CGPA",
-      skills: ["IoT Ecosystems", "Cryptography & Cyber Security", "Solidity", "Computer Science"],
-    },
-    {
-      degree: "Diploma of Education",
-      field: "Information Technology",
-      specialization: "Mumbai, India",
-      institution: "Vidyalankar Polytechnic",
-      duration: "Aug 2020 – Jun 2023",
-      skills: ["Information Technology", "Programming", "Web Technologies", "Software Development"],
-    }
-  ];
+    const handleResize = () => {
+      if (!canvas || !canvas.parentElement) return;
+      width = canvas.width = canvas.parentElement.clientWidth;
+      height = canvas.height = canvas.parentElement.clientHeight;
+    };
 
-  const getLogoIcon = (name: string) => {
-    if (name === "Express.js") {
-      return (
-        <div className="w-4 h-4 rounded-full bg-zinc-800 flex items-center justify-center text-[7px] font-bold text-zinc-300 border border-zinc-700">
-          ex
-        </div>
-      );
+    window.addEventListener("resize", handleResize);
+
+    const particleCount = 35;
+    const particles: Array<{
+      x: number;
+      y: number;
+      radius: number;
+      vx: number;
+      vy: number;
+      alpha: number;
+      pulse: number;
+      pulseSpeed: number;
+    }> = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.6 + 0.6,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        alpha: Math.random() * 0.5 + 0.2,
+        pulse: Math.random() * Math.PI,
+        pulseSpeed: 0.02 + Math.random() * 0.03
+      });
     }
-    if (techLogos[name]) {
-      return <img src={techLogos[name]} alt={name} className="w-4 h-4 object-contain" />;
-    }
-    return null;
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.pulse += p.pulseSpeed;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        const currentAlpha = p.alpha + Math.sin(p.pulse) * 0.2;
+        const clampedAlpha = Math.max(0.1, Math.min(0.8, currentAlpha));
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 45, 85, ${clampedAlpha})`;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "rgba(255, 45, 85, 0.7)";
+        ctx.fill();
+      });
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 pointer-events-none z-0 w-full h-full opacity-50"
+    />
+  );
+};
+
+// 3D Tilt Card Component for Milestone Islands
+const TiltIslandCard = ({
+  children,
+  className = ""
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 25 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 25 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["6deg", "-6deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-6deg", "6deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
   };
 
   return (
-    <section id="journey" className="py-20 bg-[#ffdbe4] dark:bg-transparent relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateY,
+        rotateX,
+        transformStyle: "preserve-3d"
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+const Journey = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Header Section */}
-        <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in flex flex-col items-center">
-          <span className="px-4 py-1.5 rounded-full border border-border dark:border-white/10 bg-card/50 dark:bg-gray-900/40 text-xs font-semibold tracking-wider text-muted-foreground uppercase mb-4 backdrop-blur-sm">
-            Career Path & Education
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 font-playfair tracking-wide flex items-center gap-2 text-black dark:text-foreground">
-            Career <span className="gradient-text">Timeline</span>
-            <Sparkles className="text-accent animate-sparkle" size={32} />
-          </h2>
-          <p className="text-lg md:text-xl text-black/80 dark:text-muted-foreground max-w-2xl">
-            A look at the milestones, experiences, and achievements that define my professional growth.
-          </p>
+  // Mouse spotlight tracking
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-          {/* Custom Styled Pill Tab Selector */}
-          <div className="mt-10 p-1.5 bg-muted/40 dark:bg-gray-900/60 rounded-full border border-border dark:border-white/10 flex items-center w-80 relative">
-            <button
-              onClick={() => setActiveTab("experience")}
-              className={`flex-1 py-3 text-sm font-semibold rounded-full flex items-center justify-center gap-2 z-10 transition-colors duration-300 ${activeTab === "experience"
-                ? "text-black font-bold"
-                : "text-black/60 dark:text-muted-foreground hover:text-black dark:hover:text-foreground"
-                }`}
-            >
-              <Briefcase size={16} />
-              Experience
-            </button>
-            <button
-              onClick={() => setActiveTab("education")}
-              className={`flex-1 py-3 text-sm font-semibold rounded-full flex items-center justify-center gap-2 z-10 transition-colors duration-300 ${activeTab === "education"
-                ? "text-black font-bold"
-                : "text-black/60 dark:text-muted-foreground hover:text-black dark:hover:text-foreground"
-                }`}
-            >
-              <GraduationCap size={16} />
-              Education
-            </button>
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+  };
 
-            {/* Animated Active Pill Indicator */}
-            <motion.div
-              className="absolute top-1.5 bottom-1.5 left-1.5 bg-white rounded-full shadow-md pointer-events-none"
-              layoutId="activeTabIndicator"
-              animate={{
-                width: "47.5%",
-                x: activeTab === "experience" ? 0 : "105%"
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            />
-          </div>
+  // Scroll Progress Tracking for Snaking Path
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 40 });
+
+  // Career Story Chapters (Milestone Islands)
+  const chapters = [
+    {
+      chapter: "01",
+      type: "Education",
+      icon: GraduationCap,
+      title: "Diploma in Information Technology",
+      subtitle: "Vidyalankar Polytechnic • Mumbai",
+      date: "Aug 2020 – Jun 2023",
+      skills: ["Programming", "Web Dev", "IT Systems"],
+      badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/30"
+    },
+    {
+      chapter: "02",
+      type: "Internship",
+      icon: Briefcase,
+      title: "Front-end Developer Intern",
+      subtitle: "Sunarj Technologies • Mumbai",
+      date: "Jun 2022 – Nov 2022",
+      description: "Crafted responsive web user interfaces and optimized front-end client components for enhanced performance.",
+      skills: ["HTML", "CSS", "JavaScript", "UI/UX"],
+      badgeColor: "bg-[#ff2d55]/10 text-[#ff2d55] border-[#ff2d55]/30"
+    },
+    {
+      chapter: "03",
+      type: "Education",
+      icon: GraduationCap,
+      title: "B.E. in CSE (IoT & Cyber Security)",
+      subtitle: "M.H. Saboo Siddik College of Engineering",
+      date: "Sept 2023 – Jun 2026",
+      skills: ["Cyber Security", "Solidity", "IoT", "Blockchain"],
+      badgeColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30"
+    },
+    {
+      chapter: "04",
+      type: "Experience",
+      icon: Briefcase,
+      title: "AR Associate",
+      subtitle: "Macksofy Technologies • Remote",
+      date: "Mar 2026 – Present",
+      description: "Managing revenue cycle operations, healthcare claims processing, and financial transactions for US client Samar Health.",
+      skills: ["Healthcare Tech", "Revenue Ops", "Financial Systems"],
+      badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+    },
+    {
+      chapter: "05",
+      type: "Education",
+      icon: GraduationCap,
+      title: "Masters of Technology (M.Tech)",
+      subtitle: "K.J. Somaiya School of Engineering",
+      date: "Jun 2026 – May 2028",
+      skills: ["Advanced Algorithms", "Computer Systems", "Software Design"],
+      badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/30"
+    },
+    {
+      chapter: "06",
+      type: "Internship",
+      icon: Briefcase,
+      title: "Business Development Intern",
+      subtitle: "GAOTek Inc. • New York, US (Remote)",
+      date: "Jul 2026 – Present",
+      description: "Driving international business development, strategic B2B tech outreach, and market research for global solutions.",
+      skills: ["Tech Outreach", "Market Research", "B2B Strategy"],
+      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/30"
+    }
+  ];
+
+  // Floating Badges between Islands
+  const floatingBadges = [
+    { text: "GATE Qualified", icon: Award, color: "text-amber-400 border-amber-500/30 bg-amber-500/10" },
+    { text: "8.80 CGPA Academic Honors", icon: Sparkles, color: "text-cyan-400 border-cyan-500/30 bg-cyan-500/10" },
+    { text: "Frontend & Web3 Developer", icon: Rocket, color: "text-[#ff2d55] border-[#ff2d55]/30 bg-[#ff2d55]/10" },
+    { text: "International Hackathon Participant", icon: Flame, color: "text-purple-400 border-purple-500/30 bg-purple-500/10" }
+  ];
+
+  return (
+    <section
+      id="journey"
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      className="relative bg-[#050505] text-white py-24 sm:py-32 lg:py-36 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
+    >
+      {/* Background Ambient Lighting & Effects */}
+      <ParticleBackground />
+
+      {/* Mouse Follow Ambient Radial Spotlight */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 opacity-60"
+        style={{
+          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 45, 85, 0.12), transparent 75%)`
+        }}
+      />
+
+      {/* Crimson & Wine Ambient Orbs */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-gradient-to-br from-[#ff2d55]/15 via-[#800020]/10 to-transparent rounded-full blur-[140px] pointer-events-none animate-pulse-glow-red" />
+      <div className="absolute bottom-1/4 -right-48 w-[500px] h-[500px] bg-gradient-to-tr from-[#ff4b6e]/15 via-[#4a0010]/10 to-transparent rounded-full blur-[160px] pointer-events-none animate-pulse-glow-red" />
+
+      {/* Subtle Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,45,85,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,45,85,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-noise-pattern pointer-events-none z-0 opacity-40" />
+
+      <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* SECTION HEADER */}
+        <div className="max-w-4xl mx-auto text-center mb-20 sm:mb-28">
+          <motion.div
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_20px_rgba(255,45,85,0.15)]"
+          >
+            <Compass className="w-4 h-4 text-[#ff2d55] animate-spin-slow" />
+            <span className="text-xs uppercase tracking-widest font-semibold text-white/80">
+              Interactive Storytelling
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-playfair"
+          >
+            My Engineering <span className="animate-gradient-text-red">Journey</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed font-sans font-light"
+          >
+            Every project, internship, achievement, and challenge became another
+            step toward becoming the engineer I am today.
+          </motion.p>
         </div>
 
-        {/* Tab Content Display */}
-        <div className="max-w-6xl mx-auto min-h-[400px]">
-          <AnimatePresence mode="popLayout">
-            {activeTab === "experience" ? (
-              <motion.div
-                key="experience"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="relative border-l border-red-600 dark:border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-red-600 dark:md:before:bg-zinc-800 pl-6 md:pl-0"
-              >
-                {experienceData.map((item, idx) => {
-                  const isLeft = idx % 2 === 0;
-                  return (
-                    <div key={idx} className="relative flex flex-col md:grid md:grid-cols-9 md:gap-8 items-center mb-12">
-                      {/* Timeline Dot */}
-                      <div className="absolute left-[-30px] md:left-1/2 md:-translate-x-1/2 top-4 w-2.5 h-2.5 rounded-full bg-black dark:bg-white z-20 ring-4 ring-[#ffdbe4] dark:ring-zinc-950"></div>
+        {/* SNAKING RIVER PATH & FLOATING ISLAND MILESTONES CONTAINER */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Animated Snaking SVG Path Line (Desktop & Tablet) */}
+          <div className="absolute inset-0 pointer-events-none z-0 hidden md:block">
+            <svg
+              className="w-full h-full"
+              viewBox="0 0 1000 2400"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              {/* Background Dim Snaking Path */}
+              <path
+                d="M 500 0 C 850 300, 850 600, 500 800 C 150 1000, 150 1300, 500 1500 C 850 1700, 850 2000, 500 2200"
+                stroke="rgba(255, 45, 85, 0.1)"
+                strokeWidth="4"
+                strokeDasharray="8 8"
+              />
+              {/* Illuminated Glowing Animated Path */}
+              <motion.path
+                d="M 500 0 C 850 300, 850 600, 500 800 C 150 1000, 150 1300, 500 1500 C 850 1700, 850 2000, 500 2200"
+                stroke="url(#crimsonRiverGrad)"
+                strokeWidth="5"
+                strokeLinecap="round"
+                style={{ pathLength }}
+              />
+              <defs>
+                <linearGradient id="crimsonRiverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#ff2d55" />
+                  <stop offset="50%" stopColor="#ff6b81" />
+                  <stop offset="100%" stopColor="#c2185b" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
 
-                      {/* Left Column: Card or Date */}
-                      <div className={`w-full md:col-span-4 ${isLeft ? "order-2 md:order-none md:text-right" : "order-1 md:order-none"}`}>
-                        {isLeft ? (
-                          <Card className="p-6 bg-white/80 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
-                            <h3 className="text-2xl font-bold text-black dark:text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
-                              {item.role}
-                            </h3>
-                            <p className="text-sm font-semibold text-zinc-600 dark:text-muted-foreground/80 mb-4">
-                              <span className="text-zinc-800 dark:text-zinc-200">{item.company}</span> • <span className="text-zinc-600 dark:text-zinc-400">📍 {item.location}</span>
-                            </p>
-                            <ul className="list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-400 dark:marker:text-zinc-600">
-                              {item.points.map((pt, pIdx) => (
-                                <li key={pIdx}>{pt}</li>
-                              ))}
-                            </ul>
-                            {item.skills && item.skills.length > 0 && (
-                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
-                                {item.skills.map((skill, sIdx) => (
-                                  <span
-                                    key={sIdx}
-                                    className="px-3.5 py-1.5 bg-zinc-100/80 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 rounded-full text-xs font-medium text-zinc-800 dark:text-zinc-400 flex items-center gap-2 hover:bg-zinc-800/40 transition-colors cursor-default"
-                                  >
-                                    {getLogoIcon(skill)}
-                                    {skill}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
-                          </Card>
-                        ) : (
-                          <div className="flex md:justify-end items-center gap-2 text-zinc-800 dark:text-zinc-300 font-semibold bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit md:ml-auto mb-4 md:mb-0">
-                            <Calendar size={14} className="text-zinc-600 dark:text-zinc-400" />
-                            {item.duration}
-                          </div>
-                        )}
-                      </div>
+          {/* Mobile Straight Glowing Vertical Center Line */}
+          <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#ff2d55] via-[#ff4b6e] to-[#800020] md:hidden z-0 shadow-[0_0_15px_#ff2d55]" />
 
-                      {/* Spacer for Center */}
-                      <div className="hidden md:block md:col-span-1"></div>
+          {/* FLOATING ISLAND CHAPTER CARDS STACK */}
+          <div className="space-y-20 sm:space-y-28 relative z-10">
+            {chapters.map((ch, idx) => {
+              const isEven = idx % 2 === 0;
+              const Icon = ch.icon;
 
-                      {/* Right Column: Date or Card */}
-                      <div className={`w-full md:col-span-4 ${isLeft ? "order-1 md:order-none" : "order-2 md:order-none"}`}>
-                        {isLeft ? (
-                          <div className="flex md:justify-start items-center gap-2 text-zinc-800 dark:text-zinc-300 font-semibold bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit mb-4 md:mb-0">
-                            <Calendar size={14} className="text-zinc-600 dark:text-zinc-400" />
-                            {item.duration}
-                          </div>
-                        ) : (
-                          <Card className="p-6 bg-white/80 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
-                            <h3 className="text-2xl font-bold text-black dark:text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
-                              {item.role}
-                            </h3>
-                            <p className="text-sm font-semibold text-zinc-600 dark:text-muted-foreground/80 mb-4">
-                              <span className="text-zinc-800 dark:text-zinc-200">{item.company}</span> • <span className="text-zinc-600 dark:text-zinc-400">📍 {item.location}</span>
-                            </p>
-                            <ul className="list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6 marker:text-zinc-400 dark:marker:text-zinc-600">
-                              {item.points.map((pt, pIdx) => (
-                                <li key={pIdx}>{pt}</li>
-                              ))}
-                            </ul>
-                            {item.skills && item.skills.length > 0 && (
-                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
-                                {item.skills.map((skill, sIdx) => (
-                                  <span
-                                    key={sIdx}
-                                    className="px-3.5 py-1.5 bg-zinc-100/80 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 rounded-full text-xs font-medium text-zinc-800 dark:text-zinc-400 flex items-center gap-2 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/40 transition-colors cursor-default"
-                                  >
-                                    {getLogoIcon(skill)}
-                                    {skill}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
-                          </Card>
-                        )}
-                      </div>
+              return (
+                <div key={idx} className="relative">
+                  {/* Floating Badge Between Islands */}
+                  {idx > 0 && floatingBadges[idx - 1] && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                      className="hidden md:flex justify-center -translate-y-10 my-4 z-20"
+                    >
+                      <span
+                        className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold backdrop-blur-xl border shadow-lg ${floatingBadges[idx - 1].color}`}
+                      >
+                        {(() => {
+                          const BadgeIcon = floatingBadges[idx - 1].icon;
+                          return <BadgeIcon className="w-3.5 h-3.5" />;
+                        })()}
+                        {floatingBadges[idx - 1].text}
+                      </span>
+                    </motion.div>
+                  )}
+
+                  {/* Main Milestone Island Card */}
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      x: isEven ? -50 : 50,
+                      filter: "blur(12px)"
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                      filter: "blur(0px)"
+                    }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.9, delay: 0.1 }}
+                    className={`relative flex flex-col md:flex-row items-center ${
+                      isEven ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
+                  >
+                    {/* Glowing Milestone Node on River Path */}
+                    <div className="absolute left-6 md:left-1/2 top-8 -translate-x-1/2 z-20 flex items-center justify-center">
+                      <span className="w-6 h-6 rounded-full bg-[#050505] border-2 border-[#ff2d55] shadow-[0_0_20px_#ff2d55] flex items-center justify-center group">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#ff2d55] animate-ping" />
+                      </span>
                     </div>
-                  );
-                })}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="education"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="relative border-l border-red-600 dark:border-zinc-800 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-[1px] md:before:bg-red-600 dark:md:before:bg-zinc-800 pl-6 md:pl-0"
-              >
-                {educationData.map((item, idx) => {
-                  const isLeft = idx % 2 === 0;
-                  return (
-                    <div key={idx} className="relative flex flex-col md:grid md:grid-cols-9 md:gap-8 items-center mb-12">
-                      {/* Timeline Dot */}
-                      <div className="absolute left-[-30px] md:left-1/2 md:-translate-x-1/2 top-4 w-2.5 h-2.5 rounded-full bg-black dark:bg-white z-20 ring-4 ring-[#ffdbe4] dark:ring-zinc-950"></div>
 
-                      {/* Left Column: Card or Date */}
-                      <div className={`w-full md:col-span-4 ${isLeft ? "order-2 md:order-none md:text-right" : "order-1 md:order-none"}`}>
-                        {isLeft ? (
-                          <Card className="p-6 bg-white/80 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
-                            <h3 className="text-2xl font-bold text-black dark:text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
-                              {item.degree}
-                            </h3>
-                            <p className="text-base font-semibold text-primary/80 mb-1">
-                              {item.field}
-                            </p>
-                            <p className="text-xs text-zinc-600 dark:text-muted-foreground/80 mb-3">
-                              <span className="text-zinc-800 dark:text-zinc-200">{item.institution}</span> • <span className="text-zinc-600 dark:text-zinc-400">{item.specialization}</span>
-                            </p>
-                            {item.grade && (
-                              <p className="text-sm font-bold text-primary mb-4">
-                                {item.grade}
-                              </p>
-                            )}
+                    {/* Island Platform Card */}
+                    <div className="w-full md:w-[46%] pl-14 md:pl-0">
+                      <TiltIslandCard>
+                        <div className="relative bg-[#09090c]/75 backdrop-blur-2xl border border-white/10 rounded-[30px] p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.8)] hover:border-[#ff2d55]/40 hover:shadow-[0_0_45px_rgba(255,45,85,0.25)] transition-all duration-500 group overflow-hidden">
+                          {/* Floating Top Reflection Highlight */}
+                          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+                          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#ff2d55]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#ff2d55]/20 transition-all duration-700" />
 
-                            {item.skills && item.skills.length > 0 && (
-                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
-                                {item.skills.map((skill, sIdx) => (
-                                  <span
-                                    key={sIdx}
-                                    className="px-3.5 py-1.5 bg-zinc-100/80 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 rounded-full text-xs font-medium text-zinc-800 dark:text-zinc-400 flex items-center gap-2 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/40 transition-colors cursor-default"
-                                  >
-                                    {getLogoIcon(skill)}
-                                    {skill}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
-                          </Card>
-                        ) : (
-                          <div className="flex md:justify-end items-center gap-2 text-zinc-800 dark:text-zinc-300 font-semibold bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit md:ml-auto mb-4 md:mb-0">
-                            <Calendar size={14} className="text-zinc-600 dark:text-zinc-400" />
-                            {item.duration}
+                          {/* Island Header: Chapter Tag & Date */}
+                          <div className="flex items-center justify-between gap-3 mb-4">
+                            <span
+                              className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold border ${ch.badgeColor}`}
+                            >
+                              <Icon className="w-3.5 h-3.5" />
+                              Chapter {ch.chapter} • {ch.type}
+                            </span>
+                            <div className="flex items-center gap-1.5 text-xs font-semibold text-white/50">
+                              <Calendar className="w-3.5 h-3.5 text-[#ff2d55]" />
+                              <span>{ch.date}</span>
+                            </div>
                           </div>
-                        )}
-                      </div>
 
-                      {/* Spacer for Center */}
-                      <div className="hidden md:block md:col-span-1"></div>
+                          {/* Island Title & Subtitle */}
+                          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-playfair group-hover:text-[#ff2d55] transition-colors leading-snug">
+                            {ch.title}
+                          </h3>
+                          <p className="text-xs font-medium text-white/50 mt-1 mb-3">
+                            {ch.subtitle}
+                          </p>
 
-                      {/* Right Column: Date or Card */}
-                      <div className={`w-full md:col-span-4 ${isLeft ? "order-1 md:order-none" : "order-2 md:order-none"}`}>
-                        {isLeft ? (
-                          <div className="flex md:justify-start items-center gap-2 text-zinc-800 dark:text-zinc-300 font-semibold bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-full text-sm w-fit mb-4 md:mb-0">
-                            <Calendar size={14} className="text-zinc-600 dark:text-zinc-400" />
-                            {item.duration}
+                          {/* Short Description (< 2 lines) */}
+                          <p className="text-sm text-white/70 leading-relaxed font-sans font-light mb-5">
+                            {ch.description}
+                          </p>
+
+                          {/* Tech / Skill Pills */}
+                          <div className="flex flex-wrap gap-2 pt-3 border-t border-white/10">
+                            {ch.skills.map((sk, sIdx) => (
+                              <span
+                                key={sIdx}
+                                className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-xs font-semibold text-white/80 hover:text-white hover:border-[#ff2d55]/50 transition-colors"
+                              >
+                                {sk}
+                              </span>
+                            ))}
                           </div>
-                        ) : (
-                          <Card className="p-6 bg-white/80 dark:bg-[#09090b]/40 dark:backdrop-blur-md rounded-3xl border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700/80 transition-all duration-300 relative overflow-hidden group shadow-xl shadow-black/20 text-left">
-                            <h3 className="text-2xl font-bold text-black dark:text-foreground font-playfair mb-1 group-hover:text-primary transition-colors">
-                              {item.degree}
-                            </h3>
-                            <p className="text-base font-semibold text-primary/80 mb-1">
-                              {item.field}
-                            </p>
-                            <p className="text-xs text-zinc-600 dark:text-muted-foreground/80 mb-3">
-                              <span className="text-zinc-800 dark:text-zinc-200">{item.institution}</span> • <span className="text-zinc-600 dark:text-zinc-400">{item.specialization}</span>
-                            </p>
-                            {item.grade && (
-                              <p className="text-sm font-bold text-primary mb-4">
-                                {item.grade}
-                              </p>
-                            )}
-
-                            {item.skills && item.skills.length > 0 && (
-                              <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800/60 justify-start">
-                                {item.skills.map((skill, sIdx) => (
-                                  <span
-                                    key={sIdx}
-                                    className="px-3.5 py-1.5 bg-zinc-100/80 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 rounded-full text-xs font-medium text-zinc-800 dark:text-zinc-400 flex items-center gap-2 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/40 transition-colors cursor-default"
-                                  >
-                                    {getLogoIcon(skill)}
-                                    {skill}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
-                          </Card>
-                        )}
-                      </div>
+                        </div>
+                      </TiltIslandCard>
                     </div>
-                  );
-                })}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* FINAL HIGHLIGHTED MILESTONE NODE */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="mt-28 text-center relative z-20"
+          >
+            <div className="inline-relative flex flex-col items-center">
+              {/* Outer Pulsing Glowing Ring */}
+              <div className="relative p-1 rounded-full bg-gradient-to-r from-[#ff2d55] via-[#ff6b81] to-[#c2185b] animate-pulse shadow-[0_0_60px_rgba(255,45,85,0.4)]">
+                <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#09090c] border-2 border-white/20 flex flex-col items-center justify-center p-4 backdrop-blur-2xl text-center shadow-inner group">
+                  <Rocket className="w-8 h-8 text-[#ff2d55] animate-bounce mb-1" />
+                  <span className="text-xs sm:text-sm font-bold text-white tracking-tight leading-tight font-playfair">
+                    The Best Is Yet To Come
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

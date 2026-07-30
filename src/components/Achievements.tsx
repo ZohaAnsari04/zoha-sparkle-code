@@ -293,25 +293,6 @@ const Achievements = () => {
       badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
     },
     {
-      category: "Academic",
-      title: "Bachelor of Engineering (CSE IoT & Cyber Security)",
-      issuer: "MHSSCOE • Mumbai University",
-      date: "Sept 2023 – June 2026",
-      description: "Graduated with 8.80 CGPA specializing in IoT, Cryptography, Blockchain & Cyber Security.",
-      icon: GraduationCap,
-      badgeColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30"
-    },
-    {
-      category: "Certification",
-      title: "OneRoadmap Certified AI & Full Stack Engineer",
-      issuer: "OneRoadmap",
-      date: "Oct 23, 2025",
-      description: "Certified in Artificial Intelligence engineering & Full Stack Web Architecture.",
-      icon: Cpu,
-      image: cert1,
-      badgeColor: "bg-[#ff2d55]/10 text-[#ff2d55] border-[#ff2d55]/30"
-    },
-    {
       category: "Hackathon",
       title: "3-Day MERN Stack Intensive Bootcamp",
       issuer: "MHSSCE Programmers' Club",
