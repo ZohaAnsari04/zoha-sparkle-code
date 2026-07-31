@@ -193,7 +193,7 @@ const FloatingInput = ({
       <div
         className={`absolute -inset-0.5 rounded-${
           isTextarea ? "3xl" : "full"
-        } bg-gradient-to-r from-[#ff2d55] via-[#ff6b81] to-[#c2185b] opacity-0 transition duration-500 group-hover:opacity-20 ${
+        } bg-gradient-to-r from-[#3b82f6] via-[#60a5fa] to-[#1d4ed8] opacity-0 transition duration-500 group-hover:opacity-20 ${
           isFocused ? "!opacity-70 blur-md" : ""
         }`}
       />
@@ -204,12 +204,12 @@ const FloatingInput = ({
           htmlFor={id}
           className={`absolute left-5 transition-all duration-300 pointer-events-none flex items-center gap-1.5 text-sm ${
             isFocused || isOccupied
-              ? "-top-3 text-xs font-semibold text-[#ff2d55] bg-[#09090b] px-3 rounded-full border border-[#ff2d55]/30 z-20 shadow-[0_2px_10px_rgba(255,45,85,0.2)]"
+              ? "-top-3 text-xs font-semibold text-[#3b82f6] bg-[#09090b] px-3 rounded-full border border-[#3b82f6]/30 z-20 shadow-[0_2px_10px_rgba(59,130,246,0.2)]"
               : "top-4 text-muted-foreground/70"
           }`}
         >
           {isFocused && (
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff2d55] shadow-[0_0_8px_#ff2d55] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#3b82f6] shadow-[0_0_8px_#3b82f6] animate-pulse" />
           )}
           {label}
         </label>
@@ -227,7 +227,7 @@ const FloatingInput = ({
             rows={5}
             className={`w-full px-6 py-4 bg-white/[0.03] backdrop-blur-xl border ${
               isFocused
-                ? "border-[#ff2d55] bg-white/[0.06] shadow-[0_0_25px_rgba(255,45,85,0.25)]"
+                ? "border-[#3b82f6] bg-white/[0.06] shadow-[0_0_25px_rgba(59,130,246,0.25)]"
                 : "border-white/10 group-hover:border-white/20"
             } rounded-3xl text-white placeholder-transparent focus:outline-none transition-all duration-300 resize-none shadow-[inset_0_2px_6px_rgba(0,0,0,0.7)] text-base`}
             placeholder={label}
@@ -245,7 +245,7 @@ const FloatingInput = ({
             disabled={disabled}
             className={`w-full px-6 py-4 bg-white/[0.03] backdrop-blur-xl border ${
               isFocused
-                ? "border-[#ff2d55] bg-white/[0.06] shadow-[0_0_25px_rgba(255,45,85,0.25)]"
+                ? "border-[#3b82f6] bg-white/[0.06] shadow-[0_0_25px_rgba(59,130,246,0.25)]"
                 : "border-white/10 group-hover:border-white/20"
             } rounded-full text-white placeholder-transparent focus:outline-none transition-all duration-300 shadow-[inset_0_2px_6px_rgba(0,0,0,0.7)] text-base`}
             placeholder={label}
@@ -348,7 +348,7 @@ const Contact = () => {
       icon: Mail,
       href: "mailto:zoha101204@gmail.com",
       label: "Email Direct",
-      color: "hover:text-[#ff2d55] hover:border-[#ff2d55]/50"
+      color: "hover:text-[#3b82f6] hover:border-[#3b82f6]/50"
     }
   ];
 
@@ -364,7 +364,7 @@ const Contact = () => {
       id="contact"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative bg-[#050505] text-white py-12 sm:py-16 lg:py-20 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
+      className="relative bg-[#050505] text-white py-12 sm:py-16 lg:py-20 overflow-hidden selection:bg-[#3b82f6]/30 selection:text-white"
     >
       {/* Background Ambient Lighting & Effects */}
       <ParticleBackground />
@@ -373,16 +373,16 @@ const Contact = () => {
       <div
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 opacity-60"
         style={{
-          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 45, 85, 0.12), transparent 75%)`
+          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.12), transparent 75%)`
         }}
       />
 
-      {/* Ambient Crimson & Wine Radial Orbs */}
-      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-gradient-to-br from-[#ff2d55]/20 via-[#800020]/15 to-transparent rounded-full blur-[140px] pointer-events-none animate-pulse-glow-red" />
-      <div className="absolute bottom-10 -right-48 w-[500px] h-[500px] bg-gradient-to-tr from-[#ff4b6e]/20 via-[#4a0010]/20 to-transparent rounded-full blur-[160px] pointer-events-none animate-pulse-glow-red" />
+      {/* Ambient Blue Radial Orbs */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-gradient-to-br from-[#3b82f6]/20 via-[#1e3a8a]/15 to-transparent rounded-full blur-[140px] pointer-events-none animate-pulse-glow-blue" />
+      <div className="absolute bottom-10 -right-48 w-[500px] h-[500px] bg-gradient-to-tr from-[#2563eb]/20 via-[#172554]/20 to-transparent rounded-full blur-[160px] pointer-events-none animate-pulse-glow-blue" />
 
       {/* Subtle Animated Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,45,85,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,45,85,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
 
       {/* Noise Texture Overlay */}
       <div className="absolute inset-0 bg-noise-pattern pointer-events-none z-0 opacity-40" />
@@ -395,9 +395,9 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_20px_rgba(255,45,85,0.15)]"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_20px_rgba(59,130,246,0.15)]"
           >
-            <Sparkles className="w-4 h-4 text-[#ff2d55] animate-pulse" />
+            <Sparkles className="w-4 h-4 text-[#3b82f6] animate-pulse" />
             <span className="text-xs uppercase tracking-widest font-semibold text-white/80">
               Get In Touch
             </span>
@@ -411,7 +411,7 @@ const Contact = () => {
             className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-playfair"
           >
             Let's Build Something{" "}
-            <span className="animate-gradient-text-red">Extraordinary</span>{" "}
+            <span className="animate-gradient-text-blue">Extraordinary</span>{" "}
             Together
           </motion.h2>
 
@@ -439,22 +439,22 @@ const Contact = () => {
             className="lg:col-span-7"
           >
             <TiltCard className="h-full">
-              <div className="relative bg-[#09090c]/70 backdrop-blur-2xl border border-white/10 rounded-[30px] p-6 sm:p-10 lg:p-12 shadow-[0_25px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,45,85,0.1)] overflow-hidden group hover:border-[#ff2d55]/40 transition-all duration-500">
+              <div className="relative bg-[#09090c]/70 backdrop-blur-2xl border border-white/10 rounded-[30px] p-6 sm:p-10 lg:p-12 shadow-[0_25px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(59,130,246,0.1)] overflow-hidden group hover:border-[#3b82f6]/40 transition-all duration-500">
                 {/* Floating Top Reflection Edge */}
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff2d55]/10 rounded-full blur-3xl pointer-events-none group-hover:bg-[#ff2d55]/20 transition-all duration-700" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#3b82f6]/10 rounded-full blur-3xl pointer-events-none group-hover:bg-[#3b82f6]/20 transition-all duration-700" />
 
                 <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/10">
                   <div>
                     <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-center gap-3 font-playfair">
                       Send a Message
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#ff2d55] animate-ping" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#3b82f6] animate-ping" />
                     </h3>
                     <p className="text-sm text-white/60 mt-1">
                       Fill out the form below to start a conversation.
                     </p>
                   </div>
-                  <div className="hidden sm:flex w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/10 items-center justify-center text-[#ff2d55]">
+                  <div className="hidden sm:flex w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/10 items-center justify-center text-[#3b82f6]">
                     <Mail className="w-6 h-6" />
                   </div>
                 </div>
@@ -505,10 +505,10 @@ const Contact = () => {
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={isSubmitting || isSubmitted}
-                    className={`w-full py-5 px-8 text-lg font-semibold rounded-full text-white transition-all duration-500 relative overflow-hidden group shadow-[0_10px_35px_rgba(255,45,85,0.35)] hover:shadow-[0_15px_50px_rgba(255,45,85,0.6)] ${
+                    className={`w-full py-5 px-8 text-lg font-semibold rounded-full text-white transition-all duration-500 relative overflow-hidden group shadow-[0_10px_35px_rgba(59,130,246,0.35)] hover:shadow-[0_15px_50px_rgba(59,130,246,0.6)] ${
                       isSubmitted
                         ? "bg-emerald-600 shadow-[0_10px_35px_rgba(16,185,129,0.4)]"
-                        : "bg-gradient-to-r from-[#ff2d55] via-[#ff4b6e] to-[#c2185b] bg-[length:200%_auto] hover:bg-[position:right_center]"
+                        : "bg-gradient-to-r from-[#3b82f6] via-[#2563eb] to-[#1d4ed8] bg-[length:200%_auto] hover:bg-[position:right_center]"
                     } disabled:opacity-75 disabled:cursor-not-allowed`}
                   >
                     <div className="relative z-10 flex items-center justify-center gap-3">
@@ -548,11 +548,11 @@ const Contact = () => {
           >
             {/* CARD 1: PROFILE CARD */}
             <TiltCard>
-              <div className="bg-[#09090c]/70 backdrop-blur-2xl border border-white/10 rounded-[28px] p-6 sm:p-7 shadow-xl hover:border-[#ff2d55]/40 transition-all duration-300 relative overflow-hidden group">
+              <div className="bg-[#09090c]/70 backdrop-blur-2xl border border-white/10 rounded-[28px] p-6 sm:p-7 shadow-xl hover:border-[#3b82f6]/40 transition-all duration-300 relative overflow-hidden group">
                 <div className="flex items-center gap-5">
                   {/* Circular Profile Avatar with Glowing Ring */}
                   <div className="relative flex-shrink-0">
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#ff2d55] via-[#ff6b81] to-[#c2185b] animate-spin-slow blur-sm opacity-80 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#3b82f6] via-[#60a5fa] to-[#1d4ed8] animate-spin-slow blur-sm opacity-80 group-hover:opacity-100 transition-opacity" />
                     <img
                       src={avatarImage}
                       alt="Zoha Ansari"
@@ -570,7 +570,7 @@ const Contact = () => {
                         Zoha Ansari
                       </h4>
                     </div>
-                    <p className="text-sm font-medium text-[#ff2d55]">
+                    <p className="text-sm font-medium text-[#3b82f6]">
                       Frontend Engineer
                     </p>
                     <div className="flex items-center gap-2 pt-1">
@@ -584,7 +584,7 @@ const Contact = () => {
 
                 {/* Reply badge */}
                 <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/60">
-                  <Clock className="w-3.5 h-3.5 text-[#ff2d55]" />
+                  <Clock className="w-3.5 h-3.5 text-[#3b82f6]" />
                   <span>Usually replies within 24 hours</span>
                 </div>
               </div>
@@ -592,10 +592,10 @@ const Contact = () => {
 
             {/* CARD 3: SOCIAL LINKS */}
             <TiltCard>
-              <div className="bg-[#09090c]/70 backdrop-blur-2xl border border-white/10 rounded-[28px] p-6 sm:p-7 shadow-xl hover:border-[#ff2d55]/40 transition-all duration-300 relative overflow-hidden group">
+              <div className="bg-[#09090c]/70 backdrop-blur-2xl border border-white/10 rounded-[28px] p-6 sm:p-7 shadow-xl hover:border-[#3b82f6]/40 transition-all duration-300 relative overflow-hidden group">
                 <h4 className="text-sm uppercase tracking-wider font-semibold text-white/50 mb-5 flex items-center justify-between">
                   <span>Connect Across Platforms</span>
-                  <Globe className="w-4 h-4 text-[#ff2d55]" />
+                  <Globe className="w-4 h-4 text-[#3b82f6]" />
                 </h4>
 
                 <div className="flex items-center justify-between gap-3">
@@ -609,7 +609,7 @@ const Contact = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.15, rotate: 6 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/80 transition-all duration-300 shadow-md ${social.color} hover:shadow-[0_0_25px_rgba(255,45,85,0.3)] hover:bg-white/[0.08]`}
+                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/80 transition-all duration-300 shadow-md ${social.color} hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] hover:bg-white/[0.08]`}
                         aria-label={social.label}
                       >
                         <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -622,9 +622,9 @@ const Contact = () => {
 
             {/* CARD 4: AVAILABILITY STATUS CARD */}
             <TiltCard>
-              <div className="bg-[#09090c]/70 backdrop-blur-2xl border border-white/10 rounded-[28px] p-6 sm:p-7 shadow-xl hover:border-[#ff2d55]/40 transition-all duration-300 relative overflow-hidden group">
+              <div className="bg-[#09090c]/70 backdrop-blur-2xl border border-white/10 rounded-[28px] p-6 sm:p-7 shadow-xl hover:border-[#3b82f6]/40 transition-all duration-300 relative overflow-hidden group">
                 <h4 className="text-sm uppercase tracking-wider font-semibold text-white/50 mb-4 flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-[#ff2d55]" />
+                  <Briefcase className="w-4 h-4 text-[#3b82f6]" />
                   <span>Current Availability</span>
                 </h4>
 
@@ -633,9 +633,9 @@ const Contact = () => {
                     <motion.div
                       key={idx}
                       whileHover={{ scale: 1.05 }}
-                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 text-xs font-semibold text-white/90 hover:border-[#ff2d55]/50 hover:bg-[#ff2d55]/10 transition-all duration-300 shadow-sm"
+                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 text-xs font-semibold text-white/90 hover:border-[#3b82f6]/50 hover:bg-[#3b82f6]/10 transition-all duration-300 shadow-sm"
                     >
-                      <span className="w-2 h-2 rounded-full bg-[#ff2d55] shadow-[0_0_8px_#ff2d55] animate-pulse" />
+                      <span className="w-2 h-2 rounded-full bg-[#3b82f6] shadow-[0_0_8px_#3b82f6] animate-pulse" />
                       {badge.name}
                     </motion.div>
                   ))}

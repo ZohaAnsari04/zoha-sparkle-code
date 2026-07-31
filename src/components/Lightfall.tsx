@@ -14,7 +14,7 @@ const hexToRGB = (hex: string): [number, number, number] => {
 };
 
 const prepColors = (input: string[]) => {
-    const base = (input && input.length ? input : ["#ef4444", "#991b1b", "#ff3333"]).slice(0, MAX_COLORS);
+    const base = (input && input.length ? input : ["#3b82f6", "#1e40af", "#60a5fa"]).slice(0, MAX_COLORS);
     const count = base.length;
     const arr: [number, number, number][] = [];
     for (let i = 0; i < MAX_COLORS; i++) {
@@ -196,7 +196,7 @@ const Lightfall = ({
     className,
     dpr,
     paused = false,
-    colors = ["#ef4444", "#991b1b", "#ff3333"],
+    colors = ["#3b82f6", "#1e40af", "#60a5fa"],
     backgroundColor = "#070708",
     speed = 0.5,
     streakCount = 2,
@@ -235,7 +235,7 @@ const Lightfall = ({
         return () => observer.disconnect();
     }, []);
 
-    const themeColors = useMemo(() => isDark ? colors : ["#ef4444", "#fca5a5", "#dc2626"], [isDark, colors]);
+    const themeColors = useMemo(() => isDark ? colors : ["#3b82f6", "#93c5fd", "#2563eb"], [isDark, colors]);
     const themeBg = useMemo(() => isDark ? backgroundColor : "#f9fafb", [isDark, backgroundColor]);
 
     useEffect(() => {
