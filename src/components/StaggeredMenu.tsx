@@ -462,10 +462,9 @@ export const StaggeredMenu = ({
                     {/* Resume Button */}
                     <Button
                         onClick={handleResumeDownload}
-                        size="sm"
-                        className="bg-black/40 hover:bg-black/60 dark:bg-zinc-900/40 dark:hover:bg-zinc-900/60 backdrop-blur-md text-foreground border border-primary/30 hover:border-primary/60 shadow-[0_0_15px_rgba(239,68,68,0.1)] hover:shadow-[0_0_25px_rgba(239,68,68,0.25)] rounded-full px-4 sm:px-6 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-1.5 whitespace-nowrap"
+                        className="bg-black/40 hover:bg-black/60 dark:bg-zinc-900/40 dark:hover:bg-zinc-900/60 backdrop-blur-md text-foreground border border-[#3b82f6]/40 hover:border-[#3b82f6]/80 shadow-[0_0_20px_rgba(59,130,246,0.25)] hover:shadow-[0_0_30px_rgba(59,130,246,0.45)] rounded-full px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-bold transition-all duration-300 hover:scale-105 flex items-center gap-2 whitespace-nowrap"
                     >
-                        <Download className="h-3.5 w-3.5" />
+                        <Download className="h-4 w-4 text-[#3b82f6]" />
                         <span>Resume</span>
                     </Button>
 
