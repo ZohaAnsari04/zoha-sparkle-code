@@ -57,14 +57,34 @@ const aiImages = [
     aiArt26, aiArt27, aiArt28, aiArt29
 ];
 
-import { ThreeDPhotoCarousel } from "@/components/ui/3d-carousel";
+import CircularGallery from "@/components/CircularGallery";
+
+const aiArtTitles = [
+    "Cyberpunk Vision", "Neon Dreams", "Futuristic City", "Ethereal Landscape", "Cosmic Voyager",
+    "Digital Renaissance", "Neural Abstraction", "Surreal Reality", "Quantum Genesis", "Synthwave Sunset",
+    "Robotic Elegance", "Abstract Dimensions", "Celestial Bloom", "Hyperdrive Odyssey", "Mind Portal",
+    "Luminous Entity", "Starlight Nexus", "Chrono Displacement", "Bio-Digital Fusion", "Phantom Horizon",
+    "Astral Odyssey", "Vivid Resonance", "Matrix Architect", "Deep Space Nebula", "Orbital Sphere",
+    "Prismatic Flow", "Ghost In Machine", "Temporal Distortion", "Cybernetic Harmony"
+];
+
+const aiGalleryItems = aiImages.map((img, index) => ({
+    image: img,
+    text: aiArtTitles[index] || `AI Artwork #${index + 1}`
+}));
 
 const AIArtGallery = () => {
     return (
-        <div className="relative w-full h-[80vh] flex items-center justify-center bg-black overflow-hidden">
-            <ThreeDPhotoCarousel images={aiImages} />
+        <div className="relative w-full h-[80vh] min-h-[500px] flex items-center justify-center bg-black overflow-hidden">
+            <CircularGallery
+                items={aiGalleryItems}
+                bend={3}
+                textColor="#ffffff"
+                borderRadius={0.05}
+                scrollEase={0.02}
+            />
 
-            <DialogClose className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-white/20 transition-colors border border-white/10">
+            <DialogClose className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-white/20 transition-colors border border-white/10 cursor-pointer">
                 <X className="h-6 w-6" />
                 <span className="sr-only">Close</span>
             </DialogClose>

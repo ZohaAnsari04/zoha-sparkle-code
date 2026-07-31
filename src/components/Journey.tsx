@@ -301,20 +301,20 @@ const Journey = () => {
           <div className="absolute inset-0 pointer-events-none z-0 hidden md:block">
             <svg
               className="w-full h-full"
-              viewBox="0 0 1000 1000"
+              viewBox="0 0 1000 3200"
               fill="none"
               preserveAspectRatio="none"
             >
               {/* Background Dim Snaking Path */}
               <path
-                d="M 500 0 L 500 83 C 780 138, 780 195, 500 250 C 220 305, 220 362, 500 417 C 780 472, 780 528, 500 583 C 220 638, 220 695, 500 750 C 780 805, 780 862, 500 917 L 500 1000"
+                d="M 500 0 C 800 250, 800 450, 500 650 C 200 850, 200 1050, 500 1250 C 800 1450, 800 1650, 500 1850 C 200 2050, 200 2250, 500 2450 C 800 2650, 800 2850, 500 3200"
                 stroke="rgba(255, 45, 85, 0.15)"
                 strokeWidth="4"
                 strokeDasharray="8 8"
               />
               {/* Illuminated Glowing Animated Path */}
               <motion.path
-                d="M 500 0 L 500 83 C 780 138, 780 195, 500 250 C 220 305, 220 362, 500 417 C 780 472, 780 528, 500 583 C 220 638, 220 695, 500 750 C 780 805, 780 862, 500 917 L 500 1000"
+                d="M 500 0 C 800 250, 800 450, 500 650 C 200 850, 200 1050, 500 1250 C 800 1450, 800 1650, 500 1850 C 200 2050, 200 2250, 500 2450 C 800 2650, 800 2850, 500 3200"
                 stroke="url(#crimsonRiverGrad)"
                 strokeWidth="5"
                 strokeLinecap="round"
@@ -360,7 +360,7 @@ const Journey = () => {
                     }`}
                   >
                     {/* Glowing Milestone Node on River Path */}
-                    <div className="absolute left-6 md:left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
+                    <div className="absolute left-6 md:left-1/2 top-8 -translate-x-1/2 z-20 flex items-center justify-center">
                       <span className="w-6 h-6 rounded-full bg-[#050505] border-2 border-[#ff2d55] shadow-[0_0_20px_#ff2d55] flex items-center justify-center group">
                         <span className="w-2.5 h-2.5 rounded-full bg-[#ff2d55] animate-ping" />
                       </span>
