@@ -161,13 +161,13 @@ const Preloader = () => {
                                         ease: "easeInOut",
                                     }}
                                 >
-                                    <BrainCircuit className="w-10 h-10 text-primary drop-shadow-[0_0_12px_rgba(239,68,68,0.4)]" />
+                                    <BrainCircuit className="w-9 h-9 sm:w-10 sm:h-10 text-primary drop-shadow-[0_0_12px_rgba(59,130,246,0.4)]" />
                                 </motion.div>
                             </div>
                         </div>
 
                         {/* Logo Text Reveal */}
-                        <h2 className="text-3xl font-extrabold tracking-wider mb-2 font-mono flex items-center justify-center gap-[1px]">
+                        <h2 className="text-2xl xs:text-3xl font-extrabold tracking-wider mb-2 font-mono flex items-center justify-center gap-[1px]">
                             {letters.map((char, index) => (
                                 <motion.span
                                     key={index}

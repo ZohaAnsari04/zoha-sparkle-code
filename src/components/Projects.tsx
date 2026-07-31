@@ -392,7 +392,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-playfair"
+            className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-4 sm:mb-6 font-playfair"
           >
             Featured <span className="animate-gradient-text-blue">Projects</span>
           </motion.h2>
@@ -402,7 +402,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-sans font-light"
+            className="text-sm xs:text-base sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-sans font-light"
           >
             A curated collection of products I've designed and built using modern technologies.
           </motion.p>
@@ -414,7 +414,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.25 }}
-          className="flex flex-wrap items-center justify-center gap-2.5 mb-14 max-w-3xl mx-auto"
+          className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mb-10 sm:mb-14 max-w-3xl mx-auto px-2"
         >
           {filterChips.map((chip) => {
             const isActive = activeFilter === chip;
@@ -422,7 +422,7 @@ const Projects = () => {
               <button
                 key={chip}
                 onClick={() => setActiveFilter(chip)}
-                className={`relative px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 backdrop-blur-md border ${
+                className={`relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider transition-all duration-300 backdrop-blur-md border min-h-[38px] flex items-center justify-center ${
                   isActive
                     ? "text-white border-[#3b82f6] bg-[#3b82f6]/20 shadow-[0_0_20px_rgba(59,130,246,0.3)]"
                     : "text-white/70 border-white/10 bg-white/[0.03] hover:text-white hover:border-white/30 hover:bg-white/[0.06]"

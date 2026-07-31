@@ -99,16 +99,16 @@ const AIShowcase = () => {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
             <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto text-center mb-10 animate-fade-in">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+                <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 animate-fade-in">
+                    <h2 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-foreground tracking-tight">
                         AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Creative Studio</span>
                     </h2>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    <p className="text-sm xs:text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                         Redefining creativity with Artificial Intelligence. From stunning visuals to cinematic storytelling, I bring imagination to life through prompt engineering.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
                     {/* AI Image Art Card */}
                     <Dialog>
                         <DialogTrigger asChild>

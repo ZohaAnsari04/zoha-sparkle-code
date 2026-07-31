@@ -338,9 +338,9 @@ const Achievements = () => {
       icon: Flame,
       image: cert16,
       skills: ["React", "MongoDB", "Express", "Node.js"],
-      spineGradient: "from-red-950 via-[#ff2d55]/80 to-rose-950",
-      ribbonColor: "bg-[#ff2d55]",
-      goldAccent: "border-[#ff2d55]/50"
+      spineGradient: "from-blue-950 via-[#3b82f6]/80 to-indigo-950",
+      ribbonColor: "bg-[#3b82f6]",
+      goldAccent: "border-[#3b82f6]/50"
     },
     {
       id: "clash-codes",
@@ -371,7 +371,7 @@ const Achievements = () => {
       id="achievements"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative bg-[#050505] text-white py-12 sm:py-16 lg:py-20 overflow-hidden selection:bg-[#ff2d55]/30 selection:text-white"
+      className="relative bg-[#050505] text-white py-12 sm:py-16 lg:py-20 overflow-hidden selection:bg-[#3b82f6]/30 selection:text-white"
     >
       {/* Background Dust Particles */}
       <ParticleBackground />
@@ -380,30 +380,30 @@ const Achievements = () => {
       <div
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 opacity-60"
         style={{
-          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 45, 85, 0.12), transparent 75%)`
+          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.12), transparent 75%)`
         }}
       />
 
-      {/* Crimson Ambient Radial Orbs */}
-      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-gradient-to-br from-[#ff2d55]/15 via-[#800020]/10 to-transparent rounded-full blur-[140px] pointer-events-none animate-pulse-glow-red" />
-      <div className="absolute bottom-1/4 -right-48 w-[500px] h-[500px] bg-gradient-to-tr from-[#ff4b6e]/15 via-[#4a0010]/10 to-transparent rounded-full blur-[160px] pointer-events-none animate-pulse-glow-red" />
+      {/* Blue Ambient Radial Orbs */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-gradient-to-br from-[#3b82f6]/15 via-[#1e3a8a]/10 to-transparent rounded-full blur-[140px] pointer-events-none animate-pulse-glow-blue" />
+      <div className="absolute bottom-1/4 -right-48 w-[500px] h-[500px] bg-gradient-to-tr from-[#2563eb]/15 via-[#172554]/10 to-transparent rounded-full blur-[160px] pointer-events-none animate-pulse-glow-blue" />
 
       {/* Grid Pattern & Noise Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,45,85,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,45,85,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
       <div className="absolute inset-0 bg-noise-pattern pointer-events-none z-0 opacity-40" />
 
       <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* SECTION HEADER */}
-        <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
+        <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_20px_rgba(255,45,85,0.15)]"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-4 sm:mb-6 shadow-[0_0_20px_rgba(59,130,246,0.15)]"
           >
-            <Library className="w-4 h-4 text-[#ff2d55] animate-pulse" />
-            <span className="text-xs uppercase tracking-widest font-semibold text-white/80">
+            <Library className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3b82f6] animate-pulse" />
+            <span className="text-[10px] sm:text-xs uppercase tracking-widest font-semibold text-white/80">
               Interactive Library
             </span>
           </motion.div>
@@ -413,9 +413,9 @@ const Achievements = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-playfair"
+            className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-4 sm:mb-6 font-playfair"
           >
-            Knowledge <span className="animate-gradient-text-red">Library</span>
+            Knowledge <span className="animate-gradient-text-blue">Library</span>
           </motion.h2>
 
           <motion.p
@@ -423,7 +423,7 @@ const Achievements = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-sans font-light"
+            className="text-sm xs:text-base sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-sans font-light"
           >
             Every certificate represents another chapter in my journey as a software engineer.
           </motion.p>
@@ -435,7 +435,7 @@ const Achievements = () => {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.25 }}
-          className="flex flex-wrap items-center justify-center gap-2.5 mb-14 max-w-3xl mx-auto"
+          className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mb-10 sm:mb-14 max-w-3xl mx-auto px-2"
         >
           {filterChips.map((chip) => {
             const isActive = activeFilter === chip;
@@ -443,21 +443,21 @@ const Achievements = () => {
               <button
                 key={chip}
                 onClick={() => setActiveFilter(chip)}
-                className={`relative px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 backdrop-blur-md border ${
+                className={`relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider transition-all duration-300 backdrop-blur-md border min-h-[38px] flex items-center justify-center ${
                   isActive
-                    ? "text-white border-[#ff2d55] bg-[#ff2d55]/20 shadow-[0_0_20px_rgba(255,45,85,0.3)]"
+                    ? "text-white border-[#3b82f6] bg-[#3b82f6]/20 shadow-[0_0_20px_rgba(59,130,246,0.3)]"
                     : "text-white/70 border-white/10 bg-white/[0.03] hover:text-white hover:border-white/30 hover:bg-white/[0.06]"
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="activeLibraryFilterGlow"
-                    className="absolute inset-0 rounded-full bg-[#ff2d55]/10 border border-[#ff2d55]/50 pointer-events-none"
+                    className="absolute inset-0 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/50 pointer-events-none"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-1.5">
-                  {chip === "All" && <Filter className="w-3 h-3 text-[#ff2d55]" />}
+                  {chip === "All" && <Filter className="w-3 h-3 text-[#3b82f6]" />}
                   {chip}
                 </span>
               </button>
@@ -466,9 +466,9 @@ const Achievements = () => {
         </motion.div>
 
         {/* LUXURY FLOATING WALNUT BOOKSHELF CONTAINER */}
-        <div className="relative max-w-5xl mx-auto pt-10 pb-8 px-4 sm:px-8">
+        <div className="relative max-w-5xl mx-auto pt-6 sm:pt-10 pb-6 sm:pb-8 px-2 sm:px-8">
           {/* Standing Books Row */}
-          <div className="flex items-end justify-center gap-3 sm:gap-4 md:gap-6 min-h-[340px] sm:min-h-[380px] overflow-x-auto pb-4 pt-8 px-4 scrollbar-none">
+          <div className="flex items-end justify-start sm:justify-center gap-2.5 sm:gap-4 md:gap-6 min-h-[300px] sm:min-h-[380px] overflow-x-auto pb-4 pt-8 px-2 sm:px-4 scrollbar-none">
             <AnimatePresence mode="popLayout">
               {filteredBooks.map((book) => (
                 <BookSpine
@@ -481,14 +481,14 @@ const Achievements = () => {
           </div>
 
           {/* Dark Walnut Wood Shelf Platform */}
-          <div className="relative w-full h-7 bg-gradient-to-r from-[#181214] via-[#2a1a1e] to-[#181214] border-t-2 border-b border-[#ff2d55]/40 rounded-sm shadow-[0_25px_50px_rgba(0,0,0,0.95)] z-20 flex items-center justify-between px-6">
-            <div className="w-3 h-3 rounded-full bg-amber-400/40 border border-amber-300/30" />
-            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-amber-400/30 to-transparent mx-4" />
-            <div className="w-3 h-3 rounded-full bg-amber-400/40 border border-amber-300/30" />
+          <div className="relative w-full h-6 sm:h-7 bg-gradient-to-r from-[#121824] via-[#1a2336] to-[#121824] border-t-2 border-b border-[#3b82f6]/40 rounded-sm shadow-[0_25px_50px_rgba(0,0,0,0.95)] z-20 flex items-center justify-between px-4 sm:px-6">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-blue-400/40 border border-blue-300/30" />
+            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-blue-400/30 to-transparent mx-3 sm:mx-4" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-blue-400/40 border border-blue-300/30" />
           </div>
 
-          {/* Red Volumetric Glow Underneath Walnut Shelf */}
-          <div className="w-full h-8 bg-[#ff2d55]/15 blur-2xl rounded-full -mt-2 pointer-events-none" />
+          {/* Blue Volumetric Glow Underneath Walnut Shelf */}
+          <div className="w-full h-8 bg-[#3b82f6]/15 blur-2xl rounded-full -mt-2 pointer-events-none" />
         </div>
       </div>
 
@@ -505,10 +505,10 @@ const Achievements = () => {
             {/* Modal Close Button */}
             <button
               onClick={() => setSelectedBook(null)}
-              className="absolute top-6 right-6 z-[110] p-3 bg-white/10 hover:bg-[#ff2d55] text-white rounded-full transition-colors backdrop-blur-md border border-white/10 shadow-2xl"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[110] p-2.5 sm:p-3 bg-white/10 hover:bg-[#3b82f6] text-white rounded-full transition-colors backdrop-blur-md border border-white/10 shadow-2xl min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Close book"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
             {/* 3D Opened Hardcover Book Container */}
@@ -517,17 +517,17 @@ const Achievements = () => {
               animate={{ scale: 1, opacity: 1, rotateY: 0 }}
               exit={{ scale: 0.85, opacity: 0, rotateY: -20 }}
               transition={{ type: "spring", stiffness: 300, damping: 28 }}
-              className="relative max-w-5xl w-full bg-[#0d0d12] border-2 border-amber-400/30 rounded-[28px] shadow-[0_30px_100px_rgba(0,0,0,0.98),0_0_50px_rgba(255,45,85,0.25)] backdrop-blur-3xl overflow-hidden p-6 sm:p-10"
+              className="relative max-w-5xl w-full max-h-[85vh] overflow-y-auto bg-[#0d0d12] border-2 border-blue-400/30 rounded-[20px] sm:rounded-[28px] shadow-[0_30px_100px_rgba(0,0,0,0.98),0_0_50px_rgba(59,130,246,0.25)] backdrop-blur-3xl p-5 sm:p-8 lg:p-10 scrollbar-none"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Bookmark Ribbon Design Overlay */}
-              <div className="absolute top-0 right-12 w-6 h-28 bg-[#ff2d55] shadow-xl z-30 clip-ribbon pointer-events-none" />
+              <div className="absolute top-0 right-10 sm:right-12 w-5 sm:w-6 h-20 sm:h-28 bg-[#3b82f6] shadow-xl z-30 clip-ribbon pointer-events-none" />
 
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
                 {/* Left Page (Metadata & Information) */}
-                <div className="lg:col-span-5 space-y-6">
+                <div className="lg:col-span-5 space-y-4 sm:space-y-6">
                   <div className="space-y-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff2d55]/10 border border-[#ff2d55]/30 text-xs font-bold text-[#ff2d55]">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/30 text-xs font-bold text-[#3b82f6]">
                       <BookMarked className="w-3.5 h-3.5" />
                       Chapter • {selectedBook.category}
                     </span>

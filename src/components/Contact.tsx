@@ -408,7 +408,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-playfair"
+            className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-4 sm:mb-6 font-playfair"
           >
             Let's Build Something{" "}
             <span className="animate-gradient-text-blue">Extraordinary</span>{" "}
@@ -420,7 +420,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed font-sans font-light"
+            className="text-sm xs:text-base sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed font-sans font-light"
           >
             I enjoy building products that solve real problems, create meaningful
             experiences, and leave a lasting impact. Whether it's an idea,

@@ -259,16 +259,16 @@ const Journey = () => {
 
       <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* SECTION HEADER */}
-        <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
+        <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-4 sm:mb-6 shadow-[0_0_20px_rgba(59,130,246,0.15)]"
           >
-            <Compass className="w-4 h-4 text-[#3b82f6] animate-spin-slow" />
-            <span className="text-xs uppercase tracking-widest font-semibold text-white/80">
+            <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3b82f6] animate-spin-slow" />
+            <span className="text-[10px] sm:text-xs uppercase tracking-widest font-semibold text-white/80">
               Interactive Storytelling
             </span>
           </motion.div>
@@ -278,7 +278,7 @@ const Journey = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-playfair"
+            className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-4 sm:mb-6 font-playfair"
           >
             My Engineering <span className="animate-gradient-text-blue">Journey</span>
           </motion.h2>
@@ -288,7 +288,7 @@ const Journey = () => {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed font-sans font-light"
+            className="text-sm xs:text-base sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed font-sans font-light"
           >
             Every project, internship, achievement, and challenge became another
             step toward becoming the engineer I am today.
@@ -331,10 +331,10 @@ const Journey = () => {
           </div>
 
           {/* Mobile Straight Glowing Vertical Center Line */}
-          <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#3b82f6] via-[#2563eb] to-[#1e3a8a] md:hidden z-0 shadow-[0_0_15px_#3b82f6]" />
+          <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#3b82f6] via-[#2563eb] to-[#1e3a8a] md:hidden z-0 shadow-[0_0_15px_#3b82f6]" />
 
           {/* FLOATING ISLAND CHAPTER CARDS STACK */}
-          <div className="space-y-20 sm:space-y-28 relative z-10">
+          <div className="space-y-12 xs:space-y-16 sm:space-y-28 relative z-10">
             {chapters.map((ch, idx) => {
               const isEven = idx % 2 === 0;
               const Icon = ch.icon;
@@ -345,7 +345,7 @@ const Journey = () => {
                   <motion.div
                     initial={{
                       opacity: 0,
-                      x: isEven ? -50 : 50,
+                      x: isEven ? -30 : 30,
                       filter: "blur(12px)"
                     }}
                     whileInView={{
@@ -354,45 +354,45 @@ const Journey = () => {
                       filter: "blur(0px)"
                     }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.9, delay: 0.1 }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
                     className={`relative flex flex-col md:flex-row items-center ${
                       isEven ? "md:flex-row" : "md:flex-row-reverse"
                     }`}
                   >
                     {/* Glowing Milestone Node on River Path */}
-                    <div className="absolute left-6 md:left-1/2 top-8 -translate-x-1/2 z-20 flex items-center justify-center">
-                      <span className="w-6 h-6 rounded-full bg-[#050505] border-2 border-[#3b82f6] shadow-[0_0_20px_#3b82f6] flex items-center justify-center group">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#3b82f6] animate-ping" />
+                    <div className="absolute left-4 sm:left-6 md:left-1/2 top-6 sm:top-8 -translate-x-1/2 z-20 flex items-center justify-center">
+                      <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#050505] border-2 border-[#3b82f6] shadow-[0_0_20px_#3b82f6] flex items-center justify-center group">
+                        <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#3b82f6] animate-ping" />
                       </span>
                     </div>
 
                     {/* Island Platform Card */}
-                    <div className="w-full md:w-[46%] pl-14 md:pl-0">
+                    <div className="w-full md:w-[46%] pl-9 xs:pl-12 sm:pl-14 md:pl-0">
                       <TiltIslandCard>
-                        <div className="relative bg-[#09090c]/75 backdrop-blur-2xl border border-white/10 rounded-[30px] p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.8)] hover:border-[#3b82f6]/40 hover:shadow-[0_0_45px_rgba(59,130,246,0.25)] transition-all duration-500 group overflow-hidden">
+                        <div className="relative bg-[#09090c]/75 backdrop-blur-2xl border border-white/10 rounded-[22px] sm:rounded-[30px] p-4 xs:p-5 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.8)] hover:border-[#3b82f6]/40 hover:shadow-[0_0_45px_rgba(59,130,246,0.25)] transition-all duration-500 group overflow-hidden">
                           {/* Floating Top Reflection Highlight */}
                           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
                           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#3b82f6]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#3b82f6]/20 transition-all duration-700" />
 
                           {/* Island Header: Chapter Tag & Date */}
-                          <div className="flex items-center justify-between gap-3 mb-4">
+                          <div className="flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
                             <span
-                              className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold border ${ch.badgeColor}`}
+                              className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold border ${ch.badgeColor}`}
                             >
-                              <Icon className="w-3.5 h-3.5" />
+                              <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                               Chapter {ch.chapter} • {ch.type}
                             </span>
-                            <div className="flex items-center gap-1.5 text-xs font-semibold text-white/50">
-                              <Calendar className="w-3.5 h-3.5 text-[#3b82f6]" />
+                            <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-white/50">
+                              <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#3b82f6]" />
                               <span>{ch.date}</span>
                             </div>
                           </div>
 
                           {/* Island Title & Subtitle */}
-                          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-playfair group-hover:text-[#3b82f6] transition-colors leading-snug">
+                          <h3 className="text-base xs:text-lg sm:text-2xl font-bold text-white tracking-tight font-playfair group-hover:text-[#3b82f6] transition-colors leading-snug">
                             {ch.title}
                           </h3>
-                          <p className="text-xs font-medium text-white/50 mt-1">
+                          <p className="text-xs sm:text-sm font-medium text-white/50 mt-1">
                             {ch.subtitle}
                           </p>
                         </div>
