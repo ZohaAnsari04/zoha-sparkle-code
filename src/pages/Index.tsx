@@ -12,15 +12,15 @@ import Preloader from "@/components/Preloader";
 import SocialSidebar from "@/components/SocialSidebar";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
-import LocomotiveScrollWrapper from "@/components/LocomotiveScrollWrapper";
+import LenisScrollWrapper from "@/components/LenisScrollWrapper";
 import SectionReveal from "@/components/SectionReveal";
 import BackgroundBlobs from "@/components/BackgroundBlobs";
 import ClickSpark from "@/components/ClickSpark";
 import { useState } from "react";
-import LocomotiveScroll from "locomotive-scroll";
+import Lenis from "lenis";
 
 const Index = () => {
-  const [scrollInstance, setScrollInstance] = useState<LocomotiveScroll | null>(null);
+  const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null);
 
   return (
     <>
@@ -34,10 +34,10 @@ const Index = () => {
       <Preloader />
       <BackgroundBlobs />
       <ScrollProgress />
-      <BackToTop scrollInstance={scrollInstance} />
+      <BackToTop lenisInstance={lenisInstance} />
       <Header />
       <SocialSidebar />
-      <LocomotiveScrollWrapper onMount={setScrollInstance}>
+      <LenisScrollWrapper onMount={setLenisInstance}>
         <div className="min-h-screen">
           <SectionReveal>
             <Hero />
@@ -61,7 +61,7 @@ const Index = () => {
           </SectionReveal>
           <Footer />
         </div>
-      </LocomotiveScrollWrapper>
+      </LenisScrollWrapper>
     </>
   );
 };

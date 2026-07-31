@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
-import LocomotiveScroll from "locomotive-scroll";
+import Lenis from "lenis";
 
 interface BackToTopProps {
-    scrollInstance?: LocomotiveScroll | null;
+    lenisInstance?: Lenis | null;
 }
 
-const BackToTop = ({ scrollInstance }: BackToTopProps) => {
+const BackToTop = ({ lenisInstance }: BackToTopProps) => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -14,27 +14,26 @@ const BackToTop = ({ scrollInstance }: BackToTopProps) => {
             setIsVisible(window.scrollY > 300);
         };
 
-        if (scrollInstance) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            scrollInstance.on('scroll', (args: any) => {
-                if (args.scroll && typeof args.scroll.y === 'number') {
-                    setIsVisible(args.scroll.y > 300);
-                }
-            });
+        if (lenisInstance) {
+            const handleLenisScroll = (e: { scroll: number }) => {
+                setIsVisible(e.scroll > 300);
+            };
+            lenisInstance.on('scroll', handleLenisScroll);
+            return () => {
+                lenisInstance.off('scroll', handleLenisScroll);
+            };
         } else {
             window.addEventListener("scroll", handleWindowScroll);
+            return () => {
+                window.removeEventListener("scroll", handleWindowScroll);
+            };
         }
-
-        return () => {
-            window.removeEventListener("scroll", handleWindowScroll);
-        };
-    }, [scrollInstance]);
+    }, [lenisInstance]);
 
     const scrollToTop = () => {
-        if (scrollInstance) {
-            scrollInstance.scrollTo('#hero', {
-                duration: 1500,
-                disableLerp: false
+        if (lenisInstance) {
+            lenisInstance.scrollTo(0, {
+                duration: 1.2,
             });
         } else {
             window.scrollTo({
