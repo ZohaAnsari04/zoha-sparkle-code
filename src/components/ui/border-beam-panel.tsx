@@ -12,7 +12,7 @@ import { twMerge } from "tailwind-merge";
 /* -------------------------------------------------------------------------- */
 /* Rendered with the component, in a low cascade layer, so your own
    `:root { --motiq-*: … }` always wins. Move it to globals.css to drop it. */
-const MOTIQ_TOKENS = "@layer motiq{:root{--motiq-accent:#315fea;--motiq-accent-text:#244fd1;--motiq-bg:#f7f9fc;--motiq-border:#dce4ef;--motiq-border-strong:#c5d1e1;--motiq-fg:#101828;--motiq-fg-secondary:#344054;--motiq-muted:#667085;--motiq-secondary-accent:#009fb3;--motiq-signature:#e9564a;--motiq-surface:#ffffff;--motiq-surface-2:#f8fafd}}@layer motiq{.dark,[data-theme=\"dark\"]{--motiq-accent:#4f7cff;--motiq-accent-text:#7f9fff;--motiq-bg:#080c14;--motiq-border:#263449;--motiq-border-strong:#354863;--motiq-fg:#f8fafc;--motiq-fg-secondary:#cbd5e1;--motiq-muted:#9caabd;--motiq-secondary-accent:#22c7d9;--motiq-signature:#ff6b5e;--motiq-surface:#111827;--motiq-surface-2:#192337}}";
+const MOTIQ_TOKENS = "@layer motiq{:root{--motiq-accent:#315fea;--motiq-accent-text:#244fd1;--motiq-bg:#f7f9fc;--motiq-border:#dce4ef;--motiq-border-strong:#c5d1e1;--motiq-fg:#101828;--motiq-fg-secondary:#344054;--motiq-muted:#667085;--motiq-secondary-accent:#009fb3;--motiq-signature:#3ca2fa;--motiq-surface:#ffffff;--motiq-surface-2:#f8fafd}}@layer motiq{.dark,[data-theme=\"dark\"]{--motiq-accent:#4f7cff;--motiq-accent-text:#7f9fff;--motiq-bg:#080c14;--motiq-border:#263449;--motiq-border-strong:#354863;--motiq-fg:#f8fafc;--motiq-fg-secondary:#cbd5e1;--motiq-muted:#9caabd;--motiq-secondary-accent:#22c7d9;--motiq-signature:#60a5fa;--motiq-surface:#111827;--motiq-surface-2:#192337}}";
 
 /** Merge Tailwind class names; later/consumer classes win on conflict. */
 function cn(...inputs: ClassValue[]): string {
@@ -82,7 +82,7 @@ export interface BorderBeamPanelProps extends React.HTMLAttributes<HTMLDivElemen
   children?: React.ReactNode;
   /** One comet, or two opposed comets 180° apart. */
   beams?: 1 | 2;
-  /** Comet colors. The second defaults to the rare coral signature. */
+  /** Comet colors. The second defaults to blue/cyan signature. */
   colors?: [string, string?];
   /** Ring thickness in px. */
   thickness?: number;
@@ -135,9 +135,7 @@ const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n
 const PARKED_ANGLE = 40;
 
 /**
- * One comet: a ~45° tail easing into a 4° bright head. The toe uses a 4% mix of
- * the comet color rather than `transparent`, because `transparent` is
- * rgba(0,0,0,0) and a conic ramp through it dips visibly gray.
+ * One comet: a ~45° tail easing into a 4° bright head.
  */
 function comet(tail: string, head: string, tip: string, midAlpha: number, start: number): string {
   return [
@@ -151,15 +149,13 @@ function comet(tail: string, head: string, tip: string, midAlpha: number, start:
 
 function ringGradient(beams: 1 | 2, colors: [string, string?] | undefined): string {
   const tail0 = colors?.[0] ?? "var(--motiq-accent, #4f7cff)";
-  // Default comet reads azure → cyan along its length; a custom color stays itself.
   const head0 = colors?.[0] ?? "var(--motiq-secondary-accent, #22c7d9)";
   const stops = [
     "transparent 0deg",
     comet(tail0, head0, `color-mix(in srgb, ${head0} 22%, #ffffff)`, 55, 0),
   ];
-  // The single coral moment on this surface — the second comet's head.
   if (beams === 2) {
-    const c1 = colors?.[1] ?? "var(--motiq-signature, #ff6b5e)";
+    const c1 = colors?.[1] ?? "var(--motiq-signature, #60a5fa)";
     stops.push("transparent 198deg", comet(c1, c1, `color-mix(in srgb, ${c1} 26%, #ffffff)`, 50, 198));
   }
   stops.push("transparent 360deg");
@@ -170,15 +166,6 @@ function ringGradient(beams: 1 | 2, colors: [string, string?] | undefined): stri
 /* Component                                                                  */
 /* -------------------------------------------------------------------------- */
 
-/**
- * BorderBeamPanel — twin comets orbiting a 2px border ring. The ring is a
- * rotating conic gradient cut with a two-layer CSS ALPHA mask
- * (`mask-composite: exclude`); SVG luminance masks are deliberately avoided
- * because they silently no-op in Chromium. The angular VELOCITY itself is
- * sprung (k=30, d=11) toward 240°/s on hover and back to 42°/s on leave, so the
- * beams wind up and coast instead of snapping between speeds. Only one custom
- * property changes per frame — panel content never repaints. Clean-room original.
- */
 function BorderBeamPanelBase({
   children,
   beams = 2,
@@ -201,7 +188,6 @@ function BorderBeamPanelBase({
   const rootRef = React.useRef<HTMLDivElement | null>(null);
 
   const systemReduced = useReducedMotion();
-  // Resolved after mount so SSR and first client render agree on data-motion.
   const [hydrated, setHydrated] = React.useState(false);
   React.useEffect(() => setHydrated(true), []);
   const staticMode = reducedMotion === true || (hydrated && systemReduced);
@@ -212,7 +198,6 @@ function BorderBeamPanelBase({
   const stiffness = spring?.stiffness ?? 30;
   const damping = spring?.damping ?? 11;
 
-  // Deterministic start angle — a lap phase, never Math.random (SSR-stable).
   const startAngle = React.useMemo(() => ((seed * 137.508) % 360 + 360) % 360, [seed]);
 
   const speedRef = React.useRef(new Spring(idleSpeed, stiffness, damping));

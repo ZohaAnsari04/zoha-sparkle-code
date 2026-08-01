@@ -4,7 +4,6 @@ import {
   Mail,
   Github,
   Linkedin,
-  Instagram,
   Heart,
   Sparkles,
   ArrowUpRight,
@@ -61,14 +60,6 @@ function HoverFooter() {
       text: "Ansari Zoha Najmul Kalam",
       href: "https://www.linkedin.com/in/er-ansari-zoha-najmul-kalam-819610238/",
     },
-  ];
-
-  // Social links
-  const socialLinks = [
-    { icon: <Github size={20} />, label: "GitHub", href: "https://github.com/ZohaAnsari04" },
-    { icon: <Linkedin size={20} />, label: "LinkedIn", href: "https://www.linkedin.com/in/er-ansari-zoha-najmul-kalam-819610238/" },
-    { icon: <Instagram size={20} />, label: "Instagram", href: "https://www.instagram.com/quietlyzoha?igsh=NnRnanM3eGtiOGQy" },
-    { icon: <Mail size={20} />, label: "Email", href: "mailto:zoha101204@gmail.com" },
   ];
 
   return (
@@ -145,31 +136,11 @@ function HoverFooter() {
         <hr className="border-t border-neutral-800 my-8" />
 
         {/* Footer bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0">
-          {/* Social icons */}
-          <div className="flex space-x-6 text-neutral-400">
-            {socialLinks.map(({ icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="hover:text-[#3ca2fa] transition-colors p-2 rounded-full hover:bg-white/5"
-              >
-                {icon}
-              </a>
-            ))}
-          </div>
-
-          {/* Copyright */}
-          <div className="text-neutral-400 text-center md:text-right text-xs md:text-sm flex flex-col md:flex-row items-center gap-2">
-            <span>&copy; {new Date().getFullYear()} BuiltByZoha. All rights reserved.</span>
-            <span className="hidden md:inline">|</span>
-            <span className="flex items-center gap-1 text-[#3ca2fa]">
-              Made with <Heart size={14} className="fill-current text-red-500 animate-pulse" /> by Ansari Zoha Najmul Kalam
-            </span>
-          </div>
+        <div className="flex flex-col sm:flex-row justify-between items-center text-sm space-y-4 sm:space-y-0 text-neutral-400">
+          <span>&copy; {new Date().getFullYear()} BuiltByZoha. All rights reserved.</span>
+          <span className="flex items-center gap-1 text-[#3ca2fa]">
+            Made with <Heart size={14} className="fill-current text-red-500 animate-pulse" /> by Ansari Zoha Najmul Kalam
+          </span>
         </div>
       </div>
 

@@ -73,9 +73,9 @@ const ParticleBackground = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 45, 85, ${clampedAlpha})`;
+        ctx.fillStyle = `rgba(59, 130, 246, ${clampedAlpha})`;
         ctx.shadowBlur = 10;
-        ctx.shadowColor = "rgba(255, 45, 85, 0.7)";
+        ctx.shadowColor = "rgba(59, 130, 246, 0.7)";
         ctx.fill();
       });
 
@@ -236,10 +236,13 @@ const Journey = () => {
       id="journey"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative bg-[#050505] text-white py-12 sm:py-16 lg:py-20 overflow-hidden selection:bg-[#3b82f6]/30 selection:text-white"
+      className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-950/20 via-background to-blue-900/10 dark:from-transparent dark:via-transparent dark:to-transparent overflow-hidden selection:bg-[#3b82f6]/30 selection:text-white"
     >
       {/* Background Ambient Lighting & Effects */}
       <ParticleBackground />
+
+      {/* Grid Pattern Background matching AI Creative Studio */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
       {/* Mouse Follow Ambient Radial Spotlight */}
       <div
@@ -252,10 +255,6 @@ const Journey = () => {
       {/* Blue Ambient Orbs */}
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-gradient-to-br from-[#3b82f6]/15 via-[#1e3a8a]/10 to-transparent rounded-full blur-[140px] pointer-events-none animate-pulse-glow-blue" />
       <div className="absolute bottom-1/4 -right-48 w-[500px] h-[500px] bg-gradient-to-tr from-[#2563eb]/15 via-[#172554]/10 to-transparent rounded-full blur-[160px] pointer-events-none animate-pulse-glow-blue" />
-
-      {/* Subtle Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
-      <div className="absolute inset-0 bg-noise-pattern pointer-events-none z-0 opacity-40" />
 
       <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* SECTION HEADER */}
