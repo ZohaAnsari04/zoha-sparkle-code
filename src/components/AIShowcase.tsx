@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Sparkles, ExternalLink, Palette, X, Image, Film, Youtube, Video } from "lucide-react";
+import { BorderBeamPanel } from "@/components/ui/border-beam-panel";
 import {
     Dialog,
     DialogContent,
@@ -9,14 +9,6 @@ import {
     DialogClose,
     DialogTitle,
 } from "@/components/ui/dialog";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-    type CarouselApi,
-} from "@/components/ui/carousel";
 
 import aiArt1 from "@/assets/ai-art-1.jpg";
 import aiArt2 from "@/assets/ai-art-2.jpg";
@@ -112,26 +104,31 @@ const AIShowcase = () => {
                     {/* AI Image Art Card */}
                     <Dialog>
                         <DialogTrigger asChild>
-                            <Card
-                                className="group relative overflow-hidden bg-card dark:bg-white/5 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer h-full"
-                                style={{
-                                    background: `radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 40%),
-                                                radial-gradient(circle at bottom right, rgba(29, 78, 216, 0.15), transparent 40%),
-                                                rgba(255, 255, 255, 0.05)`
-                                }}
-                             >
-                                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                                <div className="mb-4 p-3 bg-blue-500/20 rounded-lg w-fit group-hover:bg-blue-500/30 transition-colors">
-                                    <Image className="w-6 h-6 text-blue-400" />
-                                </div>
-                                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">AI Image Art</h3>
-                                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                                    Crafting hyper-realistic and abstract visuals using advanced prompt engineering on Midjourney & Stable Diffusion.
-                                </p>
-                                <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium group-hover:bg-blue-500/20 group-hover:text-blue-300 group-hover:border-blue-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                                    View Gallery <ExternalLink className="ml-2 w-4 h-4" />
-                                </div>
-                            </Card>
+                            <div className="h-full cursor-pointer">
+                                <BorderBeamPanel
+                                    beams={2}
+                                    thickness={2}
+                                    radius={20}
+                                    glow
+                                    seed={1}
+                                    colors={["#3b82f6", "#60a5fa"]}
+                                    className="group relative overflow-hidden bg-card dark:bg-[#0f172a]/90 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full flex flex-col justify-between"
+                                >
+                                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                                    <div>
+                                        <div className="mb-4 p-3 bg-blue-500/20 rounded-lg w-fit group-hover:bg-blue-500/30 transition-colors">
+                                            <Image className="w-6 h-6 text-blue-400" />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">AI Image Art</h3>
+                                        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                                            Crafting hyper-realistic and abstract visuals using advanced prompt engineering on Midjourney & Stable Diffusion.
+                                        </p>
+                                    </div>
+                                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium group-hover:bg-blue-500/20 group-hover:text-blue-300 group-hover:border-blue-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] w-fit mt-2">
+                                        View Gallery <ExternalLink className="ml-2 w-4 h-4" />
+                                    </div>
+                                </BorderBeamPanel>
+                            </div>
                         </DialogTrigger>
                         <DialogContent className="max-w-[95vw] bg-black/90 border-blue-500/20 backdrop-blur-xl p-0 overflow-hidden">
                             <DialogTitle className="sr-only">AI Art Gallery</DialogTitle>
@@ -144,28 +141,31 @@ const AIShowcase = () => {
                         href="https://drive.google.com/drive/folders/10soQVRW2IkmwkCHID2yyjE9eIzqKoo9V?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block h-full"
+                        className="block h-full cursor-pointer"
                     >
-                        <Card
-                            className="group relative overflow-hidden bg-card dark:bg-white/5 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full cursor-pointer"
-                            style={{
-                                background: `radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 40%),
-                                            radial-gradient(circle at bottom right, rgba(29, 78, 216, 0.15), transparent 40%),
-                                            rgba(255, 255, 255, 0.05)`
-                            }}
+                        <BorderBeamPanel
+                            beams={2}
+                            thickness={2}
+                            radius={20}
+                            glow
+                            seed={2}
+                            colors={["#3b82f6", "#818cf8"]}
+                            className="group relative overflow-hidden bg-card dark:bg-[#0f172a]/90 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full flex flex-col justify-between"
                         >
                             <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                            <div className="mb-4 p-3 bg-blue-500/20 rounded-lg w-fit group-hover:bg-blue-500/30 transition-colors">
-                                <Film className="w-6 h-6 text-blue-400" />
+                            <div>
+                                <div className="mb-4 p-3 bg-blue-500/20 rounded-lg w-fit group-hover:bg-blue-500/30 transition-colors">
+                                    <Film className="w-6 h-6 text-blue-400" />
+                                </div>
+                                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">Cinematic Trailers</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                                    Directing and producing Hollywood-style movie trailers entirely generated by AI video models.
+                                </p>
                             </div>
-                            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">Cinematic Trailers</h3>
-                            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                                Directing and producing Hollywood-style movie trailers entirely generated by AI video models.
-                            </p>
-                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium group-hover:bg-blue-500/20 group-hover:text-blue-300 group-hover:border-blue-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium group-hover:bg-blue-500/20 group-hover:text-blue-300 group-hover:border-blue-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] w-fit mt-2">
                                 Watch Trailers <ExternalLink className="ml-2 w-4 h-4" />
                             </div>
-                        </Card>
+                        </BorderBeamPanel>
                     </a>
 
                     {/* AI Shorts & Reels Card */}
@@ -173,28 +173,31 @@ const AIShowcase = () => {
                         href="https://drive.google.com/drive/folders/1AZGic0Jr3JMrl-si0ffJamCKHgkqz3Cp?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block h-full"
+                        className="block h-full cursor-pointer"
                     >
-                        <Card
-                            className="group relative overflow-hidden bg-card dark:bg-white/5 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full cursor-pointer"
-                            style={{
-                                background: `radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 40%),
-                                            radial-gradient(circle at bottom right, rgba(29, 78, 216, 0.15), transparent 40%),
-                                            rgba(255, 255, 255, 0.05)`
-                            }}
+                        <BorderBeamPanel
+                            beams={2}
+                            thickness={2}
+                            radius={20}
+                            glow
+                            seed={3}
+                            colors={["#3b82f6", "#38bdf8"]}
+                            className="group relative overflow-hidden bg-card dark:bg-[#0f172a]/90 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full flex flex-col justify-between"
                         >
                             <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                            <div className="mb-4 p-3 bg-blue-500/20 rounded-lg w-fit group-hover:bg-blue-500/30 transition-colors">
-                                <Youtube className="w-6 h-6 text-blue-400" />
+                            <div>
+                                <div className="mb-4 p-3 bg-blue-500/20 rounded-lg w-fit group-hover:bg-blue-500/30 transition-colors">
+                                    <Youtube className="w-6 h-6 text-blue-400" />
+                                </div>
+                                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">AI Shorts & Reels</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                                    Creating engaging, viral-ready short-form content for Instagram and YouTube using AI tools.
+                                </p>
                             </div>
-                            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">AI Shorts & Reels</h3>
-                            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                                Creating engaging, viral-ready short-form content for Instagram and YouTube using AI tools.
-                            </p>
-                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium group-hover:bg-blue-500/20 group-hover:text-blue-300 group-hover:border-blue-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium group-hover:bg-blue-500/20 group-hover:text-blue-300 group-hover:border-blue-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] w-fit mt-2">
                                 Watch Reels <ExternalLink className="ml-2 w-4 h-4" />
                             </div>
-                        </Card>
+                        </BorderBeamPanel>
                     </a>
 
                     {/* Generative Video Card */}
@@ -202,28 +205,31 @@ const AIShowcase = () => {
                         href="https://drive.google.com/drive/folders/1XjGdYknaFRIJvYCjUG0-SETF9tPtxEp4?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block h-full"
+                        className="block h-full cursor-pointer"
                     >
-                        <Card
-                            className="group relative overflow-hidden bg-card dark:bg-white/5 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full cursor-pointer"
-                            style={{
-                                background: `radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 40%),
-                                            radial-gradient(circle at bottom right, rgba(29, 78, 216, 0.15), transparent 40%),
-                                            rgba(255, 255, 255, 0.05)`
-                            }}
+                        <BorderBeamPanel
+                            beams={2}
+                            thickness={2}
+                            radius={20}
+                            glow
+                            seed={4}
+                            colors={["#3b82f6", "#a855f7"]}
+                            className="group relative overflow-hidden bg-card dark:bg-[#0f172a]/90 border-border dark:border-white/10 p-6 hover:bg-accent/5 dark:hover:bg-white/10 transition-all duration-300 h-full flex flex-col justify-between"
                         >
                             <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                            <div className="mb-4 p-3 bg-blue-500/20 rounded-lg w-fit group-hover:bg-blue-500/30 transition-colors">
-                                <Video className="w-6 h-6 text-blue-400" />
+                            <div>
+                                <div className="mb-4 p-3 bg-blue-500/20 rounded-lg w-fit group-hover:bg-blue-500/30 transition-colors">
+                                    <Video className="w-6 h-6 text-blue-400" />
+                                </div>
+                                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">Generative Video</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                                    Transforming text prompts into fluid, dynamic video sequences for storytelling and marketing.
+                                </p>
                             </div>
-                            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">Generative Video</h3>
-                            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                                Transforming text prompts into fluid, dynamic video sequences for storytelling and marketing.
-                            </p>
-                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium group-hover:bg-blue-500/20 group-hover:text-blue-300 group-hover:border-blue-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium group-hover:bg-blue-500/20 group-hover:text-blue-300 group-hover:border-blue-500/40 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] w-fit mt-2">
                                 Watch Videos <ExternalLink className="ml-2 w-4 h-4" />
                             </div>
-                        </Card>
+                        </BorderBeamPanel>
                     </a>
                 </div>
             </div>
