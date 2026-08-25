@@ -215,9 +215,9 @@ const Journey = () => {
       chapter: "05",
       type: "Education",
       icon: GraduationCap,
-      title: "Masters of Technology (M.Tech)",
-      subtitle: "K.J. Somaiya School of Engineering",
-      date: "Jun 2026 – May 2028",
+      title: "Masters of Technology (M.Tech) in CSE AIML",
+      subtitle: "M. H. Saboo Siddik College of engineering",
+      date: "Jun 2026 – Present",
       badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/30"
     },
     {
@@ -354,9 +354,8 @@ const Journey = () => {
                     }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.1 }}
-                    className={`relative flex flex-col md:flex-row items-center ${
-                      isEven ? "md:flex-row" : "md:flex-row-reverse"
-                    }`}
+                    className={`relative flex flex-col md:flex-row items-center ${isEven ? "md:flex-row" : "md:flex-row-reverse"
+                      }`}
                   >
                     {/* Glowing Milestone Node on River Path */}
                     <div className="absolute left-4 sm:left-6 md:left-1/2 top-6 sm:top-8 -translate-x-1/2 z-20 flex items-center justify-center">
