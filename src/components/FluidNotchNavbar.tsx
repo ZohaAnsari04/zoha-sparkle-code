@@ -27,7 +27,7 @@ const navItems: NavItem[] = [
   { id: "contact", label: "Contact", href: "#contact", icon: Send }
 ];
 
-const RESUME_URL = "/Zoha_Ansari_Resume.pdf";
+const RESUME_URL = "https://acrobat.adobe.com/id/urn:aaid:sc:AP:33fe1638-23fb-4e96-8241-ad0b9f0e24ef";
 
 const FluidNotchNavbar = () => {
   const [activeTab, setActiveTab] = useState("home");
@@ -159,7 +159,6 @@ const FluidNotchNavbar = () => {
         {/* RESUME BUTTON (Right) */}
         <a
           href={RESUME_URL}
-          download="Zoha_Ansari_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="pointer-events-auto inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#09090c]/90 backdrop-blur-2xl border border-[#3b82f6]/40 text-xs sm:text-sm font-bold text-white shadow-[0_0_20px_rgba(59,130,246,0.25)] hover:text-white hover:border-[#3b82f6]/80 hover:bg-[#3b82f6]/20 hover:shadow-[0_0_30px_rgba(59,130,246,0.45)] hover:scale-105 transition-all duration-300 flex-shrink-0"

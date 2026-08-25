@@ -423,12 +423,7 @@ export const StaggeredMenu = ({
     };
 
     const handleResumeDownload = () => {
-        const link = document.createElement("a");
-        link.href = "/Zoha_Ansari_Resume.pdf";
-        link.download = "Zoha_Ansari_Resume.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        window.open("https://acrobat.adobe.com/id/urn:aaid:sc:AP:33fe1638-23fb-4e96-8241-ad0b9f0e24ef", "_blank", "noopener,noreferrer");
         closeMenu();
     };
 
