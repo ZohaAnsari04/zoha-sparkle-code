@@ -215,9 +215,9 @@ const Journey = () => {
       chapter: "05",
       type: "Education",
       icon: GraduationCap,
-      title: "Masters of Technology (M.Tech) in CSE AI&ML",
-      subtitle: "M. H. Saboo Siddik College of engineering",
-      date: "Jun 2026 – Present",
+      title: "Masters of Technology (M.Tech) in Computer Engineering",
+      subtitle: "Vidyalankar Institute of Technology",
+      date: "Sept 2026 – Present",
       badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/30"
     },
     {
