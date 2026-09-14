@@ -19,6 +19,7 @@ import project6 from "@/assets/project6.png";
 import project7 from "@/assets/project7.png";
 import jobVerifyImg from "@/assets/jobverify.png";
 import foreseeImg from "@/assets/foresee.png";
+import novaLearnImg from "@/assets/novalearn.png";
 
 // Canvas Floating Particles Backdrop
 const ParticleBackground = () => {
@@ -279,6 +280,17 @@ const Projects = () => {
 
   // Compact Bento Projects List
   const projectsData = [
+    {
+      id: "novalearn",
+      title: "NovaLearn AI",
+      description: "AI study buddy and personalized learning companion turning course materials into smart notes, quizzes, and revision roadmaps.",
+      image: novaLearnImg,
+      domain: "novalearn-ai-one.vercel.app",
+      categories: ["AI", "Frontend"],
+      tech: ["React", "TypeScript", "Tailwind CSS"],
+      demo: "https://novalearn-ai-one.vercel.app/",
+      github: "https://github.com/ZohaAnsari04"
+    },
     {
       id: "splitsync",
       title: "SplitSync",
